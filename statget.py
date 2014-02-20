@@ -28,7 +28,7 @@ def top_three( team_id, stat):
 
     top_three = data[0:3]
     for player in top_three[:]:
-        print player['playerName'], player[stat]
+        print "{0:10} {1:5}".format(player['playerName'], player[stat])
 
 
 def name_to_id(team_name):
