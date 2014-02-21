@@ -6,8 +6,8 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         self.send_response(200)     #  Send 200 OK
-        # Uncomment this line to pretend the response is a JPG image
-        # self.send_header("Content-type", "image/jpg")
+        self.send_header("Content-type","text")
+        self.end_headers()
         a = top_three(name_to_id('Madison Radicals'), 'goals')
         self.end_headers()
         self.wfile.write(a)
