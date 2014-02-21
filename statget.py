@@ -27,8 +27,12 @@ def top_three( team_id, stat):
     data.sort(key = lambda player_asst: player_asst[stat], reverse= True )
 
     top_three = data[0:3]
+    output = []
     for player in top_three[:]:
         print "{0:10} {1:5}".format(player['playerName'], player[stat])
+        output.append((player['playerName'],player[stat]))
+
+    return output
 
 
 def name_to_id(team_name):
