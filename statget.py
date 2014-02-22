@@ -34,12 +34,32 @@ def top_three( team_id, stat, debug = False ):
 
     return output
 
+def return_roster(team_id, debug = False):
+    
+    base_url='http://www.ultimate-numbers.com/rest/view/team/'
+    full_url= base_url + team_id +'/players'
+    if debug: print full_url
 
-def name_to_id(team_name):
+    req = urllib2.Request(full_url)
+    response = urllib2.urlopen(req)
+    page = response.read()
+
+    data = json.loads(page)
+    
+    print name_to_id('', team_id=int(team_id), reverse=True) + ' roster:'
+    output=[]
+
+    for player in data:
+        deets = json.loads(player['leaguevinePlayer'])
+        print ( "%s %s %s" % ( deets['player']['first_name'], deets ['player']['last_name'], deets['number']))
+        output.append((deets['player']['first_name'], deets ['player']['last_name'], deets['number']))
+    return output
+
+def name_to_id(team_name, team_id=0, reverse=False):
     """ Converts a team name to it's corresponding ID"""
 
     
-    dict = {'Minnesota Wind Chill': 210001,
+    teams = {'Minnesota Wind Chill': 210001,
       'New York Empire': 208003,
       'DC Breeze': 206001,
       'Cincinnati Revolution': 183001,
@@ -52,8 +72,12 @@ def name_to_id(team_name):
       'Detroit Mechanix': 219001,
       'Indianapolis Alley Cats': 253001}
 
-    return dict[team_name]
-
+    if reverse:
+        for name, number in teams.items():
+            if  team_id == number:
+                return name
+    else:
+        return teams[team_name]
 
 if __name__ == "__main__":
     import sys
