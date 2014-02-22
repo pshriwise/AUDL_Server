@@ -3,7 +3,7 @@
 import urllib2
 import json
 
-def top_three( team_id, stat):
+def top_three( team_id, stat, debug = False ):
     """ Get's the top five players on a team
 
     takes a team_id requests data from the ultimate-numbers
@@ -29,7 +29,7 @@ def top_three( team_id, stat):
     top_three = data[0:3]
     output = []
     for player in top_three[:]:
-        print "{0:10} {1:5}".format(player['playerName'], player[stat])
+        if (debug): print "{0:10} {1:5}".format(player['playerName'], player[stat])
         output.append((player['playerName'],player[stat]))
 
     return output
