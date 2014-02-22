@@ -2,15 +2,25 @@
 
 import SimpleHTTPServer, SocketServer
 from statget import top_three,name_to_id
+
+top_three_assists = top_three(name_to_id('Madison Radicals'), 'assists')
+top_three_goals = top_three(name_to_id('Madison Radicals'), 'goals')
+
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
-    top_three_assists = top_three(name_to_id('Madison Radicals'), 'assists')
+
 
     def do_GET(self):
-        self.send_response(200)     #  Send 200 OK
-        self.send_header("Content-type","text")
-        self.end_headers()
-        self.wfile.write(self.top_three_assists)
+        if self.path == "/goals":
+            self.send_response(200)     #  Send 200 OK
+            self.send_header("Content-type","text")
+            self.end_headers()
+            self.wfile.write(top_three_goals)
+        elif self.path == "/assists":
+            self.send_response(200)     #  Send 200 OK
+            self.send_header("Content-type","text")
+            self.end_headers()
+            self.wfile.write(top_three_assists)
 
 
 PORT=4000
