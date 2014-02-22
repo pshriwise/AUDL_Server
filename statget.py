@@ -34,7 +34,14 @@ def top_three( team_id, stat, debug = False ):
 
     return output
 
-def return_roster(team_id, debug = False):
+def rosters():
+    teams = team_dict()
+    rosters=[]
+    for name, number in teams.items():
+        rosters.append((name, number, roster(str(number))))
+    return rosters
+
+def roster(team_id, debug = False):
     
     base_url='http://www.ultimate-numbers.com/rest/view/team/'
     full_url= base_url + team_id +'/players'
@@ -51,7 +58,9 @@ def return_roster(team_id, debug = False):
 
     for player in data:
         deets = json.loads(player['leaguevinePlayer'])
-        print ( "%s %s %s" % ( deets['player']['first_name'], deets ['player']['last_name'], deets['number']))
+
+        if debug: 
+            print ( "%s %s %s" % ( deets['player']['first_name'], deets ['player']['last_name'], deets['number']))
         output.append((deets['player']['first_name'], deets ['player']['last_name'], deets['number']))
     return output
 
@@ -59,10 +68,21 @@ def name_to_id(team_name, team_id=0, reverse=False):
     """ Converts a team name to it's corresponding ID"""
 
     
+    teams = team_dict()
+
+    if reverse:
+        for name, number in teams.items():
+            if  team_id == number:
+                return name
+    else:
+        return teams[team_name]
+
+def team_dict():
+
+    
     teams = {'Minnesota Wind Chill': 210001,
       'New York Empire': 208003,
       'DC Breeze': 206001,
-      'Cincinnati Revolution': 183001,
       'Rochester Dragons': 208005,
       'Windy City Wildfire': 207003,
       'Toronto Rush': 195002,
@@ -72,12 +92,8 @@ def name_to_id(team_name, team_id=0, reverse=False):
       'Detroit Mechanix': 219001,
       'Indianapolis Alley Cats': 253001}
 
-    if reverse:
-        for name, number in teams.items():
-            if  team_id == number:
-                return name
-    else:
-        return teams[team_name]
+
+    return teams
 
 if __name__ == "__main__":
     import sys
