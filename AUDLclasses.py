@@ -42,10 +42,6 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             self.Teams[team].ID = team
-            
-        
-   
-   
     
 
 class Team():
@@ -67,4 +63,25 @@ class Team():
      Games = {};
 
      Top_Fives = ();
+
+     def add_players(self):
+
+         # Get information from ultimate-numbers server
+         base_url = 'http://www.ultimate-numbers.com/rest/view'
+         req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player/')
+         response =  urllib2.urlopen(req)
+         page = response.read()
+         # Decode json string as python dict
+         data = json.loads(page)
+
+         # For every player in the data, 
+         # create a new player
+         for player in data:
+             self.add_player(player)
+
+
+     def add_player(self, player_info):
+         #Add player to team's Players dictionary
+         self.Players[player_info['playerName']] = player_info['playerName']
+         # NOTE: This currently just adds a player name instead of a 'Player' class.
 
