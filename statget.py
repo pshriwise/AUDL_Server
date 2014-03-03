@@ -3,6 +3,8 @@
 import urllib2
 import json
 
+base_url = 'http://www.ultimate-numbers.com/rest/view'
+
 def top_three( team_id, stat, debug = False ):
     """ Get's the top five players on a team
 
@@ -12,8 +14,7 @@ def top_three( team_id, stat, debug = False ):
 
     
   
-    baseurl = 'http://www.ultimate-numbers.com/rest/view/team/'
-    full_url= baseurl + str(team_id) + '/stats/player'
+    full_url= base_url + '/team/' + str(team_id) + '/stats/player'
 
 
     #print full_url
@@ -43,8 +44,8 @@ def rosters():
 
 def roster(team_id, debug = False):
     
-    base_url='http://www.ultimate-numbers.com/rest/view/team/'
-    full_url= base_url + team_id +'/players'
+
+    full_url= base_url + '/team/' + team_id +'/players'
     if debug: print full_url
 
     req = urllib2.Request(full_url)
