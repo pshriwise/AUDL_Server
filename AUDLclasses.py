@@ -50,4 +50,21 @@ class League():
 
 class Team():
         
-     ID = None;
+     ID = 0;
+
+     Name = '';
+
+     City = '';
+
+     Coach = '';
+
+     Schedule = [];
+
+     Streak = '';
+
+     Players = {};
+
+     Games = {};
+
+     Top_Fives = ();
+
