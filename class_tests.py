@@ -2,6 +2,7 @@
 
 import AUDLclasses
 
+
 def test_League_attrs():
     
     test_league = AUDLclasses.League();
@@ -23,6 +24,19 @@ def test_League_attrs():
     assert type(test_league.RSS_feeds) is list
 
     assert type(test_league.Top_fives) is dict
+
+
+def test_league_methods():
+
+    test_league = AUDLclasses.League();
+
+    test_league.add_teams();
+
+    for team in test_league.Teams:
+
+        assert type(team) is int
+        assert isinstance(test_league.Teams[team], AUDLclasses.Team)
+
 
 
 
