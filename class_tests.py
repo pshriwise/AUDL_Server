@@ -38,6 +38,29 @@ def test_league_methods():
         assert isinstance(test_league.Teams[team], AUDLclasses.Team)
 
 
+def test_team_attrs():
+
+
+    test_team = AUDLclasses.Team();
+
+    assert type(test_team.ID) is int
+
+    assert type(test_team.Name) is str
+
+    assert type(test_team.Coach) is str
+
+    assert type(test_team.City) is str
+
+    assert type(test_team.Schedule) is list
+
+    assert type(test_team.Streak) is str
+
+    assert type(test_team.Players) is dict
+
+    assert type(test_team.Games) is dict
+
+    assert type(test_team.Top_Fives) is tuple
+
 
 
 
