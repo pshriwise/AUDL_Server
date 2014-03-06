@@ -8,23 +8,26 @@ import json
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
 class League():
-    News = {};
 
-    Videos = {};
+    def __init__(self):
 
-    Teams = {};
+        self.News = {};
 
-    This_week = [];
+        self.Videos = {};
 
-    Apple_users = [];
+        self.Teams = {};
 
-    Android_users = [];
+        self.This_week = [];
 
-    Video_feeds = [];
+        self.Apple_users = [];
 
-    RSS_feeds = [];
+        self.Android_users = [];
 
-    Top_fives = {};
+        self.Video_feeds = [];
+
+        self.RSS_feeds = [];
+
+        self.Top_fives = {};
 
 
     def add_teams(self):
@@ -45,43 +48,87 @@ class League():
     
 
 class Team():
-        
-     ID = 0;
 
-     Name = '';
+    def __init__(self):
 
-     City = '';
+         self.ID = 0
 
-     Coach = '';
+         self.Name = ''
 
-     Schedule = [];
+         self.City = ''
 
-     Streak = '';
+         self.Coach = ''
 
-     Players = {};
+         self.Schedule = []
 
-     Games = {};
+         self.Streak = ''
 
-     Top_Fives = ();
+         self.Players = {}
 
-     def add_players(self):
+         self.Games = {}
 
-         # Get information from ultimate-numbers server
-         base_url = 'http://www.ultimate-numbers.com/rest/view'
-         req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player/')
-         response =  urllib2.urlopen(req)
-         page = response.read()
-         # Decode json string as python dict
-         data = json.loads(page)
+         self.Top_Fives = ()
 
-         # For every player in the data, 
-         # create a new player
-         for player in data:
-             self.add_player(player)
+    def get_info(self):
+
+         teams_info = open('Teams_Info', 'r')
+         found = False
+         for line in teams_info: 
+              # See if we've reached the beginning of
+              # some team info
+
+              if line.count("ID") == 1 and line[4:].rstrip() == str(self.ID):
+                       found = True
+                       line = teams_info.next().split(":")[1]
+                       self.Name = line[1:].rstrip()
+                       line = teams_info.next().split(":")[1]
+                       self.City = line[1:].rstrip()
+                       line = teams_info.next().split(":")[1]
+                       self.Coach = line[1:].rstrip()
+         if not found: print "No Team with that ID on record"
 
 
-     def add_player(self, player_info):
-         #Add player to team's Players dictionary
-         self.Players[player_info['playerName']] = player_info['playerName']
-         # NOTE: This currently just adds a player name instead of a 'Player' class.
+    def add_players(self):
 
+        # Get information from ultimate-numbers server
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+        req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player/')
+        response =  urllib2.urlopen(req)
+        page = response.read()
+        # Decode json string as python dict
+        data = json.loads(page)
+
+        # For every player in the data, 
+        # create a new player
+        for player in data:
+            print player
+            self.add_player(player)
+
+    def add_player(self, player_info):
+        #Add player to team's Players dictionary
+        self.Players[player_info['playerName']] = Player()
+        #Add player's info to new Player class instance
+        self.Players[player_info['playerName']].First_name = player_info['playerName']
+        self.Players[player_info['playerName']].Stats['Assists']  = player_info['assists']
+        self.Players[player_info['playerName']].Stats['Goals']  = player_info['goals']
+        self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
+        self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
+        self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
+
+class Player():
+
+    
+    def __init__(self):
+        self.Stats = {}
+
+        self.First_name = ''
+
+        self.Last_name = ''
+
+        self.Number = 0
+
+        self.Height = ''
+
+        self.Weight = ''
+
+        self.Age = ''
