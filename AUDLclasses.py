@@ -45,6 +45,7 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             self.Teams[team].ID = team
+            self.Teams[team].get_info()
     
 
 class Team():
@@ -69,6 +70,7 @@ class Team():
 
          self.Top_Fives = ()
 
+
     def get_info(self):
 
          teams_info = open('Teams_Info', 'r')
@@ -86,13 +88,14 @@ class Team():
                        line = teams_info.next().split(":")[1]
                        self.Coach = line[1:].rstrip()
          if not found: print "No Team with that ID on record"
+         teams_info.close()
 
 
     def add_players(self):
 
         # Get information from ultimate-numbers server
         base_url = 'http://www.ultimate-numbers.com/rest/view'
-        req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player/')
+        req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player')
         response =  urllib2.urlopen(req)
         page = response.read()
         # Decode json string as python dict
@@ -100,13 +103,15 @@ class Team():
 
         # For every player in the data, 
         # create a new player
+        
+
         for player in data:
-            print player
             self.add_player(player)
 
     def add_player(self, player_info):
         #Add player to team's Players dictionary
         self.Players[player_info['playerName']] = Player()
+
         #Add player's info to new Player class instance
         self.Players[player_info['playerName']].First_name = player_info['playerName']
         self.Players[player_info['playerName']].Stats['Assists']  = player_info['assists']
@@ -114,11 +119,26 @@ class Team():
         self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
         self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
         self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
+        self.add_player_number(self.Players[player_info['playerName']])
 
+    def add_player_number(self,player_class):
+    
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        response = urllib2.urlopen(req)
+        data = json.loads(response.read())
+        
+        for player in data:
+            if player['name'] == player_class.First_name:
+               player_class.Number = player['number']
+            
+
+        
 class Player():
 
     
     def __init__(self):
+
         self.Stats = {}
 
         self.First_name = ''
