@@ -61,6 +61,29 @@ def test_team_attrs():
 
     assert type(test_team.Top_Fives) is tuple
 
+    
 
+def test_team_methods():
 
+    test_team = AUDLclasses.Team()
+
+    assert type(test_team.top_five('Assists')) is list
+
+def test_player_attrs():
+
+    test_player = AUDLclasses.Player()
+
+    assert type(test_player.Stats) is dict
+
+    assert type(test_player.First_name) is str
+
+    assert type(test_player.Last_name) is str
+
+    assert type(test_player.Number) is int
+
+    assert type(test_player.Height) is str
+
+    assert type(test_player.Weight) is str
+
+    assert type(test_player.Age) is str
 
