@@ -46,6 +46,7 @@ class League():
         for team in self.Teams:
             self.Teams[team].ID = team
             self.Teams[team].get_info()
+            self.Teams[team].add_games()
     
 
 class Team():
@@ -130,7 +131,10 @@ class Team():
         
         for player in data:
             if player['name'] == player_class.First_name:
-               player_class.Number = player['number']
+               try:
+                   player_class.Number = player['number']
+               except:
+                   pass
             
     def top_five(self, stat):
         
@@ -161,6 +165,15 @@ class Team():
             g.Score.append(('Them', game['theirs']))
             g.ID = game['gameId']
 
+    def roster(self):
+
+        rost=[]
+        rost.append(self.City+" "+self.Name)
+        for player in self.Players: 
+            p = self.Players[player]
+            rost.append((p.First_name,p.Number))
+        return rost
+
 
         
 class Player():
@@ -189,7 +202,7 @@ class Game():
 
         self.Start_time = ''
 
-        self.End_time = ''
+        self.Finished = ''
 
         self.Score = []
 
@@ -205,3 +218,5 @@ class Game():
 
         self.Quarter = {}
 
+ 
+        
