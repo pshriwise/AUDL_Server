@@ -132,7 +132,18 @@ class Team():
             if player['name'] == player_class.First_name:
                player_class.Number = player['number']
             
-
+    def top_five(self, stat):
+        
+        Players = self.Players
+        player_stat_list = []
+        for player in self.Players:
+            player_name = Players[player].First_name
+            player_stat = Players[player].Stats[stat]
+            #player_stat_dict[player_name] = player_stat
+            player_stat_list.append((player_name, player_stat))
+        #player_stat_dict.sort( key = lambda player_stat: stat, reverse=True)
+        player_stat_list.sort(key= lambda set: set[1], reverse=True)
+        return player_stat_list[0:5]
         
 class Player():
 
