@@ -144,9 +144,26 @@ class Team():
         #player_stat_dict.sort( key = lambda player_stat: stat, reverse=True)
         player_stat_list.sort(key= lambda set: set[1], reverse=True)
         return player_stat_list[0:5]
+
+    def add_games(self):
+        
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/games/")
+        response = urllib2.urlopen(req)
+        data = json.loads(response.read())
+
+        for game in data:
+            game_id = game['gameId']
+            self.Games[game_id] = Game()
+            g = self.Games[game_id]
+            g.Opponent = game['opponentName']
+            g.Score.append(('Us' , game['ours']))
+            g.Score.append(('Them', game['theirs']))
+            g.ID = game['gameId']
+
+
         
 class Player():
-
     
     def __init__(self):
 
@@ -163,3 +180,28 @@ class Player():
         self.Weight = ''
 
         self.Age = ''
+
+class Game():
+
+    def __init__(self):
+
+        self.ID = ''       
+
+        self.Start_time = ''
+
+        self.End_time = ''
+
+        self.Score = []
+
+        self.Location =''
+
+        self.Opponent = ''
+
+        self.Home_stats = {}
+
+        self.Away_stats = {}
+
+        self.Goals = {}
+
+        self.Quarter = {}
+
