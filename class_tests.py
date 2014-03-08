@@ -59,7 +59,7 @@ def test_team_attrs():
 
     assert type(test_team.Games) is dict
 
-    assert type(test_team.Top_Fives) is tuple
+    assert type(test_team.Top_Fives) is dict
 
     
 
