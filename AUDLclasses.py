@@ -8,30 +8,47 @@ import json
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
 class League():
-
+    """ 
+    Class which acts as a central node for all other classes
+    on the AUDL server.
+    """
     def __init__(self):
-
+        # A dictionary containing all related news article
+        # class instances
         self.News = {};
-
+        # A dictionary containing all video link class instances
         self.Videos = {};
-
+        # A dictionary containing all team instances
         self.Teams = {};
-
+        # A list of information about the upcoming
+        # week in the AUDL
         self.This_week = [];
-
+        # A list of apple product device IDs
+        # on which the AUDL app is installed
         self.Apple_users = [];
-
+        # A list of android OS device IDs on
+        # which the AUDL app is installed
         self.Android_users = [];
-
+        # A list of video feeds that the server is
+        # to glean information from
         self.Video_feeds = [];
-
+        # A list of RSS feeds the server is to
+        # glean information from 
         self.RSS_feeds = [];
-
+        # A dictionary containing lists of the top five 
+        # players for a given statistic and their stat
+        # in sorted order
         self.Top_fives = {};
 
 
     def add_teams(self):
+    """
+    This method retrieves all known teams from the ultimate-numbers
+    server using a dictionary that keeps track of team IDs we care about. 
 
+    For each team, the basic info for that team is taken from a file
+    in the repository and their game information is retrieved from the server. 
+    """
         teams = statget.team_dict()
       
         # Restructures the teams dict so that the keys are the Team IDs
