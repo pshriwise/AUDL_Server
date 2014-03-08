@@ -257,46 +257,56 @@ class Team():
         return rost
         
 class Player():
-    
+    """
+    A class for containing information about a player.
+    """
     def __init__(self):
-
+        # A dictionary containing the players stats.
+        # Keys: stat names Values: player's statistic 
         self.Stats = {}
-
+        # String containing the player's first name
         self.First_name = ''
-
+        # String containing the player's last name
         self.Last_name = ''
-
+        # Intger of the players number
         self.Number = 0
-
+        # string containing the player's height (in ft. & in.)
         self.Height = ''
-
+        # string containing the player's weight (in lbs) 
         self.Weight = ''
-
-        self.Age = ''
+        # string containing the player's age
+        self.Age = 0
 
 class Game():
-
+    """
+    A class for information about a given game in the AUDL
+    """
     def __init__(self):
-
+        # a string containing a has that uniquely identifies a game on the 
+        # ultimate numbers server
         self.ID = ''       
-
+        # a string containing a timestamp of the beginning time of the game
         self.Start_time = ''
-
-        self.Finished = ''
-
+        # a boolean declaring whether or not a game is over
+        self.Finished = False
+        # a list containing two tuples. 
+        #each tuple contains a team name and their current score
         self.Score = []
-
+        # a string containing the location of the game
         self.Location =''
-
+        # a string containing the name of the opponent
         self.Opponent = ''
-
+        # a dictionary containing the home team's leader in a set of stats for this game
+        # Keys: Statistic names Values: Tuple of a player name and their statistic
         self.Home_stats = {}
-
+        # a dictionary containing the home team's leader in a set of stats for this game
+        # Keys: Statistic names Values: Tuple of a player name and their statistic
         self.Away_stats = {}
-
+        # a dictionary containing information about who scored each goal for each point
+        # in the game
         self.Goals = {}
-
-        self.Quarter = {}
+        # an int returning the current quarter 
+        self.Quarter = 0
 
  
         

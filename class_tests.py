@@ -60,7 +60,6 @@ def test_team_attrs():
     assert type(test_team.Games) is dict
 
     assert type(test_team.Top_Fives) is dict
-
     
 
 def test_team_methods():
@@ -85,5 +84,5 @@ def test_player_attrs():
 
     assert type(test_player.Weight) is str
 
-    assert type(test_player.Age) is str
+    assert type(test_player.Age) is int
 
