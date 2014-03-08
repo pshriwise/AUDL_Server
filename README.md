@@ -13,4 +13,6 @@ cd docs/
 
 doxygen Doxyfile
 
+To view the documentation via html:
 
+open ./docs/html/index.html in your favorite browser
