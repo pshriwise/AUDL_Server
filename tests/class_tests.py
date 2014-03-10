@@ -1,7 +1,12 @@
 #!/usr/bin/python 
 
-import AUDLclasses
 
+import sys
+sys.path.insert(0,'/home/patrick/AUDL_server')
+
+import os
+os.chdir('../')
+import AUDLclasses
 
 def test_League_attrs():
     
@@ -86,3 +91,26 @@ def test_player_attrs():
 
     assert type(test_player.Age) is int
 
+def test_game_attrs():
+
+    test_game = AUDLclasses.Game()
+
+    assert type(test_game.ID) is str
+
+    assert type(test_game.Start_time) is str
+
+    assert type(test_game.Finished) is bool
+
+    assert type(test_game.Score) is list
+
+    assert type(test_game.Location) is str
+
+    assert type(test_game.Opponent) is str
+
+    assert type(test_game.Home_stats) is dict
+
+    assert type(test_game.Away_stats) is dict
+
+    assert type(test_game.Goals) is dict
+
+    assert type(test_game.Quarter) is int
