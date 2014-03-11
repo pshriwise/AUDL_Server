@@ -1,8 +1,10 @@
 #!/usr/bin/python
 
 import statget
-import urllib2
-import json
+import urllib2, json
+import feedparser as fp
+import MediaClasses
+
 
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
@@ -65,6 +67,14 @@ class League():
             self.Teams[team].ID = team
             self.Teams[team].get_info()
             self.Teams[team].add_games()
+
+    def get_news(self):
+
+        data = fp.parse('http://www.theaudl.com/appfeed.xml')
+
+        for ent in data.entries:
+            temp_news_class = MediaClasses.Article(ent.published, ent.link, ent.title)
+            self.News[id(temp_news_class)] = temp_news_class
     
 
 class Team():
