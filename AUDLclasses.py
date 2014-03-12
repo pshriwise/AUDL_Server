@@ -15,13 +15,8 @@ class League():
     on the AUDL server.
     """
     def __init__(self):
-        # A dictionary containing all related news article
-        # class instances
-        self.News = {};
-        # A dictionary containing all video link class instances
+         # A dictionary containing all video link class instances
         self.Videos = {};
-        # A dictionary containing all team instances
-        self.Teams = {};
         # A list of information about the upcoming
         # week in the AUDL
         self.This_week = [];
@@ -36,7 +31,7 @@ class League():
         self.Video_feeds = [];
         # A list of RSS feeds the server is to
         # glean information from 
-        self.RSS_feeds = [];
+        self.RSS_feeds = ['http://www.theaudl.com/appfeed.xml'];
         # A dictionary containing lists of the top five 
         # players for a given statistic and their stat
         # in sorted order
@@ -52,6 +47,9 @@ class League():
         in the repository and their game information is retrieved from the 
         ultimate-numbers server. 
         """
+        # Dictionary for all team instances 
+        self.Teams = {} 
+
         teams = statget.team_dict()
       
         # Restructures the teams dict so that the keys are the Team IDs
@@ -70,11 +68,17 @@ class League():
 
     def get_news(self):
 
-        data = fp.parse('http://www.theaudl.com/appfeed.xml')
+        # A dictionary containing all related news article
+        # class instances
+        self.News = {};
 
-        for ent in data.entries:
-            temp_news_class = MediaClasses.Article(ent.published, ent.link, ent.title)
-            self.News[id(temp_news_class)] = temp_news_class
+        for feed in self.RSS_feeds:
+
+            data = fp.parse(feed)
+
+            for ent in data.entries:
+                temp_news_class = MediaClasses.Article(ent.published, ent.link, ent.title)
+                self.News[id(temp_news_class)] = temp_news_class
     
 
 class Team():
