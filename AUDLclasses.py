@@ -97,9 +97,6 @@ class Team():
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
-         # A dictionary containing a set of Game class
-         # instances pertaining to this team. 
-         self.Games = {}
          # A dictionary containing the top five players for 
          # a given statistic (key) whose value is a tuple
          # containing the name of the player and their 
@@ -232,6 +229,10 @@ class Team():
         These games are taken from the ultimate-sever based on the 
         team's ID.
         """
+        # A dictionary containing a set of Game class
+        # instances pertaining to this team. 
+        self.Games = {}
+
         #Grab information from the appropriate utlimate-numbers endpoint
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/games/")
