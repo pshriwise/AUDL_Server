@@ -92,20 +92,11 @@ class Team():
          # ultimate numbers server. It is also our way of giving each team a 
          # unique identifier.
          self.ID = 0
-         # A string containing the team's name. 
-         self.Name = ''
-         # A string containing the team's home city. 
-         self.City = ''
-         # A string containing the name of the team's coach
-         self.Coach = ''
          # A list holding the team's game information
          self.Schedule = []
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
-         # A dictionary containing a set of Player class
-         # instances pertaining to this team.
-         self.Players = {}
          # A dictionary containing a set of Game class
          # instances pertaining to this team. 
          self.Games = {}
@@ -132,10 +123,13 @@ class Team():
               if line.count("ID") == 1 and line[4:].rstrip() == str(self.ID):
                        found = True
                        line = teams_info.next().split(":")[1]
+                       # A string containing the team's name. 
                        self.Name = line[1:].rstrip()
                        line = teams_info.next().split(":")[1]
+                       # A string containing the team's home city. 
                        self.City = line[1:].rstrip()
                        line = teams_info.next().split(":")[1]
+                       # A string containing the name of the team's coach
                        self.Coach = line[1:].rstrip()
          if not found: print "No Team with that ID on record"
          teams_info.close()
@@ -146,6 +140,11 @@ class Team():
         Adds players to the Team class attribute 'Players' from the ultimate-numbers
         server.
         """
+
+        # A dictionary containing a set of Player class
+        # instances pertaining to this team.
+        self.Players = {}
+
         # Get information from ultimate-numbers server
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player')
