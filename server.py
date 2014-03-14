@@ -7,6 +7,7 @@ import json
 
 AUDL = cls.League()
 AUDL.add_teams()
+AUDL.get_news()
 
 #print "Adding players to teams..."
 #for t in AUDL.Teams:
@@ -86,6 +87,32 @@ def direct_path(path_ents):
 
         return AUDL.News
                   
+def path_data(path, League):
+
+
+    #Create dictionary for main information:
+
+
+    main_pages={ 'Teams'     : League.team_list(),
+                 'News'      : League.News,
+                 'Standings' : "Coming soon",
+                 'Scores'    : "Coming soon",
+                 'Schedule'  : "Coming soon",
+                 'Videos'    : "Coming soon",
+                 'Stats'     : "Coming soon",
+                 'FAQ'       : "Coming soon",
+                 'Terms_and_Info' : "Coming soon"
+
+               }
+
+
+    path_ents = path_parse(path)
+    # If the length of path_ents is one and the page requested exists
+    # then return the info for that page
+    if len(path_ents) == 1 and path_ents[0] in main_pages.keys():
+        return main_pages[path_ents[0]]
+    else:
+        return "Not a valid path"
 
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -97,7 +124,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.end_headers()
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
-            self.wfile.write(json.dumps(direct_path(path_ents)))
+            self.wfile.write(json.dumps(path_data(self.path,AUDL)))
 
 
 PORT=4000
@@ -106,9 +133,10 @@ print "serving at port", PORT
 httpd.serve_forever()
 
 
-def data_for_path(path):
-    path_ents = path.split("/")
-    if path_ents == []:
-        pass
 
 
+
+
+ 
+
+    
