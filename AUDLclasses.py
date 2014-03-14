@@ -66,6 +66,8 @@ class League():
             self.Teams[team].get_info()
             self.Teams[team].add_games()
             self.Teams[team].add_schedule()
+            self.Teams[team].add_players()
+            self.Teams[team].populate_team_stats()
 
     def get_news(self):
 
@@ -109,12 +111,6 @@ class Team():
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
-         # A dictionary containing the top five players for 
-         # a given statistic (key) whose value is a tuple
-         # containing the name of the player and their 
-         # in sorted order. 
-         self.Top_Fives = {}
-
 
     def get_info(self):
          """
@@ -185,6 +181,7 @@ class Team():
         self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
         self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
         self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
+        self.Players[player_info['playerName']].Stats['Ds'] = player_info['ds']
         # Check the ultimate-numbers server to see if they have a player number
         # that matches this player. 
         self.add_player_number(self.Players[player_info['playerName']])
@@ -305,6 +302,28 @@ class Team():
                 print "Team %i is missing a game date." % self.ID
         # A list holding the team's game information
         self.Schedule =  data_out
+
+    def populate_team_stats(self):
+       """
+       Gets the top five players for each stat in stat_list (hardcoded)
+       and returns the players and their corresponding values into a tuple. 
+
+       Tuples are appended into a list and returned to the Team class's 
+       Top_Fives attribute.
+       """
+       if not hasattr(self,"Players"): self.add_players()
+       stat_list=["Goals","Assists","Drops","Throwaways", "PMC", "Ds"]
+
+       stat_out = []
+       for stat in stat_list:
+           stat_tup = (stat, self.top_five(stat))
+           stat_out.append(stat_tup)
+       
+       # A dictionary containing the top five players for 
+       # a given statistic (key) whose value is a tuple
+       # containing the name of the player and their 
+       # in sorted order. 
+       self.Top_Fives = stat_out
         
 class Player():
     """
