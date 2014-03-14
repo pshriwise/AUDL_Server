@@ -93,7 +93,7 @@ def path_data(path, League):
     #Create dictionary for main information:
 
 
-    main_pages={ 'Teams'     : League.team_list(),
+    main_pages = { 'Teams'     : League.team_list(),
                  'News'      : League.news_page_info(),
                  'Standings' : "Coming soon",
                  'Scores'    : "Coming soon",
@@ -111,8 +111,39 @@ def path_data(path, League):
     # then return the info for that page
     if len(path_ents) == 1 and path_ents[0] in main_pages.keys():
         return main_pages[path_ents[0]]
+    elif len(path_ents) == 3 and path_ents[0] in main_pages.keys():
+        return subpage_data(path_ents, League)
     else:
         return "Not a valid path"
+
+
+def subpage_data(path_ents, League):
+    """
+    Function for returning the correct set of subpage data.
+
+    This function expects that len(path_ents) is 3.
+    """
+    if len(path_ents) != 3: return "Not a valid path"
+
+    if path_ents[0] == "Teams":
+        team_id = int(path_ents[1])
+        if team_id in League.Teams.keys():
+            team = League.Teams[team_id]
+        return team_subpage_data(path_ents[2], team)
+    elif path_ents[0] == "Standings":
+        return "Coming soon"
+    elif path_ents[0] == "Scores":
+        return "Coming soon"
+    elif path_ents[0] == "Schedule":
+        return "Coming soon"
+    else:
+        return "Not a valid path"
+
+
+
+def team_subpage_data(subpage, team):
+    return "Team subpage coming soon"
+     
 
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
