@@ -3,6 +3,17 @@ pyultimate_stats
 
 Contains python scripts for getting American Ultimate Disc League (AUDL) statistics information from the www.ultimate-numbers.com server.
 
+Use
+--------------
+
+clone the repository using 
+
+git clone https://github.com/pshriwise/CS638
+
+in the top directory run the command:
+
+python server.py
+
 
 Documentation
 --------------
