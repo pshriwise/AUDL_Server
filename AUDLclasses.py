@@ -96,6 +96,15 @@ class League():
 
         return data_out
 
+    def news_page_info(self):
+        
+        art_list=["AUDL News"]
+        News = self.News
+        for art in News:
+            art_tup = (News[art].Title, News[art].url)
+            art_list.append(art_tup)
+
+        return art_list
 
 class Team():
     """
