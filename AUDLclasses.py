@@ -65,6 +65,7 @@ class League():
             self.Teams[team].ID = team
             self.Teams[team].get_info()
             self.Teams[team].add_games()
+            self.Teams[team].add_schedule()
 
     def get_news(self):
 
@@ -105,8 +106,6 @@ class Team():
          # ultimate numbers server. It is also our way of giving each team a 
          # unique identifier.
          self.ID = 0
-         # A list holding the team's game information
-         self.Schedule = []
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
@@ -286,6 +285,26 @@ class Team():
             rost.append((p.First_name,p.Number))
         # return the list
         return rost
+
+    def add_schedule(self):
+        """
+        Creates a schedule for the team based on ultimate-numbers information.
+        """
+        base_url = 'http://www.ultimate-numbers.com/rest/view'        
+        full_url = base_url + "/team/" + str(self.ID) + "/games"
+        req = urllib2.Request(full_url)
+        response = urllib2.urlopen(req)
+        data = json.loads(response.read())
+        
+        data_out = [(self.City, self.Name, self.ID)]
+        for game in data:
+            if 'date' in game.keys():
+                game_tup = (game['date'],game['ours'],game['theirs'])
+                data_out.append(game_tup)
+            else:
+                print "Team %i is missing a game date." % self.ID
+        # A list holding the team's game information
+        self.Schedule =  data_out
         
 class Player():
     """
