@@ -87,8 +87,9 @@ class League():
         """
         data_out = []
         for team in self.Teams:
-            new_tup = (self.Teams[team].Name, self.Teams[team].ID)
-            data_out.append(new_tup)
+            if hasattr(self.Teams[team], 'Name'):
+                new_tup = (self.Teams[team].Name, self.Teams[team].ID)
+                data_out.append(new_tup)
 
         return data_out
 
