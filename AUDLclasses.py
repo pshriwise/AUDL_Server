@@ -76,9 +76,10 @@ class League():
         self.News = {};
 
         for feed in self.RSS_feeds:
-
+            # parse the feed into a python dictionary
             data = fp.parse(feed)
-
+            # create a new article for each article in the feed
+            # later, we will need to limit the number of articles in the feed
             for ent in data.entries:
                 temp_news_class = MediaClasses.Article(ent.published, ent.link, ent.title)
                 self.News[id(temp_news_class)] = temp_news_class
@@ -93,13 +94,15 @@ class League():
             if hasattr(self.Teams[team], 'Name'):
                 new_tup = (self.Teams[team].Name, self.Teams[team].ID)
                 data_out.append(new_tup)
-
         return data_out
 
     def news_page_info(self):
-        
+        # Init the output list, add a header
         art_list=["AUDL News"]
+        # shorten the path to the News dictionary
         News = self.News
+        # Get the title and article url for every article
+        # create a tuple and append to the output lits
         for art in News:
             art_tup = (News[art].Title, News[art].url)
             art_list.append(art_tup)
