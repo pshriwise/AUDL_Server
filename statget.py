@@ -86,10 +86,7 @@ def team_dict():
       'DC Breeze': 206001,
       'Rochester Dragons': 208005,
       'Windy City Wildfire': 207003,
-      'Toronto Rush': 195002,
       'Madison Radicals': 224002,
-      'New Jersey Hammerheads': 230001,
-      'Philadelphia Phoenix': 208004,
       'Detroit Mechanix': 219001,
       'Indianapolis Alley Cats': 253001}
 

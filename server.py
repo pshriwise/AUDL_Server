@@ -45,7 +45,7 @@ def direct_path(path_ents):
             return Team.stats
         #Enter Schedue info here when ready
     else:
-        return AUDL.Teams
+        return AUDL.team_list()
 
     if path_ents[0] == "Standings" and len(path_ents) != 1:
     
