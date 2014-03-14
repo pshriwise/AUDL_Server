@@ -309,7 +309,7 @@ class Team():
         data_out = [(self.City, self.Name, self.ID)]
         for game in data:
             if 'date' in game.keys():
-                game_tup = (game['date'],game['ours'],game['theirs'])
+                game_tup = (game['date'],game['ours'],game['theirs'], game['opponentName'])
                 data_out.append(game_tup)
             else:
                 print "Team %i is missing a game date." % self.ID

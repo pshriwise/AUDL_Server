@@ -139,8 +139,6 @@ def subpage_data(path_ents, League):
     else:
         return "Not a valid path"
 
-
-
 def team_subpage_data(subpage, team):
     """
     Returns a subpage for a given team class instance. 
