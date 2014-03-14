@@ -94,7 +94,7 @@ def path_data(path, League):
 
 
     main_pages={ 'Teams'     : League.team_list(),
-                 'News'      : League.News,
+                 'News'      : League.news_page_info(),
                  'Standings' : "Coming soon",
                  'Scores'    : "Coming soon",
                  'Schedule'  : "Coming soon",
