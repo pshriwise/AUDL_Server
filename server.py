@@ -8,9 +8,9 @@ import json
 AUDL = cls.League()
 AUDL.add_teams()
 
-print "Adding players to teams..."
-for t in AUDL.Teams:
-    AUDL.Teams[t].add_players()
+#print "Adding players to teams..."
+#for t in AUDL.Teams:
+#    AUDL.Teams[t].add_players()
 
 
 # Parse a given input path to the server
@@ -43,7 +43,7 @@ def direct_path(path_ents):
         if path_ents[2] == "Roster":
             return Team.roster()
         elif path_ents[2] == "Stats":
-            return Team.stats
+            return Team.Top_Fives
         elif path_ents[2] == "Schedule":
             return Team.Schedule
         #Enter Schedue info here when ready
