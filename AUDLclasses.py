@@ -279,7 +279,8 @@ class Team():
         # Loop through players, create tuple and add to list
         for player in self.Players: 
             p = self.Players[player]
-            rost.append((p.First_name,p.Number))
+            if "Anon" not in p.First_name:
+                rost.append((p.First_name,p.Number))
         # return the list
         return rost
 
