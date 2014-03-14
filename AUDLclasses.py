@@ -273,9 +273,9 @@ class Team():
         Also tacks on a team city and name at the front. 
         """
         # init the list of return info
-        rost=[]
         # Add the city and name as the first entry
-        rost.append(self.City+" "+self.Name)
+        if not hasattr(self, 'City'): self.get_info()
+        rost=[(self.City, self.Name, self.ID)]
         # Loop through players, create tuple and add to list
         for player in self.Players: 
             p = self.Players[player]
@@ -314,7 +314,8 @@ class Team():
        if not hasattr(self,"Players"): self.add_players()
        stat_list=["Goals","Assists","Drops","Throwaways", "PMC", "Ds"]
 
-       stat_out = []
+       if not hasattr(self, 'City'): self.get_info()
+       stat_out = [(self.City, self.Name, self.ID)]
        for stat in stat_list:
            stat_tup = (stat, self.top_five(stat))
            stat_out.append(stat_tup)
