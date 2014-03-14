@@ -17,6 +17,7 @@ for t in AUDL.Teams:
 def path_parse(path):
 
     if path == '': return ''
+    if path[-1] == '/': path = path[:-1]
 
     path_ents = path.split("/")
     for ent in path_ents:
@@ -41,8 +42,10 @@ def direct_path(path_ents):
         Team = AUDL.Teams[Team_ID]
         if path_ents[2] == "Roster":
             return Team.roster()
-        elif path_ehts[2] == "Stats":
+        elif path_ents[2] == "Stats":
             return Team.stats
+        elif path_ents[2] == "Schedule":
+            return Team.Schedule
         #Enter Schedue info here when ready
     else:
         return AUDL.team_list()
