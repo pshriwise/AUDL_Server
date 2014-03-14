@@ -10,13 +10,9 @@ import AUDLclasses
 
 def test_League_attrs():
     
-    test_league = AUDLclasses.League();
-
-    assert type(test_league.News) is dict
+    test_league = AUDLclasses.League()
 
     assert type(test_league.Videos) is dict
-
-    assert type(test_league.Teams) is dict
 
     assert type(test_league.This_week) is list
 
@@ -33,7 +29,7 @@ def test_League_attrs():
 
 def test_league_methods():
 
-    test_league = AUDLclasses.League();
+    test_league = AUDLclasses.League()
 
     test_league.add_teams();
 
@@ -41,28 +37,29 @@ def test_league_methods():
 
         assert type(team) is int
         assert isinstance(test_league.Teams[team], AUDLclasses.Team)
+        assert type(test_league.Teams) is dict
 
+def test_league_get_news():
 
+     test_league = AUDLclasses.League()
+
+     test_league.get_news()
+
+     assert type(test_league.News) is dict, \
+     "League's News attribute is not a dictionary, it is %s" % type(test_league.News)
+
+     assert len(test_league.News) is not 0, \
+     "League news was not popultaed. Length is zero"
+     
 def test_team_attrs():
-
 
     test_team = AUDLclasses.Team();
 
     assert type(test_team.ID) is int
 
-    assert type(test_team.Name) is str
-
-    assert type(test_team.Coach) is str
-
-    assert type(test_team.City) is str
-
     assert type(test_team.Schedule) is list
 
     assert type(test_team.Streak) is str
-
-    assert type(test_team.Players) is dict
-
-    assert type(test_team.Games) is dict
 
     assert type(test_team.Top_Fives) is dict
     
@@ -70,8 +67,41 @@ def test_team_attrs():
 def test_team_methods():
 
     test_team = AUDLclasses.Team()
-
+    test_team.ID = 224002
     assert type(test_team.top_five('Assists')) is list
+
+def test_team_get_info():
+
+    test_team = AUDLclasses.Team()
+
+    test_team.ID = 224002
+    test_team.get_info()
+
+    assert type(test_team.Name) is str
+
+    assert type(test_team.Coach) is str
+
+    assert type(test_team.City) is str
+
+def test_team_add_games():
+
+    test_team = AUDLclasses.Team()
+    test_team.ID = 224002
+    test_team.get_info()
+    test_team.add_games()
+
+    assert type(test_team.Games) is dict
+
+def test_team_add_players():
+
+    test_team = AUDLclasses.Team()
+    test_team.ID = 224002
+    test_team.get_info()
+    test_team.add_players()
+    
+    assert type(test_team.Players) is dict    
+
+
 
 def test_player_attrs():
 

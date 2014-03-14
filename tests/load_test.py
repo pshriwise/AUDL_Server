@@ -4,18 +4,12 @@ import AUDLclasses
 
 AUDL = AUDLclasses.League()
 
-AUDL.add_teams()
+def load_test():
 
 
-def test_add_teams_load():
-
+    AUDL.add_teams()
     for team in AUDL.Teams:
-        try:
-            assert AUDL.Teams[team].ID != 0
-        finally:
-            print "No team ID found."
+        AUDL.Teams[team].get_info()
+        AUDL.Teams[team].add_players()
 
-        try:
-            assert AUDL.Teams[team].Name != ''
-        finally:
-            print "error for" , AUDL.Teams[team].ID
+

@@ -80,6 +80,18 @@ class League():
                 temp_news_class = MediaClasses.Article(ent.published, ent.link, ent.title)
                 self.News[id(temp_news_class)] = temp_news_class
     
+    def team_list(self):
+        """
+        A method for populating the Teams page in the UI. Returns a list of all teams in the 
+        League class along with their IDs.
+        """
+        data_out = []
+        for team in self.Teams:
+            new_tup = (self.Teams[team].Name, self.Teams[team].ID)
+            data_out.append(new_tup)
+
+        return data_out
+
 
 class Team():
     """
@@ -207,6 +219,10 @@ class Team():
         Each tuple contains a player name and value of their 
         statistic. Tuples are sorted before being returned.
         """
+        # Make sure the team has the information needed to get
+        # the stats 
+        if not hasattr(self, "City"): self.get_info()
+        if not hasattr(self, "Players"): self.add_players()
         # Establish list of players on the team
         Players = self.Players
         # init sorted stat list
