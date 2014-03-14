@@ -142,7 +142,22 @@ def subpage_data(path_ents, League):
 
 
 def team_subpage_data(subpage, team):
-    return "Team subpage coming soon"
+    """
+    Returns a subpage for a given team class instance. 
+
+    
+    """
+    # Right now this assumes these attributes exist. 
+    # Should be updated at some point. 
+    
+    subpages ={ 'Roster'   : team.roster(),
+                'Schedule' : team.Schedule,
+                'Stats'    : team.Top_Fives
+              }
+    if subpage in subpages.keys():
+        return subpages[subpage]
+    else:
+        return "Not a valid path"
      
 
 
