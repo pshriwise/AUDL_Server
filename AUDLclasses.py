@@ -367,7 +367,7 @@ class Team():
 
     def return_schedule(self):
         AUDL_Name = self.City+ " " + self.Name
-        sched = [AUDL_Name ]
+        sched = [AUDL_Name, self.ID ]
         for game in self.Games:
             if AUDL_Name in self.Games[game].home_team:
                 opponent = self.Games[game].away_team
