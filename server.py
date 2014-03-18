@@ -27,65 +27,6 @@ def path_parse(path):
     return path_ents[1:]
     pass
 
-# Directs the path to the correct data-gathering function
-def direct_path(path_ents):
-
-    if type(path_ents) is not list: return "Not a valid path"    
-    possible_paths = ["Teams","Scores","Standings","Schedule","Videos","Stats","News"]
-    # Make sure the first path entity matches something we expect
-    print possible_paths.count(path_ents[0])
-    if possible_paths.count(path_ents[0]) == 0:
-        return ""
-
-    if path_ents[0] == "Teams" and len(path_ents) != 1:
-
-        Team_ID = int(path_ents[1])
-        Team = AUDL.Teams[Team_ID]
-        if path_ents[2] == "Roster":
-            return Team.roster()
-        elif path_ents[2] == "Stats":
-            return Team.Top_Fives
-        elif path_ents[2] == "Schedule":
-            return Team.Schedule
-        #Enter Schedue info here when ready
-    else:
-        return AUDL.team_list()
-
-    if path_ents[0] == "Standings" and len(path_ents) != 1:
-    
-        Div_ID = int(path_ents[1])
-        return "Division-specific standings info"
-            
-    else: 
-        return "League-wide standings information"
-
-    if path_ents[0] == "Scores" and len(path_ents) != 1:
-
-        Div_ID = int(path_ents[1])
-        return "Division - specific scores for the past week"
-
-    else:
-        return "League-wide scores for the past week"
-
-    if path_ents[0] == "Schedule" and len(path_ents) != 1:
-        
-        Div_ID=int(path_ents[1])
-        return "Division - specific schedule for  the upcoming weekend"
-
-    else:
-        return "League-wide schedule for the upcoming week"
-
-    if path_ents[0] == "Stats":
-    
-        return "League-wide stat leaders"
-
-    if path_ents[0] == "Videos":
-
-        return AUDL.Videos
-
-    if path_ents[0] == "News":
-
-        return AUDL.News
                   
 def path_data(path, League):
 
@@ -149,7 +90,7 @@ def team_subpage_data(subpage, team):
     # Should be updated at some point. 
     
     subpages ={ 'Roster'   : team.roster(),
-                'Schedule' : team.Schedule,
+                'Schedule' : team.return_schedule(),
                 'Stats'    : team.Top_Fives
               }
     if subpage in subpages.keys():
