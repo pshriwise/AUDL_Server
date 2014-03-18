@@ -1,0 +1,1906 @@
+[
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"4/12/14",
+    "time":"3:00 PM ",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"4/12/14",
+    "time":"7:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"4/12/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"4/12/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"4/12/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"4/12/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"4/13/14",
+    "time":"12:00 PM EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"4/13/14",
+    "time":"12:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"4/13/14",
+    "time":"2:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"4/13/14",
+    "time":"3:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"4/18/14",
+    "time":"8:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"4/19/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"4/19/14",
+    "time":"2:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"4/19/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"4/19/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"4/19/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"4/20/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"4/25/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"4/26/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"4/26/14",
+    "time":"5:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"4/26/14",
+    "time":"6:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"4/26/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"4/26/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"4/27/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"4/27/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"5/2/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"5/3/14",
+    "time":"3:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"5/3/14",
+    "time":"5:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"5/3/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"5/3/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"5/3/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"5/3/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"5/4/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"5/4/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"5/4/14",
+    "time":"2:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"5/9/14",
+    "time":"5:30 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"5/9/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"5/10/14",
+    "time":"3:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"5/10/14",
+    "time":"6:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"5/10/14",
+    "time":"6:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"5/10/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"5/10/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"5/10/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"5/11/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"5/16/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"5/17/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"5/17/14",
+    "time":"5:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"5/17/14",
+    "time":"6:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"5/17/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"5/17/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"5/18/14",
+    "time":"11:30 AM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"5/18/14",
+    "time":"12:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"5/18/14",
+    "time":"5:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"5/23/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"5/24/14",
+    "time":"5:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"5/24/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"5/24/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"5/24/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"5/25/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"5/25/14",
+    "time":"2:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"5/25/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"5/25/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"5/31/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"5/31/14",
+    "time":"6:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"5/31/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"5/31/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"5/31/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"5/31/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"6/1/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"6/1/14",
+    "time":"2:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/1/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"6/7/14",
+    "time":"4:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"6/7/14",
+    "time":"5:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"6/7/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"6/7/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"6/7/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals ",
+    "date":"6/7/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"6/8/14",
+    "time":"12:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"6/8/14",
+    "time":"3:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"6/8/14",
+    "time":"4:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"6/8/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"6/14/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"6/14/14",
+    "time":"6:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"6/14/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/14/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill ",
+    "date":"6/14/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats ",
+    "date":"6/14/14",
+    "time":"12:00 AM EST",
+    "home/away":"Home",
+    "opponent":"Detroit Mechanix"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"6/15/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"6/15/14",
+    "time":"2:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"6/20/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"6/21/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"6/21/14",
+    "time":"5:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/21/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"6/21/14",
+    "time":"6:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"6/21/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire ",
+    "date":"6/21/14",
+    "time":"TBD CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"6/22/14",
+    "time":"12:00 PM MST",
+    "home/away":"Home",
+    "opponent":"Salt Lake Lake Lions"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"6/22/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix ",
+    "date":"6/22/14",
+    "time":"2:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/22/14",
+    "time":"2:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"6/27/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Minnesota Wind Chill"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"6/27/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Indianapolis AlleyCats"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"6/28/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"6/28/14",
+    "time":"4:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Chicago Wildfire"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"6/28/14",
+    "time":"6:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Rochester Dragons"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"6/28/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Montreal Royal"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"6/28/14",
+    "time":"7:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lions ",
+    "date":"6/28/14",
+    "time":"7:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors ",
+    "date":"6/29/14",
+    "time":"3:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Vancouver Riptide"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"6/29/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"7/5/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"DC Breeze"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal ",
+    "date":"7/5/14",
+    "time":"6:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix ",
+    "date":"7/5/14",
+    "time":"7:30 PM EST",
+    "home/away":"Home",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons ",
+    "date":"7/5/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"7/6/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco FlameThrowers ",
+    "date":"7/12/14",
+    "time":"1:00 PM PST",
+    "home/away":"Home",
+    "opponent":"San Francisco Flamethrowers"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide ",
+    "date":"7/12/14",
+    "time":"5:00 PM PST",
+    "home/away":"Home",
+    "opponent":"Seattle Raptors"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"7/12/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze ",
+    "date":"7/12/14",
+    "time":"TBD EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"4/12/14",
+    "time":"3:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"4/12/14",
+    "time":"7:00 PM MST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"4/12/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"4/12/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"4/12/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"4/12/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"4/13/14",
+    "time":"12:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"4/13/14",
+    "time":"12:00 PM MST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"4/13/14",
+    "time":"2:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"4/13/14",
+    "time":"3:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"4/18/14",
+    "time":"8:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"4/19/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"4/19/14",
+    "time":"2:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"4/19/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"4/19/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"4/19/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"4/20/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"4/25/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"4/26/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"4/26/14",
+    "time":"5:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"4/26/14",
+    "time":"6:00 PM MST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"4/26/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"4/26/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"4/27/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"4/27/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"5/2/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"5/3/14",
+    "time":"3:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"5/3/14",
+    "time":"5:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"5/3/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"5/3/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"5/3/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"5/3/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"5/4/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"5/4/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"5/4/14",
+    "time":"2:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"5/9/14",
+    "time":"5:30 PM CST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"5/9/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"5/10/14",
+    "time":"3:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"5/10/14",
+    "time":"6:00 PM MST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"5/10/14",
+    "time":"6:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"5/10/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"5/10/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"5/10/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"5/11/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"5/16/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"5/17/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"5/17/14",
+    "time":"5:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"5/17/14",
+    "time":"6:30 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"5/17/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"5/17/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"5/18/14",
+    "time":"11:30 AM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"5/18/14",
+    "time":"12:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"5/18/14",
+    "time":"5:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"5/23/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"5/24/14",
+    "time":"5:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"5/24/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"5/24/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"5/24/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"5/25/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"5/25/14",
+    "time":"2:00 PM EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"5/25/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"5/25/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"5/31/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"5/31/14",
+    "time":"6:00 PM MST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"5/31/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"5/31/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"5/31/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"5/31/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"6/1/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"6/1/14",
+    "time":"2:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"6/1/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"6/7/14",
+    "time":"4:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"6/7/14",
+    "time":"5:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/7/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"6/7/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"6/7/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"6/7/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Madison Radicals "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"6/8/14",
+    "time":"12:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"6/8/14",
+    "time":"3:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"6/8/14",
+    "time":"4:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"6/8/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"6/14/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"6/14/14",
+    "time":"6:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"6/14/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"6/14/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"6/14/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"Detroit Mechanix",
+    "date":"6/14/14",
+    "time":"12:00 AM EST",
+    "home/away":"Away",
+    "opponent":"Indianapolis AlleyCats "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"6/15/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"6/15/14",
+    "time":"2:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"6/20/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"6/21/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"6/21/14",
+    "time":"5:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"6/21/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"6/21/14",
+    "time":"6:00 PM MST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"6/21/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"6/21/14",
+    "time":"TBD CST",
+    "home/away":"Away",
+    "opponent":"Chicago Wildfire "
+  },
+  {
+    "Year":2014,
+    "team":"Salt Lake Lake Lions",
+    "date":"6/22/14",
+    "time":"12:00 PM MST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"6/22/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"6/22/14",
+    "time":"2:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Philadelphia Phoenix "
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"6/22/14",
+    "time":"2:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"6/27/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis AlleyCats",
+    "date":"6/27/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"6/28/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Chicago Wildfire",
+    "date":"6/28/14",
+    "time":"4:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Cincinnati Revolution"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"6/28/14",
+    "time":"6:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"Montreal Royal",
+    "date":"6/28/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"6/28/14",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"6/28/14",
+    "time":"7:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Salt Lake Lions "
+  },
+  {
+    "Year":2014,
+    "team":"Vancouver Riptide",
+    "date":"6/29/14",
+    "time":"3:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Seattle Raptors "
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"6/29/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"DC Breeze",
+    "date":"7/5/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"7/5/14",
+    "time":"6:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Montreal Royal "
+  },
+  {
+    "Year":2014,
+    "team":"Cincinnati Revolution",
+    "date":"7/5/14",
+    "time":"7:30 PM EST",
+    "home/away":"Away",
+    "opponent":"Detroit Mechanix "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"7/5/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"7/6/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"San Francisco Flamethrowers",
+    "date":"7/12/14",
+    "time":"1:00 PM PST",
+    "home/away":"Away",
+    "opponent":"San Francisco FlameThrowers "
+  },
+  {
+    "Year":2014,
+    "team":"Seattle Raptors",
+    "date":"7/12/14",
+    "time":"5:00 PM PST",
+    "home/away":"Away",
+    "opponent":"Vancouver Riptide "
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"7/12/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"7/12/14",
+    "time":"TBD EST",
+    "home/away":"Away",
+    "opponent":"DC Breeze "
+  }
+]
