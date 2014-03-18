@@ -364,7 +364,21 @@ class Team():
        # containing the name of the player and their 
        # in sorted order. 
        self.Top_Fives = stat_out
-        
+
+    def return_schedule(self):
+        AUDL_Name = self.City+ " " + self.Name
+        sched = [AUDL_Name ]
+        for game in self.Games:
+            if AUDL_Name in self.Games[game].home_team:
+                opponent = self.Games[game].away_team
+            else:
+                opponent = self.Games[game].home_team
+            game_tup = (self.Games[game].date, self.Games[game].time, opponent)
+            sched.append(game_tup)
+
+        return sched
+
+
 class Player():
     """
     A class for containing information about a player.
@@ -393,9 +407,13 @@ class Game():
     def __init__(self, date, time, year, home_team, away_team):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
-        self.ID = ''       
-        # a string containing a timestamp of the beginning time of the game
-        self.Start_time = ''
+        self.ID = ''    
+        # a string containing the year of the season
+        self.year = year
+        # a string containing the date of the game
+        self.date = date
+        # a string containing a scheduled beginning time of the game
+        self.time = time
         # a boolean declaring whether or not a game is over
         self.Finished = False
         # a list containing two tuples. 
@@ -403,8 +421,10 @@ class Game():
         self.Score = []
         # a string containing the location of the game
         self.Location =''
-        # a string containing the name of the opponent
-        self.Opponent = ''
+        # a string containing the name of the away_team
+        self.away_team = away_team
+        # a string containing the name of the home_team
+        self.home_team = home_team
         # a dictionary containing the home team's leader in a set of stats for this game
         # Keys: Statistic names Values: Tuple of a player name and their statistic
         self.Home_stats = {}
