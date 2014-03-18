@@ -64,7 +64,7 @@ class League():
         for team in self.Teams:
             self.Teams[team].ID = team
             self.Teams[team].get_info()
-            self.Teams[team].add_games()
+            self.Teams[team].new_add_games()
             self.Teams[team].add_schedule()
             self.Teams[team].add_players()
             self.Teams[team].populate_team_stats()
@@ -296,6 +296,32 @@ class Team():
         # return the list
         return rost
 
+    def new_add_games(self):
+
+        # create a name that will match one in the json doc
+        AUDL_Name = self.City + " " + self.Name
+
+        # open the json schedule doc
+        schedule = open("2014_AUDL_Schedule.json", 'r')
+        # turn the file info into a python object
+        data = json.loads(schedule.read())
+        self.Games={}
+        # if the game belongs to the current team, create it
+        for game in data:
+            if AUDL_Name in game['team']: #or AUDL_Name in game['opponent']:
+                d = game['date']
+                t = game['time']
+                y = game['Year']
+                if game['home/away'] == 'Home':
+                    ht = game['team']
+                    at = game['opponent']
+                else:
+                    at = game['team']
+                    ht = game['opponent']
+                self.Games[game['date']] = Game(d,t,y,ht,at)
+
+        
+
     def add_schedule(self):
         """
         Creates a schedule for the team based on ultimate-numbers information.
@@ -364,7 +390,7 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self):
+    def __init__(self, date, time, year, home_team, away_team):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         self.ID = ''       
