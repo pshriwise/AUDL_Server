@@ -64,8 +64,7 @@ class League():
         for team in self.Teams:
             self.Teams[team].ID = team
             self.Teams[team].get_info()
-            self.Teams[team].new_add_games()
-            self.Teams[team].add_schedule()
+            self.Teams[team].add_games()
             self.Teams[team].add_players()
             self.Teams[team].populate_team_stats()
 
@@ -247,36 +246,7 @@ class Team():
         # return the top 5 tuples from the list.
         return player_stat_list[0:5]
 
-    def add_games(self):
-        """
-        Adds a set of Game classes to the Team's Games dictionary. 
-
-        These games are taken from the ultimate-sever based on the 
-        team's ID.
-        """
-        # A dictionary containing a set of Game class
-        # instances pertaining to this team. 
-        self.Games = {}
-
-        #Grab information from the appropriate utlimate-numbers endpoint
-        base_url = 'http://www.ultimate-numbers.com/rest/view'
-        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/games/")
-        response = urllib2.urlopen(req)
-        data = json.loads(response.read())
-
-        # Create a new Game class for every game in the data from this page
-        for game in data:
-            #Create new Game class
-            game_id = game['gameId']
-            self.Games[game_id] = Game()
-            #Add game to the team (self)
-            g = self.Games[game_id]
-            # Add some attribute info to the team
-            g.Opponent = game['opponentName']
-            g.Score.append(('Us' , game['ours']))
-            g.Score.append(('Them', game['theirs']))
-            g.ID = game['gameId']
-
+    
     def roster(self):
         """
         Generates a tuple for each player in the Team.Players dict 
@@ -296,7 +266,7 @@ class Team():
         # return the list
         return rost
 
-    def new_add_games(self):
+    def add_games(self):
 
         # create a name that will match one in the json doc
         AUDL_Name = self.City + " " + self.Name
@@ -319,28 +289,6 @@ class Team():
                     at = game['team']
                     ht = game['opponent']
                 self.Games[game['date']] = Game(d,t,y,ht,at)
-
-        
-
-    def add_schedule(self):
-        """
-        Creates a schedule for the team based on ultimate-numbers information.
-        """
-        base_url = 'http://www.ultimate-numbers.com/rest/view'        
-        full_url = base_url + "/team/" + str(self.ID) + "/games"
-        req = urllib2.Request(full_url)
-        response = urllib2.urlopen(req)
-        data = json.loads(response.read())
-        
-        data_out = [(self.City, self.Name, self.ID)]
-        for game in data:
-            if 'date' in game.keys():
-                game_tup = (game['date'],game['ours'],game['theirs'], game['opponentName'])
-                data_out.append(game_tup)
-            else:
-                print "Team %i is missing a game date." % self.ID
-        # A list holding the team's game information
-        self.Schedule =  data_out
 
     def populate_team_stats(self):
        """
