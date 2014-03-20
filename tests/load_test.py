@@ -1,15 +1,29 @@
 #!/usr/bin/python
 
-import AUDLclasses
+import sys
+sys.path.insert(0,'/home/patrick/AUDL_server')
 
-AUDL = AUDLclasses.League()
+import os
+os.chdir('../')
+import AUDLclasses
 
 def load_test():
 
-
+    AUDL = AUDLclasses.League()
     AUDL.add_teams()
+
+
+def check_schedules():
+
+    AUDL = AUDL.League()
+    AUDL.add_teams()
+
     for team in AUDL.Teams:
-        AUDL.Teams[team].get_info()
-        AUDL.Teams[team].add_players()
+        assert 14 == len(AUDL.Teams[team].Games)
 
+def check_news():
 
+    AUDL = AUDL.League()
+    AUDL.get_news()
+
+    assert 0 != len(AUDL.News)

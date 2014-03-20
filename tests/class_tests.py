@@ -53,21 +53,23 @@ def test_league_get_news():
      
 def test_team_attrs():
 
-    test_team = AUDLclasses.Team();
+    test_team = AUDLclasses.Team()
+    test_team.ID = 224002
+    test_team.populate_team_stats()
 
     assert type(test_team.ID) is int
 
-    assert type(test_team.Schedule) is list
-
     assert type(test_team.Streak) is str
 
-    assert type(test_team.Top_Fives) is dict
+    assert type(test_team.Top_Fives) is list
     
 
 def test_team_methods():
 
     test_team = AUDLclasses.Team()
     test_team.ID = 224002
+    test_team.add_players()
+    test_team.populate_team_stats()
     assert type(test_team.top_five('Assists')) is list
 
 def test_team_get_info():
@@ -123,11 +125,11 @@ def test_player_attrs():
 
 def test_game_attrs():
 
-    test_game = AUDLclasses.Game()
+    test_game = AUDLclasses.Game("4/12/14","3:00 PM",'2014','Toronto Rush','DC Breeze')
 
     assert type(test_game.ID) is str
 
-    assert type(test_game.Start_time) is str
+    assert type(test_game.time) is str
 
     assert type(test_game.Finished) is bool
 
@@ -135,7 +137,9 @@ def test_game_attrs():
 
     assert type(test_game.Location) is str
 
-    assert type(test_game.Opponent) is str
+    assert type(test_game.home_team) is str
+
+    assert type(test_game.away_team) is str
 
     assert type(test_game.Home_stats) is dict
 
