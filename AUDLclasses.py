@@ -326,6 +326,18 @@ class Team():
 
         return sched
 
+    def return_scores(self):
+        # set the Team's games to a shorter variable
+        games = Team.Games
+        scores_list=[self.City + " " + self.Name]
+        for game in games:
+            if games[game].Score == []:
+                score = '0-0'
+            else:
+                score = games[game].Score
+            game_tup = (games[game].Date, games[game].Opponent, score)
+            scores_list.append(game_tup)
+        return scores_list
 
 class Player():
     """
