@@ -9,11 +9,6 @@ AUDL = cls.League()
 AUDL.add_teams()
 AUDL.get_news()
 
-#print "Adding players to teams..."
-#for t in AUDL.Teams:
-#    AUDL.Teams[t].add_players()
-
-
 # Parse a given input path to the server
 def path_parse(path):
 
