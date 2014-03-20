@@ -34,11 +34,17 @@ def path_data(path, League):
     Sched_list.append(["Eastern Division", League.Teams[208003].return_schedule(), League.Teams[206001].return_schedule()])
 
 
+    # Dummy info for the scores page
+    Scores_list = []
+    Scores_list.append(["Midwest Division", League.Teams[224002].return_scores(), League.Teams[207003].return_scores()])
+    Scores_list.append(["Eastern Division", League.Teams[208003].return_scores(), League.Teams[206001].return_scores()])
+
+
     #Create dictionary for main information:
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
                    'Standings' : Stand_list,
-                   'Scores'    : "Coming soon",
+                   'Scores'    : Scores_list,
                    'Schedule'  : Sched_list,
                    'Videos'    : "Coming soon",
                    'Stats'     : "Coming soon",
@@ -73,7 +79,7 @@ def subpage_data(path_ents, League):
     elif path_ents[0] == "Standings":
         return standings_subpage_data(path_ents[1], League)
     elif path_ents[0] == "Scores":
-        return "Coming soon"
+        return scores_subpage_data(path_ents[1], League)
     elif path_ents[0] == "Schedule":
         return schedule_subpage_data(path_ents[1], League)
     else:
@@ -115,6 +121,15 @@ def standings_subpage_data(division, League):
     else:
         return "Not a valid path"
 
+def scores_subpage_data(division, League):
+
+    if division == "Midwest":
+        return ["Midwest Division", League.Teams[224002].return_scores(), League.Teams[207003].return_scores()]
+    elif division == "Eastern":
+        return ["Eastern Division", League.Teams[208003].return_scores(), League.Teams[206001].return_scores()]
+    else:
+        return "Not a valid path"
+
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
@@ -127,7 +142,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(path_data(self.path,AUDL)))
 
 
-PORT=4000
+PORT=4001
 httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
 httpd.serve_forever()
