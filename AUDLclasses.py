@@ -328,14 +328,18 @@ class Team():
 
     def return_scores(self):
         # set the Team's games to a shorter variable
-        games = Team.Games
+        AUDL_Name = self.City+ " " + self.Name
+        games = self.Games
         scores_list=[self.City + " " + self.Name]
         for game in games:
-            if games[game].Score == []:
-                score = '0-0'
-            else:
-                score = games[game].Score
-            game_tup = (games[game].Date, games[game].Opponent, score)
+            # set game score. if the game hasn't started yet, default to 0-0
+            score = '0-0' if games[game].Score == [] else games[game].Score
+            # set oppponent name to whichever team doesn't match the team for which we're 
+            # returning score info
+            opp = games[game].home_team if games[game].away_team == AUDL_Name else games[game].away_team
+            # create a tuple for this information
+            game_tup = (games[game].date, opp, score)
+            # add the tuple to the scores list for the current team
             scores_list.append(game_tup)
         return scores_list
 
