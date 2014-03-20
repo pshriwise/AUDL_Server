@@ -25,15 +25,21 @@ def path_parse(path):
                   
 def path_data(path, League):
 
+    # Dummy info for the Standings Page
+    Stand_list = [["Midwest Division", ('Madison Radicals', '10-3'),('Chicago Wildfire', '9-4')],["Eastern Division",("DC Breeze", '10-3'),("New York Empire",'9-4')]]
+ 
+    # Dummy info for the schedule Page
+    Sched_list = []
+    Sched_list.append(["Midwest Division", League.Teams[224002].return_schedule(), League.Teams[207003].return_schedule()])
+    Sched_list.append(["Eastern Division", League.Teams[208003].return_schedule(), League.Teams[206001].return_schedule()])
+
 
     #Create dictionary for main information:
-
-
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
-                   'Standings' : "Coming soon",
+                   'Standings' : Stand_list,
                    'Scores'    : "Coming soon",
-                   'Schedule'  : "Coming soon",
+                   'Schedule'  : Sched_list,
                    'Videos'    : "Coming soon",
                    'Stats'     : "Coming soon",
                    'FAQ'       : "Coming soon",
@@ -45,7 +51,7 @@ def path_data(path, League):
     # then return the info for that page
     if len(path_ents) == 1 and path_ents[0] in main_pages.keys():
         return main_pages[path_ents[0]]
-    elif len(path_ents) == 3 and path_ents[0] in main_pages.keys():
+    elif len(path_ents) > 1 and path_ents[0] in main_pages.keys():
         return subpage_data(path_ents, League)
     else:
         return "Not a valid path"
@@ -57,7 +63,7 @@ def subpage_data(path_ents, League):
 
     This function expects that len(path_ents) is 3.
     """
-    if len(path_ents) != 3: return "Not a valid path"
+    #if len(path_ents) != 3: return "Not a valid path"
 
     if path_ents[0] == "Teams":
         team_id = int(path_ents[1])
@@ -65,11 +71,11 @@ def subpage_data(path_ents, League):
             team = League.Teams[team_id]
         return team_subpage_data(path_ents[2], team)
     elif path_ents[0] == "Standings":
-        return "Coming soon"
+        return standings_subpage_data(path_ents[1], League)
     elif path_ents[0] == "Scores":
         return "Coming soon"
     elif path_ents[0] == "Schedule":
-        return "Coming soon"
+        return schedule_subpage_data(path_ents[1], League)
     else:
         return "Not a valid path"
 
@@ -90,8 +96,24 @@ def team_subpage_data(subpage, team):
         return subpages[subpage]
     else:
         return "Not a valid path"
-     
 
+def schedule_subpage_data(division, League):
+
+    if division == "Midwest":
+        return ["Midwest Division", League.Teams[224002].return_schedule(), League.Teams[207003].return_schedule()]
+    elif division == "Eastern":
+        return ["Eastern Division", League.Teams[208003].return_schedule(), League.Teams[206001].return_schedule()]
+    else: 
+        return "Not a valid path"
+
+def standings_subpage_data(division, League):
+
+    if division == "Midwest":
+        return ["Midwest Division", ('Madison Radicals', '10-3'),('Chicago Wildfire', '9-4')]
+    elif division == "Eastern":
+        return ["Eastern Division",("DC Breeze", '10-3'),("New York Empire",'9-4')]
+    else:
+        return "Not a valid path"
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
@@ -105,7 +127,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(path_data(self.path,AUDL)))
 
 
-PORT=4000
+PORT=4001
 httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
 httpd.serve_forever()
