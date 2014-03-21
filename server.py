@@ -76,13 +76,13 @@ def subpage_data(path_ents, League):
         if team_id in League.Teams.keys():
             team = League.Teams[team_id]
         return team_subpage_data(team_id, team)
-    elif path_ents[0] == "Standings":
-        return standings_subpage_data(path_ents[1], League)
-    elif path_ents[0] == "Scores":
-        return scores_subpage_data(path_ents[1], League)
-    elif path_ents[0] == "Schedule":
-        return schedule_subpage_data(path_ents[1], League)
-    else:
+    #elif path_ents[0] == "Standings":
+    #    return standings_subpage_data(path_ents[1], League)
+    #elif path_ents[0] == "Scores":
+    #    return scores_subpage_data(path_ents[1], League)
+    #elif path_ents[0] == "Schedule":
+    #    return schedule_subpage_data(path_ents[1], League)
+    #else:
         return "Not a valid path"
 
 def team_subpage_data(subpage, team):
