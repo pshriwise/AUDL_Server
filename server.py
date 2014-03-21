@@ -75,7 +75,7 @@ def subpage_data(path_ents, League):
         team_id = int(path_ents[1])
         if team_id in League.Teams.keys():
             team = League.Teams[team_id]
-        return team_subpage_data(path_ents[2], team)
+        return team_subpage_data(team_id, team)
     elif path_ents[0] == "Standings":
         return standings_subpage_data(path_ents[1], League)
     elif path_ents[0] == "Scores":
@@ -98,10 +98,8 @@ def team_subpage_data(subpage, team):
                 'Schedule' : team.return_schedule(),
                 'Stats'    : team.Top_Fives
               }
-    if subpage in subpages.keys():
-        return subpages[subpage]
-    else:
-        return "Not a valid path"
+    
+    return [team.roster(), team.return_schedule(), team.Top_Fives]
 
 def schedule_subpage_data(division, League):
 
@@ -143,7 +141,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 PORT=4001
-httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
+httpd = SocketServer.ThreadingTCPServer(("", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
 httpd.serve_forever()
 
