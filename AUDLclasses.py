@@ -51,23 +51,33 @@ class League():
         in the repository and their game information is retrieved from the 
         ultimate-numbers server. 
         """
-        # Dictionary for all team instances 
-        self.Teams = {} 
+ #Open teams information file
+        teams_info = open('Teams_Info', 'r')
+        found = False
+        self.Teams={}
+        for line in teams_info: 
+              # See if we've reached the beginning of
+              # some team info
 
-        teams = statget.team_dict()
-      
-        # Restructures the teams dict so that the keys are the Team IDs
-        # Also creates a new team class instance for each Team ID
-        for team in teams: 
-            self.Teams[teams[team]] = Team(self)
-        # Right now the list of teams is taken from the team dictionary object in statget.
-        # Eventually we will want to grab this list from the server and create
-        # new Team classes accordingly.
-
+             if line.count("ID") == 1:
+                       found = True
+                       line = line.split(":")[1]
+                       # An int containing the team ID
+                       ID = int(line[1:].rstrip())
+                       line = teams_info.next().split(":")[1]
+                       # A string containing the team's name. 
+                       Name = line[1:].rstrip()
+                       line = teams_info.next().split(":")[1]
+                       # A string containing the team's home city. 
+                       City = line[1:].rstrip()
+                       line = teams_info.next().split(":")[1]
+                       # A string containing the name of the team's coach
+                       Coach = line[1:].rstrip()
+                       self.Teams[ID] = Team(self, ID, Name, City, Coach)
+        if not found: print "No Team with that ID on record"
+   
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
-            self.Teams[team].ID = team
-            self.Teams[team].get_info()
             if players: self.Teams[team].add_players()
             if games: self.Teams[team].add_games()
             if stats:   self.Teams[team].populate_team_stats()
@@ -139,43 +149,23 @@ class Team():
     for a given team in the league. (player info, statistics,
     game schedules, etc.)
     """
-    def __init__(self, League):
+    def __init__(self, League, ID, Name, City, Coach ):
          # The team's ultimate-numbers ID. This is how we recognize this team on the 
          # ultimate numbers server. It is also our way of giving each team a 
          # unique identifier.
-         self.ID = 0
+         self.ID = ID
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
          # An attribute containing the League isntance the team belongs to
          self.League = League
+         # A string containing the Team's Name
+         self.Name = Name
+         # A string containing the Team's City
+         self.City = City
+         # A string containing the Team's Coach name
+         self.Coach = Coach
 
-    def get_info(self):
-         """
-         This method grabs information from a local file in the 
-         repository for a given team. This file contains the teams
-         city, coach, ID, and team name. Teams are identified using 
-         their team ID from the ultimate-numbers server.
-         """
-         teams_info = open('Teams_Info', 'r')
-         found = False
-         for line in teams_info: 
-              # See if we've reached the beginning of
-              # some team info
-
-              if line.count("ID") == 1 and line[4:].rstrip() == str(self.ID):
-                       found = True
-                       line = teams_info.next().split(":")[1]
-                       # A string containing the team's name. 
-                       self.Name = line[1:].rstrip()
-                       line = teams_info.next().split(":")[1]
-                       # A string containing the team's home city. 
-                       self.City = line[1:].rstrip()
-                       line = teams_info.next().split(":")[1]
-                       # A string containing the name of the team's coach
-                       self.Coach = line[1:].rstrip()
-         if not found: print "No Team with that ID on record"
-         teams_info.close()
 
 
     def add_players(self):
