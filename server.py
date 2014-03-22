@@ -7,7 +7,7 @@ import image_get as ig
 
 
 AUDL = cls.League()
-AUDL.add_teams()
+AUDL.add_teams('Teams_Info')
 AUDL.get_news()
 
 # Parse a given input path to the server
