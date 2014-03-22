@@ -285,7 +285,7 @@ class Team():
         # return the list
         return rost
 
-    def add_games(self):
+    def add_games(self, filename="2014_AUDL_Schedule.json"):
         """
         Adds any games for the team from a given file containing the League
         or team schedule for the current season.
@@ -294,7 +294,7 @@ class Team():
         AUDL_Name = self.City + " " + self.Name
 
         # open the json schedule doc
-        schedule = open("2014_AUDL_Schedule.json", 'r')
+        schedule = open(filename, 'r')
         # convert the file data into a python object
         data = json.loads(schedule.read())
         self.Games={}
