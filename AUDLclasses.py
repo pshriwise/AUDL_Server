@@ -38,10 +38,14 @@ class League():
         self.Top_fives = {};
 
 
-    def add_teams(self):
+    def add_teams(self, players, games, stats):
         """
         This method retrieves all known teams from the ultimate-numbers
         server using a dictionary that keeps track of team IDs we care about. 
+
+        players - boolean indicating whether or not to add players
+        games -  boolean indicating whether or not to add games
+        stats -  boolean indicating whether or not to add team stats
 
         For each team, the basic info for that team is taken from a file
         in the repository and their game information is retrieved from the 
@@ -64,9 +68,9 @@ class League():
         for team in self.Teams:
             self.Teams[team].ID = team
             self.Teams[team].get_info()
-            self.Teams[team].add_games()
-            self.Teams[team].add_players()
-            self.Teams[team].populate_team_stats()
+            if players: self.Teams[team].add_players()
+            if games: self.Teams[team].add_games()
+            if stats:   self.Teams[team].populate_team_stats()
 
     def get_news(self):
         """
