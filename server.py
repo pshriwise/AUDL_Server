@@ -3,6 +3,7 @@
 import SimpleHTTPServer, SocketServer
 import AUDLclasses as cls
 import json
+import image_get as ig
 
 
 AUDL = cls.League()
@@ -56,8 +57,10 @@ def path_data(path, League):
     # If the length of path_ents is one and the page requested exists
     # then return the info for that page
     if len(path_ents) == 1 and path_ents[0] in main_pages.keys():
-        return main_pages[path_ents[0]]
+        return json.dumps(main_pages[path_ents[0]])
     elif len(path_ents) > 1 and path_ents[0] in main_pages.keys():
+        return json.dumps(subpage_data(path_ents, League))
+    elif len(path_ents) > 1 and path_ents[0] == "Icons":
         return subpage_data(path_ents, League)
     else:
         return "Not a valid path"
@@ -67,15 +70,19 @@ def subpage_data(path_ents, League):
     """
     Function for returning the correct set of subpage data.
 
-    This function expects that len(path_ents) is 3.
+    This function expects that len(path_ents) is greater than 1.
     """
-    #if len(path_ents) != 3: return "Not a valid path"
+    if len(path_ents) < 2 or len(path_ents) > 3: return "Not a valid path"
 
+    # We expect the second entry of this path to be a team_id
+    team_id = int(path_ents[1]) 
+    if team_id in League.Teams.keys():
+        team = League.Teams[team_id]
+    
     if path_ents[0] == "Teams":
-        team_id = int(path_ents[1])
-        if team_id in League.Teams.keys():
-            team = League.Teams[team_id]
         return team_subpage_data(team_id, team)
+    elif path_ents[0] == "Icons":
+        return ig.AUDLlogo(team.Name)
     else:
         return "Not a valid path"
 
@@ -131,10 +138,10 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.end_headers()
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
-            self.wfile.write(json.dumps(path_data(self.path,AUDL)))
+            self.wfile.write(path_data(self.path,AUDL))
 
 
-PORT=4000
+PORT=4001
 httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
 httpd.serve_forever()
