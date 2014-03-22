@@ -55,7 +55,7 @@ class League():
         # Restructures the teams dict so that the keys are the Team IDs
         # Also creates a new team class instance for each Team ID
         for team in teams: 
-            self.Teams[teams[team]] = Team()
+            self.Teams[teams[team]] = Team(self)
         # Right now the list of teams is taken from the team dictionary object in statget.
         # Eventually we will want to grab this list from the server and create
         # new Team classes accordingly.
@@ -108,13 +108,24 @@ class League():
 
         return art_list
 
+    def league_game_exist(self, name, date):
+        for team in self.Teams:
+            AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
+            if AUDL_Name in name:
+                return self.Teams[team].game_exist(date)
+            else:
+                return False, None
+        
+
+
+
 class Team():
     """
     This class keeps all of the statistical information 
     for a given team in the league. (player info, statistics,
     game schedules, etc.)
     """
-    def __init__(self):
+    def __init__(self, League):
          # The team's ultimate-numbers ID. This is how we recognize this team on the 
          # ultimate numbers server. It is also our way of giving each team a 
          # unique identifier.
@@ -122,6 +133,8 @@ class Team():
          # A string containing the team's current win or 
          # loss streak.
          self.Streak = ''
+         # An attribute containing the League isntance the team belongs to
+         self.League = League
 
     def get_info(self):
          """
@@ -273,23 +286,34 @@ class Team():
 
         # open the json schedule doc
         schedule = open("2014_AUDL_Schedule.json", 'r')
-        # turn the file info into a python object
+        # convert the file data into a python object
         data = json.loads(schedule.read())
         self.Games={}
-        # if the game belongs to the current team, create it
+ 
+        team_games = []
+        # if the game belongs to the current team, add it
+        # to a list of essential game data
         for game in data:
-            if AUDL_Name in game['team']: #or AUDL_Name in game['opponent']:
+            if AUDL_Name in game['team']:
                 d = game['date']
                 t = game['time']
                 y = game['Year']
+                opp = game['opponent']
                 if game['home/away'] == 'Home':
                     ht = game['team']
                     at = game['opponent']
                 else:
                     at = game['team']
                     ht = game['opponent']
-                self.Games[game['date']] = Game(d,t,y,ht,at)
+                team_games.append((d,t,y,ht,at,opp))
 
+        # Check to see if this game already exists
+        for game in team_games:
+            exists,existing_game = self.League.league_game_exist(game[-1], game[0])
+            self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+            
+        
+                #self.Games[game['date']] = Game(d,t,y,ht,at)
     def populate_team_stats(self):
        """
        Gets the top five players for each stat in stat_list (hardcoded)
@@ -342,6 +366,10 @@ class Team():
             # add the tuple to the scores list for the current team
             scores_list.append(game_tup)
         return scores_list
+
+    def game_exist(self, date):
+        return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
+
 
 class Player():
     """
