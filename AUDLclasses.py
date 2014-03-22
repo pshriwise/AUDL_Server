@@ -69,7 +69,9 @@ class League():
             self.Teams[team].populate_team_stats()
 
     def get_news(self):
-
+        """
+        Gets all news articles for the rss feeds provided to the League class
+        """
         # A dictionary containing all related news article
         # class instances
         self.News = {};
@@ -96,6 +98,9 @@ class League():
         return data_out
 
     def news_page_info(self):
+        """
+        Returns information needed to populate the news page in the app UI
+        """
         # Init the output list, add a header
         art_list=["AUDL News"]
         # shorten the path to the News dictionary
@@ -109,6 +114,11 @@ class League():
         return art_list
 
     def league_game_exist(self, name, date):
+        """
+        Returns whether nor not a game exists for a team (by name)
+        for a given date. 
+
+        """
         for team in self.Teams:
             AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
             if AUDL_Name in name:
@@ -280,7 +290,10 @@ class Team():
         return rost
 
     def add_games(self):
-
+        """
+        Adds any games for the team from a given file containing the League
+        or team schedule for the current season.
+        """
         # create a name that will match one in the json doc
         AUDL_Name = self.City + " " + self.Name
 
@@ -337,7 +350,11 @@ class Team():
        # in sorted order. 
        self.Top_Fives = stat_out
 
-    def return_schedule(self):
+    def return_schedule(self): 
+        """
+        Returns the team's schedule with the team's city+name and ID as the first two
+        values of the list. 
+        """
         AUDL_Name = self.City+ " " + self.Name
         sched = [AUDL_Name, self.ID ]
         for game in self.Games:
@@ -351,6 +368,11 @@ class Team():
         return sched
 
     def return_scores(self):
+        """
+        Returns the game scores for all games that belong to the team 
+        beginning with entries for the team city and name.
+        Includes the Date, Opponent, and Score. 
+        """
         # set the Team's games to a shorter variable
         AUDL_Name = self.City+ " " + self.Name
         games = self.Games
@@ -368,6 +390,12 @@ class Team():
         return scores_list
 
     def game_exist(self, date):
+        """
+        Returns whether or not the team currently has a game with the input date
+        in the form of a boolean. 
+
+        If the game does exist, it will return the game class instance for that date
+        """
         return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
 
 
