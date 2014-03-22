@@ -42,7 +42,7 @@ class League():
         """
         This method retrieves all known teams from the ultimate-numbers
         server using a dictionary that keeps track of team IDs we care about. 
-
+        filename - file that the teams information should be read from*
         players - boolean indicating whether or not to add players
         games -  boolean indicating whether or not to add games
         stats -  boolean indicating whether or not to add team stats
@@ -50,6 +50,8 @@ class League():
         For each team, the basic info for that team is taken from a file
         in the repository and their game information is retrieved from the 
         ultimate-numbers server. 
+        
+        * expects a certain format (see Teams_Info)
         """
  #Open teams information file
         teams_info = open(filename, 'r')
