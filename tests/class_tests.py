@@ -53,8 +53,7 @@ def test_league_get_news():
      
 def test_team_attrs():
 
-    test_team = AUDLclasses.Team()
-    test_team.ID = 224002
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
     test_team.populate_team_stats()
 
     assert type(test_team.ID) is int
@@ -66,39 +65,22 @@ def test_team_attrs():
 
 def test_team_methods():
 
-    test_team = AUDLclasses.Team()
-    test_team.ID = 224002
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
     test_team.add_players()
     test_team.populate_team_stats()
     assert type(test_team.top_five('Assists')) is list
 
-def test_team_get_info():
-
-    test_team = AUDLclasses.Team()
-
-    test_team.ID = 224002
-    test_team.get_info()
-
-    assert type(test_team.Name) is str
-
-    assert type(test_team.Coach) is str
-
-    assert type(test_team.City) is str
-
 def test_team_add_games():
 
-    test_team = AUDLclasses.Team()
-    test_team.ID = 224002
-    test_team.get_info()
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim DeByl")
     test_team.add_games()
 
     assert type(test_team.Games) is dict
+    assert 14 == len(test_team.Games)
 
 def test_team_add_players():
 
-    test_team = AUDLclasses.Team()
-    test_team.ID = 224002
-    test_team.get_info()
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
     test_team.add_players()
     
     assert type(test_team.Players) is dict    

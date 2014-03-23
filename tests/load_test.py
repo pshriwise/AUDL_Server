@@ -9,8 +9,8 @@ import AUDLclasses
 
 def load_test():
 
-    AUDL = AUDLclasses.League()
-    AUDL.add_teams()
+    test_league = AUDLclasses.League()
+    test_league.add_teams()
 
 
 def check_schedules():

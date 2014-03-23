@@ -38,7 +38,7 @@ class League():
         self.Top_fives = {};
 
 
-    def add_teams(self, filename, players = True, games = True, stats = True):
+    def add_teams(self, filename='Teams_Info', players = True, games = True, stats = True):
         """
         This method retrieves all known teams from the ultimate-numbers
         server using a dictionary that keeps track of team IDs we care about. 
@@ -316,10 +316,16 @@ class Team():
                     ht = game['opponent']
                 team_games.append((d,t,y,ht,at,opp))
 
-        # Check to see if this game already exists
-        for game in team_games:
-            exists,existing_game = self.League.league_game_exist(game[-1], game[0])
-            self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+        #Check to see if the team belongs to a league
+        if self.League !=None:
+            # If yes, check to see if this game already exists
+            for game in team_games:
+                exists,existing_game = self.League.league_game_exist(game[-1], game[0])
+                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+        # If no, then just add a new game class for this team.
+        else: 
+            for game in team_games:
+                self.Games[game[0]] = Game(game[0],game[1],game[2],game[3],game[4])
             
         
                 #self.Games[game['date']] = Game(d,t,y,ht,at)
