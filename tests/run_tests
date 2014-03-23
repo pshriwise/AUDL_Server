@@ -1,0 +1,6 @@
+#!/bin/bash
+
+nosetests class_tests.py
+
+
+nosetests load_test.py

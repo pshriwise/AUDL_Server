@@ -2,11 +2,12 @@
 
 
 import sys
-sys.path.insert(0,'/home/patrick/AUDL_server')
+sys.path.append('..')
+import AUDLclasses
 
 import os
 os.chdir('../')
-import AUDLclasses
+
 
 def test_League_attrs():
     

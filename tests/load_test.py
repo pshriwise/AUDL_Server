@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 import sys
-sys.path.insert(0,'/home/patrick/AUDL_server')
+sys.path.insert(0,'..')
+import AUDLclasses
 
 import os
 os.chdir('../')
-import AUDLclasses
+
 
 def load_test():
 
