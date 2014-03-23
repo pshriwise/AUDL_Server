@@ -2,7 +2,7 @@
 
 def AUDLlogo(team_name):
     
-    icon_dict = { 'Alleycats' : "team_alleycats_on.png",
+    icon_dict = { 'AlleyCats' : "team_alleycats_on.png",
                   'Breeze' : "team_breeze_on.png", 
                   'Dragons' : "team_dragons_on.png", 
                   'Empire' : "team_empire_on.png", 
