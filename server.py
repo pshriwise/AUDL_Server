@@ -27,7 +27,7 @@ def path_parse(path):
 def path_data(path, League):
 
     # Dummy info for the Standings Page
-    Stand_list = [["Midwest Division", ('Madison Radicals', '10-3'),('Chicago Wildfire', '9-4')],["Eastern Division",("DC Breeze", '10-3'),("New York Empire",'9-4')]]
+    Stand_list = [["Midwest Division", ('Madison Radicals', 10, 3),('Chicago Wildfire', 9, 4)],["Eastern Division",("DC Breeze", 10, 3),("New York Empire", 9, 4)]]
  
     # Dummy info for the schedule Page
     Sched_list = []
