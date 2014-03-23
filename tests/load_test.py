@@ -16,15 +16,21 @@ def load_test():
 
 def check_schedules():
 
-    AUDL = AUDL.League()
-    AUDL.add_teams()
+    test_league = AUDL.League()
+    test_league.add_teams()
 
     for team in AUDL.Teams:
         assert 14 == len(AUDL.Teams[team].Games)
 
 def check_news():
 
-    AUDL = AUDL.League()
-    AUDL.get_news()
+    test_league = AUDL.League()
+    test_league.get_news()
 
     assert 0 != len(AUDL.News)
+
+
+def load_team_test():
+
+    test_league() = AUDL.League()
+    
