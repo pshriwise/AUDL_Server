@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 import SimpleHTTPServer, SocketServer
-import AUDLclasses as class
+import AUDLclasses
 import json
 import image_get as ig
 
 
-AUDL = class.League()
+AUDL = AUDLclasses.League()
 AUDL.add_teams('Teams_Info')
 AUDL.get_news()
 
@@ -89,10 +89,22 @@ def subpage_data(path_ents, League):
 def team_subpage_data(subpage, team):
     """
     Returns a subpage for a given team class instance. 
-
-    
     """
     return [team.roster(), team.return_schedule(), team.Top_Fives]
+
+def schedule_page_data(League):
+
+    data_out = []
+
+    if hasattr(League, Divisions):
+        for div in League.Divisions:
+            div_sched = [div]
+            for team in League.Divisions[div]:
+                div_sched.append(League.Teams[team].return_schedule())
+            data_out.append(div_sched)
+        return data_out
+    else:
+        return "This League does not contain divisions"
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
