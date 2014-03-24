@@ -12,7 +12,7 @@ def AUDLlogo(team_name):
                   'Phoenix' : "team_phoenix_on.png",
                   'Radicals' : "team_radicals_on.png",
                   'Raptors' : "team_raptors_on.png", 
-                  'Revolutuion' : "team_revolution_on.png", 
+                  'Revolution' : "team_revolution_on.png", 
                   'Riptide' : "team_riptide_on.png", 
                   'Royal' : "team_royal_on.png", 
                   'Rush' : "team_rush_on.png", 
