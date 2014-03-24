@@ -92,14 +92,6 @@ def team_subpage_data(subpage, team):
 
     
     """
-    # Right now this assumes these attributes exist. 
-    # Should be updated at some point. 
-    
-    subpages ={ 'Roster'   : team.roster(),
-                'Schedule' : team.return_schedule(),
-                'Stats'    : team.Top_Fives
-              }
-    
     return [team.roster(), team.return_schedule(), team.Top_Fives]
 
 def schedule_subpage_data(division, League):
