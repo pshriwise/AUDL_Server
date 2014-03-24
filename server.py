@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 import SimpleHTTPServer, SocketServer
-import AUDLclasses as cls
+import AUDLclasses as class
 import json
 import image_get as ig
 
 
-AUDL = cls.League()
+AUDL = class.League()
 AUDL.add_teams('Teams_Info')
 AUDL.get_news()
 
@@ -93,33 +93,6 @@ def team_subpage_data(subpage, team):
     
     """
     return [team.roster(), team.return_schedule(), team.Top_Fives]
-
-def schedule_subpage_data(division, League):
-
-    if division == "Midwest":
-        return ["Midwest Division", League.Teams[224002].return_schedule(), League.Teams[207003].return_schedule()]
-    elif division == "Eastern":
-        return ["Eastern Division", League.Teams[208003].return_schedule(), League.Teams[206001].return_schedule()]
-    else: 
-        return "Not a valid path"
-
-def standings_subpage_data(division, League):
-
-    if division == "Midwest":
-        return ["Midwest Division", ('Madison Radicals', '10-3'),('Chicago Wildfire', '9-4')]
-    elif division == "Eastern":
-        return ["Eastern Division",("DC Breeze", '10-3'),("New York Empire",'9-4')]
-    else:
-        return "Not a valid path"
-
-def scores_subpage_data(division, League):
-
-    if division == "Midwest":
-        return ["Midwest Division", League.Teams[224002].return_scores(), League.Teams[207003].return_scores()]
-    elif division == "Eastern":
-        return ["Eastern Division", League.Teams[208003].return_scores(), League.Teams[206001].return_scores()]
-    else:
-        return "Not a valid path"
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
