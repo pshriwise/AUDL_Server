@@ -359,7 +359,8 @@ class Team():
         values of the list. 
         """
         AUDL_Name = self.City+ " " + self.Name
-        sched = [AUDL_Name, self.ID ]
+#       sched = [AUDL_Name, self.ID ]
+        sched = []
         for game in self.Games:
             if AUDL_Name in self.Games[game].home_team:
                 opponent = self.Games[game].away_team
@@ -368,6 +369,7 @@ class Team():
             game_tup = (self.Games[game].date, self.Games[game].time, opponent)
             sched.append(game_tup)
 
+        sched.sort(key= lambda set: set[0])
         return sched
 
     def return_scores(self):
