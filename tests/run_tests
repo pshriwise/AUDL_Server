@@ -4,3 +4,6 @@ nosetests class_tests.py
 
 
 nosetests load_test.py
+
+
+nosetests system_test.py
