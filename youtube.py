@@ -44,6 +44,7 @@ def get_youtube( ):
         vidList.append( video_up )
 
     return vidList
-
+    
+#list begins at index 0 with the most recent video 
 list = get_youtube( )
 print list
