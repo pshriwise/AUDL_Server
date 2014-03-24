@@ -57,6 +57,7 @@ class League():
         teams_info = open(filename, 'r')
         found = False
         self.Teams={}
+        self.Divisions = {}
         for line in teams_info: 
               # See if we've reached the beginning of
               # some team info
@@ -70,6 +71,12 @@ class League():
                        # A string containing the team's name. 
                        Name = line[1:].rstrip()
                        line = teams_info.next().split(":")[1]
+                       # Add team to division
+                       Div = line[1:].rstrip()
+                       if Div in self.Divisions.keys():
+                           self.Divisions[Div].append(ID)
+                       else:
+                           self.Divisions[Div] = [ID]            
                        # A string containing the team's home city. 
                        City = line[1:].rstrip()
                        line = teams_info.next().split(":")[1]
