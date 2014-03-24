@@ -46,7 +46,7 @@ def path_data(path, League):
                    'News'      : League.news_page_info(),
                    'Standings' : Stand_list,
                    'Scores'    : Scores_list,
-                   'Schedule'  : Sched_list,
+                   'Schedule'  : schedule_page_data(League),
                    'Videos'    : "Coming soon",
                    'Stats'     : "Coming soon",
                    'FAQ'       : "Coming soon",
@@ -96,10 +96,11 @@ def schedule_page_data(League):
 
     data_out = []
 
-    if hasattr(League, Divisions):
+    if hasattr(League, 'Divisions'):
         for div in League.Divisions:
             div_sched = [div]
             for team in League.Divisions[div]:
+                print team
                 div_sched.append(League.Teams[team].return_schedule())
             data_out.append(div_sched)
         return data_out
