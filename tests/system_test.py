@@ -30,7 +30,3 @@ def check_news():
     assert 0 != len(AUDL.News)
 
 
-def load_team_test():
-
-    test_league() = AUDL.League()
-    

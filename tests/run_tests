@@ -3,7 +3,7 @@
 nosetests class_tests.py
 
 
-nosetests load_test.py
+nosetests load_tests.py
 
 
 nosetests system_test.py
