@@ -76,7 +76,8 @@ class League():
                        if Div in self.Divisions.keys():
                            self.Divisions[Div].append(ID)
                        else:
-                           self.Divisions[Div] = [ID]            
+                           self.Divisions[Div] = [ID]        
+                       line = teams_info.next().split(":")[1]    
                        # A string containing the team's home city. 
                        City = line[1:].rstrip()
                        line = teams_info.next().split(":")[1]
