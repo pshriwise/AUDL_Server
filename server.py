@@ -142,7 +142,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 PORT=4000
-httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
+httpd = SocketServer.ThreadingTCPServer(("", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
 httpd.serve_forever()
 
