@@ -4,7 +4,7 @@ import urllib2, json
 import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
-
+import datetime
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -52,7 +52,7 @@ class League():
         
         * expects a certain format (see Teams_Info)
         """
- #Open teams information file
+        #Open teams information file
         teams_info = open(filename, 'r')
         found = False
         self.Teams={}
@@ -180,21 +180,30 @@ class League():
         
         for game in game_list:
             date = game.date
+            time = game.time
             team1 = game.home_team
             team2 = game.away_team 
             
-            game_date = datetime.strptime(game.date, "%m/%d/%y").date()
+            game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date()
             delta = game_date-now
             if delta.days > days_ahead:
                 pass
             else:
-                game_tup=(team1,team2,date)
+                game_tup=(team1,team2,date,time)
                 data_out.append(game_tup)
        
         #data_out.sort(key= lambda set: datetime.datetime.strptime(set[2], '%m/%d/%y'))
         return data_out
 
+    def return_schedules(self):
+    
+        data_out = []
+        for div in self.Divisions:
+            game_sched = self.return_upcoming_games(self.Divisions[div],20)
+            data_out.append([div,game_sched])
+        
+        return data_out
 
 
 class Team():
