@@ -46,7 +46,7 @@ def path_data(path, League):
                    'News'      : League.news_page_info(),
                    'Standings' : Stand_list,
                    'Scores'    : Scores_list,
-                   'Schedule'  : schedule_page_data(League),
+                   'Schedule'  : League.return_schedules(),
                    'Videos'    : yt.get_youtube(),
                    'Stats'     : "Coming soon",
                    'FAQ'       : "Coming soon",
