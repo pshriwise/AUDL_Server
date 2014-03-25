@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import statget
 import urllib2, json
 import feedparser as fp
 import MediaClasses
