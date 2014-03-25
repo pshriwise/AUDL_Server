@@ -100,7 +100,6 @@ def schedule_page_data(League):
         for div in League.Divisions:
             div_sched = [div]
             for team in League.Divisions[div]:
-                print team
                 div_sched.append(League.Teams[team].return_schedule())
             data_out.append(div_sched)
         return data_out
