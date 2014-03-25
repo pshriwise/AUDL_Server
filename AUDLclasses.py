@@ -4,7 +4,7 @@ import statget
 import urllib2, json
 import feedparser as fp
 import MediaClasses
-
+import datetime
 
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
@@ -377,7 +377,7 @@ class Team():
             game_tup = (self.Games[game].date, self.Games[game].time, opponent)
             sched.append(game_tup)
 
-        sched.sort(key= lambda set: set[0])
+        sched.sort(key= lambda set: datetime.datetime.strptime(set[0], '%m/%d/%y'))
         return sched
 
     def return_scores(self):
