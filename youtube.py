@@ -46,5 +46,8 @@ def get_youtube( ):
     return vidList
     
 #list begins at index 0 with the most recent video 
-list = get_youtube( )
-print list
+
+def main():
+
+    list = get_youtube( )
+    print list

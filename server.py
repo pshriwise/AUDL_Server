@@ -4,7 +4,7 @@ import SimpleHTTPServer, SocketServer
 import AUDLclasses
 import json
 import image_get as ig
-
+import youtube as yt
 
 AUDL = AUDLclasses.League()
 AUDL.add_teams('Teams_Info')
@@ -47,7 +47,7 @@ def path_data(path, League):
                    'Standings' : Stand_list,
                    'Scores'    : Scores_list,
                    'Schedule'  : schedule_page_data(League),
-                   'Videos'    : "Coming soon",
+                   'Videos'    : yt.get_youtube(),
                    'Stats'     : "Coming soon",
                    'FAQ'       : "Coming soon",
                    'Terms_and_Info' : "Coming soon"}
