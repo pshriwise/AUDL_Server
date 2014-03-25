@@ -343,6 +343,8 @@ class Team():
             p = self.Players[player]
             if "Anon" not in p.First_name:
                 rost.append((p.First_name,p.Number))
+        # sort the list by player number
+        rost.sort(key=lambda set: set[1])
         # return the list
         return rost
 
