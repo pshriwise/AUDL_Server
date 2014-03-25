@@ -3,7 +3,7 @@
 import urllib2, json
 import feedparser as fp
 import MediaClasses
-import datetime
+from datetime import datetime as dt
 
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
@@ -183,8 +183,8 @@ class League():
             team1 = game.home_team
             team2 = game.away_team 
             
-            game_date = datetime.datetime.strptime(game.date, "%m/%d/%y").date()
-            now = datetime.datetime.today().date()
+            game_date = datetime.strptime(game.date, "%m/%d/%y").date()
+            now = dt.today().date()
             delta = game_date-now
             if delta.days > days_ahead:
                 pass
@@ -420,7 +420,7 @@ class Team():
             game_tup = (self.Games[game].date, self.Games[game].time, opponent)
             sched.append(game_tup)
 
-        sched.sort(key= lambda set: datetime.datetime.strptime(set[0], '%m/%d/%y'))
+        sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
         return sched
 
     def return_scores(self):
