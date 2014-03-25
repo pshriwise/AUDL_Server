@@ -322,7 +322,7 @@ class Team():
             player_stat_list.append((player_name, player_stat))
         # sort the list of tuples by the stat value
         # reverse=True means sort highest to lowest
-        player_stat_list.sort(key= lambda set: set[1], reverse=True)
+        player_stat_list.sort(key= lambda set: int(set[1]), reverse=True)
         # return the top 5 tuples from the list.
         return player_stat_list[0:5]
 
