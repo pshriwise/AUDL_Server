@@ -149,7 +149,51 @@ class League():
                 return self.Teams[team].game_exist(date)
             else:
                 return False, None
+
+    def return_upcoming_games(self, teams=None, days_ahead=14):
+        """
+        Returns any games occurring within 2 weeks of the current date.
+
+        teams - a list of team ids to check for games
+        days_ahead - indicates that games beyond this many days ahead of
+                today should not be included. Default is two weeks.
+
+        If no teams are passed to the function, return this information
+        for all teams in the league
+        """
+
+        data_out = []
+        # If no teams are passed in, add all available teams to the schedule
+        if teams == None:
+            teams = []
+            for team in self.Teams:
+                ID = self.Teams[team].ID
+                teams.append(ID)
+   
+        game_list = []
+        #loop through each team and get their game class instances
+        for team in teams:
+            games = self.Teams[team].Games
+            for game in games:
+                inst = self.Teams[team].Games[game]                    
+                if inst not in data_out: game_list.append(inst)
         
+        for game in game_list:
+            date = game.date
+            team1 = game.home_team
+            team2 = game.away_team 
+            
+            game_date = datetime.datetime.strptime(game.date, "%m/%d/%y").date()
+            now = datetime.datetime.today().date()
+            delta = game_date-now
+            if delta.days > days_ahead:
+                pass
+            else:
+                game_tup=(team1,team2,date)
+                data_out.append(game_tup)
+       
+        #data_out.sort(key= lambda set: datetime.datetime.strptime(set[2], '%m/%d/%y'))
+        return data_out
 
 
 
