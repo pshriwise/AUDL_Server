@@ -27,3 +27,15 @@ doxygen Doxyfile
 To view the documentation via html:
 
 open ./docs/html/index.html in your favorite browser
+
+
+Testing
+-------
+
+To run tests for the AUDL server:
+
+cd tests/
+
+./run_tests
+
+Note: An internet connection is currently required to run the tests!
