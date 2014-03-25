@@ -246,7 +246,7 @@ class Team():
                    player_class.Number = player['number']
                except:
                    print "Could not match player number for", player['name'],
-                   print "on the", statget.name_to_id('',team_id=self.ID,reverse=True)
+                   print "on the", self.City, self.Name
                    pass
             
     def top_five(self, stat):
