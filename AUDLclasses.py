@@ -337,7 +337,7 @@ class Team():
         # init the list of return info
         # Add the city and name as the first entry
         if not hasattr(self, 'City'): self.get_info()
-        rost=[(self.City, self.Name, self.ID)]
+        rost = []
         # Loop through players, create tuple and add to list
         for player in self.Players: 
             p = self.Players[player]
@@ -345,6 +345,7 @@ class Team():
                 rost.append((p.First_name,p.Number))
         # sort the list by player number
         rost.sort(key=lambda set: int(set[1]))
+        rost=[(self.City, self.Name, self.ID)]+rost 
         # return the list
         return rost
 
