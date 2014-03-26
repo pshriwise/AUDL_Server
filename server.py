@@ -79,6 +79,8 @@ def subpage_data(path_ents, League):
     if path_ents[0] == "Teams":
         return team_subpage_data(team_id, team)
     elif path_ents[0] == "Icons":
+        # the true case is a corner statement 
+        # only the false case will be needed after 2014 games begin
         return ig.AUDLlogo('Phoenix') if team_id == 208004 else ig.AUDLlogo(team.Name)
     else:
         return "Not a valid path"

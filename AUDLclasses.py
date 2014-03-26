@@ -225,6 +225,7 @@ class League():
             AUDL_name = team_inst.City + " " + team_inst.Name
             print AUDL_name
             if AUDL_name in name.rstrip(): return ID
+        # false case is a corner case until 2014 games begin
         return 0 if "Philadelphia Phoenix" not in name else 208004
 
 class Team():
