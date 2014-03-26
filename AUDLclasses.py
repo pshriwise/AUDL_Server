@@ -143,12 +143,16 @@ class League():
         for a given date. 
 
         """
+
         for team in self.Teams:
             AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
+
             if AUDL_Name in name:
                 return self.Teams[team].game_exist(date)
             else:
-                return False, None
+                pass
+        return False,None
+        
 
     def return_upcoming_games(self, teams=None, days_ahead=14):
         """
@@ -176,7 +180,7 @@ class League():
             games = self.Teams[team].Games
             for game in games:
                 inst = self.Teams[team].Games[game]                    
-                if inst not in data_out: game_list.append(inst)
+                if inst not in game_list: game_list.append(inst)
         
         for game in game_list:
             date = game.date
@@ -373,17 +377,19 @@ class Team():
                 y = game['Year']
                 opp = game['opponent']
                 if game['home/away'] == 'Home':
-                    ht = game['team']
-                    at = game['opponent']
+                    ht = game['team'].rstrip()
+                    at = game['opponent'].rstrip()
                 else:
-                    at = game['team']
-                    ht = game['opponent']
+                    at = game['team'].rstrip()
+                    ht = game['opponent'].rstrip()
                 team_games.append((d,t,y,ht,at,opp))
 
         #Check to see if the team belongs to a league
-        if self.League !=None:
+        if self.League != None:
             # If yes, check to see if this game already exists
+            # in the league
             for game in team_games:
+                
                 exists,existing_game = self.League.league_game_exist(game[-1], game[0])
                 self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
         # If no, then just add a new game class for this team.
@@ -422,7 +428,7 @@ class Team():
         values of the list. 
         """
         AUDL_Name = self.City+ " " + self.Name
-#       sched = [AUDL_Name, self.ID ]
+
         sched = []
         for game in self.Games:
             if AUDL_Name in self.Games[game].home_team:
@@ -433,6 +439,7 @@ class Team():
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
+        sched = [AUDL_Name, self.ID ]+sched
         return sched
 
     def return_scores(self):
@@ -464,7 +471,10 @@ class Team():
 
         If the game does exist, it will return the game class instance for that date
         """
-        return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
+        if hasattr(self, 'Games'):
+            return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
+        else:
+            return False, None
 
 
 class Player():
