@@ -5,6 +5,8 @@ import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
 import datetime
+import youtube as yt
+
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -14,7 +16,7 @@ class League():
     on the AUDL server.
     """
     def __init__(self):
-         # A dictionary containing all video link class instances
+        # A Video object containing the list of all the videos
         self.Videos = {};
         # A list of information about the upcoming
         # week in the AUDL
@@ -233,6 +235,18 @@ class League():
     def get_top_fives(self):
         self.get_stats_league()
         return self.Top_fives
+
+    def get_videos(self):
+
+        #check timestamp to see how out of date we are...currently not implemented
+        #
+        #   updateVids = []
+        #    updateVids = yt.get_youtube()
+        #    self.Videos.videos = updateVids
+        #    return self.Videos.videos
+        #otherwise return our restored list
+        #elif
+        return yt.get_youtube()
 
 class Team():
     """

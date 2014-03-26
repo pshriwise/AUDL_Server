@@ -18,5 +18,15 @@ class Article():
 
         self.Thumb_url = thumb_url
 
+class Videos():
+
+    def __init__(self, timestamp):
+    	
+    	videos = []
+
+        self.ID = id(self)
+        
+        self.Timestamp = timestamp
+
 
 
