@@ -186,7 +186,9 @@ class League():
             date = game.date
             time = game.time
             team1 = game.home_team
+            team1ID = game.home_team_id
             team2 = game.away_team 
+            team2ID = game.away_team_id
             
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date()
@@ -194,7 +196,7 @@ class League():
             if delta.days > days_ahead:
                 pass
             else:
-                game_tup=(team1,team2,date,time)
+                game_tup=(team1,team1ID,team2,team2ID,date,time)
                 data_out.append(game_tup)
        
         #data_out.sort(key= lambda set: datetime.datetime.strptime(set[2], '%m/%d/%y'))
@@ -209,6 +211,21 @@ class League():
         
         return data_out
 
+    def name_to_id(self, name):
+        """
+        Loops through each team to look for a matching name. 
+        If one is found, then the id is returned as an int.
+        """
+ 
+        #loop through teams and find a match:
+        teams = self.Teams
+
+        for ID, team_inst in teams.items():
+            print name
+            AUDL_name = team_inst.City + " " + team_inst.Name
+            print AUDL_name
+            if AUDL_name in name.rstrip(): return ID
+        return 0 if "Philadelphia Phoenix" not in name else 208004
 
 class Team():
     """
@@ -378,11 +395,15 @@ class Team():
                 opp = game['opponent']
                 if game['home/away'] == 'Home':
                     ht = game['team'].rstrip()
+                    ht_ID = self.League.name_to_id(ht)
                     at = game['opponent'].rstrip()
+                    at_ID = self.League.name_to_id(at)
                 else:
                     at = game['team'].rstrip()
+                    at_ID = self.League.name_to_id(at)
                     ht = game['opponent'].rstrip()
-                team_games.append((d,t,y,ht,at,opp))
+                    ht_ID = self.League.name_to_id(ht)
+                team_games.append((d,t,y,ht,ht_ID,at,at_ID,opp))
 
         #Check to see if the team belongs to a league
         if self.League != None:
@@ -391,7 +412,7 @@ class Team():
             for game in team_games:
                 
                 exists,existing_game = self.League.league_game_exist(game[-1], game[0])
-                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4],game[5],game[6])
         # If no, then just add a new game class for this team.
         else: 
             for game in team_games:
@@ -502,7 +523,7 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, year, home_team, away_team):
+    def __init__(self, date, time, year, home_team, home_team_id, away_team, away_team_id):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         self.ID = ''    
@@ -521,8 +542,12 @@ class Game():
         self.Location =''
         # a string containing the name of the away_team
         self.away_team = away_team
+        # an int containing the id of the away_team
+        self.away_team_id = away_team_id
         # a string containing the name of the home_team
         self.home_team = home_team
+        # an int containing the id of the home_team
+        self.home_team_id = home_team_id
         # a dictionary containing the home team's leader in a set of stats for this game
         # Keys: Statistic names Values: Tuple of a player name and their statistic
         self.Home_stats = {}
