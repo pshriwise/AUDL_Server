@@ -5,7 +5,6 @@ import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
 import datetime
-import youtube as yt
 
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
@@ -17,7 +16,7 @@ class League():
     """
     def __init__(self):
         # A Video object containing the list of all the videos
-        self.Videos = {};
+        self.Videos = MediaClasses.Videos();
         # A list of information about the upcoming
         # week in the AUDL
         self.This_week = [];
@@ -246,7 +245,7 @@ class League():
         #    return self.Videos.videos
         #otherwise return our restored list
         #elif
-        return yt.get_youtube()
+        return self.Videos.videos
 
 class Team():
     """

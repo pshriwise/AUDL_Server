@@ -1,7 +1,7 @@
 #!/usr/bin/python 
 
-
 import feedparser as fp
+import youtube as yt
 
 class Article():
 
@@ -20,13 +20,13 @@ class Article():
 
 class Videos():
 
-    def __init__(self, timestamp):
+    def __init__(self):
     	
-    	videos = []
+    	self.videos = yt.get_youtube()
 
         self.ID = id(self)
         
-        self.Timestamp = timestamp
+        #self.Timestamp = timestamp
 
 
 
