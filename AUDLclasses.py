@@ -208,22 +208,17 @@ class League():
     def top_five_league(self, stat):
 
         top_player_stat_list = []
-
         #traverse through all teams to get top 5
         for team in self.Teams:
-
             #should add a team indicator to this tuple
             team_list = self.Teams[team].top_five(stat)
             for player in team_list:
                 playerOne = team_list.pop(0)
                 team_list.append( ( playerOne[0], playerOne[1], team ) )
-
             #add each teams list into a total list
             top_player_stat_list = top_player_stat_list + team_list
-
         #sort from highest to lowest
         top_player_stat_list.sort( key = lambda set: set[1], reverse=True )
-
         #returns the top 5 tuples from the list.
         return top_player_stat_list[0:5]
 
@@ -232,8 +227,7 @@ class League():
         stat_list = [ 'Goals', 'Assists', 'Drops', 'Throwaways', 'PMC', 'Ds' ]
         top_fivez = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
         for stat in stat_list:
-            top_five_league_stat = self.top_five_league( stat )
-            top_fivez[stat] = top_five_league_stat
+            top_fivez[stat] = self.top_five_league( stat ) 
         self.Top_fives.update(top_fivez)
         
     def get_top_fives(self):
