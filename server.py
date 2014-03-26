@@ -6,9 +6,6 @@ import json
 import image_get as ig
 import youtube as yt
 
-AUDL = AUDLclasses.League()
-AUDL.add_teams('Teams_Info')
-AUDL.get_news()
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -121,13 +118,23 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 PORT=4000
 httpd = SocketServer.ThreadingTCPServer(("", PORT), Handler) # Can also use ForkingTCPServer
 print "serving at port", PORT
-httpd.serve_forever()
 
 
 
 
-
-
- 
-
+def main():
     
+    # Initialize the league class
+    AUDL = AUDLclasses.League()
+    # Add teams from local files and populate
+    # their information from the ultimate-numbers 
+    # server
+    AUDL.add_teams('Teams_Info')
+    # Get news articles for the team
+    AUDL.get_news()
+
+    # Start broadcasting the server
+    httpd.serve_forever()
+
+if __name__ = "__main__":
+    main()
