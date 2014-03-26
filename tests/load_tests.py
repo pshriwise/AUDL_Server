@@ -45,10 +45,12 @@ def load_all_team_data_test():
     """
     test_league = AUDLclasses.League()
     test_league.add_teams('single_team_info', games= False)
+    for team in test_league.Teams:
+        test_league.Teams[team].add_games('test_game_data.json')
+
     assert 1 == len(test_league.Teams)
 
-
-def test_game_merge():
+def test_single_game_merge():
     """
     Creates two team instances that share a game in the same file.
     Upon loading games from this file for both teams,
@@ -69,4 +71,7 @@ def test_game_merge():
             num_of_game_classes+=1
 
     assert 1 == num_of_game_classes
+    for team in test_league.Teams:
+        games = test_league.Teams[team].Games
+        assert 1== len(games), "%i" % len(games)
 

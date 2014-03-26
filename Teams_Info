@@ -39,7 +39,7 @@ STREAK: 15L
 ID: 183001
 TEAM_NAME: Revolution
 DIV: Midwestern
-CITY: Cincinatti
+CITY: Cincinnati
 COACH: N/A
 STREAK: 15L
 --------------------------
@@ -79,5 +79,20 @@ CITY: Rochester
 COACH: N/A
 STREAK: 15L
 --------------------------
+--------------------------
+ID: 195002
+TEAM_NAME: Rush
+DIV: Eastern
+CITY: Toronto
+COACH: N/A
+STREAK: 15L
+--------------------------
 
-
+--------------------------
+ID: 208004
+TEAM_NAME: Phoenix
+DIV: Eastern
+CITY: Philadelphia
+COACH: N/A
+STREAK: 15L
+--------------------------

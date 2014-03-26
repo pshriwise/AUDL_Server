@@ -7,6 +7,7 @@ import AUDLclasses
 import os
 os.chdir('../')
 
+from subprocess import call
 
 def load_test():
 
@@ -14,19 +15,19 @@ def load_test():
     test_league.add_teams()
 
 
-def check_schedules():
+#def test_schedules():
 
-    test_league = AUDL.League()
-    test_league.add_teams()
+#    test_league = AUDLclasses.League()
+#    test_league.add_teams()
 
-    for team in AUDL.Teams:
-        assert 14 == len(AUDL.Teams[team].Games)
+#    for team in test_league.Teams:
+#        assert 14 == len(test_league.Teams[team].Games), len(test_league.Teams[team].Games)
 
-def check_news():
+def test_news():
 
-    test_league = AUDL.League()
+    test_league = AUDLclasses.League()
     test_league.get_news()
 
-    assert 0 != len(AUDL.News)
+    assert 0 != len(test_league.News)
 
 

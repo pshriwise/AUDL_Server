@@ -143,12 +143,16 @@ class League():
         for a given date. 
 
         """
+
         for team in self.Teams:
             AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
+
             if AUDL_Name in name:
                 return self.Teams[team].game_exist(date)
             else:
-                return False, None
+                pass
+        return False,None
+        
 
     def return_upcoming_games(self, teams=None, days_ahead=14):
         """
@@ -176,13 +180,15 @@ class League():
             games = self.Teams[team].Games
             for game in games:
                 inst = self.Teams[team].Games[game]                    
-                if inst not in data_out: game_list.append(inst)
+                if inst not in game_list: game_list.append(inst)
         
         for game in game_list:
             date = game.date
             time = game.time
             team1 = game.home_team
+            team1ID = game.home_team_id
             team2 = game.away_team 
+            team2ID = game.away_team_id
             
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date()
@@ -190,7 +196,7 @@ class League():
             if delta.days > days_ahead:
                 pass
             else:
-                game_tup=(team1,team2,date,time)
+                game_tup=(team1,team1ID,team2,team2ID,date,time)
                 data_out.append(game_tup)
        
         #data_out.sort(key= lambda set: datetime.datetime.strptime(set[2], '%m/%d/%y'))
@@ -258,6 +264,21 @@ class League():
         
         '''
         return self.Videos.videos
+
+    def name_to_id(self, name):
+        """
+        Loops through each team to look for a matching name. 
+        If one is found, then the id is returned as an int.
+        """
+ 
+        #loop through teams and find a match:
+        teams = self.Teams
+
+        for ID, team_inst in teams.items():
+            AUDL_name = team_inst.City + " " + team_inst.Name
+            if AUDL_name in name.rstrip(): return ID
+        # false case is a corner case until 2014 games begin
+        return 0
 
 class Team():
     """
@@ -390,7 +411,7 @@ class Team():
         # init the list of return info
         # Add the city and name as the first entry
         if not hasattr(self, 'City'): self.get_info()
-        rost=[(self.City, self.Name, self.ID)]
+        rost = []
         # Loop through players, create tuple and add to list
         for player in self.Players: 
             p = self.Players[player]
@@ -398,6 +419,7 @@ class Team():
                 rost.append((p.First_name,p.Number))
         # sort the list by player number
         rost.sort(key=lambda set: int(set[1]))
+        rost=[(self.City, self.Name, self.ID)]+rost 
         # return the list
         return rost
 
@@ -425,19 +447,25 @@ class Team():
                 y = game['Year']
                 opp = game['opponent']
                 if game['home/away'] == 'Home':
-                    ht = game['team']
-                    at = game['opponent']
+                    ht = game['team'].rstrip()
+                    ht_ID = self.League.name_to_id(ht)
+                    at = game['opponent'].rstrip()
+                    at_ID = self.League.name_to_id(at)
                 else:
-                    at = game['team']
-                    ht = game['opponent']
-                team_games.append((d,t,y,ht,at,opp))
+                    at = game['team'].rstrip()
+                    at_ID = self.League.name_to_id(at)
+                    ht = game['opponent'].rstrip()
+                    ht_ID = self.League.name_to_id(ht)
+                team_games.append((d,t,y,ht,ht_ID,at,at_ID,opp))
 
         #Check to see if the team belongs to a league
-        if self.League !=None:
+        if self.League != None:
             # If yes, check to see if this game already exists
+            # in the league
             for game in team_games:
+                
                 exists,existing_game = self.League.league_game_exist(game[-1], game[0])
-                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4],game[5],game[6])
         # If no, then just add a new game class for this team.
         else: 
             for game in team_games:
@@ -474,7 +502,7 @@ class Team():
         values of the list. 
         """
         AUDL_Name = self.City+ " " + self.Name
-#       sched = [AUDL_Name, self.ID ]
+
         sched = []
         for game in self.Games:
             if AUDL_Name in self.Games[game].home_team:
@@ -485,6 +513,7 @@ class Team():
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
+        sched = [AUDL_Name, self.ID ]+sched
         return sched
 
     def return_scores(self):
@@ -516,7 +545,10 @@ class Team():
 
         If the game does exist, it will return the game class instance for that date
         """
-        return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
+        if hasattr(self, 'Games'):
+            return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
+        else:
+            return False, None
 
 
 class Player():
@@ -544,7 +576,7 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, year, home_team, away_team):
+    def __init__(self, date, time, year, home_team, home_team_id, away_team, away_team_id):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         self.ID = ''    
@@ -563,8 +595,12 @@ class Game():
         self.Location =''
         # a string containing the name of the away_team
         self.away_team = away_team
+        # an int containing the id of the away_team
+        self.away_team_id = away_team_id
         # a string containing the name of the home_team
         self.home_team = home_team
+        # an int containing the id of the home_team
+        self.home_team_id = home_team_id
         # a dictionary containing the home team's leader in a set of stats for this game
         # Keys: Statistic names Values: Tuple of a player name and their statistic
         self.Home_stats = {}
