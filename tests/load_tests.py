@@ -69,4 +69,6 @@ def test_game_merge():
             num_of_game_classes+=1
 
     assert 1 == num_of_game_classes
-
+    for team in test_league.Teams:
+        games = test_league.Teams[team].Games
+        assert 1== len(games), "%i" % len(games)
