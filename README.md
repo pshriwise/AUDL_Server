@@ -39,3 +39,10 @@ cd tests/
 ./run_tests
 
 Note: An internet connection is currently required to run the tests!
+
+Dependencies
+-------------
+ 
+
+Python modules: urllib2, json , feedparser, datetime, SimpleHTTPServer
+                SocketServer
