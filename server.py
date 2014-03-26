@@ -79,7 +79,7 @@ def subpage_data(path_ents, League):
     if path_ents[0] == "Teams":
         return team_subpage_data(team_id, team)
     elif path_ents[0] == "Icons":
-        return ig.AUDLlogo(team.Name)
+        return ig.AUDLlogo('Phoenix') if team_id == 208004 else ig.AUDLlogo(team.Name)
     else:
         return "Not a valid path"
 
