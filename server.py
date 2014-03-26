@@ -107,13 +107,21 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
             #We can always respond with json code
-            self.send_response(200)     #  Send 200 OK
+            self.send_response(200) # Send 200 OK
             self.send_header("Content-type","json")
             self.end_headers()
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
             self.wfile.write(path_data(self.path,AUDL))
 
+# Initialize the league class
+AUDL = AUDLclasses.League()
+# Add teams from local files and populate
+# their information from the ultimate-numbers 
+# server
+AUDL.add_teams('Teams_Info')
+# Get news articles for the team
+AUDL.get_news()
 
 
 
@@ -121,19 +129,12 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 def main():
     
-    # Initialize the league class
-    AUDL = AUDLclasses.League()
-    # Add teams from local files and populate
-    # their information from the ultimate-numbers 
-    # server
-    AUDL.add_teams('Teams_Info')
-    # Get news articles for the team
-    AUDL.get_news()
 
     # Start broadcasting the server
     PORT=4000
-    httpd = SocketServer.ThreadingTCPServer(("192.168.1.134", PORT), Handler) # Can also use ForkingTCPServer
-    print "serving at port", PORT
+    IP = ""
+    httpd = SocketServer.ThreadingTCPServer((IP, PORT), Handler) # Can also use ForkingTCPServer
+    print "serving at" , IP, "port", PORT
     httpd.serve_forever()
 
 if __name__ == "__main__":
