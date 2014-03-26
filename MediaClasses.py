@@ -19,3 +19,4 @@ class Article():
         self.Thumb_url = thumb_url
 
 
+

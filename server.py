@@ -48,7 +48,7 @@ def path_data(path, League):
                    'Scores'    : Scores_list,
                    'Schedule'  : League.return_schedules(),
                    'Videos'    : yt.get_youtube(),
-                   'Stats'     : "Coming soon",
+                   'Stats'     : League.get_top_fives(),
                    'FAQ'       : "Coming soon",
                    'Terms_and_Info' : "Coming soon"}
 
