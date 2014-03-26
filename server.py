@@ -115,9 +115,6 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.wfile.write(path_data(self.path,AUDL))
 
 
-PORT=4000
-httpd = SocketServer.ThreadingTCPServer(("", PORT), Handler) # Can also use ForkingTCPServer
-print "serving at port", PORT
 
 
 
@@ -134,6 +131,9 @@ def main():
     AUDL.get_news()
 
     # Start broadcasting the server
+    PORT=4000
+    httpd = SocketServer.ThreadingTCPServer(("", PORT), Handler) # Can also use ForkingTCPServer
+    print "serving at port", PORT
     httpd.serve_forever()
 
 if __name__ = "__main__":
