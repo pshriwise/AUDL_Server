@@ -50,4 +50,4 @@ def get_youtube( ):
 def main():
 
     list = get_youtube( )
-    print list
+    

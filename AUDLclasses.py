@@ -4,7 +4,7 @@ import urllib2, json
 import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
-import datetime
+
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -14,8 +14,8 @@ class League():
     on the AUDL server.
     """
     def __init__(self):
-         # A dictionary containing all video link class instances
-        self.Videos = {};
+        # A Video object containing the list of all the videos
+        self.Videos = MediaClasses.Videos();
         # A list of information about the upcoming
         # week in the AUDL
         self.This_week = [];
@@ -34,7 +34,7 @@ class League():
         # A dictionary containing lists of the top five 
         # players for a given statistic and their stat
         # in sorted order
-        self.Top_fives = {};
+        self.Top_fives = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
 
 
     def add_teams(self, filename='Teams_Info', players = True, games = True, stats = True):
@@ -211,6 +211,60 @@ class League():
         
         return data_out
 
+    def top_five_league(self, stat):
+
+        top_player_stat_list = []
+        #traverse through all teams to get top 5
+        for team in self.Teams:
+            #should add a team indicator to this tuple
+            team_list = self.Teams[team].top_five(stat)
+            '''
+            here we pop each player off the list and add them 
+            back to the list with a team id
+            '''
+            for player in team_list:
+                playerOne = team_list.pop(0)
+                team_list.append( ( playerOne[0], playerOne[1], team ) )
+            #add each teams list into a total list
+            top_player_stat_list = top_player_stat_list + team_list
+        #sort from highest to lowest based on stat quantity
+        top_player_stat_list.sort( key = lambda set: set[1], reverse=True )
+        #returns the top 5 tuples from the list.
+        return top_player_stat_list[0:5]
+
+    def get_stats_league(self):
+        #list of stats
+        stat_list = [ 'Goals', 'Assists', 'Drops', 'Throwaways', 'PMC', 'Ds' ]
+        '''
+        dummy dict in order to capture the latest top 5's and update the class
+        dict with this dummy dict
+        '''
+        top_fivez = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
+        for stat in stat_list:
+            top_fivez[stat] = self.top_five_league( stat ) 
+        self.Top_fives.update(top_fivez)
+        
+    def get_top_fives(self):
+        self.get_stats_league()
+        return self.Top_fives
+
+    def get_videos(self):
+
+        '''
+        check timestamp to see how out of date we are...currently not implemented
+        pseudocode
+            check current timestamp to last video class timestamp 
+            (timestamp updated only when videos are refreshed, not when accessed)
+            
+            if time elapsed is greater than some amount of time:
+                run a refresh method on vids class
+                return refreshed list
+
+            else return our stored list
+        
+        '''
+        return self.Videos.videos
+
     def name_to_id(self, name):
         """
         Loops through each team to look for a matching name. 
@@ -225,6 +279,7 @@ class League():
             if AUDL_name in name.rstrip(): return ID
         # false case is a corner case until 2014 games begin
         return 0
+
 class Team():
     """
     This class keeps all of the statistical information 

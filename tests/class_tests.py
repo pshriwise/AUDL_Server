@@ -51,7 +51,29 @@ def test_league_get_news():
 
      assert len(test_league.News) is not 0, \
      "League news was not popultaed. Length is zero"
-     
+
+'''
+def test_league_get_videos():
+
+    test_league = AUDLclasses.League()
+
+    test_league.get_videos()
+
+    assert type(test_league.Videos) is Videos, \
+    "League's Video attribute is not a Video object, it is %s" % type(test_league.News)
+
+def test_league_stats():
+    test_league = AUDLclasses.League()
+
+    test_league.get_top_fives()
+
+    assert type(test_league.Top_fives) is dict, \
+    "Leaguewide top five stats attribute is not a dictionary, it is %s" type(test_league.Top_fives)
+
+    assert len(test_league.Top_fives) is not 0, \
+    "Leaguewide top five stats was not populated. Length is zero."
+'''
+
 def test_team_attrs():
 
     test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
