@@ -4,7 +4,7 @@ import urllib2, json
 import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
-import datetime
+
 
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
