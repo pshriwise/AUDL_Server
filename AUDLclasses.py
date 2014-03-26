@@ -6,7 +6,6 @@ import MediaClasses
 from datetime import datetime as dt
 
 
-
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
 class League():
