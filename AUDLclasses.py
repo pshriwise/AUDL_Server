@@ -160,7 +160,7 @@ class League():
         return False,None
         
 
-    def return_upcoming_games(self, teams=None, days_ahead=14):
+    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False):
         """
         Returns any games occurring within 2 weeks of the current date.
 
@@ -195,6 +195,7 @@ class League():
             team1ID = self.name_to_id(game.home_team)
             team2 = game.away_team 
             team2ID = self.name_to_id(game.away_team)
+            score = "0-0" if game.Score == [] else game.Score
             
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date()
@@ -202,8 +203,8 @@ class League():
             if delta.days > days_ahead:
                 pass
             else:
-                game_tup=(team1,team1ID,team2,team2ID,date,time)
-                data_out.append(game_tup)
+                game_tup=(team1,team1ID,team2,team2ID,date,time,score)
+                data_out.append(game_tup) if scores else data_out.append(game_tup[:-1])
        
         data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
         return data_out
@@ -285,6 +286,14 @@ class League():
             if AUDL_name in name.rstrip(): return ID
         # false case is a corner case until 2014 games begin
         return 0
+
+    def return_scores_page(self):       
+        
+        data_out = []
+        for div in self.Divisions:
+            game_scores = self.return_upcoming_games(self.Divisions[div],365,scores=True)
+            data_out.append([div,game_scores])
+        return data_out
 
 class Team():
     """

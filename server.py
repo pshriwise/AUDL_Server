@@ -42,7 +42,7 @@ def path_data(path, League):
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
                    'Standings' : Stand_list,
-                   'Scores'    : Scores_list,
+                   'Scores'    : League.return_scores_page(),
                    'Schedule'  : League.return_schedules(),
                    'Videos'    : League.get_videos(),
                    'Stats'     : League.get_top_fives(),
