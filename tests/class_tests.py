@@ -4,7 +4,7 @@
 import sys
 sys.path.append('..')
 import AUDLclasses
-
+import MediaClasses
 import os
 os.chdir('../')
 
@@ -12,8 +12,6 @@ os.chdir('../')
 def test_League_attrs():
     
     test_league = AUDLclasses.League()
-
-    assert type(test_league.Videos) is dict
 
     assert type(test_league.This_week) is list
 
@@ -198,5 +196,13 @@ def test_league_game_exist():
     assert (True,game_inst) == test_league.league_game_exist('Minnesota Wind Chill', '4/12/14')
 
     
-    
+def test_league_videos():
+
+    test_league = AUDLclasses.League()
+
+    assert 0 != len(test_league.get_videos())
+
+    assert True == hasattr(test_league, 'Videos')
+
+        
     

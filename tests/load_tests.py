@@ -64,13 +64,15 @@ def test_single_game_merge():
     for team in test_league.Teams:
         test_league.Teams[team].add_games('test_game_data.json')
 
-    num_of_game_classes = 0 
+    game_instances = []
    
-    for obj in gc.get_objects():
-        if isinstance(obj, AUDLclasses.Game):
-            num_of_game_classes+=1
+    for team in test_league.Teams:
+        games = test_league.Teams[team].Games
+        for game in games:
+            if games[game] not in game_instances:
+                game_instances.append(games[game])
 
-    assert 1 == num_of_game_classes
+    assert 1 == len(game_instances)
     for team in test_league.Teams:
         games = test_league.Teams[team].Games
         assert 1== len(games), "%i" % len(games)
