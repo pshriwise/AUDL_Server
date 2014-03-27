@@ -126,7 +126,7 @@ class League():
         Returns information needed to populate the news page in the app UI
         """
         # Init the output list, add a header
-        art_list=["AUDL News"]
+        art_list = []
         # shorten the path to the News dictionary
         News = self.News
         # Get the title and article url for every article
@@ -137,10 +137,11 @@ class League():
             #Break by spacing
             ts = ts.split(" ")
             # Join only the day, month, year components
-            ts = " ".join(ts[:4])
+            ts = " ".join(ts[1:4])
             art_tup = (News[art].Title, News[art].url, ts)
             art_list.append(art_tup)
-
+        art_list.sort(key = lambda set: dt.strptime(set[2], "%d %b %Y"))
+        art_list=["AUDL News"]+art_list
         return art_list
 
     def league_game_exist(self, name, date):
