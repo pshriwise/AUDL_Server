@@ -114,10 +114,16 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_GET(self):
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
-            self.send_header("Content-type","json")
-            self.end_headers()
+
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
+            if path_ents[0] == "Icons":
+                self.send_header("Content-type","png")
+                self.end_headers()
+            else:
+                self.send_header("Content-type","json")
+                self.end_headers()
+
             self.wfile.write(path_data(self.path,AUDL))
 
 # Initialize the league class
