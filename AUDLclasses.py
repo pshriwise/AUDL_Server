@@ -140,7 +140,7 @@ class League():
             ts = " ".join(ts[1:4])
             art_tup = (News[art].Title, News[art].url, ts)
             art_list.append(art_tup)
-        art_list.sort(key = lambda set: dt.strptime(set[2], "%d %b %Y"))
+        art_list.sort(key = lambda set: dt.strptime(set[2], "%d %b %Y"), reverse = True)
         art_list=["AUDL News"]+art_list
         return art_list
 
