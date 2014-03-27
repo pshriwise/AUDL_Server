@@ -132,7 +132,13 @@ class League():
         # Get the title and article url for every article
         # create a tuple and append to the output lits
         for art in News:
-            art_tup = (News[art].Title, News[art].url)
+            #Only show the date on the app
+            ts = News[art].Timestamp.encode('ascii', 'ignore')
+            #Break by spacing
+            ts = ts.split(" ")
+            # Join only the day, month, year components
+            ts = " ".join(ts[:4])
+            art_tup = (News[art].Title, News[art].url, ts)
             art_list.append(art_tup)
 
         return art_list
