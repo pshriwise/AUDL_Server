@@ -199,7 +199,7 @@ class League():
                 game_tup=(team1,team1ID,team2,team2ID,date,time)
                 data_out.append(game_tup)
        
-        #data_out.sort(key= lambda set: datetime.datetime.strptime(set[2], '%m/%d/%y'))
+        data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
         return data_out
 
     def return_schedules(self):
@@ -523,7 +523,7 @@ class Team():
         # set the Team's games to a shorter variable
         AUDL_Name = self.City+ " " + self.Name
         games = self.Games
-        scores_list=[self.City + " " + self.Name]
+        scores_list = []
         for game in games:
             # set game score. if the game hasn't started yet, default to 0-0
             score = '0-0' if games[game].Score == [] else games[game].Score
@@ -534,6 +534,8 @@ class Team():
             game_tup = (games[game].date, opp, score)
             # add the tuple to the scores list for the current team
             scores_list.append(game_tup)
+        scores_list.sort(key = lambda set: dt.strptime(set[0], '%m/%d/%y'))
+        scores_list=[self.City + " " + self.Name]+scores_list
         return scores_list
 
     def game_exist(self, date):
