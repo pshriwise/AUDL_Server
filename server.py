@@ -73,6 +73,9 @@ def subpage_data(path_ents, League):
 
     # We expect the second entry of this path to be a team_id
     team_id = int(path_ents[1]) 
+    # Corner case for the Montreal Royal Logo
+    if path_ents[0] == "Icons" and path_ents[1] == "1234":
+        return ig.AUDLlogo("Royal")
     if team_id in League.Teams.keys():
         team = League.Teams[team_id]
     
@@ -125,9 +128,6 @@ AUDL = AUDLclasses.League()
 AUDL.add_teams('Teams_Info')
 # Get news articles for the team
 AUDL.get_news()
-
-
-
 
 
 def main():
