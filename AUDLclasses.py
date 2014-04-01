@@ -568,6 +568,28 @@ class Team():
         else:
             return False, None
 
+    def full_name(self):
+
+        return self.City + " " + self.Name
+
+    def get_game_ids(self):
+
+        #get the list of games for the team from ultimate-numbers
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+
+        full_url = base_url + "/team/" + str(self.ID) + "/games"
+
+        req = urllib2.Request(full_url)
+
+        response = urllib2.urlopen(req)
+
+        data = json.loads(response.read())
+
+        games = self.Games
+
+        for game in games:
+            games[game].match_game(data)
+
 
 class Player():
     """
@@ -627,5 +649,9 @@ class Game():
         # an int returning the current quarter 
         self.Quarter = 0
 
- 
+    def match_game(self, games_dict):
         
+        game_date = dt.strptime(self.date, "%m/%d/%y")
+        for game in games_dict:
+            ultinum_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+
