@@ -655,7 +655,7 @@ class Game():
         for game in games_dict:
             dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
             if (game_date.date()-dict_date.date()) < timedelta(days = 1):
-                print games_dict[game]['ours'],
-                print games_dict[game]['theirs']
+                print game['ours'],
+                print game['theirs']
                 
 
