@@ -588,9 +588,9 @@ class Team():
         games = self.Games
 
         for game in games:
-            if self.full_name() in game.home_team:
+            if self.full_name() in games[game].home_team:
                games[game].match_game(data, True)
-            elif self.full_name() in game.away_team:
+            elif self.full_name() in games[game].away_team:
                games[game].match_game(data, False)
             else:
                print "GAME DOESN'T BELONG TO THIS TEAM"
