@@ -653,5 +653,7 @@ class Game():
         
         game_date = dt.strptime(self.date, "%m/%d/%y")
         for game in games_dict:
-            ultinum_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+            dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+            print (game_date.date-dict_date.date)
+                
 
