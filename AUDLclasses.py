@@ -4,7 +4,7 @@ import urllib2, json
 import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
-
+from datetime import timedelta
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -654,6 +654,8 @@ class Game():
         game_date = dt.strptime(self.date, "%m/%d/%y")
         for game in games_dict:
             dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
-            print (game_date.date()-dict_date.date())
+            if (game_date.date()-dict_date.date()) < timedelta(days = 1):
+                print games_dict[game]['ours'],
+                print games_dict[game]['theirs']
                 
 
