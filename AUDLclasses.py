@@ -4,7 +4,7 @@ import urllib2, json
 import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
-
+from datetime import timedelta
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -572,6 +572,33 @@ class Team():
         else:
             return False, None
 
+    def full_name(self):
+
+        return self.City + " " + self.Name
+
+    def get_game_ids(self):
+
+        #get the list of games for the team from ultimate-numbers
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+
+        full_url = base_url + "/team/" + str(self.ID) + "/games"
+
+        req = urllib2.Request(full_url)
+
+        response = urllib2.urlopen(req)
+
+        data = json.loads(response.read())
+
+        games = self.Games
+
+        for game in games:
+            if self.full_name() in games[game].home_team:
+               games[game].match_game(data, True)
+            elif self.full_name() in games[game].away_team:
+               games[game].match_game(data, False)
+            else:
+               print "GAME DOESN'T BELONG TO THIS TEAM"
+
 
 class Player():
     """
@@ -631,5 +658,15 @@ class Game():
         # an int returning the current quarter 
         self.Quarter = 0
 
- 
+    def match_game(self, games_dict, home):
         
+        game_date = dt.strptime(self.date, "%m/%d/%y")
+        for game in games_dict:
+            dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+            if (game_date.date()-dict_date.date()) < timedelta(days = 1):
+                self.home_score = game['ours'] if home else game['theirs']
+                self.away_score = game['theirs'] if home else game['ours']
+                print self.home_score, self.away_score
+
+                
+
