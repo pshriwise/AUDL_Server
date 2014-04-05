@@ -588,7 +588,12 @@ class Team():
         games = self.Games
 
         for game in games:
-            games[game].match_game(data)
+            if self.full_name() in game.home_team:
+               games[game].match_game(data, True)
+            elif self.full_name() in game.away_team:
+               games[game].match_game(data, False)
+            else:
+               print "GAME DOESN'T BELONG TO THIS TEAM"
 
 
 class Player():
@@ -649,13 +654,15 @@ class Game():
         # an int returning the current quarter 
         self.Quarter = 0
 
-    def match_game(self, games_dict):
+    def match_game(self, games_dict, home):
         
         game_date = dt.strptime(self.date, "%m/%d/%y")
         for game in games_dict:
             dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
             if (game_date.date()-dict_date.date()) < timedelta(days = 1):
-                print game['ours'],
-                print game['theirs']
+                self.home_score = game['ours'] if home else game['theirs']
+                self.away_score = game['theirs'] if home else game['ours']
+                print self.home_score, self.away_score
+
                 
 
