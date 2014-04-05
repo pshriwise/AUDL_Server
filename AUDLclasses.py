@@ -198,7 +198,7 @@ class League():
             team2ID = self.name_to_id(game.away_team)
 
             if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
-                score = game.away_score + '-' + game.home_score
+                score = str(game.away_score) + '-' + str(game.home_score)
             else:
                 score = "0-0"             
 
