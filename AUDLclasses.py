@@ -196,8 +196,12 @@ class League():
             team1ID = self.name_to_id(game.home_team)
             team2 = game.away_team 
             team2ID = self.name_to_id(game.away_team)
-            score = "0-0" if game.Score == [] else game.Score
-            
+
+            if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
+                score = game.away_score + '-' + game.home_score
+            else:
+                score = "0-0"             
+
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date()
             delta = game_date-now
