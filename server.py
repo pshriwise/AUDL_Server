@@ -26,18 +26,6 @@ def path_data(path, League):
     # Dummy info for the Standings Page
     Stand_list = [["Midwest Division", ('Madison Radicals', 10, 3),('Chicago Wildfire', 9, 4)],["Eastern Division",("DC Breeze", 10, 3),("New York Empire", 9, 4)]]
  
-    # Dummy info for the schedule Page
-    Sched_list = []
-    Sched_list.append(["Midwest Division", League.Teams[224002].return_schedule(), League.Teams[207003].return_schedule()])
-    Sched_list.append(["Eastern Division", League.Teams[208003].return_schedule(), League.Teams[206001].return_schedule()])
-
-
-    # Dummy info for the scores page
-    Scores_list = []
-    Scores_list.append(["Midwest Division", League.Teams[224002].return_scores(), League.Teams[207003].return_scores()])
-    Scores_list.append(["Eastern Division", League.Teams[208003].return_scores(), League.Teams[206001].return_scores()])
-
-
     #Create dictionary for main information:
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
