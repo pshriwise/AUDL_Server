@@ -604,16 +604,16 @@ class Player():
     """
     A class for containing information about a player.
     """
-    def __init__(self):
+    def __init__(self,first_name,last_name,number):
         # A dictionary containing the players stats.
         # Keys: stat names Values: player's statistic 
         self.Stats = {}
         # String containing the player's first name
-        self.First_name = ''
+        self.First_name = first_name
         # String containing the player's last name
-        self.Last_name = ''
+        self.Last_name = last_name
         # Intger of the players number
-        self.Number = 0
+        self.Number = number
         # string containing the player's height (in ft. & in.)
         self.Height = ''
         # string containing the player's weight (in lbs) 
