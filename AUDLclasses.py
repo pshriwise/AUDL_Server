@@ -88,7 +88,7 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
-            if games: self.Teams[team].add_games()
+            if games:   self.Teams[team].add_games()
             if stats:   self.Teams[team].populate_team_stats()
 
     def get_news(self):
@@ -327,32 +327,46 @@ class Team():
 
 
 
-    def add_players(self):
+    def add_players(self, filename='2014_players.json'):
         """
-        Adds players to the Team class attribute 'Players' from the ultimate-numbers
-        server.
+        Adds players to the Team class attribute 'Players' from the json file.
         """
 
         # A dictionary containing a set of Player class
         # instances pertaining to this team.
         self.Players = {}
 
+        # open the json file
+        f = open(filename, 'r')
+
+        players= json.load(f)
+
+        for player in players:
+            if self.full_name() in player['Team']:
+                fn = player['Player First Name'].strip()
+                ln = player['Player Last Name'].strip()
+                num = player['Jersey #']
+                full_name = fn + " " + ln
+                self.Players[full_name]=Player(fn,ln,num)
+
+ 
+
         # Get information from ultimate-numbers server
-        base_url = 'http://www.ultimate-numbers.com/rest/view'
-        req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player')
-        response =  urllib2.urlopen(req)
-        page = response.read()
+        #base_url = 'http://www.ultimate-numbers.com/rest/view'
+        #req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player')
+        #response =  urllib2.urlopen(req)
+        #page = response.read()
         # Decode json string as python dict
-        data = json.loads(page)
+        #data = json.loads(page)
 
         # For every player in the data, 
         # create a new player
         
 
-        for player in data:
+        #for player in data:
             #Add player to team's Players dictionary
-            self.Players[player['playerName']] = Player()
-            self.add_player_info(player)
+            #self.Players[player['playerName']] = Player()
+            #self.add_player_info(player)
 
     def add_player_info(self, player_info):
         """
@@ -438,7 +452,7 @@ class Team():
         for player in self.Players: 
             p = self.Players[player]
             if "Anon" not in p.First_name:
-                rost.append((p.First_name,p.Number))
+                rost.append((p.First_name + " "+ p.Last_name,p.Number))
         # sort the list by player number
         rost.sort(key=lambda set: int(set[1]))
         rost=[(self.City, self.Name, self.ID)]+rost 
