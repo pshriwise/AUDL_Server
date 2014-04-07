@@ -88,7 +88,7 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
-            if games: self.Teams[team].add_games(), self.Teams[team].get_game_ids()
+            if games: self.Teams[team].add_games()
             if stats:   self.Teams[team].populate_team_stats()
 
     def get_news(self):
@@ -529,7 +529,7 @@ class Team():
                 opponent = self.Games[game].away_team
             else:
                 opponent = self.Games[game].home_team
-            game_tup = (self.Games[game].date, self.Games[game].time, opponent)
+            game_tup = (self.Games[game].date, self.Games[game].time, opponent, self.League.name_to_id(opponent))
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
