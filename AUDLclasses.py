@@ -571,7 +571,7 @@ class Team():
             return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
         else:
             return False, None
-    def return_record(self):
+    def record(self):
         wins = 0
         losses = 0
         point_diff = 0
@@ -581,12 +581,12 @@ class Team():
             if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
                 game_diff = game.home_score-game.away_score
                 if self.full_name() in game.home_team:
-                   win = win+1 if game.home_score > game.away_score else win
-                   loss = loss+1 if game.home_score < game.away_score else loss
+                   wins = wins+1 if game.home_score > game.away_score else wins
+                   losses = losses+1 if game.home_score < game.away_score else losses
                    point_diff = point_diff + game_diff
                 else:
-                   win = win+1 if game.home_score < game.away_score else win
-                   loss = loss+1 if game.home_score > game.away_score else loss
+                   wins = wins+1 if game.home_score < game.away_score else wins
+                   losses = losses+1 if game.home_score > game.away_score else losses
                    point_diff = point_diff - game_diff
  
     def full_name(self):
@@ -685,5 +685,4 @@ class Game():
                 self.away_score = game['theirs'] if home else game['ours']
                 print self.home_score, self.away_score
 
-                
-
+          
