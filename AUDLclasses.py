@@ -571,7 +571,24 @@ class Team():
             return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
         else:
             return False, None
-
+    def return_record(self):
+        wins = 0
+        losses = 0
+        point_diff = 0
+        #Loop through games and count wins/losses
+        games = self.Games
+        for key,game in games.items():
+            if hasattr(game, 'Home_score') and hasattr(game, 'Away_score'):
+                game_diff = game.Home_score-game.Away_score
+                if self.full_name() in game.Home_team:
+                   win = win+1 if game.Home_score > game.Away_score else win
+                   loss = loss+1 if game.Home_score < game.Away_score else loss
+                   point_diff = point_diff + game_diff
+                else:
+                   win = win+1 if game.Home_score < game.Away_score else win
+                   loss = loss+1 if game.Home_score > game.Away_score else loss
+                   point_diff = point_diff - game_diff
+ 
     def full_name(self):
 
         return self.City + " " + self.Name
