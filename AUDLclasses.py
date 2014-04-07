@@ -578,15 +578,15 @@ class Team():
         #Loop through games and count wins/losses
         games = self.Games
         for key,game in games.items():
-            if hasattr(game, 'Home_score') and hasattr(game, 'Away_score'):
-                game_diff = game.Home_score-game.Away_score
-                if self.full_name() in game.Home_team:
-                   win = win+1 if game.Home_score > game.Away_score else win
-                   loss = loss+1 if game.Home_score < game.Away_score else loss
+            if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
+                game_diff = game.home_score-game.away_score
+                if self.full_name() in game.home_team:
+                   win = win+1 if game.home_score > game.away_score else win
+                   loss = loss+1 if game.home_score < game.away_score else loss
                    point_diff = point_diff + game_diff
                 else:
-                   win = win+1 if game.Home_score < game.Away_score else win
-                   loss = loss+1 if game.Home_score > game.Away_score else loss
+                   win = win+1 if game.home_score < game.away_score else win
+                   loss = loss+1 if game.home_score > game.away_score else loss
                    point_diff = point_diff - game_diff
  
     def full_name(self):
