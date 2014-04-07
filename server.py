@@ -35,7 +35,8 @@ def path_data(path, League):
                    'Videos'    : League.get_videos(),
                    'Stats'     : League.get_top_fives(),
                    'FAQ'       : "Coming soon",
-                   'Terms_and_Info' : "Coming soon"}
+                   'Terms_and_Info' : "Coming soon",
+                   'Home'      : (League.news_page_info(),League.get_videos(),League.return_scores_page())}
 
 
     path_ents = path_parse(path)
