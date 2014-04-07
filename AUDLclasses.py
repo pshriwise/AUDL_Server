@@ -588,6 +588,7 @@ class Team():
                    wins = wins+1 if game.home_score < game.away_score else wins
                    losses = losses+1 if game.home_score > game.away_score else losses
                    point_diff = point_diff - game_diff
+        return (wins,losses,point_diff)
  
     def full_name(self):
 
