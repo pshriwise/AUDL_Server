@@ -6,7 +6,7 @@ def AUDLlogo(team_name):
                   'Breeze' : "team_breeze_on.png", 
                   'Dragons' : "team_dragons_on.png", 
                   'Empire' : "team_empire_on.png", 
-                  'Flamethrowers' : "team_flamethrowers_on.png", 
+                  'FlameThrowers' : "team_flamethrowers_on.png", 
                   'Lions' : "team_lions_on.png", 
                   'Mechanix' : "team_mechanix_on.png",
                   'Phoenix' : "team_phoenix_on.png",
