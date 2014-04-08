@@ -13,7 +13,7 @@
     "date":"4/12/14",
     "time":"7:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -61,7 +61,7 @@
     "date":"4/13/14",
     "time":"12:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -93,7 +93,7 @@
     "date":"4/19/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -165,7 +165,7 @@
     "date":"4/26/14",
     "time":"6:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -269,7 +269,7 @@
     "date":"5/4/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -309,7 +309,7 @@
     "date":"5/10/14",
     "time":"6:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -365,7 +365,7 @@
     "date":"5/17/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -509,7 +509,7 @@
     "date":"5/31/14",
     "time":"6:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -549,7 +549,7 @@
     "date":"6/1/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -653,7 +653,7 @@
     "date":"6/14/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -749,7 +749,7 @@
     "date":"6/21/14",
     "time":"6:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -773,7 +773,7 @@
     "date":"6/22/14",
     "time":"12:00 PM MST",
     "home/away":"Home",
-    "opponent":"Salt Lake Lake Lions"
+    "opponent":"Salt Lake Lions"
   },
   {
     "Year":2014,
@@ -821,7 +821,7 @@
     "date":"6/28/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -925,7 +925,7 @@
     "date":"7/12/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco Flamethrowers"
+    "opponent":"San Francisco FlameThrowers"
   },
   {
     "Year":2014,
@@ -961,7 +961,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"4/12/14",
     "time":"7:00 PM MST",
     "home/away":"Away",
@@ -1009,7 +1009,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"4/13/14",
     "time":"12:00 PM MST",
     "home/away":"Away",
@@ -1041,7 +1041,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"4/19/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1113,7 +1113,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"4/26/14",
     "time":"6:00 PM MST",
     "home/away":"Away",
@@ -1217,7 +1217,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"5/4/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1257,7 +1257,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"5/10/14",
     "time":"6:00 PM MST",
     "home/away":"Away",
@@ -1313,7 +1313,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"5/17/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1457,7 +1457,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"5/31/14",
     "time":"6:00 PM MST",
     "home/away":"Away",
@@ -1497,7 +1497,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"6/1/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1601,7 +1601,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"6/14/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1697,7 +1697,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"6/21/14",
     "time":"6:00 PM MST",
     "home/away":"Away",
@@ -1721,7 +1721,7 @@
   },
   {
     "Year":2014,
-    "team":"Salt Lake Lake Lions",
+    "team":"Salt Lake Lions",
     "date":"6/22/14",
     "time":"12:00 PM MST",
     "home/away":"Away",
@@ -1769,7 +1769,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"6/28/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
@@ -1873,7 +1873,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco Flamethrowers",
+    "team":"San Francisco FlameThrowers",
     "date":"7/12/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
