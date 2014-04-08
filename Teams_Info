@@ -1,98 +1,119 @@
 
 --------------------------
-ID: 224002
+ID: 5182111044599808
 TEAM_NAME: Radicals
 DIV: Midwestern
 CITY: Madison
-COACH: Tim DeByl
-STREAK: 16W
 --------------------------
 
 --------------------------
-ID: 210001
+ID: 5638404075159552
 TEAM_NAME: Wind Chill
 DIV: Midwestern
 CITY: Minnesota
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 208003
+ID: 6220853180104704
 TEAM_NAME: Empire
 DIV: Eastern
 CITY: New York
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 206001
+ID: 4868028676177920
 TEAM_NAME: Breeze
 DIV: Eastern
 CITY: DC
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 183001
+ID: 5732910535540736
 TEAM_NAME: Revolution
 DIV: Midwestern
 CITY: Cincinnati
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 207003
+ID: 5471866718257152
 TEAM_NAME: Wildfire
 DIV: Midwestern
 CITY: Chicago
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 219001
+ID: 5684961520648192
 TEAM_NAME: Mechanix
 DIV: Midwestern
 CITY: Detroit
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 253001
+ID: 5075454121738240
 TEAM_NAME: AlleyCats
 DIV: Midwestern
 CITY: Indianapolis
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 208005
+ID: 5724681378201600
 TEAM_NAME: Dragons
 DIV: Eastern
 CITY: Rochester
-COACH: N/A
-STREAK: 15L
 --------------------------
 --------------------------
-ID: 195002
+ID: 5131065358286848
 TEAM_NAME: Rush
 DIV: Eastern
 CITY: Toronto
-COACH: N/A
-STREAK: 15L
 --------------------------
 
 --------------------------
-ID: 208004
+ID: 5153656886263808
 TEAM_NAME: Phoenix
 DIV: Eastern
 CITY: Philadelphia
-COACH: N/A
-STREAK: 15L
+--------------------------
+
+--------------------------
+ID: 5753341694967808
+TEAM_NAME: Royal
+DIV: Eastern
+CITY: Montreal
+--------------------------
+
+--------------------------
+ID: 6597766625099776
+TEAM_NAME: Spiders
+DIV: Western
+CITY: San Jose
+--------------------------
+
+--------------------------
+ID: 5648334039547904
+TEAM_NAME: Raptors
+DIV: Western
+CITY: Seattle
+
+--------------------------
+
+--------------------------
+ID: 6226234774126592
+TEAM_NAME: Riptide
+DIV: Western
+CITY: Vancouver
+--------------------------
+
+--------------------------
+ID: 5716606839685120
+TEAM_NAME: Lions
+DIV: Western
+CITY: Salt Lake
+--------------------------
+
+--------------------------
+ID: 5094953273262080
+TEAM_NAME: Flamethrowers
+DIV: Western
+CITY: San Francisco
 --------------------------

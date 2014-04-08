@@ -79,10 +79,8 @@ class League():
                        line = teams_info.next().split(":")[1]    
                        # A string containing the team's home city. 
                        City = line[1:].rstrip()
-                       line = teams_info.next().split(":")[1]
-                       # A string containing the name of the team's coach
-                       Coach = line[1:].rstrip()
-                       self.Teams[ID] = Team(self, ID, Name, City, Coach)
+                       # Create the new team class
+                       self.Teams[ID] = Team(self, ID, Name, City)
         if not found: print "No Team with that ID on record"
    
         # Gives each team its ID value so it can grab its own information from the server.
@@ -308,7 +306,7 @@ class Team():
     for a given team in the league. (player info, statistics,
     game schedules, etc.)
     """
-    def __init__(self, League, ID, Name, City, Coach ):
+    def __init__(self, League, ID, Name, City):
          # The team's ultimate-numbers ID. This is how we recognize this team on the 
          # ultimate numbers server. It is also our way of giving each team a 
          # unique identifier.
@@ -322,10 +320,7 @@ class Team():
          self.Name = Name
          # A string containing the Team's City
          self.City = City
-         # A string containing the Team's Coach name
-         self.Coach = Coach
-
-
+        
 
     def add_players(self):
         """
