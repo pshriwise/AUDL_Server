@@ -344,25 +344,6 @@ class Team():
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
 
- 
-
-        # Get information from ultimate-numbers server
-        #base_url = 'http://www.ultimate-numbers.com/rest/view'
-        #req = urllib2.Request(base_url + '/team/' + str(self.ID) + '/stats/player')
-        #response =  urllib2.urlopen(req)
-        #page = response.read()
-        # Decode json string as python dict
-        #data = json.loads(page)
-
-        # For every player in the data, 
-        # create a new player
-        
-
-        #for player in data:
-            #Add player to team's Players dictionary
-            #self.Players[player['playerName']] = Player()
-            #self.add_player_info(player)
-
     def add_player_info(self, player_info):
         """
         Adds player name, number, stats, etc. to a player class. 
@@ -477,13 +458,15 @@ class Team():
                 t = game['time']
                 y = game['Year']
                 opp = game['opponent']
+                if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
+                if opp.strip() == "San Jose Spiders": print opp, game['team'], d
                 if game['home/away'] == 'Home':
-                    ht = game['team'].rstrip()
-                    at = game['opponent'].rstrip()
+                    ht = game['team'].strip()
+                    at = game['opponent'].strip()
                   
                 else:
-                    at = game['team'].rstrip()
-                    ht = game['opponent'].rstrip()
+                    at = game['team'].strip()
+                    ht = game['opponent'].strip()
                   
                 team_games.append((d,t,y,ht,at,opp))
 
