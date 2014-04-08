@@ -352,39 +352,27 @@ class Team():
         """
         # get player summary data
         base_url = 'http://www.ultimate-numbers.com/rest/view'
-        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
-        response = urllib2.urlopen(req)
-        gen_player_data = json.loads(response.read())
+        req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        response1 = urllib2.urlopen(req1)
+        gen_player_data = json.loads(response1.read())
 
-        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"stats/player")
-        response = urllib2.urlopen(req)
-        player_stats_data = json.loads(response.read())
+        # get player stat data
+        req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
+        response2 = urllib2.urlopen(req2)
+        player_stats_data = json.loads(response2.read())
 
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
-                if data['number'] == player.Number:
-                    player.stat_name = data['playerName']
+                if data['number'] == str(player.Number):
+                    player.stat_name = data['name']
 
-       
         stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
         for name, player in self.Players.items():
            for player in player_stats_data:
                if player['playerName'] == player.stat_name:
                    for stat in stats:
-                       player.Stats[stat]  = player_stats_data[stat] if stat in player_stats_data
-         
-        #Add player's info to new Player class instance
-        #self.Players[player_info['playerName']].First_name = player_info['playerName']
-        #self.Players[player_info['playerName']].Stats['Assists']  = player_info['assists']
-        #self.Players[player_info['playerName']].Stats['Goals']  = player_info['goals']
-        #self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
-        #self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
-        #self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
-        #self.Players[player_info['playerName']].Stats['Ds'] = player_info['ds']
-        # Check the ultimate-numbers server to see if they have a player number
-        # that matches this player. 
-        #self.add_player_number(self.Players[player_info['playerName']])
+                       player.Stats[stat]  = player_stats_data[stat] if stat in player else 0
 
     def add_player_number(self,player_class):
         """
@@ -426,8 +414,8 @@ class Team():
         player_stat_list = []
         # Get the name and stat for each player and add the tuple to the list
         for player in self.Players:
-            player_name = Players[player].First_name
-            player_stat = Players[player].Stats[stat]
+            player_name = Players[player].full_name()
+            player_stat = Players[player].Stats[stat] if stat in Players[player].Stats.keys() else 0
             player_stat_list.append((player_name, player_stat))
         # sort the list of tuples by the stat value
         # reverse=True means sort highest to lowest
@@ -517,12 +505,13 @@ class Team():
        Top_Fives attribute.
        """
        if not hasattr(self,"Players"): self.add_players()
-       stat_list=["Goals","Assists","Drops","Throwaways", "PMC", "Ds"]
-
+       stat_names=["Assists","Goals","PMC","Drops","Throwaways", "Ds"]
+       name_iter = iter(stat_names)
+       stat_list = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
        if not hasattr(self, 'City'): self.get_info()
        stat_out = [(self.City, self.Name, self.ID)]
        for stat in stat_list:
-           stat_tup = (stat, self.top_five(stat))
+           stat_tup = (next(name_iter), self.top_five(stat))
            stat_out.append(stat_tup)
        
        # A dictionary containing the top five players for 
@@ -653,6 +642,12 @@ class Player():
         self.Weight = ''
         # string containing the player's age
         self.Age = 0
+
+    def full_name(self):
+        """
+        Returns the concatenated first and last name of the player.
+        """
+        return self.First_name + " " + self.Last_name
 
 class Game():
     """
