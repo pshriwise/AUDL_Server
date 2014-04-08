@@ -393,8 +393,10 @@ class Team():
        
         stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
         for name, player in self.Players.items():
-           for stat in stats:     
-               player.Stats[stat]  = player_stats_data[stat]
+           for player in player_stats_data:
+               if player['playerName'] == player.stat_name:
+                   for stat in stats:
+                       player.Stats[stat]  = player_stats_data[stat] if stat in player_stats_data
          
         #Add player's info to new Player class instance
         #self.Players[player_info['playerName']].First_name = player_info['playerName']
