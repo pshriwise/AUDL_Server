@@ -74,7 +74,7 @@ def test_league_stats():
 
 def test_team_attrs():
 
-    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
     test_team.populate_team_stats()
 
     assert type(test_team.ID) is int
@@ -86,14 +86,14 @@ def test_team_attrs():
 
 def test_team_methods():
 
-    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
     test_team.add_players()
     test_team.populate_team_stats()
     assert type(test_team.top_five('Assists')) is list
 
 def test_team_add_games():
 
-    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim DeByl")
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
     test_team.add_games()
 
     assert type(test_team.Games) is dict
@@ -101,7 +101,7 @@ def test_team_add_games():
 
 def test_team_add_players():
 
-    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison", "Tim Debyl" )
+    test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
     test_team.add_players()
     
     assert type(test_team.Players) is dict    
@@ -110,7 +110,7 @@ def test_team_add_players():
 
 def test_player_attrs():
 
-    test_player = AUDLclasses.Player()
+    test_player = AUDLclasses.Player("Tom","Annen",11)
 
     assert type(test_player.Stats) is dict
 
@@ -161,7 +161,7 @@ def test_game_exist():
     test_league = AUDLclasses.League()
     test_league.add_teams(players=False,stats=False)
 
-    team = test_league.Teams[224002]
+    team = test_league.Teams[5182111044599808]
     # Hand the function a false date...
     assert (False, None) == team.game_exist('4/15/11')
 
@@ -187,7 +187,7 @@ def test_league_game_exist():
 
     # Finally a real team and a real date
 
-    games = test_league.Teams[210001].Games
+    games = test_league.Teams[5638404075159552].Games
 
     key = unicode('4/12/14')
 

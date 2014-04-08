@@ -18,7 +18,6 @@ def load_team_test():
 
     assert test_league.Teams[224002].Name == 'Radicals'
     assert test_league.Teams[224002].City == 'Madison'
-    assert test_league.Teams[224002].Coach == 'Tim DeByl'    
 
 def load_teams_test():
     """
@@ -32,11 +31,9 @@ def load_teams_test():
     
     assert test_league.Teams[224002].Name == "Radicals"
     assert test_league.Teams[224002].City == "Madison"
-    assert test_league.Teams[224002].Coach == "Tim DeByl"
 
     assert test_league.Teams[210001].Name == "Wind Chill"
     assert test_league.Teams[210001].City == "Minnesota"
-    assert test_league.Teams[210001].Coach == "N/A"
     
 def load_all_team_data_test():
     """
@@ -44,9 +41,10 @@ def load_all_team_data_test():
     instance of the team class, and populate its players and their statistics.
     """
     test_league = AUDLclasses.League()
-    test_league.add_teams('single_team_info', games= False)
+    test_league.add_teams('single_team_info', games= False, players=False, stats=False)
     for team in test_league.Teams:
         test_league.Teams[team].add_games('test_game_data.json')
+        test_league.Teams[team].add_players(filename='test_players.json')
 
     assert 1 == len(test_league.Teams)
 
