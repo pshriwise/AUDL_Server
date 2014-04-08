@@ -374,18 +374,39 @@ class Team():
 
         Assumes the ultimate-numbers info has already been loaded.
         """
-        
+        # get player summary data
+        base_url = 'http://www.ultimate-numbers.com/rest/view'
+        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        response = urllib2.urlopen(req)
+        gen_player_data = json.loads(response.read())
+
+        req = urllib2.Request(base_url+"/team/"+str(self.ID)+"stats/player")
+        response = urllib2.urlopen(req)
+        player_stats_data = json.loads(response.read())
+
+        # match player to their Ultimate-Numbers name by their Jersey number
+        for name, player in self.Players.items():
+            for data in gen_player_data:
+                if data['number'] == player.Number:
+                    player.stat_name = data['playerName']
+
+       
+        stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
+        for name, player in self.Players.items():
+           for stat in stats:     
+               player.Stats[stat]  = player_stats_data[stat]
+         
         #Add player's info to new Player class instance
-        self.Players[player_info['playerName']].First_name = player_info['playerName']
-        self.Players[player_info['playerName']].Stats['Assists']  = player_info['assists']
-        self.Players[player_info['playerName']].Stats['Goals']  = player_info['goals']
-        self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
-        self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
-        self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
-        self.Players[player_info['playerName']].Stats['Ds'] = player_info['ds']
+        #self.Players[player_info['playerName']].First_name = player_info['playerName']
+        #self.Players[player_info['playerName']].Stats['Assists']  = player_info['assists']
+        #self.Players[player_info['playerName']].Stats['Goals']  = player_info['goals']
+        #self.Players[player_info['playerName']].Stats['PMC']  = player_info['plusMinusCount']
+        #self.Players[player_info['playerName']].Stats['Drops']  = player_info['drops']
+        #self.Players[player_info['playerName']].Stats['Throwaways']  = player_info['throwaways']
+        #self.Players[player_info['playerName']].Stats['Ds'] = player_info['ds']
         # Check the ultimate-numbers server to see if they have a player number
         # that matches this player. 
-        self.add_player_number(self.Players[player_info['playerName']])
+        #self.add_player_number(self.Players[player_info['playerName']])
 
     def add_player_number(self,player_class):
         """
