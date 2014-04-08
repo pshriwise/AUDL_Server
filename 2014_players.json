@@ -1,0 +1,2738 @@
+[
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":1,
+    "Player First Name":"Scott \n",
+    "Player Last Name":"Roeder"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":2,
+    "Player First Name":"Kevin ",
+    "Player Last Name":"Cocks"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":3,
+    "Player First Name":"Matthew ",
+    "Player Last Name":"Natali"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":4,
+    "Player First Name":"Simon ",
+    "Player Last Name":"Higgins"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":5,
+    "Player First Name":"Sonny ",
+    "Player Last Name":"Zaccaro"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":6,
+    "Player First Name":"Nathan ",
+    "Player Last Name":"White"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":7,
+    "Player First Name":"Nate ",
+    "Player Last Name":"Bosscher"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":8,
+    "Player First Name":"Mark ",
+    "Player Last Name":"Elbogen"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":9,
+    "Player First Name":"Brett ",
+    "Player Last Name":"Peterson"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":10,
+    "Player First Name":"Federico ",
+    "Player Last Name":"Chialvo"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":11,
+    "Player First Name":"Kevin ",
+    "Player Last Name":"Aha"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":12,
+    "Player First Name":"Steven ",
+    "Player Last Name":"Chang"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":13,
+    "Player First Name":"Chris ",
+    "Player Last Name":"Farina"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":14,
+    "Player First Name":"Kris ",
+    "Player Last Name":"Thomson"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":17,
+    "Player First Name":"Nick ",
+    "Player Last Name":"Raish"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":18,
+    "Player First Name":"Greg ",
+    "Player Last Name":"Cohen"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":19,
+    "Player First Name":"Jeff ",
+    "Player Last Name":"Silverman"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":20,
+    "Player First Name":"Kurt ",
+    "Player Last Name":"Gibson "
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":22,
+    "Player First Name":"Marcelo ",
+    "Player Last Name":"Sanchez"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":24,
+    "Player First Name":"Eli ",
+    "Player Last Name":"Kerns"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":27,
+    "Player First Name":"Ashlyn ",
+    "Player Last Name":"Joye"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":33,
+    "Player First Name":"John ",
+    "Player Last Name":"Bergen"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":50,
+    "Player First Name":"Beaufort ",
+    "Player Last Name":"Kittredge"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":51,
+    "Player First Name":"Michael ",
+    "Player Last Name":"Kiyoi"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":55,
+    "Player First Name":"Tyler ",
+    "Player Last Name":"Bacon"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":80,
+    "Player First Name":"Kevin ",
+    "Player Last Name":"Smith"
+  },
+  {
+    "Team":"San Jose Spiders",
+    "Jersey #":99,
+    "Player First Name":"Tim ",
+    "Player Last Name":"Gilligan"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":0,
+    "Player First Name":"Dustin",
+    "Player Last Name":"Rooffener"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":1,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Seiler"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":2,
+    "Player First Name":"Ben",
+    "Player Last Name":"Feldman"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":3,
+    "Player First Name":"Pat",
+    "Player Last Name":"Niles"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":4,
+    "Player First Name":"Ben",
+    "Player Last Name":"Jagt"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":5,
+    "Player First Name":"Alex",
+    "Player Last Name":"Baker"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":6,
+    "Player First Name":"Dan",
+    "Player Last Name":"Miller"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":7,
+    "Player First Name":"Danny",
+    "Player Last Name":"Miesen"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":8,
+    "Player First Name":"David",
+    "Player Last Name":"Shirley"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":10,
+    "Player First Name":"Jay",
+    "Player Last Name":"Drescher"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":11,
+    "Player First Name":"Rob",
+    "Player Last Name":"Johnson"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":12,
+    "Player First Name":"Taylor",
+    "Player Last Name":"VanOosbree"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":13,
+    "Player First Name":"Joshua",
+    "Player Last Name":"Hemmesch"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":14,
+    "Player First Name":"Austin",
+    "Player Last Name":"Lien"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":15,
+    "Player First Name":"David",
+    "Player Last Name":"Wenzel"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":16,
+    "Player First Name":"Brian",
+    "Player Last Name":"Schoenrock"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":17,
+    "Player First Name":"James",
+    "Player Last Name":"Hron"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":18,
+    "Player First Name":"Shane",
+    "Player Last Name":"Hohenstein"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":19,
+    "Player First Name":"Pete",
+    "Player Last Name":"Carr"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":20,
+    "Player First Name":"Neal",
+    "Player Last Name":"Hanke"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":21,
+    "Player First Name":"Eric",
+    "Player Last Name":"Johnson"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":22,
+    "Player First Name":"Dan",
+    "Player Last Name":"Hunt"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":23,
+    "Player First Name":"Mike",
+    "Player Last Name":"Petersen"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":25,
+    "Player First Name":"Jake",
+    "Player Last Name":"Oakley"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":30,
+    "Player First Name":"Marc",
+    "Player Last Name":"Pisansky"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":33,
+    "Player First Name":"Nihal",
+    "Player Last Name":"Bhakta"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":35,
+    "Player First Name":"John",
+    "Player Last Name":"Groess"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":42,
+    "Player First Name":"Brandon",
+    "Player Last Name":"Matis"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":45,
+    "Player First Name":"Jon",
+    "Player Last Name":"Staron"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":66,
+    "Player First Name":"Jake ",
+    "Player Last Name":"McKean"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":71,
+    "Player First Name":"Nick",
+    "Player Last Name":"Simonelli"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":88,
+    "Player First Name":"Patrick",
+    "Player Last Name":"Jensen"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":92,
+    "Player First Name":"Jon",
+    "Player Last Name":"Gaynor"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":93,
+    "Player First Name":"Kyle",
+    "Player Last Name":"Gill"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":94,
+    "Player First Name":"Matt",
+    "Player Last Name":"Young"
+  },
+  {
+    "Team":"Minnesota Wind Chill",
+    "Jersey #":99,
+    "Player First Name":"Timmy",
+    "Player Last Name":"Setterberg"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":2,
+    "Player First Name":"Eric",
+    "Player Last Name":"Converse"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":3,
+    "Player First Name":"Eddie",
+    "Player Last Name":"Mack"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":4,
+    "Player First Name":"Nick",
+    "Player Last Name":"Wetzel"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":7,
+    "Player First Name":"Todd",
+    "Player Last Name":"Grace"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":8,
+    "Player First Name":"Tim",
+    "Player Last Name":"Settles"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":9,
+    "Player First Name":"Travis",
+    "Player Last Name":"Knight"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":11,
+    "Player First Name":"Aaron",
+    "Player Last Name":"Corley"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":12,
+    "Player First Name":"John",
+    "Player Last Name":"Siemer"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":13,
+    "Player First Name":"Jonathan",
+    "Player Last Name":"Patten"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":14,
+    "Player First Name":"Will",
+    "Player Last Name":"Huffer"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":15,
+    "Player First Name":"Aaron",
+    "Player Last Name":"Bacon"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":16,
+    "Player First Name":"Rob",
+    "Player Last Name":"Wharton"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":17,
+    "Player First Name":"Nate",
+    "Player Last Name":"Botti"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":20,
+    "Player First Name":"Ben",
+    "Player Last Name":"Blatz"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":21,
+    "Player First Name":"Ben",
+    "Player Last Name":"Sever"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":22,
+    "Player First Name":"Matt",
+    "Player Last Name":"Muhlenkamp"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":24,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Kula"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":25,
+    "Player First Name":"Jeff",
+    "Player Last Name":"Kula"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":26,
+    "Player First Name":"Patrick",
+    "Player Last Name":"Kaufmann"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":28,
+    "Player First Name":"Todd",
+    "Player Last Name":"Chamberlain"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":35,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Baumann"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":36,
+    "Player First Name":"Neil",
+    "Player Last Name":"Narayan"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":38,
+    "Player First Name":"Joe",
+    "Player Last Name":"Mozloom"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":39,
+    "Player First Name":"Nick",
+    "Player Last Name":"Bissonnette"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":40,
+    "Player First Name":"Mike",
+    "Player Last Name":"Ames"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":42,
+    "Player First Name":"Mark",
+    "Player Last Name":"Fedorenko"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":46,
+    "Player First Name":"Isaac",
+    "Player Last Name":"Jeffries"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":50,
+    "Player First Name":"Alan",
+    "Player Last Name":"Huels"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":52,
+    "Player First Name":"Kane",
+    "Player Last Name":"Olson"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":54,
+    "Player First Name":"Ben",
+    "Player Last Name":"Jansen"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":68,
+    "Player First Name":"Danny",
+    "Player Last Name":"Shonk"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":75,
+    "Player First Name":"Mike",
+    "Player Last Name":"Ford"
+  },
+  {
+    "Team":"Cincinnati Revolution",
+    "Jersey #":99,
+    "Player First Name":"Chris",
+    "Player Last Name":"Powers"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":1,
+    "Player First Name":"Justin",
+    "Player Last Name":"Allen"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":4,
+    "Player First Name":"Joe",
+    "Player Last Name":"Santosus"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":7,
+    "Player First Name":"Taylor",
+    "Player Last Name":"Brooks"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":9,
+    "Player First Name":"Isaiah",
+    "Player Last Name":"Bryant"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":12,
+    "Player First Name":"Joe",
+    "Player Last Name":"Babbino"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":14,
+    "Player First Name":"CJ",
+    "Player Last Name":"Ouelette"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":16,
+    "Player First Name":"Mike ",
+    "Player Last Name":"Drost"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":17,
+    "Player First Name":"Matthew",
+    "Player Last Name":"Stevens"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":18,
+    "Player First Name":"Seth",
+    "Player Last Name":"Canetti"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":19,
+    "Player First Name":"Ben",
+    "Player Last Name":"Ivers"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":24,
+    "Player First Name":"Noah",
+    "Player Last Name":"Saul"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":31,
+    "Player First Name":"Derek",
+    "Player Last Name":"Yan"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":33,
+    "Player First Name":"Jesse",
+    "Player Last Name":"Lieberman"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":64,
+    "Player First Name":"Eliot",
+    "Player Last Name":"Bemis"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":79,
+    "Player First Name":"Matt",
+    "Player Last Name":"Bode"
+  },
+  {
+    "Team":"New York Empire",
+    "Jersey #":80,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Drost"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":0,
+    "Player First Name":"Éric ",
+    "Player Last Name":"St-Amant"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":1,
+    "Player First Name":"Gustavo",
+    "Player Last Name":"Castano"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":5,
+    "Player First Name":"Mathieu",
+    "Player Last Name":"Bordeleau"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":6,
+    "Player First Name":"Chuck ",
+    "Player Last Name":"Cantone"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":7,
+    "Player First Name":"Olivier",
+    "Player Last Name":"Drouin"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":8,
+    "Player First Name":"François-Xavier",
+    "Player Last Name":"Hotte"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":10,
+    "Player First Name":"Jean-Lévy",
+    "Player Last Name":"Champagne"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":11,
+    "Player First Name":"Charles ",
+    "Player Last Name":"Bariteau"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":12,
+    "Player First Name":"Philippe ",
+    "Player Last Name":"Thivierge"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":13,
+    "Player First Name":"Frédéric",
+    "Player Last Name":"Brédard"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":16,
+    "Player First Name":"Tim",
+    "Player Last Name":"Tsang"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":17,
+    "Player First Name":"Antoine",
+    "Player Last Name":"Genest"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":20,
+    "Player First Name":"Nicolas",
+    "Player Last Name":"Brochu"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":21,
+    "Player First Name":"Gabriel ",
+    "Player Last Name":"Monfette"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":22,
+    "Player First Name":"Christian",
+    "Player Last Name":"Mathieu"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":25,
+    "Player First Name":"Nicolas",
+    "Player Last Name":"Vanasse"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":33,
+    "Player First Name":"Yoland ",
+    "Player Last Name":"Cabot"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":36,
+    "Player First Name":"Maxime ",
+    "Player Last Name":"Guy"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":37,
+    "Player First Name":"Shawn ",
+    "Player Last Name":"St-Jean Timmins"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":44,
+    "Player First Name":"Mark ",
+    "Player Last Name":"Zimmerl"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":49,
+    "Player First Name":"Félix-Antoine",
+    "Player Last Name":"Daigle"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":72,
+    "Player First Name":"Jérôme",
+    "Player Last Name":"Boucher"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":77,
+    "Player First Name":"Eric",
+    "Player Last Name":"Dion"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":80,
+    "Player First Name":"Kevin ",
+    "Player Last Name":"Groulx"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":83,
+    "Player First Name":"Cédric",
+    "Player Last Name":"Aubut-Boucher"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":86,
+    "Player First Name":"Jean-Philippe",
+    "Player Last Name":"Riopel"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":87,
+    "Player First Name":"Bruno-Pier",
+    "Player Last Name":"Demers"
+  },
+  {
+    "Team":"Montreal Royal",
+    "Jersey #":95,
+    "Player First Name":"Francis ",
+    "Player Last Name":"Vallée"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":0,
+    "Player First Name":"Sam",
+    "Player Last Name":"Trachtman"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":2,
+    "Player First Name":"Russell",
+    "Player Last Name":"Howd"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":3,
+    "Player First Name":"Chris",
+    "Player Last Name":"Kocher"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":5,
+    "Player First Name":"Josh",
+    "Player Last Name":"Norris"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":6,
+    "Player First Name":"Aaron",
+    "Player Last Name":"Roberts"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":7,
+    "Player First Name":"Ben",
+    "Player Last Name":"Feng"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":8,
+    "Player First Name":"Tyler",
+    "Player Last Name":"Kunsa"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":9,
+    "Player First Name":"Brad",
+    "Player Last Name":"Scott"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":10,
+    "Player First Name":"Jarnail",
+    "Player Last Name":"Bajwa"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":11,
+    "Player First Name":"Jonathan",
+    "Player Last Name":"Neeley"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":13,
+    "Player First Name":"Logan",
+    "Player Last Name":"Rhyne"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":14,
+    "Player First Name":"Justin",
+    "Player Last Name":"Solis"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":17,
+    "Player First Name":"Liam",
+    "Player Last Name":"Shramko"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":18,
+    "Player First Name":"Matthew",
+    "Player Last Name":"Radhe"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":21,
+    "Player First Name":"Alex",
+    "Player Last Name":"Thorne"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":23,
+    "Player First Name":"Mark",
+    "Player Last Name":"Lin"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":27,
+    "Player First Name":"Jose",
+    "Player Last Name":"Maldonado"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":29,
+    "Player First Name":"Danny",
+    "Player Last Name":"Dennin"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":33,
+    "Player First Name":"AJ",
+    "Player Last Name":"Jacoski"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":36,
+    "Player First Name":"Fancisco",
+    "Player Last Name":"Hazera"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":40,
+    "Player First Name":"Jon",
+    "Player Last Name":"Stone"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":42,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Nam"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":45,
+    "Player First Name":"Brett",
+    "Player Last Name":"Matzuka"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":48,
+    "Player First Name":"Peter",
+    "Player Last Name":"Anderson"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":50,
+    "Player First Name":"TJ",
+    "Player Last Name":"Ryan"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":63,
+    "Player First Name":"Jon",
+    "Player Last Name":"Pressimone"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":81,
+    "Player First Name":"Tyler",
+    "Player Last Name":"DeGirolamo"
+  },
+  {
+    "Team":"DC Breeze",
+    "Jersey #":94,
+    "Player First Name":"Dan",
+    "Player Last Name":"Selwyn"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":0,
+    "Player First Name":"Jason",
+    "Player Last Name":"Yun"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":1,
+    "Player First Name":"Alex",
+    "Player Last Name":"Nord"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":2,
+    "Player First Name":"Tayler",
+    "Player Last Name":"Lahey"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":3,
+    "Player First Name":"Clay",
+    "Player Last Name":"Miller"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":4,
+    "Player First Name":"Andrew",
+    "Player Last Name":"Hagen"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":5,
+    "Player First Name":"Charles",
+    "Player Last Name":"Cao"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":6,
+    "Player First Name":"Dan",
+    "Player Last Name":"Gillick"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":7,
+    "Player First Name":"Zane",
+    "Player Last Name":"Rankin"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":8,
+    "Player First Name":"Patrick",
+    "Player Last Name":"Baylis"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":9,
+    "Player First Name":"Cassidy",
+    "Player Last Name":"Rasmussen"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":11,
+    "Player First Name":"Zach",
+    "Player Last Name":"Travis"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":12,
+    "Player First Name":"Sam",
+    "Player Last Name":"Kanner"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":14,
+    "Player First Name":"Sammy",
+    "Player Last Name":"Chatterton-Kirchmeier"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":15,
+    "Player First Name":"Lucas",
+    "Player Last Name":"Young"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":18,
+    "Player First Name":"Eric",
+    "Player Last Name":"Greenwood"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":19,
+    "Player First Name":"Ryo",
+    "Player Last Name":"Kawaoka"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":22,
+    "Player First Name":"Nick",
+    "Player Last Name":"Slovan"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":23,
+    "Player First Name":"Jake",
+    "Player Last Name":"Coleman"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":24,
+    "Player First Name":"Eli",
+    "Player Last Name":"Janin"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":28,
+    "Player First Name":"Cecil",
+    "Player Last Name":"Qiu"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":35,
+    "Player First Name":"Lucas",
+    "Player Last Name":"Dallmann"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":42,
+    "Player First Name":"Brandon",
+    "Player Last Name":"Fein"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":76,
+    "Player First Name":"adam",
+    "Player Last Name":"raty"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":82,
+    "Player First Name":"Greg",
+    "Player Last Name":"Marliave"
+  },
+  {
+    "Team":"SF FlameThrowers",
+    "Jersey #":87,
+    "Player First Name":"Chris",
+    "Player Last Name":"Kosednar"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":0,
+    "Player First Name":"Alexander",
+    "Player Last Name":"Semennikov"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":2,
+    "Player First Name":"Luke",
+    "Player Last Name":"Jesperson"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":3,
+    "Player First Name":"Cam",
+    "Player Last Name":"Bailey"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":4,
+    "Player First Name":"Adlai",
+    "Player Last Name":"Felser"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":6,
+    "Player First Name":"Peter ",
+    "Player Last Name":"Osseward"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":7,
+    "Player First Name":"Greg",
+    "Player Last Name":"Garbern"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":8,
+    "Player First Name":"Grant",
+    "Player Last Name":"Zukowski"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":10,
+    "Player First Name":"Matt",
+    "Player Last Name":"King"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":11,
+    "Player First Name":"Dana",
+    "Player Last Name":"Dunbar"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":12,
+    "Player First Name":"Brad",
+    "Player Last Name":"Houser"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":13,
+    "Player First Name":"Isaac",
+    "Player Last Name":"Davis"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":14,
+    "Player First Name":"Dan",
+    "Player Last Name":"greeley"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":15,
+    "Player First Name":"Chuck ",
+    "Player Last Name":"Hippman"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":17,
+    "Player First Name":"Peter",
+    "Player Last Name":"Bender"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":20,
+    "Player First Name":"John",
+    "Player Last Name":"Klaassen"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":22,
+    "Player First Name":"Evan",
+    "Player Last Name":"Klein"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":23,
+    "Player First Name":"Mike",
+    "Player Last Name":"Cavanaugh"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":24,
+    "Player First Name":"Andrew",
+    "Player Last Name":"Lynch"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":25,
+    "Player First Name":"Gavin",
+    "Player Last Name":"Sing"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":33,
+    "Player First Name":"Adam",
+    "Player Last Name":"Bronstein"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":40,
+    "Player First Name":"Carlisle",
+    "Player Last Name":"Lewis"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":42,
+    "Player First Name":"John",
+    "Player Last Name":"Quant"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":46,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Sturm"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":50,
+    "Player First Name":"Nick",
+    "Player Last Name":"Dare"
+  },
+  {
+    "Team":"Seattle Raptors",
+    "Jersey #":99,
+    "Player First Name":"Matt",
+    "Player Last Name":"Neeley"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":1,
+    "Player First Name":"Keenan",
+    "Player Last Name":"Plew"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":2,
+    "Player First Name":"Rick",
+    "Player Last Name":"Gross"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":3,
+    "Player First Name":"Cameron",
+    "Player Last Name":"Brock"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":4,
+    "Player First Name":"David",
+    "Player Last Name":"Valentine-Elam"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":5,
+    "Player First Name":"Weston",
+    "Player Last Name":"Miller"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":6,
+    "Player First Name":"Joey",
+    "Player Last Name":"Cari"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":7,
+    "Player First Name":"Levi",
+    "Player Last Name":"Jacobs"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":10,
+    "Player First Name":"Luke",
+    "Player Last Name":"Broderick"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":11,
+    "Player First Name":"Ben",
+    "Player Last Name":"Gerroll"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":16,
+    "Player First Name":"Steve",
+    "Player Last Name":"Hightshue"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":17,
+    "Player First Name":"Chris",
+    "Player Last Name":"Malackany"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":19,
+    "Player First Name":"Spencer",
+    "Player Last Name":"Loscar"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":20,
+    "Player First Name":"Nick",
+    "Player Last Name":"Hutton"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":21,
+    "Player First Name":"Peter ",
+    "Player Last Name":"Carleton"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":22,
+    "Player First Name":"Kyle",
+    "Player Last Name":"Cox"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":23,
+    "Player First Name":"Zach",
+    "Player Last Name":"Maynard"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":24,
+    "Player First Name":"Mike",
+    "Player Last Name":"McClain"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":25,
+    "Player First Name":"Blake",
+    "Player Last Name":"Vanderbush"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":30,
+    "Player First Name":"Will",
+    "Player Last Name":"Drumright"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":33,
+    "Player First Name":"Daniel",
+    "Player Last Name":"Butler"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":34,
+    "Player First Name":"Chris",
+    "Player Last Name":"Elworth"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":37,
+    "Player First Name":"Travis",
+    "Player Last Name":"Carpenter"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":39,
+    "Player First Name":"An",
+    "Player Last Name":"Toine"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":40,
+    "Player First Name":"Brian",
+    "Player Last Name":"Ventura"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":44,
+    "Player First Name":"Donovan",
+    "Player Last Name":"Triplett"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":51,
+    "Player First Name":"Nathan",
+    "Player Last Name":"Page"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":55,
+    "Player First Name":"Jason",
+    "Player Last Name":"Cheek"
+  },
+  {
+    "Team":"Indianapolis AlleyCats",
+    "Jersey #":76,
+    "Player First Name":"Jason",
+    "Player Last Name":"Yoder"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":1,
+    "Player First Name":"Matt ",
+    "Player Last Name":"Chun"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":2,
+    "Player First Name":"Doug",
+    "Player Last Name":"Urbino"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":3,
+    "Player First Name":"Brian",
+    "Player Last Name":"Kibler"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":4,
+    "Player First Name":"David",
+    "Player Last Name":"Ferraro"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":5,
+    "Player First Name":"KJ",
+    "Player Last Name":"Dziak"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":6,
+    "Player First Name":"Skylar ",
+    "Player Last Name":"Brunner"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":7,
+    "Player First Name":"Mitch ",
+    "Player Last Name":"Wheeler"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":8,
+    "Player First Name":"Dan",
+    "Player Last Name":"McCune"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":9,
+    "Player First Name":"Jon",
+    "Player Last Name":"Bain"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":10,
+    "Player First Name":"Sean",
+    "Player Last Name":"Donnellan"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":11,
+    "Player First Name":"Will ",
+    "Player Last Name":"SLoan"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":12,
+    "Player First Name":"Mitch ",
+    "Player Last Name":"Steiner"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":13,
+    "Player First Name":"Neal",
+    "Player Last Name":"Butler"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":14,
+    "Player First Name":"Max",
+    "Player Last Name":"Rick"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":17,
+    "Player First Name":"Dave",
+    "Player Last Name":"Abbott"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":20,
+    "Player First Name":"Joe",
+    "Player Last Name":"Becker"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":22,
+    "Player First Name":"Joe",
+    "Player Last Name":"Thompson"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":24,
+    "Player First Name":"Zack",
+    "Player Last Name":"Smith"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":28,
+    "Player First Name":"TJ",
+    "Player Last Name":"Burns"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":29,
+    "Player First Name":"Gabe",
+    "Player Last Name":"Hage"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":33,
+    "Player First Name":"Greg",
+    "Player Last Name":"Wakeman"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":42,
+    "Player First Name":"Tim",
+    "Player Last Name":"Kominos"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":44,
+    "Player First Name":"Connor ",
+    "Player Last Name":"Fortin"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":54,
+    "Player First Name":"Matt",
+    "Player Last Name":"Rybak"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":55,
+    "Player First Name":"Matt",
+    "Player Last Name":"Parenti"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":81,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Quinlan"
+  },
+  {
+    "Team":"Rochester Dragons",
+    "Jersey #":84,
+    "Player First Name":"Sonny",
+    "Player Last Name":"Frazee"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":0,
+    "Player First Name":" Jonathan",
+    "Player Last Name":"Helton"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":1,
+    "Player First Name":" Bob",
+    "Player Last Name":"Liu"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":2,
+    "Player First Name":" Casey",
+    "Player Last Name":"Degnan"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":3,
+    "Player First Name":" Mike",
+    "Player Last Name":"Egan"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":4,
+    "Player First Name":" Alex",
+    "Player Last Name":"Drlica-Wagner"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":5,
+    "Player First Name":" John",
+    "Player Last Name":"Kolb"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":7,
+    "Player First Name":" Brett",
+    "Player Last Name":"Kolinek"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":9,
+    "Player First Name":" Stephan",
+    "Player Last Name":"Mance"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":10,
+    "Player First Name":" Von",
+    "Player Last Name":"Alanguilan"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":11,
+    "Player First Name":" Geoff",
+    "Player Last Name":"Seredneskey"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":13,
+    "Player First Name":" Dane",
+    "Player Last Name":"Olsen"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":15,
+    "Player First Name":" Andrew",
+    "Player Last Name":"Sheehan"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":17,
+    "Player First Name":" Rob",
+    "Player Last Name":"Greenberg"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":18,
+    "Player First Name":" Cullen",
+    "Player Last Name":"Geppert"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":20,
+    "Player First Name":" Greg",
+    "Player Last Name":"Slover"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":21,
+    "Player First Name":" Brodie",
+    "Player Last Name":"Smith"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":24,
+    "Player First Name":" Taylor",
+    "Player Last Name":"Kraemer"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":25,
+    "Player First Name":" Ron",
+    "Player Last Name":"Kubalanza"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":26,
+    "Player First Name":" Kevin",
+    "Player Last Name":"Kelly"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":28,
+    "Player First Name":" Andy",
+    "Player Last Name":"Nielsen"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":29,
+    "Player First Name":" James",
+    "Player Last Name":"Roush"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":31,
+    "Player First Name":" Walden",
+    "Player Last Name":"Nelson"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":37,
+    "Player First Name":" Dan",
+    "Player Last Name":"Williams"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":45,
+    "Player First Name":" Gary",
+    "Player Last Name":"LeDonne"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":51,
+    "Player First Name":" AJ",
+    "Player Last Name":"Nelson"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":58,
+    "Player First Name":" Chris",
+    "Player Last Name":"Vandervoort"
+  },
+  {
+    "Team":"Chicago Wildfire",
+    "Jersey #":99,
+    "Player First Name":" George",
+    "Player Last Name":"Hughes-Strange"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":0,
+    "Player First Name":"Tyrell",
+    "Player Last Name":"Adair"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":1,
+    "Player First Name":"Doug",
+    "Player Last Name":"Stenclik"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":2,
+    "Player First Name":"Hugh",
+    "Player Last Name":"Carey"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":3,
+    "Player First Name":"Michael",
+    "Player Last Name":"Woolley"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":4,
+    "Player First Name":"Matthew",
+    "Player Last Name":"Wilson"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":5,
+    "Player First Name":"Ben",
+    "Player Last Name":"Law"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":7,
+    "Player First Name":"Ben",
+    "Player Last Name":"Jones"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":8,
+    "Player First Name":"Seokhee",
+    "Player Last Name":"Burningham"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":9,
+    "Player First Name":"Isaac ",
+    "Player Last Name":"Conley"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":10,
+    "Player First Name":"Shane",
+    "Player Last Name":"Froebe"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":12,
+    "Player First Name":"Jeremy",
+    "Player Last Name":"Sellers"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":13,
+    "Player First Name":"Trevor",
+    "Player Last Name":"Harper"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":14,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Segal"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":17,
+    "Player First Name":"Chris",
+    "Player Last Name":"Balch"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":19,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Carver"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":20,
+    "Player First Name":"Bradley",
+    "Player Last Name":"Withers"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":23,
+    "Player First Name":"Kenny",
+    "Player Last Name":"Frisch"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":28,
+    "Player First Name":"George",
+    "Player Last Name":"Voellinger"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":30,
+    "Player First Name":"James",
+    "Player Last Name":"Fiala"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":31,
+    "Player First Name":"David",
+    "Player Last Name":"Brooks"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":33,
+    "Player First Name":"Russ",
+    "Player Last Name":"Barr"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":39,
+    "Player First Name":"Jack",
+    "Player Last Name":"Kingsley"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":42,
+    "Player First Name":"Philip",
+    "Player Last Name":"Hornberger"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":47,
+    "Player First Name":"Spencer ",
+    "Player Last Name":"Brown"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":50,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Hahn"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":73,
+    "Player First Name":"Tony",
+    "Player Last Name":"Pehrson"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":79,
+    "Player First Name":"Jimmy",
+    "Player Last Name":"Budnik"
+  },
+  {
+    "Team":"Salt Lake Lions",
+    "Jersey #":87,
+    "Player First Name":"Kenji",
+    "Player Last Name":"Hood"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":0,
+    "Player First Name":"Kyle\\t\\t",
+    "Player Last Name":"Wolf\\t"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":2,
+    "Player First Name":"Ken",
+    "Player Last Name":"Wells"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":4,
+    "Player First Name":"Dustin",
+    "Player Last Name":"Sullivan\\t"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":5,
+    "Player First Name":"Brian\\t",
+    "Player Last Name":"Magerr"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":6,
+    "Player First Name":"Tom\\t             ",
+    "Player Last Name":"Allen\\t               "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":8,
+    "Player First Name":"David\\t",
+    "Player Last Name":"Kelly\\t"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":9,
+    "Player First Name":"Jeff\\t",
+    "Player Last Name":"Kiel"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":10,
+    "Player First Name":"Jimmy",
+    "Player Last Name":"Zuraw       "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":12,
+    "Player First Name":"Danny",
+    "Player Last Name":"Bjorkman\\t  "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":13,
+    "Player First Name":"Chris",
+    "Player Last Name":"Schulze"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":15,
+    "Player First Name":"Nick\\t   ",
+    "Player Last Name":"Patel"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":17,
+    "Player First Name":"Anthony\\t",
+    "Player Last Name":"Bushek"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":18,
+    "Player First Name":"Mike",
+    "Player Last Name":"Reeves\\t          "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":19,
+    "Player First Name":"Stephen\\t     ",
+    "Player Last Name":"Ng\\t           "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":20,
+    "Player First Name":"Steve\\t",
+    "Player Last Name":"Rosso"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":22,
+    "Player First Name":"Casey\\t",
+    "Player Last Name":"Startzell\\t    "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":23,
+    "Player First Name":"Samuel\\t",
+    "Player Last Name":"Esser"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":26,
+    "Player First Name":"Brett\\t ",
+    "Player Last Name":"Sawyer"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":27,
+    "Player First Name":"Mathieu",
+    "Player Last Name":"Savarit-Cosenza    "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":32,
+    "Player First Name":"Colin\\t",
+    "Player Last Name":"Smith"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":35,
+    "Player First Name":"Ryan\\t",
+    "Player Last Name":"Forster"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":43,
+    "Player First Name":"William\\t",
+    "Player Last Name":"Hoehne\\t     "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":48,
+    "Player First Name":"Ben\\t",
+    "Player Last Name":"Broser"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":49,
+    "Player First Name":"Jordan\\t",
+    "Player Last Name":"Winey"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":55,
+    "Player First Name":"Frank",
+    "Player Last Name":"Harris\\t    "
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":57,
+    "Player First Name":"Schuyler\\t",
+    "Player Last Name":"Redding"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":79,
+    "Player First Name":"David\\t",
+    "Player Last Name":"Hampson"
+  },
+  {
+    "Team":"Philadelphia Phoenix",
+    "Jersey #":81,
+    "Player First Name":"Sean\\t",
+    "Player Last Name":"Mott\\t           "
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":1,
+    "Player First Name":"Logan",
+    "Player Last Name":"Stagg"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":2,
+    "Player First Name":"Evan ",
+    "Player Last Name":"Hughes"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":4,
+    "Player First Name":"Andrew ",
+    "Player Last Name":"Lucarotti"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":6,
+    "Player First Name":"Danny",
+    "Player Last Name":"Hunt"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":8,
+    "Player First Name":"Aaron",
+    "Player Last Name":"Del Real"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":11,
+    "Player First Name":"Michael",
+    "Player Last Name":"Mansfield"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":13,
+    "Player First Name":"Ben",
+    "Player Last Name":"Murphy"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":14,
+    "Player First Name":"Monte",
+    "Player Last Name":"Jones"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":16,
+    "Player First Name":"Marc",
+    "Player Last Name":"Soldini"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":17,
+    "Player First Name":"Connor",
+    "Player Last Name":"Lukas"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":19,
+    "Player First Name":"Bjarne",
+    "Player Last Name":"Laursen"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":21,
+    "Player First Name":"Patrick",
+    "Player Last Name":"Krantz"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":22,
+    "Player First Name":"John",
+    "Player Last Name":"Abela"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":23,
+    "Player First Name":"Andy ",
+    "Player Last Name":"Barnhart"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":24,
+    "Player First Name":"Zach",
+    "Player Last Name":"Barnhart"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":25,
+    "Player First Name":"Brendan",
+    "Player Last Name":"Schwalm"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":33,
+    "Player First Name":"Eric",
+    "Player Last Name":"Hubbard"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":35,
+    "Player First Name":"Joseph",
+    "Player Last Name":"Besser"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":84,
+    "Player First Name":"Michael",
+    "Player Last Name":"Weber"
+  },
+  {
+    "Team":"Detroit Mechanix",
+    "Jersey #":85,
+    "Player First Name":"Dafeng",
+    "Player Last Name":"Chen"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":1,
+    "Player First Name":"William",
+    "Player Last Name":"Vu"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":4,
+    "Player First Name":"Joshua",
+    "Player Last Name":"Tan"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":5,
+    "Player First Name":"Tim",
+    "Player Last Name":"Lavis"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":6,
+    "Player First Name":"Richie",
+    "Player Last Name":"Tam"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":8,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Lore"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":9,
+    "Player First Name":"Pacho",
+    "Player Last Name":"Mogollon"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":11,
+    "Player First Name":"Darren",
+    "Player Last Name":"Wu"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":12,
+    "Player First Name":"Samson",
+    "Player Last Name":"Hoy"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":13,
+    "Player First Name":"Einer",
+    "Player Last Name":"Lim"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":14,
+    "Player First Name":"Mads ",
+    "Player Last Name":"Gotlieb-Jensen"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":15,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Sun       "
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":16,
+    "Player First Name":"Renaldo ",
+    "Player Last Name":"Artega"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":17,
+    "Player First Name":"Max ",
+    "Player Last Name":"Hunter"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":19,
+    "Player First Name":"Taylor",
+    "Player Last Name":"Nadon"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":28,
+    "Player First Name":"Ryan",
+    "Player Last Name":"Lee"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":31,
+    "Player First Name":"Jasper",
+    "Player Last Name":"Lu"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":35,
+    "Player First Name":"Pierre",
+    "Player Last Name":"Yves-Lavertu"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":41,
+    "Player First Name":"Thomas",
+    "Player Last Name":"Rowe"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":51,
+    "Player First Name":"Brian",
+    "Player Last Name":"Baker"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":55,
+    "Player First Name":"Matt",
+    "Player Last Name":"Harvey"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":66,
+    "Player First Name":"Gyorgy",
+    "Player Last Name":"Aponte"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":68,
+    "Player First Name":"Ted",
+    "Player Last Name":"Chun"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":77,
+    "Player First Name":"Graham",
+    "Player Last Name":"Landon"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":85,
+    "Player First Name":"Derek",
+    "Player Last Name":"Fenton"
+  },
+  {
+    "Team":"Vancouver Riptide",
+    "Jersey #":97,
+    "Player First Name":"Edward",
+    "Player Last Name":"Guo"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":2,
+    "Player First Name":"Michael",
+    "Player Last Name":"Jones"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":3,
+    "Player First Name":"Eric",
+    "Player Last Name":"Blanchard"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":6,
+    "Player First Name":"Liam",
+    "Player Last Name":"Bradford"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":7,
+    "Player First Name":"Karl",
+    "Player Last Name":"Loiseau"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":9,
+    "Player First Name":"Steve",
+    "Player Last Name":"Armitage"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":10,
+    "Player First Name":"Trevor",
+    "Player Last Name":"Henry"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":12,
+    "Player First Name":"Remi",
+    "Player Last Name":"Ojo Jr."
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":13,
+    "Player First Name":"Jonathon",
+    "Player Last Name":"Martin"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":15,
+    "Player First Name":"Jacky",
+    "Player Last Name":"Hau"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":16,
+    "Player First Name":"Phil",
+    "Player Last Name":"Watanabe"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":17,
+    "Player First Name":"Isaiah",
+    "Player Last Name":"Masek-Kelly"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":18,
+    "Player First Name":"Anatoly",
+    "Player Last Name":"Vasilyev"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":19,
+    "Player First Name":"Thomson",
+    "Player Last Name":"McKnight"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":20,
+    "Player First Name":"Jeff",
+    "Player Last Name":"Lindquist"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":21,
+    "Player First Name":"Geoff",
+    "Player Last Name":"Powell"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":26,
+    "Player First Name":"Andrew",
+    "Player Last Name":"Watts"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":43,
+    "Player First Name":"Gord",
+    "Player Last Name":"Harrison"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":53,
+    "Player First Name":"Kevin",
+    "Player Last Name":"Horgan"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":61,
+    "Player First Name":"Sachin",
+    "Player Last Name":"Raina"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":64,
+    "Player First Name":"Nima",
+    "Player Last Name":"Mostaghimi"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":74,
+    "Player First Name":"Ricky",
+    "Player Last Name":"Szeto"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":81,
+    "Player First Name":"Adrian",
+    "Player Last Name":"Yearwood"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":84,
+    "Player First Name":"Eamon",
+    "Player Last Name":"Pinto"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":89,
+    "Player First Name":"Mark",
+    "Player Last Name":"Lloyd"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":91,
+    "Player First Name":"Cam",
+    "Player Last Name":"Harris"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":93,
+    "Player First Name":"Jaret",
+    "Player Last Name":"Meron"
+  },
+  {
+    "Team":"Toronto Rush",
+    "Jersey #":44,
+    "Player First Name":"Andy ",
+    "Player Last Name":"Kubinec"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":7,
+    "Player First Name":"Tom ",
+    "Player Last Name":"Annen"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":11,
+    "Player First Name":"Andrew ",
+    "Player Last Name":"Brown"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":1,
+    "Player First Name":"Benjy",
+    "Player Last Name":"Keren"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":68,
+    "Player First Name":"Ben ",
+    "Player Last Name":"Nelson"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":6,
+    "Player First Name":"Bill ",
+    "Player Last Name":"Everhart"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":44,
+    "Player First Name":"Jadon ",
+    "Player Last Name":"Scullion"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":4,
+    "Player First Name":" Pat ",
+    "Player Last Name":" Shriwise"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":29,
+    "Player First Name":" Nate ",
+    "Player Last Name":" Thibedeau"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":21,
+    "Player First Name":"Dave ",
+    "Player Last Name":" Wiseman"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":5,
+    "Player First Name":" Adrian",
+    "Player Last Name":" Reif"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":10,
+    "Player First Name":"David ",
+    "Player Last Name":"Schleicher"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":80,
+    "Player First Name":"Kevin ",
+    "Player Last Name":" Pettit-Scantling"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":12,
+    "Player First Name":" Scott ",
+    "Player Last Name":" Richgels"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":27,
+    "Player First Name":"Mike ",
+    "Player Last Name":"Swain"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":3,
+    "Player First Name":"Seth ",
+    "Player Last Name":"Meyer"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":26,
+    "Player First Name":"Peter ",
+    "Player Last Name":" Graffy"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":55,
+    "Player First Name":" Kelsen ",
+    "Player Last Name":"Alexander"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":2,
+    "Player First Name":"Andrew ",
+    "Player Last Name":" Meshnick"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":13,
+    "Player First Name":" Brian ",
+    "Player Last Name":"Hart"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":48,
+    "Player First Name":"Thomas ",
+    "Player Last Name":" Coolidge"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":9,
+    "Player First Name":"Joshua ",
+    "Player Last Name":" Wilson"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":15,
+    "Player First Name":"Matt ",
+    "Player Last Name":"Weber"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":17,
+    "Player First Name":"Keith ",
+    "Player Last Name":"Garner"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":19,
+    "Player First Name":"\nKevin ",
+    "Player Last Name":"Brown"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":8,
+    "Player First Name":"Adam ",
+    "Player Last Name":"Drews"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":24,
+    "Player First Name":"Davis ",
+    "Player Last Name":"Whitehead"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":88,
+    "Player First Name":"Nate",
+    "Player Last Name":" Volkman"
+  },
+  {
+    "Team":"Madion Radicals",
+    "Jersey #":23,
+    "Player First Name":"Dan",
+    "Player Last Name":"Rowan"
+  }
+]
