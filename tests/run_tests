@@ -14,3 +14,6 @@ nosetests load_tests.py
 
 
 nosetests system_test.py
+
+
+nosetests media_tests.py
