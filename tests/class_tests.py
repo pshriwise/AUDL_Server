@@ -6,7 +6,9 @@ sys.path.append('..')
 import AUDLclasses
 import MediaClasses
 import os
+from datetime import datetime as dt
 os.chdir('../')
+import gc
 
 
 def test_League_attrs():
@@ -72,6 +74,84 @@ def test_league_stats():
     "Leaguewide top five stats was not populated. Length is zero."
 '''
 
+def test_league_ret_upcoming_games():
+
+    test_league = ret_upcoming_games_setup()
+
+    # test date is 8 days before game, should return one game tuple
+    test_date = dt(2014,5,1)
+
+    game_data = test_league.return_upcoming_games(now=test_date.date())
+
+    assert type(game_data) is list
+    assert len(game_data) == 1
+    assert len(game_data[0]) == 6, len(game_data[0])
+
+    # test date is 1 year before any games, should return empty list
+    test_date = dt(2013,5,1)
+
+    game_data = test_league.return_upcoming_games(now=test_date.date())
+
+    assert type(game_data) is list
+    assert len(game_data) == 0
+
+    #test date is one year after all games, should return one game
+    test_date = dt(2015,5,1)
+
+    game_data = test_league.return_upcoming_games(now=test_date.date())
+
+    assert type(game_data) is list
+    assert len(game_data) == 1
+    assert len(game_data[0]) == 6, len(game_data[0])
+
+    #changed default value of days_ahead to 3, should return empty list
+    test_date = dt(2014,5,1)
+
+    game_data = test_league.return_upcoming_games(days_ahead=3,now=test_date.date())
+
+    assert type(game_data) is list
+    assert len(game_data) == 0
+
+    test_date = dt(2014,5,1)
+
+    game_data = test_league.return_upcoming_games(now=test_date.date(),scores=True)
+    
+    assert type(game_data) is list
+    assert len(game_data) == 1
+    assert len(game_data[0]) == 7, len(game_data[0])
+
+    test_date = dt(2014,5,1)
+
+    game_data = test_league.return_upcoming_games(teams=6,now=test_date.date(),scores=True)
+
+    assert type(game_data) is list
+    assert len(game_data) == 0
+    
+    del test_league
+    test_league = None
+
+    
+
+def ret_upcoming_games_tear_down(test_league):
+    
+    for id,team  in test_league.Teams.items():
+        for date,game in team.Games.items(): 
+            del game
+        del team
+
+    del test_league
+
+
+def ret_upcoming_games_setup():
+
+    test_league = AUDLclasses.League()
+
+    test_league.add_teams('./tests/single_team_info',games=False,players=False,stats=False)
+
+    test_league.Teams[224002].add_games('./tests/test_game_data.json')
+
+    return test_league
+
 def test_team_attrs():
 
     test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
@@ -107,6 +187,80 @@ def test_team_add_players():
     assert type(test_team.Players) is dict    
 
 
+def test_pop_team_stats():
+
+    test_league = pop_team_stats_setup()
+
+    test_league.Teams[224002].add_players("./tests/test_players.json")
+
+    assert 6 == len(test_league.Teams[224002].Players)
+
+    test_league.Teams[224002].Players['Bill Everhart'].Stats={ 'goals'  : 10,
+                                                               'assists':  10,
+                                                               'plusMinusCount' : 10,
+                                                               'drops' : 10,
+                                                               'throwaways': 10,
+                                                               'ds' : 10
+                                                             }
+                                                   
+    test_league.Teams[224002].Players['Ben Nelson'].Stats={ 'goals'  : 9,
+                                                               'assists':  9,
+                                                               'plusMinusCount' : 9,
+                                                               'drops' : 9,
+                                                               'throwaways': 9,
+                                                               'ds' : 9
+                                                             }
+    test_league.Teams[224002].Players['Tom Annen'].Stats={ 'goals'  : 8,
+                                                               'assists':  8,
+                                                               'plusMinusCount' : 8,
+                                                               'drops' : 8,
+                                                               'throwaways': 8,
+                                                               'ds' : 8
+                                                             }
+    test_league.Teams[224002].Players['Benjy Keren'].Stats={ 'goals'  : 7,
+                                                               'assists':  7,
+                                                               'plusMinusCount' : 7,
+                                                               'drops' : 7,
+                                                               'throwaways': 7,
+                                                               'ds' : 7
+                                                             }
+    test_league.Teams[224002].Players['Jadon Scullion'].Stats={ 'goals'  : 6,
+                                                               'assists':  6,
+                                                               'plusMinusCount' : 6,
+                                                               'drops' : 6,
+                                                               'throwaways': 6,
+                                                               'ds' : 6
+                                                             }
+    test_league.Teams[224002].Players['Andrew Brown'].Stats={ 'goals'  : 5,
+                                                               'assists':  5,
+                                                               'plusMinusCount' : 5,
+                                                               'drops' : 5,
+                                                               'throwaways': 5,
+                                                               'ds' : 5
+                                                             }
+
+
+    test_league.Teams[224002].populate_team_stats()
+    
+    assert type(test_league.Teams[224002].Top_Fives) is list
+    assert 7== len(test_league.Teams[224002].Top_Fives), len(test_league.Teams[224002].Top_Fives)
+    assert test_league.Teams[224002].Top_Fives[0] == ("Madison","Radicals",224002)
+    expected_stats_out=[("Bill Everhart",10),("Ben Nelson",9),("Tom Annen",8),("Benjy Keren",7),("Jadon Scullion",6)]
+    assert test_league.Teams[224002].Top_Fives[1] == ("Assists",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[2] == ("Goals",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[3] == ("PMC",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[4] == ("Drops",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[5] == ("Throwaways",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[6] == ("Ds",expected_stats_out)
+
+
+def pop_team_stats_setup():
+
+    test_league=AUDLclasses.League()
+
+    test_league.add_teams("./tests/single_team_info",games=False)
+
+    return test_league
 
 def test_player_attrs():
 

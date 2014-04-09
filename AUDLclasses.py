@@ -87,6 +87,7 @@ class League():
         for team in self.Teams:
             if players: self.Teams[team].add_players()
             if games:   self.Teams[team].add_games()
+            #if stats:   self.Teams[team].add_player_info()
             if stats:   self.Teams[team].populate_team_stats()
 
     def get_news(self):
@@ -159,7 +160,7 @@ class League():
         return False,None
         
 
-    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False):
+    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False, now=None):
         """
         Returns any games occurring within 2 weeks of the current date.
 
@@ -170,6 +171,9 @@ class League():
         If no teams are passed to the function, return this information
         for all teams in the league
         """
+        # type-check of teams var
+        if type(teams) is not list and teams != None:
+            return []
 
         data_out = []
         # If no teams are passed in, add all available teams to the schedule
@@ -201,7 +205,7 @@ class League():
                 score = "0-0"             
 
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
-            now = dt.today().date()
+            now = dt.today().date() if now == None else now
             delta = game_date-now
             if delta.days > days_ahead:
                 pass
@@ -322,7 +326,7 @@ class Team():
          self.City = City
         
 
-    def add_players(self, filename='2014_players.json'):
+    def add_players(self, filename='2014_players.json',stats=True):
         """
         Adds players to the Team class attribute 'Players' from the json file.
         """
@@ -344,7 +348,7 @@ class Team():
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
 
-    def add_player_info(self, player_info):
+    def add_player_info(self):
         """
         Adds player name, number, stats, etc. to a player class. 
 
@@ -364,15 +368,17 @@ class Team():
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
+                #print data['number'], player.Number, self.Name, player.full_name()
                 if data['number'] == str(player.Number):
-                    player.stat_name = data['name']
+                    print data['name']
+                    self.Players[name].stat_name = data['name']
 
         stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
-        for name, player in self.Players.items():
-           for player in player_stats_data:
-               if player['playerName'] == player.stat_name:
+        for name,player in self.Players.items():
+           for player_stats in player_stats_data:
+               if  hasattr(player,'stat_name') and player_stats['playerName'] == player.stat_name:
                    for stat in stats:
-                       player.Stats[stat]  = player_stats_data[stat] if stat in player else 0
+                       player.Stats[stat]  = player_stats[stat] if stat in player_stats else 0
 
     def add_player_number(self,player_class):
         """
