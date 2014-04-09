@@ -439,7 +439,8 @@ class Team():
         for player in self.Players: 
             p = self.Players[player]
             if "Anon" not in p.First_name:
-                rost.append((p.First_name + " "+ p.Last_name,p.Number))
+                num = str(p.Number) if int(p.Number) != 0 else "00"
+                rost.append((p.First_name + " "+ p.Last_name,num))
         # sort the list by player number
         rost.sort(key=lambda set: int(set[1]))
         rost=[(self.City, self.Name, self.ID)]+rost 
