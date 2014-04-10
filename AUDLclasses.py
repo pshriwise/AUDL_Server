@@ -304,6 +304,22 @@ class League():
             data_out.append([div,game_scores])
         return data_out
 
+    def standings(self):
+       
+        standings_list=[]
+        for div,teams in self.Divisions.items():
+            div_list=[]
+            print teams
+            for team in teams:
+                t = self.Teams[team]
+                team_rec_tup = (t.full_name(),t.ID, t.record())
+                div_list.append(team_rec_tup)
+            div_list.sort(key= lambda set: (set[2][0],set[2][1],set[2][2]), reverse=True)
+            div_list.insert(0,div)
+            standings_list.append(div_list)
+
+        return standings_list
+
 class Team():
     """
     This class keeps all of the statistical information 
