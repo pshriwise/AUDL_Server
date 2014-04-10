@@ -87,7 +87,7 @@ class League():
         for team in self.Teams:
             if players: self.Teams[team].add_players()
             if games:   self.Teams[team].add_games()
-            if stats:   self.Teams[team].add_player_info()
+            if stats:   self.Teams[team].add_player_stats()
             if stats:   self.Teams[team].populate_team_stats()
         teams_info.close()
     def get_news(self):
@@ -365,7 +365,7 @@ class Team():
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
         f.close()
-    def add_player_info(self):
+    def add_player_stats(self):
         """
         Adds player name, number, stats, etc. to a player class. 
 
