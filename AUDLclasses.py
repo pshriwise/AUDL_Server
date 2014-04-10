@@ -584,6 +584,8 @@ class Team():
         else:
             return False, None
     def record(self):
+
+        if not hasattr(self,'Games'): return None
         wins = 0
         losses = 0
         point_diff = 0

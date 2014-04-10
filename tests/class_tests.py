@@ -371,6 +371,13 @@ def test_team_record_method():
     assert 2 == test_record[1], test_record[1]
     assert 1 == test_record[2], test_record[2]
 
+    # Test a team without games
+    test_team = AUDLclasses.Team(None,206002,"Breeze","DC")
+
+    test_record = test_team.record()
+
+    assert None == test_record, test_record
+
 def team_record_setup():
 
     test_team=AUDLclasses.Team(None,224002,"Radicals","Madison")
