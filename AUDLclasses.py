@@ -86,10 +86,11 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
-            if games:   self.Teams[team].add_games(), self.Teams[team].get_game_ids()
+            if games:   self.Teams[team].add_games(), self.Teams[team].get_games_info()
             if stats:   self.Teams[team].add_player_stats()
             if stats:   self.Teams[team].populate_team_stats()
         teams_info.close()
+
     def get_news(self):
         """
         Gets all news articles for the rss feeds provided to the League class
@@ -309,7 +310,7 @@ class League():
         standings_list=[]
         for div,teams in self.Divisions.items():
             div_list=[]
-            print teams
+            #print teams
             for team in teams:
                 t = self.Teams[team]
                 rec = t.record()
@@ -320,6 +321,10 @@ class League():
             standings_list.append(div_list)
 
         return standings_list
+
+    def update_games(self):
+        for name,team in self.Teams.items():
+            team.get_games_info()
 
 class Team():
     """
@@ -629,7 +634,7 @@ class Team():
 
         return self.City + " " + self.Name
 
-    def get_game_ids(self):
+    def get_games_info(self):
 
         # corner case for teams whose information requires authentication (for now)
         if self.full_name() == "Seattle Raptors" or self.full_name() == "New York Empire": return 0
@@ -637,7 +642,7 @@ class Team():
         base_url = 'http://www.ultimate-numbers.com/rest/view'
 
         full_url = base_url + "/team/" + str(self.ID) + "/games"
-        print full_url
+
         req = urllib2.Request(full_url)
 
         response = urllib2.urlopen(req)
@@ -653,6 +658,7 @@ class Team():
                games[game].match_game(data, False)
             else:
                print "GAME DOESN'T BELONG TO THIS TEAM"
+
 
 
 class Player():
@@ -722,7 +728,7 @@ class Game():
     def match_game(self, games_dict, home):
         
         game_date = dt.strptime(self.date, "%m/%d/%y")
-        print games_dict
+
         for game in games_dict:
             if "timestamp" in game.keys():
                 dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
@@ -740,7 +746,7 @@ class Game():
     def set_status(self):
         
         if hasattr(self,'timestamp'):
-            print self.timestamp
+            #print self.timestamp
             tstamp = dt.strptime(self.timestamp, "%Y-%m-%d %H:%M")
             if (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) < 6:
                 self.status=1
