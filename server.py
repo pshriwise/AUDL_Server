@@ -7,7 +7,6 @@ import image_get as ig
 import youtube as yt
 import threading
 
-
 # Parse a given input path to the server
 def path_parse(path):
 
@@ -133,7 +132,11 @@ def main():
     print "serving at" , IP, "port", PORT
     httpd.serve_forever()
 
-if __name__ == "__main__":
-    threading.Timer(60,AUDL.update_games()).start()
+def refresh():
+    threading.Timer(60,refresh).start()
+    AUDL.update_games()
     print "refreshing server..."
+
+if __name__ == "__main__":
+    refresh()
     main()
