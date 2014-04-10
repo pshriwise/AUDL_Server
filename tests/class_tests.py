@@ -359,4 +359,48 @@ def test_league_videos():
     assert True == hasattr(test_league, 'Videos')
 
         
+def test_team_record_method():
+
+    test_team = team_record_setup()
+
+    test_record = test_team.record()    
+
+    assert tuple is type(test_record), type(test_record)
+    assert 3 == len(test_record), len(test_record)
+    assert 3 == test_record[0], test_record[0]
+    assert 2 == test_record[1], test_record[1]
+    assert 1 == test_record[2], test_record[2]
+
+def team_record_setup():
+
+    test_team=AUDLclasses.Team(None,224002,"Radicals","Madison")
+    test_team.Games={}
+
     
+
+    test_team.Games['4/10/13']=AUDLclasses.Game('4/10/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/10/13'].home_score = 23
+    test_team.Games['4/10/13'].away_score = 22
+
+    test_team.Games['4/17/13']=AUDLclasses.Game('4/17/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/17/13'].home_score = 23
+    test_team.Games['4/17/13'].away_score = 22
+
+    test_team.Games['4/24/13']=AUDLclasses.Game('4/24/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/24/13'].home_score = 23
+    test_team.Games['4/24/13'].away_score = 25
+
+    test_team.Games['5/1/13']=AUDLclasses.Game('5/1/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['5/1/13'].home_score = 23
+    test_team.Games['5/1/13'].away_score = 25
+
+    test_team.Games['5/8/13']=AUDLclasses.Game('5/8/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['5/8/13'].home_score = 28
+    test_team.Games['5/8/13'].away_score = 25
+
+    return test_team
+
+
+
+
+
