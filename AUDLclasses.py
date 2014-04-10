@@ -312,9 +312,10 @@ class League():
             print teams
             for team in teams:
                 t = self.Teams[team]
-                team_rec_tup = (t.full_name(),t.ID, t.record())
+                rec = t.record()
+                team_rec_tup = (t.full_name(),rec[0], rec[1], rec[2])
                 div_list.append(team_rec_tup)
-            div_list.sort(key= lambda set: (set[2][0],set[2][1],set[2][2]), reverse=True)
+            div_list.sort(key= lambda set: (set[1],set[2],set[3]), reverse=True)
             div_list.insert(0,div)
             standings_list.append(div_list)
 
