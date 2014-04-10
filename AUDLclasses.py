@@ -86,7 +86,7 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
-            if games:   self.Teams[team].add_games()
+            if games:   self.Teams[team].add_games(), self.Teams[team].get_game_ids()
             if stats:   self.Teams[team].add_player_stats()
             if stats:   self.Teams[team].populate_team_stats()
         teams_info.close()
@@ -631,11 +631,13 @@ class Team():
 
     def get_game_ids(self):
 
+        # corner case for teams whose information requires authentication (for now)
+        if self.full_name() == "Seattle Raptors" or self.full_name() == "New York Empire": return 0
         #get the list of games for the team from ultimate-numbers
         base_url = 'http://www.ultimate-numbers.com/rest/view'
 
         full_url = base_url + "/team/" + str(self.ID) + "/games"
-
+        print full_url
         req = urllib2.Request(full_url)
 
         response = urllib2.urlopen(req)
@@ -720,11 +722,16 @@ class Game():
     def match_game(self, games_dict, home):
         
         game_date = dt.strptime(self.date, "%m/%d/%y")
+        print games_dict
         for game in games_dict:
-            dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
-            if (game_date.date()-dict_date.date()) < timedelta(days = 1):
-                self.home_score = game['ours'] if home else game['theirs']
-                self.away_score = game['theirs'] if home else game['ours']
-                print self.home_score, self.away_score
-
+            if "timestamp" in game.keys():
+                dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+                tstamp = game['timestamp']
+                if (game_date.date()-dict_date.date()) < timedelta(days = 1):
+                    self.home_score = game['ours'] if home else game['theirs']
+                    self.away_score = game['theirs'] if home else game['ours']
+                    self.timestamp = tstamp
+                #print self.home_score, self.away_score
+            else:
+                pass
           
