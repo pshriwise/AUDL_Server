@@ -36,6 +36,7 @@ def test_league_methods():
         assert type(team) is int
         assert isinstance(test_league.Teams[team], AUDLclasses.Team)
         assert type(test_league.Teams) is dict
+        
 
 def test_league_get_news():
 
@@ -59,6 +60,7 @@ def test_league_get_videos():
     assert type(test_league.Videos) is Videos, \
     "League's Video attribute is not a Video object, it is %s" % type(test_league.News)
 
+
 def test_league_stats():
     test_league = AUDLclasses.League()
 
@@ -69,8 +71,8 @@ def test_league_stats():
 
     assert len(test_league.Top_fives) is not 0, \
     "Leaguewide top five stats was not populated. Length is zero."
-'''
 
+'''
 def test_league_ret_upcoming_games():
 
     test_league = ret_upcoming_games_setup()
@@ -408,6 +410,38 @@ def team_record_setup():
     return test_team
 
 
+def test_team_roster():
+    test_league = team_roster_setup()
 
+    test_league.Teams[224002].add_players("test_players.json")
+    
+    roster = test_league.Teams[224002].roster()
 
+    assert list is type(roster)
 
+    assert 7 == len(roster)
+
+    
+    assert roster[0] == ('Madison', 'Radicals', 224002)
+
+    assert roster[0][0] == 'Madison'
+
+    assert roster[1] == ('Benjy Keren', '1')
+    assert roster[2] == ('Bill Everhart', '6')
+    assert roster[3] == ('Tom Annen', '7')
+    assert roster[4] == ('Andrew Brown', '11')
+    assert roster[5] == ('Jadon Scullion', '44')
+    assert roster[6] == ('Ben Nelson', '68')
+
+    assert int(roster[1][1]) < int(roster[2][1])
+    assert int(roster[2][1]) < int(roster[3][1])
+    assert int(roster[3][1]) < int(roster[4][1])
+    assert int(roster[4][1]) < int(roster[5][1])
+    assert int(roster[5][1]) < int(roster[6][1])
+
+def team_roster_setup():
+    test_league=AUDLclasses.League()
+
+    test_league.add_teams("single_team_info",games=False,players=False,stats=False)
+
+    return test_league
