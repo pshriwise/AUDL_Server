@@ -319,10 +319,10 @@ def test_game_exist():
     # Hand the function a false date...
     assert (False, None) == team.game_exist('4/15/11')
 
-    key = unicode('4/27/13')
+    key = unicode('4/13/14')
     game_inst = team.Games[key]
     # Hand the function a correct date
-    assert (True, game_inst) == team.game_exist('4/27/13')
+    assert (True, game_inst) == team.game_exist('4/13/14')
 
 
 def test_league_game_exist():
