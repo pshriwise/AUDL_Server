@@ -87,7 +87,7 @@ class League():
         for team in self.Teams:
             if players: self.Teams[team].add_players()
             if games:   self.Teams[team].add_games()
-            #if stats:   self.Teams[team].add_player_info()
+            if stats:   self.Teams[team].add_player_info()
             if stats:   self.Teams[team].populate_team_stats()
         teams_info.close()
     def get_news(self):
@@ -371,9 +371,12 @@ class Team():
 
         Assumes the ultimate-numbers info has already been loaded.
         """
+        # These two teams currently have passwords, until we have access to their info, do nothing. 
+        if self.full_name() == "Seattle Raptors" or self.full_name() == "New York Empire" : return 0
         # get player summary data
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        # print base_url+"/team/"+str(self.ID)+"/players/"
         response1 = urllib2.urlopen(req1)
         gen_player_data = json.loads(response1.read())
 
@@ -385,7 +388,7 @@ class Team():
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
-                #print data['number'], player.Number, self.Name, player.full_name()
+                # print data['number'], player.Number, self.Name, player.full_name()
                 if data['number'] == str(player.Number):
                     print data['name']
                     self.Players[name].stat_name = data['name']
@@ -493,8 +496,9 @@ class Team():
                 t = game['time']
                 y = game['Year']
                 opp = game['opponent']
-                if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
-                if opp.strip() == "San Jose Spiders": print opp, game['team'], d
+                #debug stuff
+                #if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
+                #if opp.strip() == "San Jose Spiders": print opp, game['team'], d
                 if game['home/away'] == 'Home':
                     ht = game['team'].strip()
                     at = game['opponent'].strip()
