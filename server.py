@@ -23,13 +23,10 @@ def path_parse(path):
                   
 def path_data(path, League):
 
-    # Dummy info for the Standings Page
-    Stand_list = [["Midwest Division", ('Madison Radicals', 10, 3),('Chicago Wildfire', 9, 4)],["Eastern Division",("DC Breeze", 10, 3),("New York Empire", 9, 4)]]
- 
     #Create dictionary for main information:
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
-                   'Standings' : Stand_list,
+                   'Standings' : League.standings(),
                    'Scores'    : League.return_scores_page(),
                    'Schedule'  : League.return_schedules(),
                    'Videos'    : League.get_videos(),
