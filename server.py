@@ -5,6 +5,7 @@ import AUDLclasses
 import json
 import image_get as ig
 import youtube as yt
+import threading
 
 
 # Parse a given input path to the server
@@ -134,3 +135,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    threading.Timer(60,AUDL.update_games()).start()
+    print "refreshing server..."
