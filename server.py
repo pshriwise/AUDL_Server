@@ -134,6 +134,6 @@ def main():
     httpd.serve_forever()
 
 if __name__ == "__main__":
-    main()
     threading.Timer(60,AUDL.update_games()).start()
     print "refreshing server..."
+    main()
