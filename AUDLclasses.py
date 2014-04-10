@@ -89,7 +89,7 @@ class League():
             if games:   self.Teams[team].add_games()
             #if stats:   self.Teams[team].add_player_info()
             if stats:   self.Teams[team].populate_team_stats()
-
+        teams_info.close()
     def get_news(self):
         """
         Gets all news articles for the rss feeds provided to the League class
@@ -347,7 +347,7 @@ class Team():
                 num = player['Jersey #']
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
-
+        f.close()
     def add_player_info(self):
         """
         Adds player name, number, stats, etc. to a player class. 
@@ -503,6 +503,7 @@ class Team():
             
         
                 #self.Games[game['date']] = Game(d,t,y,ht,at)
+        schedule.close()
     def populate_team_stats(self):
        """
        Gets the top five players for each stat in stat_list (hardcoded)
