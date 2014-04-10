@@ -390,7 +390,7 @@ class Team():
             for data in gen_player_data:
                 # print data['number'], player.Number, self.Name, player.full_name()
                 if data['number'] == str(player.Number):
-                    print data['name']
+                    #print data['name']
                     self.Players[name].stat_name = data['name']
 
         stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
