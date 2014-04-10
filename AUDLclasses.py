@@ -86,9 +86,10 @@ class League():
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
-            if games:   self.Teams[team].add_games()
-            #if stats:   self.Teams[team].add_player_info()
+            if games:   self.Teams[team].add_games(), self.Teams[team].get_games_info()
+            if stats:   self.Teams[team].add_player_stats()
             if stats:   self.Teams[team].populate_team_stats()
+        teams_info.close()
 
     def get_news(self):
         """
@@ -304,6 +305,27 @@ class League():
             data_out.append([div,game_scores])
         return data_out
 
+    def standings(self):
+       
+        standings_list=[]
+        for div,teams in self.Divisions.items():
+            div_list=[]
+            #print teams
+            for team in teams:
+                t = self.Teams[team]
+                rec = t.record()
+                team_rec_tup = (t.full_name(),rec[0], rec[1], rec[2])
+                div_list.append(team_rec_tup)
+            div_list.sort(key= lambda set: (set[1],set[2],set[3]), reverse=True)
+            div_list.insert(0,div)
+            standings_list.append(div_list)
+
+        return standings_list
+
+    def update_games(self):
+        for name,team in self.Teams.items():
+            team.get_games_info()
+
 class Team():
     """
     This class keeps all of the statistical information 
@@ -347,16 +369,19 @@ class Team():
                 num = player['Jersey #']
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
-
-    def add_player_info(self):
+        f.close()
+    def add_player_stats(self):
         """
         Adds player name, number, stats, etc. to a player class. 
 
         Assumes the ultimate-numbers info has already been loaded.
         """
+        # These two teams currently have passwords, until we have access to their info, do nothing. 
+        if self.full_name() == "Seattle Raptors" or self.full_name() == "New York Empire" : return 0
         # get player summary data
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        # print base_url+"/team/"+str(self.ID)+"/players/"
         response1 = urllib2.urlopen(req1)
         gen_player_data = json.loads(response1.read())
 
@@ -368,9 +393,9 @@ class Team():
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
-                #print data['number'], player.Number, self.Name, player.full_name()
+                # print data['number'], player.Number, self.Name, player.full_name()
                 if data['number'] == str(player.Number):
-                    print data['name']
+                    #print data['name']
                     self.Players[name].stat_name = data['name']
 
         stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
@@ -476,8 +501,9 @@ class Team():
                 t = game['time']
                 y = game['Year']
                 opp = game['opponent']
-                if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
-                if opp.strip() == "San Jose Spiders": print opp, game['team'], d
+                #debug stuff
+                #if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
+                #if opp.strip() == "San Jose Spiders": print opp, game['team'], d
                 if game['home/away'] == 'Home':
                     ht = game['team'].strip()
                     at = game['opponent'].strip()
@@ -503,6 +529,7 @@ class Team():
             
         
                 #self.Games[game['date']] = Game(d,t,y,ht,at)
+        schedule.close()
     def populate_team_stats(self):
        """
        Gets the top five players for each stat in stat_list (hardcoded)
@@ -583,6 +610,8 @@ class Team():
         else:
             return False, None
     def record(self):
+
+        if not hasattr(self,'Games'): return None
         wins = 0
         losses = 0
         point_diff = 0
@@ -605,8 +634,10 @@ class Team():
 
         return self.City + " " + self.Name
 
-    def get_game_ids(self):
+    def get_games_info(self):
 
+        # corner case for teams whose information requires authentication (for now)
+        if self.full_name() == "Seattle Raptors" or self.full_name() == "New York Empire": return 0
         #get the list of games for the team from ultimate-numbers
         base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -627,6 +658,7 @@ class Team():
                games[game].match_game(data, False)
             else:
                print "GAME DOESN'T BELONG TO THIS TEAM"
+
 
 
 class Player():
@@ -696,11 +728,30 @@ class Game():
     def match_game(self, games_dict, home):
         
         game_date = dt.strptime(self.date, "%m/%d/%y")
-        for game in games_dict:
-            dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
-            if (game_date.date()-dict_date.date()) < timedelta(days = 1):
-                self.home_score = game['ours'] if home else game['theirs']
-                self.away_score = game['theirs'] if home else game['ours']
-                print self.home_score, self.away_score
 
+        for game in games_dict:
+            if "timestamp" in game.keys():
+                dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
+                tstamp = game['timestamp']
+                new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
+                higher_score = True if new_game or ((self.home_score+self.away_score)<(game['ours']+game['theirs'])) else False
+                if (game_date.date()-dict_date.date()) < timedelta(days = 1) and (new_game or higher_score):
+                    self.home_score = game['ours'] if home else game['theirs']
+                    self.away_score = game['theirs'] if home else game['ours']
+                    self.timestamp = tstamp
+            else:
+                pass
+        self.set_status()
+
+    def set_status(self):
+        
+        if hasattr(self,'timestamp'):
+            #print self.timestamp
+            tstamp = dt.strptime(self.timestamp, "%Y-%m-%d %H:%M")
+            if (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) < 6:
+                self.status=1
+            else:
+                self.status=0
+        else:
+            pass
           

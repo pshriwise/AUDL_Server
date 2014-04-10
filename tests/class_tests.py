@@ -5,10 +5,8 @@ import sys
 sys.path.append('..')
 import AUDLclasses
 import MediaClasses
-import os
 from datetime import datetime as dt
-os.chdir('../')
-import gc
+import gc, os
 
 
 def test_League_attrs():
@@ -27,12 +25,11 @@ def test_League_attrs():
 
     assert type(test_league.Top_fives) is dict
 
-
 def test_league_methods():
 
     test_league = AUDLclasses.League()
 
-    test_league.add_teams(games=False,players=False,stats=False);
+    test_league.add_teams(filename='multiple_teams_info',games=False,players=False,stats=False);
 
     for team in test_league.Teams:
 
@@ -146,11 +143,12 @@ def ret_upcoming_games_setup():
 
     test_league = AUDLclasses.League()
 
-    test_league.add_teams('./tests/single_team_info',games=False,players=False,stats=False)
+    test_league.add_teams('single_team_info',games=False,players=False,stats=False)
 
-    test_league.Teams[224002].add_games('./tests/test_game_data.json')
+    test_league.Teams[224002].add_games('test_game_data.json')
 
     return test_league
+
 
 def test_team_attrs():
 
@@ -171,6 +169,8 @@ def test_team_methods():
     test_team.populate_team_stats()
     assert type(test_team.top_five('Assists')) is list
 
+
+
 def test_team_add_games():
 
     test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
@@ -182,16 +182,17 @@ def test_team_add_games():
 def test_team_add_players():
 
     test_team = AUDLclasses.Team(None, 224002, "Radicals", "Madison")
-    test_team.add_players()
+    test_team.add_players("test_players.json")
     
     assert type(test_team.Players) is dict    
+    assert 0 != len(test_team.Players)
 
 
 def test_pop_team_stats():
 
     test_league = pop_team_stats_setup()
 
-    test_league.Teams[224002].add_players("./tests/test_players.json")
+    test_league.Teams[224002].add_players("test_players.json")
 
     assert 6 == len(test_league.Teams[224002].Players)
 
@@ -258,7 +259,7 @@ def pop_team_stats_setup():
 
     test_league=AUDLclasses.League()
 
-    test_league.add_teams("./tests/single_team_info",games=False)
+    test_league.add_teams("single_team_info",games=False,players=False,stats=False)
 
     return test_league
 
@@ -306,7 +307,6 @@ def test_game_attrs():
 
     assert type(test_game.Quarter) is int
 
-
 def test_game_exist():
     """
     Uses league data to make sure that game exists is working properly
@@ -319,10 +319,10 @@ def test_game_exist():
     # Hand the function a false date...
     assert (False, None) == team.game_exist('4/15/11')
 
-    key = unicode('5/9/14')
+    key = unicode('4/13/14')
     game_inst = team.Games[key]
     # Hand the function a correct date
-    assert (True, game_inst) == team.game_exist('5/9/14')
+    assert (True, game_inst) == team.game_exist('4/13/14')
 
 
 def test_league_game_exist():
@@ -359,4 +359,55 @@ def test_league_videos():
     assert True == hasattr(test_league, 'Videos')
 
         
+def test_team_record_method():
+
+    test_team = team_record_setup()
+
+    test_record = test_team.record()    
+
+    assert tuple is type(test_record), type(test_record)
+    assert 3 == len(test_record), len(test_record)
+    assert 3 == test_record[0], test_record[0]
+    assert 2 == test_record[1], test_record[1]
+    assert 1 == test_record[2], test_record[2]
+
+    # Test a team without games
+    test_team = AUDLclasses.Team(None,206002,"Breeze","DC")
+
+    test_record = test_team.record()
+
+    assert None == test_record, test_record
+
+def team_record_setup():
+
+    test_team=AUDLclasses.Team(None,224002,"Radicals","Madison")
+    test_team.Games={}
+
     
+
+    test_team.Games['4/10/13']=AUDLclasses.Game('4/10/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/10/13'].home_score = 23
+    test_team.Games['4/10/13'].away_score = 22
+
+    test_team.Games['4/17/13']=AUDLclasses.Game('4/17/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/17/13'].home_score = 23
+    test_team.Games['4/17/13'].away_score = 22
+
+    test_team.Games['4/24/13']=AUDLclasses.Game('4/24/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['4/24/13'].home_score = 23
+    test_team.Games['4/24/13'].away_score = 25
+
+    test_team.Games['5/1/13']=AUDLclasses.Game('5/1/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['5/1/13'].home_score = 23
+    test_team.Games['5/1/13'].away_score = 25
+
+    test_team.Games['5/8/13']=AUDLclasses.Game('5/8/13',"7:00 EST", "2013", "Madison Radicals", "Minnesota Wind Chill")
+    test_team.Games['5/8/13'].home_score = 28
+    test_team.Games['5/8/13'].away_score = 25
+
+    return test_team
+
+
+
+
+

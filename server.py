@@ -5,7 +5,7 @@ import AUDLclasses
 import json
 import image_get as ig
 import youtube as yt
-
+import threading
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -23,13 +23,10 @@ def path_parse(path):
                   
 def path_data(path, League):
 
-    # Dummy info for the Standings Page
-    Stand_list = [["Midwest Division", ('Madison Radicals', 10, 3),('Chicago Wildfire', 9, 4)],["Eastern Division",("DC Breeze", 10, 3),("New York Empire", 9, 4)]]
- 
     #Create dictionary for main information:
     main_pages = { 'Teams'     : League.team_list(),
                    'News'      : League.news_page_info(),
-                   'Standings' : Stand_list,
+                   'Standings' : League.standings(),
                    'Scores'    : League.return_scores_page(),
                    'Schedule'  : League.return_schedules(),
                    'Videos'    : League.get_videos(),
@@ -135,5 +132,11 @@ def main():
     print "serving at" , IP, "port", PORT
     httpd.serve_forever()
 
+def refresh():
+    threading.Timer(60,refresh).start()
+    AUDL.update_games()
+    print "refreshing server..."
+
 if __name__ == "__main__":
+    refresh()
     main()
