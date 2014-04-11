@@ -135,6 +135,7 @@ def main():
 def refresh():
     threading.Timer(60,refresh).start()
     AUDL.update_games()
+    AUDL.get_news()
     print "refreshing server..."
 
 if __name__ == "__main__":
