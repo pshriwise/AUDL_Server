@@ -365,9 +365,7 @@ class Team():
         for player in players:
             if self.full_name() in player['Team']:
                 fn = player['Player First Name'].strip()
-                fn = fn.strip("\\t")
                 ln = player['Player Last Name'].strip()
-                ln = ln.strip("\\t")
                 num = player['Jersey #']
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
