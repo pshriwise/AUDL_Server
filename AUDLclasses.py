@@ -221,7 +221,7 @@ class League():
     
         data_out = []
         for div in self.Divisions:
-            game_sched = self.return_upcoming_games(self.Divisions[div])
+            game_sched = self.return_upcoming_games(self.Divisions[div],20)
             data_out.append([div,game_sched])
         
         return data_out
@@ -301,7 +301,7 @@ class League():
         
         data_out = []
         for div in self.Divisions:
-            game_scores = self.return_upcoming_games(self.Divisions[div],scores=True)
+            game_scores = self.return_upcoming_games(self.Divisions[div],365,scores=True)
             data_out.append([div,game_scores])
         return data_out
 
