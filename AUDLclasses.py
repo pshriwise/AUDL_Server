@@ -539,9 +539,9 @@ class Team():
        Top_Fives attribute.
        """
        if not hasattr(self,"Players"): self.add_players()
-       stat_names=["Assists","Goals","PMC","Drops","Throwaways", "Ds"]
+       stat_names=["Goals","Assists","PMC","Drops","Throwaways", "Ds"]
        name_iter = iter(stat_names)
-       stat_list = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
+       stat_list = ["goals","assists","drops","throwaways","plusMinusCount","ds"]
        if not hasattr(self, 'City'): self.get_info()
        stat_out = [(self.City, self.Name, self.ID)]
        for stat in stat_list:
