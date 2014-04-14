@@ -180,8 +180,7 @@ class League():
         # If no teams are passed in, add all available teams to the schedule
         if teams == None:
             teams = []
-            for team in self.Teams:
-                ID = self.Teams[team].ID
+            for ID,team in self.Teams.items():
                 teams.append(ID)
    
         game_list = []
@@ -735,7 +734,7 @@ class Game():
                 tstamp = game['timestamp']
                 new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
                 higher_score = True if new_game or ((self.home_score+self.away_score)<(game['ours']+game['theirs'])) else False
-                if (game_date.date()-dict_date.date()) < timedelta(days = 1) and (new_game or higher_score):
+                if (game_date.date()-dict_date.date()) == timedelta(days = 0) and (new_game or higher_score):
                     self.home_score = game['ours'] if home else game['theirs']
                     self.away_score = game['theirs'] if home else game['ours']
                     self.timestamp = tstamp
