@@ -9,10 +9,10 @@ from datetime import timedelta
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
 class League():
-    """ 
+    """  
     Class which acts as a central node for all other classes
     on the AUDL server.
-    """
+    """ 
     def __init__(self):
         # A Video object containing the list of all the videos
         self.Videos = MediaClasses.Videos();
@@ -88,6 +88,7 @@ class League():
             if players: self.Teams[team].add_players()
             if games:   self.Teams[team].add_games(), self.Teams[team].get_games_info()
             if stats:   self.Teams[team].add_player_stats()
+
             if stats:   self.Teams[team].populate_team_stats()
         teams_info.close()
 
@@ -160,7 +161,6 @@ class League():
                 pass
         return False,None
         
-
     def return_upcoming_games(self, teams=None, days_ahead=14, scores=False, now=None):
         """
         Returns any games occurring within 2 weeks of the current date.
@@ -248,15 +248,20 @@ class League():
         return top_player_stat_list[0:5]
 
     def get_stats_league(self):
-        #list of stats
-        stat_list = [ 'Goals', 'Assists', 'Drops', 'Throwaways', 'PMC', 'Ds' ]
+        #dictionary of stats with formal and informal names as [0][1]
+        stat_dic = {'goals':["Goals", "goals"], 'assists':["Assists", "assists"], 'drops':["Drops", "drops"],
+                    'throwaways':["Throwaways", "throwaways"], 'plusMinusCount':["PMC", "plusMinusCount"],
+                    'ds':["Ds", "ds"]}
+        stat_list = [ 'goals', 'assists', 'drops', 'throwaways', 'plusMinusCount', 'ds' ]
         '''
         dummy dict in order to capture the latest top 5's and update the class
         dict with this dummy dict
         '''
         top_fivez = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
         for stat in stat_list:
-            top_fivez[stat] = self.top_five_league( stat ) 
+            formal = stat_dic[stat][0]
+            informal = stat_dic[stat][1]
+            top_fivez[formal] = self.top_five_league( informal ) 
         self.Top_fives.update(top_fivez)
         
     def get_top_fives(self):
@@ -347,7 +352,6 @@ class Team():
          # A string containing the Team's City
          self.City = City
         
-
     def add_players(self, filename='2014_players.json',stats=True):
         """
         Adds players to the Team class attribute 'Players' from the json file.
@@ -370,6 +374,7 @@ class Team():
                 full_name = fn + " " + ln
                 self.Players[full_name]=Player(fn,ln,num)
         f.close()
+
     def add_player_stats(self):
         """
         Adds player name, number, stats, etc. to a player class. 
@@ -393,7 +398,7 @@ class Team():
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
-                # print data['number'], player.Number, self.Name, player.full_name()
+                #print data['number'], player.Number, self.Name, player.full_name()
                 if data['number'] == str(player.Number):
                     #print data['name']
                     self.Players[name].stat_name = data['name']
