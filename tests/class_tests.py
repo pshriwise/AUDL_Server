@@ -249,12 +249,12 @@ def test_pop_team_stats():
     assert 7== len(test_league.Teams[224002].Top_Fives), len(test_league.Teams[224002].Top_Fives)
     assert test_league.Teams[224002].Top_Fives[0] == ("Madison","Radicals",224002)
     expected_stats_out=[("Bill Everhart",10),("Ben Nelson",9),("Tom Annen",8),("Benjy Keren",7),("Jadon Scullion",6)]
-    assert test_league.Teams[224002].Top_Fives[1] == ("Assists",expected_stats_out)
-    assert test_league.Teams[224002].Top_Fives[2] == ("Goals",expected_stats_out)
-    assert test_league.Teams[224002].Top_Fives[3] == ("PMC",expected_stats_out)
-    assert test_league.Teams[224002].Top_Fives[4] == ("Drops",expected_stats_out)
-    assert test_league.Teams[224002].Top_Fives[5] == ("Throwaways",expected_stats_out)
-    assert test_league.Teams[224002].Top_Fives[6] == ("Ds",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[1] == ("goals",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[2] == ("assists",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[3] == ("drops",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[4] == ("throwaways",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[5] == ("plusMinusCount",expected_stats_out)
+    assert test_league.Teams[224002].Top_Fives[6] == ("ds",expected_stats_out)
 
 
 def pop_team_stats_setup():

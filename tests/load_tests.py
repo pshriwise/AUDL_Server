@@ -75,3 +75,15 @@ def test_single_game_merge():
         games = test_league.Teams[team].Games
         assert 1== len(games), "%i" % len(games)
 
+def test_match_games():
+    
+    game_dict =  [{"teamId":"5182111044599808","gameId":"game-8ECA8C1D-6968-4FD0-A361-DE4EFF20203D","opponentName":"Cincinnati Revolution","tournamentName":"","gamePoint":1000,"wind":{"mph":0,"degrees":-1},"timestamp":"2014-04-12 19:26","date":"Sat, 4/12","time":"7:26","msSinceEpoch":1397330760000,"ours":25,"theirs":16,"timeoutDetailsJson":"{\"takenSecondHalf\":2,\"quotaPerHalf\":2,\"takenFirstHalf\":2,\"quotaFloaters\":0}"},{"teamId":"5182111044599808","gameId":"game-47F12B4E-52A2-4AC4-8047-FAC93845A51B","opponentName":"Indianapolis alleyCats","tournamentName":"","gamePoint":1000,"wind":{"mph":0,"degrees":-1},"timestamp":"2014-04-13 15:42","date":"Sun, 4/13","time":"3:42","msSinceEpoch":1397403720000,"ours":26,"theirs":21,"timeoutDetailsJson":"{\"takenSecondHalf\":2,\"quotaPerHalf\":2,\"takenFirstHalf\":2,\"quotaFloaters\":0}"}]
+
+
+    test_game = AUDLclasses.Game('4/12/14','7:00 EST','2014','Cincinnati Revolution','Madison Radicals')
+
+
+    test_game.match_game(game_dict,False)
+
+    assert test_game.home_score == 16, test_game.home_score
+    assert test_game.away_score == 25, test_game.away_score
