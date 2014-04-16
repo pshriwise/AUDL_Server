@@ -95,7 +95,7 @@ def gen_game_graph(game,points):
     legend = pyplot.legend((home_team,away_team),loc=2, frameon = 1)
     pyplot.ylabel('Points')
     pyplot.xlabel('Game Time')
-    img = pyplot.imread('gradient1_003_thumb.png')
+    img = pyplot.imread('notebooks/gradient1_003_thumb.png')
     fig = pyplot.imshow(img,origin='lower', zorder=0, extent=pyplot.axis())
     #fig.axes.get_xaxis().set_visible(False)
     fig.axes.get_xaxis().set_ticks([])
