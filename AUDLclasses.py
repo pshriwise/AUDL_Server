@@ -5,6 +5,8 @@ import feedparser as fp
 import MediaClasses
 from datetime import datetime as dt
 from datetime import timedelta
+from game_info import game_deets
+from game_info import gen_game_graph
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -382,6 +384,7 @@ class Team():
         """
         # These two teams currently have passwords, until we have access to their info, do nothing. 
         if self.full_name() == "New York Empire" : return 0
+        if self.full_name() == "Detroit Mechanix" : return 0
         # get player summary data
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
@@ -534,6 +537,7 @@ class Team():
         
                 #self.Games[game['date']] = Game(d,t,y,ht,at)
         schedule.close()
+
     def populate_team_stats(self):
        """
        Gets the top five players for each stat in stat_list (hardcoded)
@@ -640,6 +644,7 @@ class Team():
 
         # corner case for teams whose information requires authentication (for now)
         if self.full_name() == "New York Empire": return 0
+        if self.full_name() == "Detroit Mechanix": return 0
         #get the list of games for the team from ultimate-numbers
         base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -697,7 +702,8 @@ class Game():
     def __init__(self, date, time, year, home_team, away_team):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
-        self.ID = ''    
+        #self.home_id = ''    
+        #self.away_id = ''
         # a string containing the year of the season
         self.year = year
         # a string containing the date of the game
@@ -740,6 +746,12 @@ class Game():
                 if (game_date.date()-dict_date.date()) == timedelta(days = 0) and (new_game or higher_score):
                     self.home_score = game['ours'] if home else game['theirs']
                     self.away_score = game['theirs'] if home else game['ours']
+                    # a string containing a has that uniquely identifies a game on the 
+                    # ultimate numbers server
+                    if home: 
+                        self.home_id = game['teamId']+"/game/"+game['gameId'] 
+                    else:
+                        self.away_id = game['teamId']+"/game/"+game['gameId']
                     self.timestamp = tstamp
             else:
                 pass
@@ -757,3 +769,39 @@ class Game():
         else:
             pass
           
+
+    def game_stat_info(self):
+        
+        #If there's a home_id, open the UN endpoint and generate data
+        if hasattr(self, 'home_id'):
+            full_url = base_url + "/team/" + self.home_id
+            #print full_url
+            req = urllib2.Request(full_url)
+            response = urllib2.urlopen(req)
+            data = json.loads(response.read())
+            if 'pointsJson' in data.keys():
+                points = json.loads(data['pointsJson'])
+                print game_deets(points)         
+                gen_game_graph(self,points)
+            else:
+                print ["No information available"]
+        #open home_team endpoint and read json
+        #home_info=game_deets(home_team_endpoint)
+        #Use the home_info to generate the game_graph
+        #game_graph(home_team_endpoint)
+        #If there's an away page, open the UN endpoint and generate data
+        #open away_team endpoint and read json
+        #away_info=game_deets(away_team_info)
+
+        if hasattr(self, 'away_id'):
+            full_url = base_url + "/team/" + self.away_id
+            #print full_url
+            req = urllib2.Request(full_url)
+            response = urllib2.urlopen(req)
+            data = json.loads(response.read())
+            if 'pointsJson' in data.keys():
+                points = json.loads(data['pointsJson'])
+                print game_deets(points)         
+            else:
+                print ["No information available"]
+
