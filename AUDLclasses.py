@@ -318,7 +318,7 @@ class League():
             for team in teams:
                 t = self.Teams[team]
                 rec = t.record()
-                team_rec_tup = (t.full_name(),rec[0], rec[1], rec[2])
+                team_rec_tup = (t.full_name(),team,rec[0], rec[1], rec[2])
                 div_list.append(team_rec_tup)
             div_list.sort(key= lambda set: (set[1],set[2],set[3]), reverse=True)
             div_list.insert(0,div)
