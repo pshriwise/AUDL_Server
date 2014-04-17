@@ -770,8 +770,10 @@ class Game():
             pass
           
 
-    def game_stat_info(self):
-        
+    def stat_info(self):
+        # Blank data in case there's no game info
+        home_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
+        away_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
         #If there's a home_id, open the UN endpoint and generate data
         if hasattr(self, 'home_id'):
             full_url = base_url + "/team/" + self.home_id
@@ -781,7 +783,7 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                print game_deets(points)         
+                home_deets = game_deets(points)         
                 gen_game_graph(self,points)
             else:
                 print ["No information available"]
@@ -801,7 +803,8 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                print game_deets(points)         
+                away_deets = game_deets(points)         
             else:
                 print ["No information available"]
 
+        return [home_deets,away_deets]

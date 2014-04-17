@@ -45,6 +45,8 @@ def path_data(path, League):
         return json.dumps(subpage_data(path_ents, League))
     elif len(path_ents) > 1 and path_ents[0] == "Icons":
         return subpage_data(path_ents, League)
+    elif len(path_ents) > 1 and path_ents[0] == "Game":
+        return subpage_data(path_ents, League)
     else:
         return "Not a valid path"
 
@@ -55,7 +57,7 @@ def subpage_data(path_ents, League):
 
     This function expects that len(path_ents) is greater than 1.
     """
-    if len(path_ents) < 2 or len(path_ents) > 3: return "Not a valid path"
+    if len(path_ents) < 2 or len(path_ents) > 5: return "Not a valid path"
 
     # We expect the second entry of this path to be a team_id
     team_id = int(path_ents[1]) 
@@ -72,6 +74,9 @@ def subpage_data(path_ents, League):
         # only the false case will be needed after 2014 games begin
         #return ig.AUDLlogo('Phoenix') if team_id == 208004 else ig.AUDLlogo(team.Name)
         return ig.AUDLlogo(team.Name)
+    elif path_ents[0] == "Game":
+        #return the detailed game info
+        return game_page_data(team,path_ents[2:])
     else:
         return "Not a valid path"
 
@@ -94,6 +99,20 @@ def schedule_page_data(League):
         return data_out
     else:
         return "This League does not contain divisions"
+
+def game_page_data(team, path_ents):
+
+    if len(path_ents) !=3: return "Not a valid game date"
+
+    #create date string from the remaining path ents
+    date=path_ents[0]+"/"+path_ents[1]+"/"+path_ents[2]
+
+    game = team.Games[date]
+    return [game.home_team,game.away_team,game.stat_info()]
+    
+    
+
+    
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
