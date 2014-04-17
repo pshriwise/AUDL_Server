@@ -110,7 +110,7 @@ def game_page_data(team, path_ents):
     date=path_ents[0]+"/"+path_ents[1]+"/"+path_ents[2]
 
     game = team.Games[date]
-    return [game.home_team,game.away_team,game.stat_info()]
+    return [game.home_team,game.away_team,game.home_score,game.away_score,game.stat_info()]
     
     
 def game_graph(path_ents):
