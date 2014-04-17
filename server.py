@@ -171,6 +171,7 @@ def refresh():
     AUDL.get_news()
     for ID,team in AUDL.Teams.items():
         team.add_player_stats()
+        team.populate_team_stats()
     print "done"
 
 if __name__ == "__main__":
