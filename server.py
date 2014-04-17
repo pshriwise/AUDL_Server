@@ -57,7 +57,7 @@ def subpage_data(path_ents, League):
 
     This function expects that len(path_ents) is greater than 1.
     """
-    if len(path_ents) < 2 or len(path_ents) > 5: return "Not a valid path"
+    if len(path_ents) < 2 or len(path_ents) > 6: return "Not a valid path"
 
     # We expect the second entry of this path to be a team_id
     team_id = int(path_ents[1]) 
@@ -76,7 +76,7 @@ def subpage_data(path_ents, League):
         return ig.AUDLlogo(team.Name)
     elif path_ents[0] == "Game":
         #return the detailed game info
-        return game_page_data(team,path_ents[2:])
+        return game_page_data(team,path_ents[2:]) if path_ents[-1] != "graph" else game_graph(path_ents[1:])
     else:
         return "Not a valid path"
 
@@ -101,7 +101,9 @@ def schedule_page_data(League):
         return "This League does not contain divisions"
 
 def game_page_data(team, path_ents):
-
+    """
+    Tells the team's game to generate stat info from its endpoint.
+    """
     if len(path_ents) !=3: return "Not a valid game date"
 
     #create date string from the remaining path ents
@@ -111,8 +113,18 @@ def game_page_data(team, path_ents):
     return [game.home_team,game.away_team,game.stat_info()]
     
     
+def game_graph(path_ents):
+  
+    #create graph filename
+    filename=path_ents[0]+"_"+"-".join(path_ents[1:4])+".png"
+    print filename
 
-    
+    #open image
+    try:
+        graph = open("game_graphs/"+filename,'r')
+    finally:
+        pass
+    return graph.read() if graph else "No graph available for this game"
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
