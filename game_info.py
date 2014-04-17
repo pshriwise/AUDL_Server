@@ -105,6 +105,6 @@ def gen_game_graph(game,points):
     frame.set_alpha(0.2)
     pyplot.grid(b=True, which='major', axis='y', color='0.65',linestyle='-', zorder=1)
     dir="./game_graphs/"
-    filename=str(game.home_id).replace("/","_") +".png"
+    filename=str(game.home_id.split('/')[0])+"_"+str(game.date.replace("/","-"))+".png"
 
     pyplot.savefig(dir+filename , format="png")
