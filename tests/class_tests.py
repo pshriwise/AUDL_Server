@@ -117,7 +117,7 @@ def test_league_ret_upcoming_games():
     
     assert type(game_data) is list
     assert len(game_data) == 1
-    assert len(game_data[0]) == 7, len(game_data[0])
+    assert len(game_data[0]) == 9, len(game_data[0])
 
     test_date = dt(2014,5,1)
 
@@ -287,7 +287,6 @@ def test_game_attrs():
 
     test_game = AUDLclasses.Game("4/12/14","3:00 PM",'2014','Toronto Rush','DC Breeze')
 
-    assert type(test_game.ID) is str
 
     assert type(test_game.time) is str
 
@@ -296,6 +295,14 @@ def test_game_attrs():
     assert type(test_game.Score) is list
 
     assert type(test_game.Location) is str
+
+    assert type(test_game.home_team) is str
+
+    assert type(test_game.away_team) is str
+
+    assert type(test_game.home_team) is str
+
+    assert type(test_game.away_team) is str
 
     assert type(test_game.home_team) is str
 
