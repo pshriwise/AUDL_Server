@@ -202,18 +202,20 @@ class League():
             team2ID = self.name_to_id(game.away_team)
 
             if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
-                score = str(game.away_score) + '-' + str(game.home_score)
+                hscore = game.home_score
+                ascore = game.away_score
             else:
-                score = "0-0"             
-
+                hscore="0"
+                ascore="0"  
+            status = 0 if not hasattr(game,'status') else game.status
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date() if now == None else now
             delta = game_date-now
             if delta.days > days_ahead:
                 pass
             else:
-                game_tup=(team1,team1ID,team2,team2ID,date,time,score)
-                data_out.append(game_tup) if scores else data_out.append(game_tup[:-1])
+                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
+                data_out.append(game_tup) if scores else data_out.append(game_tup[:-3])
        
         data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
         return data_out
@@ -764,8 +766,10 @@ class Game():
             tstamp = dt.strptime(self.timestamp, "%Y-%m-%d %H:%M")
             if (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) < 6:
                 self.status=1
-            else:
-                self.status=0
+            elif (dt.today().date()-tstamp.date()) > timedelta(days=0):
+                self.status=2
+            elif (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) > 6:
+                self.status=2        
         else:
             pass
           
