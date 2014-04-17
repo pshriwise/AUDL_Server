@@ -115,6 +115,7 @@ def game_page_data(team, path_ents):
     
 def game_graph(path_ents):
   
+    if path_ents[-1] != "graph" : return "Not a valid path"
     #create graph filename
     filename=path_ents[0]+"_"+"-".join(path_ents[1:4])+".png"
     print filename
@@ -122,9 +123,9 @@ def game_graph(path_ents):
     #open image
     try:
         graph = open("game_graphs/"+filename,'r')
-    finally:
-        pass
-    return graph.read() if graph else "No graph available for this game"
+    except:
+        return "No graph available for this game"
+    return graph.read()
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
