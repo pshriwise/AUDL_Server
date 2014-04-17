@@ -165,12 +165,13 @@ def main():
     httpd.serve_forever()
 
 def refresh():
+    print "refreshing server...",
     threading.Timer(60,refresh).start()
     AUDL.update_games()
     AUDL.get_news()
     for ID,team in AUDL.Teams.items():
         team.add_player_stats()
-    print "refreshing server..."
+    print "done"
 
 if __name__ == "__main__":
     refresh()
