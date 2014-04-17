@@ -46,4 +46,4 @@ Dependencies
 Python version 2.7.3 or greater 
 
 Python modules: urllib2, json , feedparser, datetime, SimpleHTTPServer
-                SocketServer
+                SocketServer, matplotlib
