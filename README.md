@@ -10,7 +10,9 @@ clone the repository using
 
 git clone https://github.com/pshriwise/CS638
 
-in the top directory run the command:
+in the top directory run the commands:
+
+git checkout -b origin/master
 
 python server.py
 
