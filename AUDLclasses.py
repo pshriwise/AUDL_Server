@@ -211,7 +211,7 @@ class League():
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date() if now == None else now
             delta = game_date-now
-            if delta.days > days_ahead:
+            if delta.days > days_ahead or delta.days < -1 :
                 pass
             else:
                 game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
