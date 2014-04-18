@@ -384,9 +384,7 @@ class Team():
 
         Assumes the ultimate-numbers info has already been loaded.
         """
-        # These two teams currently have passwords, until we have access to their info, do nothing. 
-        if self.full_name() == "New York Empire" : return 0
-        if self.full_name() == "Detroit Mechanix" : return 0
+
         # get player summary data
         base_url = 'http://www.ultimate-numbers.com/rest/view'
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
@@ -644,9 +642,6 @@ class Team():
 
     def get_games_info(self):
 
-        # corner case for teams whose information requires authentication (for now)
-        if self.full_name() == "New York Empire": return 0
-        if self.full_name() == "Detroit Mechanix": return 0
         #get the list of games for the team from ultimate-numbers
         base_url = 'http://www.ultimate-numbers.com/rest/view'
 
