@@ -97,10 +97,10 @@ def test_league_ret_upcoming_games():
     #test date is one year after all games, should return one game
     test_date = dt(2015,5,1)
 
-    game_data = test_league.return_upcoming_games(now=test_date.date())
+    game_data = test_league.return_upcoming_games(now=test_date.date(),all=True)
 
     assert type(game_data) is list
-    assert len(game_data) == 1
+    assert len(game_data) == 1, len(game_data)
     assert len(game_data[0]) == 6, len(game_data[0])
 
     #changed default value of days_ahead to 3, should return empty list
@@ -116,7 +116,7 @@ def test_league_ret_upcoming_games():
     game_data = test_league.return_upcoming_games(now=test_date.date(),scores=True)
     
     assert type(game_data) is list
-    assert len(game_data) == 1
+    assert len(game_data) == 1, len(game_data)
     assert len(game_data[0]) == 9, len(game_data[0])
 
     test_date = dt(2014,5,1)
