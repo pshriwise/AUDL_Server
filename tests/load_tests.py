@@ -91,7 +91,7 @@ def test_match_games():
     assert test_game.away_score == 25, test_game.away_score
 
 
-def test_game_set_status():
+def test_game_set_status_final():
 
     
     test_game = AUDLclasses.Game('4/12/12','7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
@@ -100,17 +100,54 @@ def test_game_set_status():
 
     assert 2 == test_game.status, test_game.status
 
-    date = dt.today()+timedelta(days=-1) 
-    month = str(date.month)
-    day = str(date.day)
-    #this will break in 1000 years when the AUDL rules the world...or robots
-    yr = str(date.year-2000)
-    ongoing_date = month+"/"+day+"/"+yr
-    print ongoing_date
-    test_game = AUDLclasses.Game(ongoing_date,'7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+    test_tstamp = dt.today()+timedelta(days=-1) 
+    game_over_date = dt.strftime(test_tstamp, "%m/%d/%y")
+        
+    test_game = AUDLclasses.Game(game_over_date,'7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
     
     test_game.set_status()
 
     assert 2 == test_game.status, test_game.status
 
 
+def test_game_set_status_ongoing1():
+
+    test_tstamp = dt.today()+timedelta(hours=-2)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 1 == test_game.status, test_game.status
+    
+
+
+def test_game_set_status_ongoing2():
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 1 == test_game.status, test_game.status
+    
+    
+def test_game_set_status_upcoming():
+
+    test_tstamp = dt.today()+timedelta(hours=2)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 0 == test_game.status, test_game.status
+    
+
+    
