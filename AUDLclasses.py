@@ -770,6 +770,8 @@ class Game():
           
 
     def stat_info(self):
+        # a flag indicating whether or not the game graph was generated using home_team data
+        graphed = False
         # Blank data in case there's no game info
         home_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
         away_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
@@ -784,6 +786,7 @@ class Game():
                 points = json.loads(data['pointsJson'])
                 home_deets = game_deets(points)         
                 gen_game_graph(self,points)
+                graphed = True
             else:
                 print ["No information available"]
         #open home_team endpoint and read json
@@ -803,6 +806,7 @@ class Game():
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 away_deets = game_deets(points)         
+                if not graphed: gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
 

@@ -76,7 +76,7 @@ def subpage_data(path_ents, League):
         return ig.AUDLlogo(team.Name)
     elif path_ents[0] == "Game":
         #return the detailed game info
-        return game_page_data(team,path_ents[2:]) if path_ents[-1] != "graph" else game_graph(path_ents[1:])
+        return game_page_data(team,path_ents[2:]) if path_ents[-1] != "graph" else game_graph(team,path_ents[1:])
     else:
         return "Not a valid path"
 
@@ -113,11 +113,12 @@ def game_page_data(team, path_ents):
     return [game.home_team,game.away_team,game.home_score,game.away_score,game.stat_info()]
     
     
-def game_graph(path_ents):
+def game_graph(team,path_ents):
   
     if path_ents[-1] != "graph" : return "Not a valid path"
     #create graph filename
-    filename=path_ents[0]+"_"+"-".join(path_ents[1:4])+".png"
+    game = team.Games["/".join(path_ents[1:4])]
+    filename=game.home_team+" vs "+game.away_team+"_"+"-".join(path_ents[1:4])+".png"
     print filename
 
     #open image

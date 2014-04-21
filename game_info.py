@@ -53,7 +53,7 @@ def game_deets(data):
                     
     
 
-def gen_game_graph(game,points):
+def gen_game_graph(game,points,flip=False):
     '''
     Generates the game graph using matplot lib and saves the image with the proper ID and date in
     game_graphs folder inside the server.
@@ -77,6 +77,12 @@ def gen_game_graph(game,points):
 
     xvals = [float(x)/float(xvals[-1]) for x in xvals]
 
+    # if flip is true we are using away team data it should be flipped to 
+    # make sure the right points are with the right team
+    if flip:
+       temp = ourscores
+       ourscores = theirscores
+       theirscores = temp
 
     ourxpoints=[0]
     theirxpoints=[0]
@@ -107,6 +113,6 @@ def gen_game_graph(game,points):
     frame.set_alpha(0.2)
     pyplot.grid(b=True, which='major', axis='y', color='0.65',linestyle='-', zorder=1)
     dir="./game_graphs/"
-    filename=str(game.home_id.split('/')[0])+"_"+str(game.date.replace("/","-"))+".png"
+    filename=game.home_team+" vs "+game.away_team+"_"+str(game.date.replace("/","-"))+".png"
     pyplot.savefig(dir+filename , format="png", dpi=80)
     pyplot.close()
