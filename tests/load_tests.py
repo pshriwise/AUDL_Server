@@ -2,6 +2,8 @@
 
 
 import sys, gc
+from datetime import datetime as dt
+from datetime import timedelta
 
 #Append the parent dir to the module search path
 sys.path.append('..')
@@ -87,3 +89,28 @@ def test_match_games():
 
     assert test_game.home_score == 16, test_game.home_score
     assert test_game.away_score == 25, test_game.away_score
+
+
+def test_game_set_status():
+
+    
+    test_game = AUDLclasses.Game('4/12/12','7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
+    date = dt.today()+timedelta(days=-1) 
+    month = str(date.month)
+    day = str(date.day)
+    #this will break in 1000 years when the AUDL rules the world...or robots
+    yr = str(date.year-2000)
+    ongoing_date = month+"/"+day+"/"+yr
+    print ongoing_date
+    test_game = AUDLclasses.Game(ongoing_date,'7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
+
