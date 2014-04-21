@@ -756,14 +756,15 @@ class Game():
 
     def set_status(self):
         
-        if hasattr(self,'timestamp'):
-            #print self.timestamp
-            tstamp = dt.strptime(self.timestamp, "%Y-%m-%d %H:%M")
-            if (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) < 6:
+        if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
+            sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
+            sched_date = dt.strptime(self.date, "%m/%d/%y")
+
+            if (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 6:
                 self.status=1
-            elif (dt.today().date()-tstamp.date()) > timedelta(days=0):
+            elif (dt.today().date()-sched_date.date()) > timedelta(days=0):
                 self.status=2
-            elif (dt.today().date()-tstamp.date()) == 0 and (dt.today().time() - tstamp.time()) > 6:
+            elif (dt.today().date()==sched_date.date()) and (dt.today().hour - sched_time.hour) > 6:
                 self.status=2        
         else:
             pass
