@@ -38,7 +38,7 @@ To run tests for the AUDL server:
 
 cd tests/
 
-./run_tests
+nosetests
 
 Note: An internet connection is currently required to run the tests!
 

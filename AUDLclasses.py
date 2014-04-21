@@ -163,7 +163,7 @@ class League():
                 pass
         return False,None
         
-    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False, now=None):
+    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False, now=None,all=False):
         """
         Returns any games occurring within 2 weeks of the current date.
 
@@ -211,7 +211,9 @@ class League():
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date() if now == None else now
             delta = game_date-now
-            if delta.days > days_ahead or delta.days < -1 :
+            if delta.days > days_ahead:
+                pass
+            elif not all and delta.days < -1:
                 pass
             else:
                 game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
@@ -324,7 +326,7 @@ class League():
                 rec = t.record()
                 team_rec_tup = (t.full_name(),team,rec[0], rec[1], rec[2])
                 div_list.append(team_rec_tup)
-            div_list.sort(key= lambda set: (set[1],set[2],set[3]), reverse=True)
+            div_list.sort(key= lambda set: (set[2],set[3]*-1,set[4]), reverse=True)
             div_list.insert(0,div)
             standings_list.append(div_list)
 
