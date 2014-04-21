@@ -14,3 +14,11 @@ fi
 cd ../tests/
 
 rm *.pyc
+
+cd ../game_graphs/
+
+mv gradient1_003_thumb.png save
+
+rm *.png 
+
+mv save gradient1_003_thumb.png
