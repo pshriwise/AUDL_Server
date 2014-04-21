@@ -76,7 +76,7 @@ def subpage_data(path_ents, League):
         return ig.AUDLlogo(team.Name)
     elif path_ents[0] == "Game":
         #return the detailed game info
-        return game_page_data(team,path_ents[2:]) if path_ents[-1] != "graph" else game_graph(team,path_ents[1:])
+        return json.dumps(game_page_data(team,path_ents[2:])) if path_ents[-1] != "graph" else game_graph(team,path_ents[1:])
     else:
         return "Not a valid path"
 
@@ -136,7 +136,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
-            if path_ents[0] == "Icons":
+            if path_ents[0] == "Icons" or path_ents[0] == "Game":
                 self.send_header("Content-type","png")
                 self.end_headers()
             else:
