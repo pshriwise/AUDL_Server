@@ -756,7 +756,7 @@ class Game():
 
     def set_status(self):
         
-        if hasattr(self,'time') and hasattr(self,'date'):
+        if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
             sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
             sched_date = dt.strptime(self.date, "%m/%d/%y")
 
