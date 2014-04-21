@@ -762,7 +762,9 @@ class Game():
             sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
             sched_date = dt.strptime(self.date, "%m/%d/%y")
 
-            if (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 6:
+            if  (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 0:
+                self.status=0
+            elif (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) <= 6:
                 self.status=1
             elif (dt.today().date()-sched_date.date()) > timedelta(days=0):
                 self.status=2
