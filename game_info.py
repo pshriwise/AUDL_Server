@@ -114,5 +114,5 @@ def gen_game_graph(game,points,flip=False):
     pyplot.grid(b=True, which='major', axis='y', color='0.65',linestyle='-', zorder=1)
     dir="./game_graphs/"
     filename=game.home_team+" vs "+game.away_team+"_"+str(game.date.replace("/","-"))+".png"
-    pyplot.savefig(dir+filename , format="png", dpi=80)
+    pyplot.savefig(dir+filename , format="png", dpi=200)
     pyplot.close()
