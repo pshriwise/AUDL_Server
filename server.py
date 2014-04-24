@@ -110,7 +110,10 @@ def game_page_data(team, path_ents):
     date=path_ents[0]+"/"+path_ents[1]+"/"+path_ents[2]
 
     game = team.Games[date]
-    return [game.home_team,game.away_team,game.home_score,game.away_score,game.stat_info()]
+    if hasattr(game, "home_score") and hasattr(game, "away_score"):
+        return [game.home_team,game.away_team,game.home_score,game.away_score,game.stat_info()]
+    else:
+       return  [game.home_team,game.away_team,0,0,game.stat_info()]
     
     
 def game_graph(team,path_ents):
