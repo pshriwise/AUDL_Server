@@ -79,6 +79,7 @@ def gen_game_graph(game,points,flip=False):
 
     # if flip is true we are using away team data it should be flipped to 
     # make sure the right points are with the right team
+    # (ourscores --> home_team theirscores-->away_team)
     if flip:
        temp = ourscores
        ourscores = theirscores
@@ -96,6 +97,12 @@ def gen_game_graph(game,points,flip=False):
             theirpoints.append(theirscores[i])
             theirxpoints.append(xvals[i])
 
+    
+    home_pnts=zip(ourxpoints,ourpoints)
+    away_pnts=zip(theirxpoints,theirpoints)
+    return [game.home_team,game.away_team,home_pnts,away_pnts]
+
+    '''
     pyplot.plot(xvals,ourscores,'b--',xvals,theirscores,'r--', zorder=2)
     pyplot.plot(ourxpoints,ourpoints,'bo',theirxpoints,theirpoints,'ro', zorder=2, ms=4)
     away_team = game.away_team
@@ -116,3 +123,4 @@ def gen_game_graph(game,points,flip=False):
     filename=game.home_team+" vs "+game.away_team+"_"+str(game.date.replace("/","-"))+".png"
     pyplot.savefig(dir+filename , format="png", dpi=200)
     pyplot.close()
+    '''

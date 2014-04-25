@@ -790,7 +790,7 @@ class Game():
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 home_deets = game_deets(points)         
-                gen_game_graph(self,points)
+                self.graph_pnts = gen_game_graph(self,points)
                 graphed = True
             else:
                 print ["No information available"]
@@ -811,7 +811,7 @@ class Game():
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 away_deets = game_deets(points)         
-                if not graphed: gen_game_graph(self,points,flip=True)
+                if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
 

@@ -119,17 +119,13 @@ def game_page_data(team, path_ents):
 def game_graph(team,path_ents):
   
     if path_ents[-1] != "graph" : return "Not a valid path"
-    #create graph filename
+    #get game class
     game = team.Games["/".join(path_ents[1:4])]
-    filename=game.home_team+" vs "+game.away_team+"_"+"-".join(path_ents[1:4])+".png"
-    print filename
 
-    #open image
-    try:
-        graph = open("game_graphs/"+filename,'r')
-    except:
+    if hasattr(game,"graph_pnts"):
+        return game.graph_pnts
+    else:
         return "No graph available for this game"
-    return graph.read()
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
