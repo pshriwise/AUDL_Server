@@ -96,8 +96,18 @@ def gen_game_graph(game,points,flip=False):
         if theirscores[i] > theirscores[i-1]:
             theirpoints.append(theirscores[i])
             theirxpoints.append(xvals[i])
+   
+    # handle the final points of the game
+    # this is messy, but works
+    if ourscores[-1] > ourscores[-2]:
+        ourpoints.append(ourscores[-1])
+        ourxpoints.append(xvals[-1])
+    if theirscores[-1] > theirscores[-2]:
+        theirpoints.append(theirscores[-1])
+        theirxpoints.append(xvals[-1])
 
-    
+
+
     home_pnts=zip(ourxpoints,ourpoints)
     away_pnts=zip(theirxpoints,theirpoints)
     return [game.home_team,game.away_team,home_pnts,away_pnts]
