@@ -110,7 +110,7 @@ def gen_game_graph(game,points,flip=False):
 
     home_pnts=zip(ourxpoints,ourpoints)
     away_pnts=zip(theirxpoints,theirpoints)
-    return [game.home_team,game.away_team,home_pnts,away_pnts]
+    return [[game.home_team,home_pnts],[game.away_team,away_pnts]]
 
     '''
     pyplot.plot(xvals,ourscores,'b--',xvals,theirscores,'r--', zorder=2)
