@@ -76,7 +76,7 @@ def subpage_data(path_ents, League):
         return ig.AUDLlogo(team.Name)
     elif path_ents[0] == "Game":
         #return the detailed game info
-        return json.dumps(game_page_data(team,path_ents[2:])) if path_ents[-1] != "graph" else game_graph(team,path_ents[1:])
+        return json.dumps(game_page_data(team,path_ents[2:])) if path_ents[-1] != "graph" else json.dumps(game_graph(team,path_ents[1:]))
     else:
         return "Not a valid path"
 
