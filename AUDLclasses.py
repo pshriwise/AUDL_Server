@@ -742,16 +742,18 @@ class Game():
                 tstamp = game['timestamp']
                 new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
                 higher_score = True if new_game or ((self.home_score+self.away_score)<(game['ours']+game['theirs'])) else False
-                if (game_date.date()-dict_date.date()) == timedelta(days = 0) and (new_game or higher_score):
-                    self.home_score = game['ours'] if home else game['theirs']
-                    self.away_score = game['theirs'] if home else game['ours']
-                    # a string containing a has that uniquely identifies a game on the 
-                    # ultimate numbers server
+                if (game_date.date()-dict_date.date()) == timedelta(days = 0):
                     if home: 
                         self.home_id = game['teamId']+"/game/"+game['gameId'] 
                     else:
                         self.away_id = game['teamId']+"/game/"+game['gameId']
                     self.timestamp = tstamp
+                    if new_game or higher_score:
+                        self.home_score = game['ours'] if home else game['theirs']
+                        self.away_score = game['theirs'] if home else game['ours']
+                    # a string containing a has that uniquely identifies a game on the 
+                    # ultimate numbers server
+                    
             else:
                 pass
         self.set_status()
@@ -814,5 +816,6 @@ class Game():
                 if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
-
+        print home deets
+        print away_deets
         return [home_deets,away_deets]
