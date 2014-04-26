@@ -375,8 +375,11 @@ class Team():
             if self.full_name() in player['Team']:
                 fn = player['Player First Name'].strip()
                 ln = player['Player Last Name'].strip()
-                num = player['Jersey #']
+                num = str(player['Jersey #'])
                 full_name = fn + " " + ln
+                #case for for a player number of 0
+                # UN players will have "00" as their number on the site
+                if num == "0": num = "00"
                 self.Players[full_name]=Player(fn,ln,num)
         f.close()
 
@@ -403,7 +406,7 @@ class Team():
         for name, player in self.Players.items():
             for data in gen_player_data:
                 #print data['number'], player.Number, self.Name, player.full_name()
-                if data['number'] == str(player.Number):
+                if data['number'] == player.Number:
                     #print data['name']
                     self.Players[name].stat_name = data['name']
 
