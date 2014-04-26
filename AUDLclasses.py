@@ -816,6 +816,6 @@ class Game():
                 if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
-        print home deets
-        print away_deets
+        #print home_deets
+        #print away_deets
         return [home_deets,away_deets]
