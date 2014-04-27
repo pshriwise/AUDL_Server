@@ -339,7 +339,7 @@
     "Year":2014,
     "team":"Cincinnati Revolution",
     "date":"5/10/14",
-    "time":"12:00 AM EST",
+    "time":"7:00 PM EST",
     "home/away":"Home",
     "opponent":"Detroit Mechanix"
   },
@@ -491,7 +491,7 @@
     "Year":2014,
     "team":"Minnesota Wind Chill ",
     "date":"5/25/14",
-    "time":"12:00 AM EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"Detroit Mechanix"
   },
@@ -539,7 +539,7 @@
     "Year":2014,
     "team":"Chicago Wildfire ",
     "date":"5/31/14",
-    "time":"12:00 AM EST",
+    "time":"6:00 PM EST",
     "home/away":"Home",
     "opponent":"Detroit Mechanix"
   },
@@ -1075,7 +1075,7 @@
     "Year":2014,
     "team":"Detroit Mechanix",
     "date":"4/19/14",
-    "time":"12:00 AM EST",
+    "time":"6:00 PM EST",
     "home/away":"Away",
     "opponent":"Madison Radicals "
   },
@@ -1131,7 +1131,7 @@
     "Year":2014,
     "team":"Detroit Mechanix",
     "date":"4/26/14",
-    "time":"12:00 AM EST",
+    "time":"7:00 PM EST",
     "home/away":"Away",
     "opponent":"Indianapolis AlleyCats "
   },
@@ -1291,7 +1291,7 @@
     "Year":2014,
     "team":"Detroit Mechanix",
     "date":"5/10/14",
-    "time":"12:00 AM EST",
+    "time":"6:00 PM EST",
     "home/away":"Away",
     "opponent":"Cincinnati Revolution"
   },
@@ -1443,7 +1443,7 @@
     "Year":2014,
     "team":"Detroit Mechanix",
     "date":"5/25/14",
-    "time":"12:00 AM EST",
+    "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"Minnesota Wind Chill "
   },
@@ -1491,7 +1491,7 @@
     "Year":2014,
     "team":"Detroit Mechanix",
     "date":"5/31/14",
-    "time":"12:00 AM EST",
+    "time":"6:00 PM EST",
     "home/away":"Away",
     "opponent":"Chicago Wildfire "
   },
