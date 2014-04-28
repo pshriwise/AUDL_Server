@@ -161,7 +161,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco FlameThrowers ",
+    "team":"San Jose Spiders",
     "date":"4/26/14",
     "time":"6:00 PM MST",
     "home/away":"Home",
@@ -251,7 +251,7 @@
     "Year":2014,
     "team":"DC Breeze ",
     "date":"5/3/14",
-    "time":"TBD EST",
+    "time":"6:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -365,7 +365,7 @@
     "date":"5/17/14",
     "time":"1:00 PM PST",
     "home/away":"Home",
-    "opponent":"San Francisco FlameThrowers"
+    "opponent":"San Jose Spiders"
   },
   {
     "Year":2014,
@@ -1117,7 +1117,7 @@
     "date":"4/26/14",
     "time":"6:00 PM MST",
     "home/away":"Away",
-    "opponent":"San Francisco FlameThrowers "
+    "opponent":"San Jose Spiders"
   },
   {
     "Year":2014,
@@ -1203,7 +1203,7 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"5/3/14",
-    "time":"TBD EST",
+    "time":"6:00 PM EST",
     "home/away":"Away",
     "opponent":"DC Breeze "
   },
@@ -1313,7 +1313,7 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco FlameThrowers",
+    "team":"San Jose Spiders",
     "date":"5/17/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
