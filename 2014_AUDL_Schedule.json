@@ -41,14 +41,6 @@
   },
   {
     "Year":2014,
-    "team":"Rochester Dragons ",
-    "date":"4/12/14",
-    "time":"TBD EST",
-    "home/away":"Home",
-    "opponent":"Philadelphia Phoenix"
-  },
-  {
-    "Year":2014,
     "team":"Toronto Rush",
     "date":"4/13/14",
     "time":"12:00 PM EST",
@@ -331,7 +323,7 @@
     "Year":2014,
     "team":"Philadelphia Phoenix ",
     "date":"5/10/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -459,8 +451,8 @@
     "Year":2014,
     "team":"Montreal Royal ",
     "date":"5/24/14",
-    "time":"TBD EST",
-    "home/away":"Home",
+    "time":"3:00 PM EST",
+    "home/away":"Away",
     "opponent":"Philadelphia Phoenix"
   },
   {
@@ -483,7 +475,7 @@
     "Year":2014,
     "team":"Montreal Royal ",
     "date":"5/25/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -563,7 +555,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"6/1/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -763,8 +755,8 @@
     "Year":2014,
     "team":"Chicago Wildfire ",
     "date":"6/21/14",
-    "time":"TBD CST",
-    "home/away":"Home",
+    "time":"7:00 PM CST",
+    "home/away":"Away",
     "opponent":"Minnesota Wind Chill"
   },
   {
@@ -875,7 +867,7 @@
     "Year":2014,
     "team":"DC Breeze ",
     "date":"6/29/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -907,7 +899,7 @@
     "Year":2014,
     "team":"Rochester Dragons ",
     "date":"7/5/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -915,7 +907,7 @@
     "Year":2014,
     "team":"DC Breeze ",
     "date":"7/6/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -939,7 +931,7 @@
     "Year":2014,
     "team":"Toronto Rush",
     "date":"7/12/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -947,7 +939,7 @@
     "Year":2014,
     "team":"DC Breeze ",
     "date":"7/12/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -993,14 +985,6 @@
   },
   {
     "Year":2014,
-    "team":"Philadelphia Phoenix",
-    "date":"4/12/14",
-    "time":"TBD EST",
-    "home/away":"Away",
-    "opponent":"Rochester Dragons "
-  },
-  {
-    "Year":2014,
     "team":"New York Empire",
     "date":"4/13/14",
     "time":"12:00 PM EST",
@@ -1283,7 +1267,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"5/10/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"Philadelphia Phoenix "
   },
@@ -1411,8 +1395,8 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"5/24/14",
-    "time":"TBD EST",
-    "home/away":"Away",
+    "time":"3:00 PM EST",
+    "home/away":"Home",
     "opponent":"Montreal Royal "
   },
   {
@@ -1435,7 +1419,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"5/25/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"Montreal Royal "
   },
@@ -1515,8 +1499,8 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"6/1/14",
-    "time":"TBD EST",
-    "home/away":"Away",
+    "time":"3:00 PM EST",
+    "home/away":"Home",
     "opponent":"New York Empire"
   },
   {
@@ -1715,7 +1699,7 @@
     "Year":2014,
     "team":"Minnesota Wind Chill",
     "date":"6/21/14",
-    "time":"TBD CST",
+    "time":"7:00 PM CST",
     "home/away":"Away",
     "opponent":"Chicago Wildfire "
   },
@@ -1827,7 +1811,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"6/29/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"DC Breeze "
   },
@@ -1859,16 +1843,16 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"7/5/14",
-    "time":"TBD EST",
-    "home/away":"Away",
+    "time":"3:00 PM EST",
+    "home/away":"Home",
     "opponent":"Rochester Dragons "
   },
   {
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"7/6/14",
-    "time":"TBD EST",
-    "home/away":"Away",
+    "time":"3:00 PM EST",
+    "home/away":"Home",
     "opponent":"DC Breeze "
   },
   {
@@ -1891,15 +1875,15 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"7/12/14",
-    "time":"TBD EST",
-    "home/away":"Away",
+    "time":"3:00 PM EST",
+    "home/away":"Home",
     "opponent":"Toronto Rush"
   },
   {
     "Year":2014,
     "team":"New York Empire",
     "date":"7/12/14",
-    "time":"TBD EST",
+    "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"DC Breeze "
   }
