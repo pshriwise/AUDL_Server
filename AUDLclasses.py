@@ -766,6 +766,9 @@ class Game():
         if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
             sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
             sched_date = dt.strptime(self.date, "%m/%d/%y")
+            print sched_time
+            print sched_date
+            print self.date
 
             if  (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 0:
                 self.status=0
@@ -774,7 +777,9 @@ class Game():
             elif (dt.today().date()-sched_date.date()) > timedelta(days=0):
                 self.status=2
             elif (dt.today().date()==sched_date.date()) and (dt.today().hour - sched_time.hour) > 6:
-                self.status=2        
+                self.status=2
+            else:
+                self.status=0        
         else:
             pass
           
