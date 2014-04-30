@@ -3,10 +3,14 @@
 import urllib2, json
 import feedparser as fp
 import MediaClasses
-from datetime import datetime as dt
-from datetime import timedelta
 from game_info import game_deets
 from game_info import gen_game_graph
+
+
+# Timestamp imports 
+from timestamps import game_ts
+from datetime import datetime as dt
+from datetime import timedelta
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -511,7 +515,7 @@ class Team():
             if AUDL_Name in game['team']:
                 d = game['date']
                 t = game['time']
-                y = game['Year']
+                tstamp = game_ts(d,t)
                 opp = game['opponent']
                 #debug stuff
                 #if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
@@ -524,7 +528,7 @@ class Team():
                     at = game['team'].strip()
                     ht = game['opponent'].strip()
                   
-                team_games.append((d,t,y,ht,at,opp))
+                team_games.append((d,t,tstamp,ht,at,opp))
 
         #Check to see if the team belongs to a league
         if self.League != None:
@@ -701,13 +705,13 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, year, home_team, away_team):
+    def __init__(self, date, time, tstamp, home_team, away_team):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         #self.home_id = ''    
         #self.away_id = ''
-        # a string containing the year of the season
-        self.year = year
+        # a datetime object for the game
+        self.tstamp = tstamp
         # a string containing the date of the game
         self.date = date
         # a string containing a scheduled beginning time of the game
@@ -762,14 +766,13 @@ class Game():
         self.set_status()
 
     def set_status(self):
-        
+        """
+        This will set the game's status based on the timestamp of the game. 
+        Uses the local time on the server for comparison.
+        """        
         if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
             sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
             sched_date = dt.strptime(self.date, "%m/%d/%y")
-            print sched_time
-            print sched_date
-            print self.date
-
             if  (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 0:
                 self.status=0
             elif (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) <= 6:
