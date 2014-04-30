@@ -220,8 +220,8 @@ class League():
             elif not all and delta.days < (-1*days_behind):
                 pass
             else:
-                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
-                data_out.append(game_tup) if scores else data_out.append(game_tup[:-3])
+                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,game.tstamp.isoformat())
+                data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
        
         data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
         return data_out
