@@ -776,14 +776,7 @@ class Game():
         now = tz.localize(dt.now())
         
         if hasattr(self,'tstamp'):
-            print type(self.tstamp)
-            print self.tstamp
-            print self.date
-            print self.away_team
-            print self.home_team
             delta_hours = int((now-self.tstamp).total_seconds()/3600)
-            print delta_hours
-            print now.date()
             sched_date = self.tstamp.date()
         
             if  (now.date()==self.tstamp.date())  and (delta_hours) <= 0:
