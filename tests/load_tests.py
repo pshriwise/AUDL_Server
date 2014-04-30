@@ -129,7 +129,7 @@ def test_game_set_status_ongoing1():
 
 def test_game_set_status_ongoing2():
 
-    test_tstamp = dt.today()+timedelta(hours=-6)
+    test_tstamp = dt.today()+timedelta(hours=-5)
     game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
     game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" CST"
 
