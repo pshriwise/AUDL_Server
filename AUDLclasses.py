@@ -776,6 +776,7 @@ class Game():
             UPCOMING = 0 
             ONGOING = 1
             OVER = 2
+            # ultimate-numbers declared over
             UN_DEC_OVER =3
 
         #generate local timestamp w/ timezone
@@ -783,7 +784,7 @@ class Game():
         now = tz.localize(dt.now())
         # maximum assumed game length, in hours (this is arbitrary)
         max_game_len = 5
-        if hasattr(self,'tstamp'):
+        if not hasattr(self,'status') or (hasattr(self,'tstamp') and self.status != statuses.UN_DEC_OVER):
             delta_hours = int((now-self.tstamp).total_seconds()/3600)
             sched_date = self.tstamp.date()
         
@@ -799,11 +800,12 @@ class Game():
                 self.status=statuses.UPCOMING
         else:
             pass
-          
 
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data
         graphed = False
+        # a flag to be set by game_deets on whether or not the game has been declared over by UN
+        is_over = False
         # Blank data in case there's no game info
         home_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
         away_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
@@ -816,7 +818,7 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                home_deets = game_deets(points)         
+                home_deets,is_over = game_deets(points)         
                 self.graph_pnts = gen_game_graph(self,points)
                 graphed = True
             else:
@@ -837,10 +839,11 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                away_deets = game_deets(points)         
+                away_deets, is_over = game_deets(points)         
                 if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
         #print home_deets
         #print away_deets
+        if is_over: self.status=3
         return [home_deets,away_deets]
