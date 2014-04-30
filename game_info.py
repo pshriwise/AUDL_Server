@@ -1,9 +1,9 @@
 #!/usr/bin/python 
 
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib.collections import LineCollection
-from matplotlib import pyplot
+#import matplotlib
+#matplotlib.use('Agg')
+#from matplotlib.collections import LineCollection
+#from matplotlib import pyplot
 
 
 def most_common(lst):
