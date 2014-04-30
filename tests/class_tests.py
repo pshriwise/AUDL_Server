@@ -73,23 +73,23 @@ def test_league_stats():
     "Leaguewide top five stats was not populated. Length is zero."
 
 '''
-def test_league_ret_upcoming_games():
+def test_league_ret_games():
 
-    test_league = ret_upcoming_games_setup()
+    test_league = ret_games_setup()
 
     # test date is 8 days before game, should return one game tuple
     test_date = dt(2014,5,1)
 
-    game_data = test_league.return_upcoming_games(now=test_date.date())
+    game_data = test_league.return_games(now=test_date.date())
 
     assert type(game_data) is list
-    assert len(game_data) == 1
+    assert len(game_data) == 1, len(game_data)
     assert len(game_data[0]) == 6, len(game_data[0])
 
     # test date is 1 year before any games, should return empty list
     test_date = dt(2013,5,1)
 
-    game_data = test_league.return_upcoming_games(now=test_date.date())
+    game_data = test_league.return_games(now=test_date.date())
 
     assert type(game_data) is list
     assert len(game_data) == 0
@@ -97,7 +97,7 @@ def test_league_ret_upcoming_games():
     #test date is one year after all games, should return one game
     test_date = dt(2015,5,1)
 
-    game_data = test_league.return_upcoming_games(now=test_date.date(),all=True)
+    game_data = test_league.return_games(now=test_date.date(),all=True)
 
     assert type(game_data) is list
     assert len(game_data) == 1, len(game_data)
@@ -106,14 +106,14 @@ def test_league_ret_upcoming_games():
     #changed default value of days_ahead to 3, should return empty list
     test_date = dt(2014,5,1)
 
-    game_data = test_league.return_upcoming_games(days_ahead=3,now=test_date.date())
+    game_data = test_league.return_games(days_ahead=3,now=test_date.date())
 
     assert type(game_data) is list
     assert len(game_data) == 0
 
     test_date = dt(2014,5,1)
 
-    game_data = test_league.return_upcoming_games(now=test_date.date(),scores=True)
+    game_data = test_league.return_games(now=test_date.date(),scores=True)
     
     assert type(game_data) is list
     assert len(game_data) == 1, len(game_data)
@@ -121,7 +121,7 @@ def test_league_ret_upcoming_games():
 
     test_date = dt(2014,5,1)
 
-    game_data = test_league.return_upcoming_games(teams=6,now=test_date.date(),scores=True)
+    game_data = test_league.return_games(teams=6,now=test_date.date(),scores=True)
 
     assert type(game_data) is list
     assert len(game_data) == 0
@@ -131,7 +131,7 @@ def test_league_ret_upcoming_games():
 
     
 
-def ret_upcoming_games_tear_down(test_league):
+def ret_games_tear_down(test_league):
     
     for id,team  in test_league.Teams.items():
         for date,game in team.Games.items(): 
@@ -141,7 +141,7 @@ def ret_upcoming_games_tear_down(test_league):
     del test_league
 
 
-def ret_upcoming_games_setup():
+def ret_games_setup():
 
     test_league = AUDLclasses.League()
 
