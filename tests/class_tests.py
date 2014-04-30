@@ -117,7 +117,7 @@ def test_league_ret_games():
     
     assert type(game_data) is list
     assert len(game_data) == 1, len(game_data)
-    assert len(game_data[0]) == 9, len(game_data[0])
+    assert len(game_data[0]) == 10, len(game_data[0])
 
     test_date = dt(2014,5,1)
 
