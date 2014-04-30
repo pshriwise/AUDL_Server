@@ -11,6 +11,7 @@ from game_info import gen_game_graph
 from timestamps import game_ts
 from datetime import datetime as dt
 from datetime import timedelta
+from tzlocal import get_localzone
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -770,16 +771,28 @@ class Game():
         This will set the game's status based on the timestamp of the game. 
         Uses the local time on the server for comparison.
         """        
-        if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
-            sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
-            sched_date = dt.strptime(self.date, "%m/%d/%y")
-            if  (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 0:
+        #generate local timestamp w/ timezone
+        tz = get_localzone()
+        now = tz.localize(dt.now())
+        
+        if hasattr(self,'tstamp'):
+            print type(self.tstamp)
+            print self.tstamp
+            print self.date
+            print self.away_team
+            print self.home_team
+            delta_hours = int((now-self.tstamp).total_seconds()/3600)
+            print delta_hours
+            print now.date()
+            sched_date = self.tstamp.date()
+        
+            if  (now.date()==self.tstamp.date())  and (delta_hours) <= 0:
                 self.status=0
-            elif (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) <= 6:
+            elif (now.date()==self.tstamp.date())  and (delta_hours) <= 6:
                 self.status=1
-            elif (dt.today().date()-sched_date.date()) > timedelta(days=0):
+            elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 self.status=2
-            elif (dt.today().date()==sched_date.date()) and (dt.today().hour - sched_time.hour) > 6:
+            elif (now.date()==self.tstamp.date()) and (delta_hours) > 6:
                 self.status=2
             else:
                 self.status=0        
