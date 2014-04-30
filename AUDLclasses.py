@@ -770,7 +770,14 @@ class Game():
         """
         This will set the game's status based on the timestamp of the game. 
         Uses the local time on the server for comparison.
-        """        
+        """      
+        # create class enum for different allowed statuses
+        class statuses:
+            UPCOMING = 0 
+            ONGOING = 1
+            OVER = 2
+            UN_DEC_OVER =3
+
         #generate local timestamp w/ timezone
         tz = get_localzone()
         now = tz.localize(dt.now())
@@ -781,15 +788,15 @@ class Game():
             sched_date = self.tstamp.date()
         
             if  (now.date()==self.tstamp.date())  and (delta_hours) <= 0:
-                self.status=0
+                self.status=statuses.UPCOMING
             elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
-                self.status=1
+                self.status=statuses.ONGOING
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
-                self.status=2
+                self.status=statuses.OVER
             elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
-                self.status=2
+                self.status=statuses.OVER
             else:
-                self.status=0        
+                self.status=statuses.UPCOMING
         else:
             pass
           
