@@ -33,7 +33,7 @@ def path_data(path, League):
                    'Stats'     : League.get_top_fives(),
                    'FAQ'       : "Coming soon",
                    'Terms_and_Info' : "Coming soon",
-                   'Home'      : (League.news_page_info(),League.get_videos(),League.return_scores_page())}
+                   'Home'      : (League.news_page_info(),League.get_videos(),League.return_schedules())}
 
 
     path_ents = path_parse(path)
@@ -84,7 +84,7 @@ def team_subpage_data(subpage, team):
     """
     Returns a subpage for a given team class instance. 
     """
-    return [team.roster(), team.return_schedule(), team.Top_Fives,AUDL.return_upcoming_games([team.ID],365,scores=True,all=True)]
+    return [team.roster(), team.return_schedule(), team.Top_Fives, AUDL.return_games([team.ID],scores=True,all=True)]
 
 def schedule_page_data(League):
 

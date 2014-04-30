@@ -163,7 +163,7 @@ class League():
                 pass
         return False,None
         
-    def return_upcoming_games(self, teams=None, days_ahead=14, scores=False, now=None,all=False):
+    def return_games(self, teams=None, days_ahead=14, days_behind=0, scores=False, now=None,all=False):
         """
         Returns any games occurring within 2 weeks of the current date.
 
@@ -213,7 +213,7 @@ class League():
             delta = game_date-now
             if delta.days > days_ahead:
                 pass
-            elif not all and delta.days < -1:
+            elif not all and delta.days < (-1*days_behind):
                 pass
             else:
                 game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
@@ -226,7 +226,7 @@ class League():
     
         data_out = []
         for div in self.Divisions:
-            game_sched = self.return_upcoming_games(self.Divisions[div],20)
+            game_sched = self.return_upcoming_games(self.Divisions[div],20,0,scores=false)
             data_out.append([div,game_sched])
         
         return data_out
@@ -311,7 +311,7 @@ class League():
         
         data_out = []
         for div in self.Divisions:
-            game_scores = self.return_upcoming_games(self.Divisions[div],365,scores=True)
+            game_scores = self.return_upcoming_games(self.Divisions[div],365,-14,scores=True)
             data_out.append([div,game_scores])
         return data_out
 
