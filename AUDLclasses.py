@@ -774,18 +774,19 @@ class Game():
         #generate local timestamp w/ timezone
         tz = get_localzone()
         now = tz.localize(dt.now())
-        
+        # maximum assumed game length, in hours (this is arbitrary)
+        max_game_len = 5
         if hasattr(self,'tstamp'):
             delta_hours = int((now-self.tstamp).total_seconds()/3600)
             sched_date = self.tstamp.date()
         
             if  (now.date()==self.tstamp.date())  and (delta_hours) <= 0:
                 self.status=0
-            elif (now.date()==self.tstamp.date())  and (delta_hours) <= 6:
+            elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
                 self.status=1
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 self.status=2
-            elif (now.date()==self.tstamp.date()) and (delta_hours) > 6:
+            elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
                 self.status=2
             else:
                 self.status=0        
