@@ -203,7 +203,7 @@
     "Year":2014,
     "team":"Detroit Mechanix ",
     "date":"5/3/14",
-    "time":"3:00 PM CST",
+    "time":"12:00 PM CST",
     "home/away":"Home",
     "opponent":"Chicago Wildfire"
   },
@@ -243,7 +243,7 @@
     "Year":2014,
     "team":"DC Breeze ",
     "date":"5/3/14",
-    "time":"6:00 PM EST",
+    "time":"7:00 PM EST",
     "home/away":"Home",
     "opponent":"Philadelphia Phoenix"
   },
@@ -1147,7 +1147,7 @@
     "Year":2014,
     "team":"Chicago Wildfire",
     "date":"5/3/14",
-    "time":"3:00 PM CST",
+    "time":"12:00 PM CST",
     "home/away":"Away",
     "opponent":"Detroit Mechanix "
   },
@@ -1187,7 +1187,7 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"5/3/14",
-    "time":"6:00 PM EST",
+    "time":"7:00 PM EST",
     "home/away":"Away",
     "opponent":"DC Breeze "
   },
