@@ -112,6 +112,18 @@ def test_game_set_status_final():
 
     assert 2 == test_game.status, test_game.status
 
+def test_game_set_status_final2():
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
 
 def test_game_set_status_ongoing1():
 
@@ -153,4 +165,50 @@ def test_game_set_status_upcoming():
     assert 0 == test_game.status, test_game.status
     
 
-    
+def test_notify_game_start():
+
+    test_tstamp = dt.today()+timedelta(hours=-2)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=0
+   
+    test_string = test_game.set_status()
+    assert "START NOTIFICATION"  == test_string, test_string
+   
+def test_notify_game_end():
+
+    test_tstamp = dt.today()+timedelta(hours=-7)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=1
+   
+    test_string = test_game.set_status()
+    assert "END NOTIFICATION"  == test_string, test_string
+   
+def test_notify_game_end1():
+
+    test_tstamp = dt.today()+timedelta(days=-1)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=1
+   
+    test_string = test_game.set_status()
+    assert "END NOTIFICATION"  == test_string, test_string
+
+def test_no_notify_game_end1():
+
+    test_tstamp = dt.today()+timedelta(days=-1)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+
+    test_string = test_game.set_status()
+    print test_string
+    assert None  == test_string, test_string
