@@ -3,10 +3,15 @@
 import urllib2, json
 import feedparser as fp
 import MediaClasses
-from datetime import datetime as dt
-from datetime import timedelta
 from game_info import game_deets
 from game_info import gen_game_graph
+
+
+# Timestamp imports 
+from timestamps import game_ts
+from datetime import datetime as dt
+from datetime import timedelta
+from tzlocal import get_localzone
 
 base_url = 'http://www.ultimate-numbers.com/rest/view'
 
@@ -216,8 +221,8 @@ class League():
             elif not all and delta.days < (-1*days_behind):
                 pass
             else:
-                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status)
-                data_out.append(game_tup) if scores else data_out.append(game_tup[:-3])
+                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,game.tstamp.isoformat())
+                data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
        
         data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
         return data_out
@@ -511,7 +516,7 @@ class Team():
             if AUDL_Name in game['team']:
                 d = game['date']
                 t = game['time']
-                y = game['Year']
+                tstamp = game_ts(d,t)
                 opp = game['opponent']
                 #debug stuff
                 #if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
@@ -524,7 +529,7 @@ class Team():
                     at = game['team'].strip()
                     ht = game['opponent'].strip()
                   
-                team_games.append((d,t,y,ht,at,opp))
+                team_games.append((d,t,tstamp,ht,at,opp))
 
         #Check to see if the team belongs to a league
         if self.League != None:
@@ -701,13 +706,13 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, year, home_team, away_team):
+    def __init__(self, date, time, tstamp, home_team, away_team):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         #self.home_id = ''    
         #self.away_id = ''
-        # a string containing the year of the season
-        self.year = year
+        # a datetime object for the game
+        self.tstamp = tstamp
         # a string containing the date of the game
         self.date = date
         # a string containing a scheduled beginning time of the game
@@ -762,26 +767,54 @@ class Game():
         self.set_status()
 
     def set_status(self):
-        
-        if hasattr(self,'time') and hasattr(self,'date') and "TBD" not in self.time:
-            sched_time = dt.strptime(self.time[:-4], "%I:%M %p")
-            sched_date = dt.strptime(self.date, "%m/%d/%y")
+        """
+        This will set the game's status based on the timestamp of the game. 
+        Uses the local time on the server for comparison.
+        """      
+        # create class enum for different allowed statuses
+        class statuses:
+            UPCOMING = 0 
+            ONGOING = 1
+            OVER = 2
+            # ultimate-numbers declared over
+            UN_DEC_OVER =3
 
-            if  (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) < 0:
-                self.status=0
-            elif (dt.today().date()==sched_date.date())  and (dt.today().hour - sched_time.hour) <= 6:
-                self.status=1
-            elif (dt.today().date()-sched_date.date()) > timedelta(days=0):
-                self.status=2
-            elif (dt.today().date()==sched_date.date()) and (dt.today().hour - sched_time.hour) > 6:
-                self.status=2        
+        #generate local timestamp w/ timezone
+        tz = get_localzone()
+        now = tz.localize(dt.now())
+        # maximum assumed game length, in hours (this is arbitrary)
+        max_game_len = 6
+        if not hasattr(self,'status') or (hasattr(self,'tstamp') and self.status != statuses.UN_DEC_OVER):
+            delta_hours = (now-self.tstamp).total_seconds()/3600
+            sched_date = self.tstamp.date()
+        
+            if  (now.date()==self.tstamp.date())  and (delta_hours) < 0:
+                self.status=statuses.UPCOMING
+            elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
+                if hasattr(self,'status') and self.status == statuses.UPCOMING: print "START NOTIFICATION"
+                #temporary, for testing
+                if hasattr(self,'status') and self.status == statuses.UPCOMING: return "START NOTIFICATION"
+                self.status=statuses.ONGOING
+            elif (now.date()-self.tstamp.date()) > timedelta(days=0):
+                if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
+                #temporary, for testing
+                if hasattr(self,'status') and self.status == statuses.ONGOING: return "END NOTIFICATION"
+                self.status=statuses.OVER
+            elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
+                if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
+                #temporary, for testing
+                if hasattr(self,'status') and self.status == statuses.ONGOING: return "END NOTIFICATION"
+                self.status=statuses.OVER
+            else:
+                self.status=statuses.UPCOMING
         else:
             pass
-          
 
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data
         graphed = False
+        # a flag to be set by game_deets on whether or not the game has been declared over by UN
+        is_over = False
         # Blank data in case there's no game info
         home_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
         away_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
@@ -794,7 +827,7 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                home_deets = game_deets(points)         
+                home_deets,is_over = game_deets(points)         
                 self.graph_pnts = gen_game_graph(self,points)
                 graphed = True
             else:
@@ -815,10 +848,11 @@ class Game():
             data = json.loads(response.read())
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
-                away_deets = game_deets(points)         
+                away_deets, is_over = game_deets(points)         
                 if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
                 print ["No information available"]
         #print home_deets
         #print away_deets
+        if is_over: self.status=3
         return [home_deets,away_deets]

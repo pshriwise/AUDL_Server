@@ -8,6 +8,7 @@ from datetime import timedelta
 #Append the parent dir to the module search path
 sys.path.append('..')
 import AUDLclasses
+from timestamps import game_ts
 
 def load_team_test():
     """
@@ -81,8 +82,9 @@ def test_match_games():
     
     game_dict =  [{"teamId":"5182111044599808","gameId":"game-8ECA8C1D-6968-4FD0-A361-DE4EFF20203D","opponentName":"Cincinnati Revolution","tournamentName":"","gamePoint":1000,"wind":{"mph":0,"degrees":-1},"timestamp":"2014-04-12 19:26","date":"Sat, 4/12","time":"7:26","msSinceEpoch":1397330760000,"ours":25,"theirs":16,"timeoutDetailsJson":"{\"takenSecondHalf\":2,\"quotaPerHalf\":2,\"takenFirstHalf\":2,\"quotaFloaters\":0}"},{"teamId":"5182111044599808","gameId":"game-47F12B4E-52A2-4AC4-8047-FAC93845A51B","opponentName":"Indianapolis alleyCats","tournamentName":"","gamePoint":1000,"wind":{"mph":0,"degrees":-1},"timestamp":"2014-04-13 15:42","date":"Sun, 4/13","time":"3:42","msSinceEpoch":1397403720000,"ours":26,"theirs":21,"timeoutDetailsJson":"{\"takenSecondHalf\":2,\"quotaPerHalf\":2,\"takenFirstHalf\":2,\"quotaFloaters\":0}"}]
 
-
-    test_game = AUDLclasses.Game('4/12/14','7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+    d="4/12/14"
+    t="7:00 PM EST"
+    test_game = AUDLclasses.Game(d,t,game_ts(d,t),'Cincinnati Revolution','Madison Radicals')
 
 
     test_game.match_game(game_dict,False)
@@ -93,8 +95,9 @@ def test_match_games():
 
 def test_game_set_status_final():
 
-    
-    test_game = AUDLclasses.Game('4/12/12','7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+    d = '4/12/14'
+    t = '7:00 PM EST'
+    test_game = AUDLclasses.Game(d,t,game_ts(d,t),'Cincinnati Revolution','Madison Radicals')
 
     test_game.set_status()
 
@@ -103,7 +106,19 @@ def test_game_set_status_final():
     test_tstamp = dt.today()+timedelta(days=-1) 
     game_over_date = dt.strftime(test_tstamp, "%m/%d/%y")
         
-    test_game = AUDLclasses.Game(game_over_date,'7:00 PM EST','2014','Cincinnati Revolution','Madison Radicals')
+    test_game = AUDLclasses.Game(game_over_date,t,game_ts(game_over_date,t),'Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
+def test_game_set_status_final2():
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     
     test_game.set_status()
 
@@ -114,9 +129,9 @@ def test_game_set_status_ongoing1():
 
     test_tstamp = dt.today()+timedelta(hours=-2)
     game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
-    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
 
-    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     
     test_game.set_status()
 
@@ -126,11 +141,11 @@ def test_game_set_status_ongoing1():
 
 def test_game_set_status_ongoing2():
 
-    test_tstamp = dt.today()+timedelta(hours=-6)
+    test_tstamp = dt.today()+timedelta(hours=-5)
     game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
-    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" CST"
 
-    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     
     test_game.set_status()
 
@@ -141,13 +156,82 @@ def test_game_set_status_upcoming():
 
     test_tstamp = dt.today()+timedelta(hours=2)
     game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
-    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
 
-    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",'2014','Cincinnati Revolution','Madison Radicals')
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     
     test_game.set_status()
 
     assert 0 == test_game.status, test_game.status
     
 
+def test_notify_game_start():
+
+    test_tstamp = dt.today()+timedelta(hours=-2)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=0
+   
+    test_string = test_game.set_status()
+    assert "START NOTIFICATION"  == test_string, test_string
+   
+def test_notify_game_end():
+
+    test_tstamp = dt.today()+timedelta(hours=-7)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=1
+   
+    test_string = test_game.set_status()
+    assert "END NOTIFICATION"  == test_string, test_string
+   
+def test_notify_game_end1():
+
+    test_tstamp = dt.today()+timedelta(days=-1)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    test_game.status=1
+   
+    test_string = test_game.set_status()
+    assert "END NOTIFICATION"  == test_string, test_string
+
+def test_no_notify_game_end1():
+
+    test_tstamp = dt.today()+timedelta(days=-1)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" EST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+
+    test_string = test_game.set_status()
+    print test_string
+    assert None  == test_string, test_string
+
+
+def test_game_status_timezones():
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" CST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" PST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+
+    test_game.set_status()
+
+    assert 1 == test_game.status, test_game.status

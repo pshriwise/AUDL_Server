@@ -1,9 +1,9 @@
 #!/usr/bin/python 
 
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib.collections import LineCollection
-from matplotlib import pyplot
+#import matplotlib
+#matplotlib.use('Agg')
+#from matplotlib.collections import LineCollection
+#from matplotlib import pyplot
 
 
 def most_common(lst):
@@ -14,7 +14,10 @@ def game_deets(data):
     '''
     This will return the top player for each of the statisics in stat_list.
     '''
-              
+
+    #Boolean telling the game whether or not it has been declared over by UN
+    over = False
+    #Set of stats we're interested in          
     Goals=[]
     Assists=[]
     Drops=[]
@@ -26,6 +29,9 @@ def game_deets(data):
         for event in events:
             act = event['action']
             type = event['type']
+            if act == "GameOver": 
+                over = True 
+                print over
             if act == "Goal" and type == "Offense":
                 Goals.append(event['receiver'])
                 Assists.append(event['passer'])
@@ -49,7 +55,7 @@ def game_deets(data):
             data_out.append((stat_name,"N/A",0))
     
     #return [most_common(list) for list in all_actions], [list.count(most_common(list)) for list in all_actions]
-    return data_out
+    return data_out, over
                     
     
 
