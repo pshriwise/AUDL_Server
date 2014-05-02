@@ -212,3 +212,26 @@ def test_no_notify_game_end1():
     test_string = test_game.set_status()
     print test_string
     assert None  == test_string, test_string
+
+
+def test_game_status_timezones():
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" CST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+    
+    test_game.set_status()
+
+    assert 2 == test_game.status, test_game.status
+
+    test_tstamp = dt.today()+timedelta(hours=-6)
+    game_ongoing_date = dt.strftime(test_tstamp, "%m/%d/%y")
+    game_ongoing_time = dt.strftime(test_tstamp, "%I:%M %p")+" PST"
+
+    test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time,game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
+
+    test_game.set_status()
+
+    assert 1 == test_game.status, test_game.status
