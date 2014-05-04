@@ -792,18 +792,12 @@ class Game():
                 self.status=statuses.UPCOMING
             elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
                 if hasattr(self,'status') and self.status == statuses.UPCOMING: print "START NOTIFICATION"
-                #temporary, for testing
-                if hasattr(self,'status') and self.status == statuses.UPCOMING: return "START NOTIFICATION"
                 self.status=statuses.ONGOING
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
-                #temporary, for testing
-                if hasattr(self,'status') and self.status == statuses.ONGOING: return "END NOTIFICATION"
                 self.status=statuses.OVER
             elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
                 if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
-                #temporary, for testing
-                if hasattr(self,'status') and self.status == statuses.ONGOING: return "END NOTIFICATION"
                 self.status=statuses.OVER
             else:
                 self.status=statuses.UPCOMING
