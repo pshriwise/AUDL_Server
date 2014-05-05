@@ -237,6 +237,17 @@ class League():
         
         return data_out
 
+    def return_upcoming(self):
+        data_out=[]
+                
+        game_sched = self.return_games(None,days_ahead=365,days_behind=0,scores=True)
+        for item in game_sched: 
+           if (item[8] != 0): game_sched.remove(game_sched.index(item))
+        data_out.append(["All Divs",game_sched])
+
+        return data_out
+                
+
     def top_five_league(self, stat):
 
         top_player_stat_list = []
