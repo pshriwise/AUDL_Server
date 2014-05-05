@@ -779,6 +779,8 @@ class Game():
             # ultimate-numbers declared over
             UN_DEC_OVER =3
 
+        # the string to be sent for a notification
+        note_str = None
         #generate local timestamp w/ timezone
         tz = get_localzone()
         now = tz.localize(dt.now())
@@ -791,18 +793,24 @@ class Game():
             if  (now.date()==self.tstamp.date())  and (delta_hours) < 0:
                 self.status=statuses.UPCOMING
             elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
-                if hasattr(self,'status') and self.status == statuses.UPCOMING: print "START NOTIFICATION"
+                if hasattr(self,'status') and self.status == statuses.UPCOMING: 
+                    note_str = self.home_team +  " vs. " + self.away_team + " has begun!"
                 self.status=statuses.ONGOING
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
-                if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
+                if hasattr(self,'status') and self.status == statuses.ONGOING: 
+                    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " + str(self.away_score)
                 self.status=statuses.OVER
             elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
-                if hasattr(self,'status') and self.status == statuses.ONGOING: print "END NOTIFICATION"
+                if hasattr(self,'status') and self.status == statuses.ONGOING:
+                    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
                 self.status=statuses.OVER
             else:
                 self.status=statuses.UPCOMING
         else:
             pass
+        # This is where we will actually send the notification
+        if note_str != None: print note_str
+        return note_str
 
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data

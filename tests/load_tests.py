@@ -175,7 +175,7 @@ def test_notify_game_start():
     test_game.status=0
    
     test_string = test_game.set_status()
-    assert "START NOTIFICATION"  == test_string, test_string
+    assert "Cincinnati Revolution vs. Madison Radicals has begun!"  == test_string, test_string
    
 def test_notify_game_end():
 
@@ -185,9 +185,11 @@ def test_notify_game_end():
 
     test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     test_game.status=1
+    test_game.home_score = 34
+    test_game.away_score = 32
    
     test_string = test_game.set_status()
-    assert "END NOTIFICATION"  == test_string, test_string
+    assert "GAME OVER: Cincinnati Revolution 34, Madison Radicals 32"  == test_string, test_string
    
 def test_notify_game_end1():
 
@@ -197,9 +199,11 @@ def test_notify_game_end1():
 
     test_game = AUDLclasses.Game(game_ongoing_date,game_ongoing_time+" EST",game_ts(game_ongoing_date,game_ongoing_time),'Cincinnati Revolution','Madison Radicals')
     test_game.status=1
+    test_game.home_score = 34
+    test_game.away_score = 32
    
     test_string = test_game.set_status()
-    assert "END NOTIFICATION"  == test_string, test_string
+    assert "GAME OVER: Cincinnati Revolution 34, Madison Radicals 32"  == test_string, test_string
 
 def test_no_notify_game_end1():
 
