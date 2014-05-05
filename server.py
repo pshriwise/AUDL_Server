@@ -33,7 +33,7 @@ def path_data(path, League):
                    'Stats'     : League.get_top_fives(),
                    'FAQ'       : "Coming soon",
                    'Terms_and_Info' : "Coming soon",
-                   'Home'      : (League.news_page_info(),League.get_videos(),League.return_schedules())}
+                   'Home'      : (League.news_page_info(),League.get_videos(),League.return_upcoming())}
 
 
     path_ents = path_parse(path)
