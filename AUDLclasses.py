@@ -559,10 +559,11 @@ class Team():
        """
        if not hasattr(self,"Players"): self.add_players()
        stat_list = ["goals","assists","drops","throwaways","plusMinusCount","ds"]
+       formal_stat_list = ["Goals","Assists","Drops","Throwaways","+/- Count","Ds"]
        if not hasattr(self, 'City'): self.get_info()
        stat_out = [(self.City, self.Name, self.ID)]
-       for stat in stat_list:
-           stat_tup = (stat, self.top_five(stat))
+       for i in range(6):
+           stat_tup = (formal_stat_list[i], self.top_five(stat_list[i]))
            stat_out.append(stat_tup)
        
        # A dictionary containing the top five players for 
