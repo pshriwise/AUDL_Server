@@ -126,7 +126,7 @@ class League():
             if hasattr(self.Teams[team], 'Name') and hasattr(self.Teams[team], 'City'):
                 AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
                 new_tup = (AUDL_Name, self.Teams[team].ID)
-                data_out.sort(key= lambda set: set[0], reverse = True)
+                data_out.sort(key= lambda set: set[0])
                 data_out.append(new_tup)
         return data_out
 
