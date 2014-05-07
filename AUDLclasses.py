@@ -242,7 +242,9 @@ class League():
                 
         game_sched = self.return_games(None,days_ahead=365,days_behind=0,scores=True)
         for item in game_sched: 
-           if (item[8] != 0): game_sched.remove(game_sched.index(item))
+           # Use the status enumerator to remove any games that have already begun
+           # the list method remove is ok to use here as all games should be unique
+           if (item[8] != 0): game_sched.remove(item)
         data_out.append(["All Divs",game_sched])
 
         return data_out
