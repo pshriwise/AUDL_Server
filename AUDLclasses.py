@@ -817,7 +817,10 @@ class Game():
                 self.status=statuses.OVER
             elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
                 if hasattr(self,'status') and self.status == statuses.ONGOING:
-                    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
+                    if not hasattr(self,"home_score"): 
+                        note_str =  "GAME OVER: " + self.home_team + "vs." + self.away_team + ". No score reported!"
+                    else:
+                        note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
                 self.status=statuses.OVER
             else:
                 self.status=statuses.UPCOMING
