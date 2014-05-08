@@ -319,7 +319,6 @@ class League():
         teams = self.Teams
 
         # Corner case for the Royal
-        if name == "Montreal Royal": return 1234
         for ID, team_inst in teams.items():
             AUDL_name = team_inst.City + " " + team_inst.Name
             if AUDL_name in name.rstrip(): return ID
