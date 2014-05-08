@@ -283,13 +283,13 @@
     "Year":2014,
     "team":"Indianapolis AlleyCats ",
     "date":"5/9/14",
-    "time":"7:00 PM CST",
+    "time":"7:30 PM CST",
     "home/away":"Home",
     "opponent":"Chicago Wildfire"
   },
   {
     "Year":2014,
-    "team":"San Francisco FlameThrowers ",
+    "team":"San Jose Spiders ",
     "date":"5/10/14",
     "time":"3:00 PM PST",
     "home/away":"Home",
@@ -323,7 +323,7 @@
     "Year":2014,
     "team":"Philadelphia Phoenix ",
     "date":"5/10/14",
-    "time":"3:00 PM EST",
+    "time":"5:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -1227,7 +1227,7 @@
     "Year":2014,
     "team":"Chicago Wildfire",
     "date":"5/9/14",
-    "time":"7:00 PM CST",
+    "time":"7:30 PM CST",
     "home/away":"Away",
     "opponent":"Indianapolis AlleyCats "
   },
@@ -1237,7 +1237,7 @@
     "date":"5/10/14",
     "time":"3:00 PM PST",
     "home/away":"Away",
-    "opponent":"San Francisco FlameThrowers "
+    "opponent":"San Jose Spiders "
   },
   {
     "Year":2014,
@@ -1267,7 +1267,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"5/10/14",
-    "time":"3:00 PM EST",
+    "time":"5:00 PM EST",
     "home/away":"Away",
     "opponent":"Philadelphia Phoenix "
   },
