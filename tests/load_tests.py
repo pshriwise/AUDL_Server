@@ -164,7 +164,7 @@ def test_game_set_status_upcoming():
 
     assert 0 == test_game.status, test_game.status
     
-
+"""
 def test_notify_game_start():
 
     test_tstamp = dt.today()+timedelta(hours=-2)
@@ -216,7 +216,7 @@ def test_no_notify_game_end1():
     test_string = test_game.set_status()
     print test_string
     assert None  == test_string, test_string
-
+"""
 
 def test_game_status_timezones():
 
