@@ -451,7 +451,7 @@
     "Year":2014,
     "team":"Montreal Royal ",
     "date":"5/24/14",
-    "time":"3:00 PM EST",
+    "time":"6:00 PM EST",
     "home/away":"Away",
     "opponent":"Philadelphia Phoenix"
   },
@@ -475,7 +475,7 @@
     "Year":2014,
     "team":"Montreal Royal ",
     "date":"5/25/14",
-    "time":"3:00 PM EST",
+    "time":"4:00 PM EST",
     "home/away":"Home",
     "opponent":"New York Empire"
   },
@@ -1395,7 +1395,7 @@
     "Year":2014,
     "team":"Philadelphia Phoenix",
     "date":"5/24/14",
-    "time":"3:00 PM EST",
+    "time":"6:00 PM EST",
     "home/away":"Home",
     "opponent":"Montreal Royal "
   },
@@ -1419,7 +1419,7 @@
     "Year":2014,
     "team":"New York Empire",
     "date":"5/25/14",
-    "time":"3:00 PM EST",
+    "time":"4:00 PM EST",
     "home/away":"Away",
     "opponent":"Montreal Royal "
   },
