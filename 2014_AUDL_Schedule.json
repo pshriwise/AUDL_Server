@@ -721,10 +721,10 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco FlameThrowers ",
+    "team":"San Jose Spiders ",
     "date":"6/21/14",
     "time":"5:00 PM PST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"Vancouver Riptide"
   },
   {
@@ -769,10 +769,10 @@
   },
   {
     "Year":2014,
-    "team":"San Francisco FlameThrowers ",
+    "team":"San Jose Spiders",
     "date":"6/22/14",
     "time":"1:00 PM PST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"Seattle Raptors"
   },
   {
@@ -1668,8 +1668,8 @@
     "team":"Vancouver Riptide",
     "date":"6/21/14",
     "time":"5:00 PM PST",
-    "home/away":"Away",
-    "opponent":"San Francisco FlameThrowers "
+    "home/away":"Home",
+    "opponent":"San Jose Spiders "
   },
   {
     "Year":2014,
@@ -1717,7 +1717,7 @@
     "date":"6/22/14",
     "time":"1:00 PM PST",
     "home/away":"Away",
-    "opponent":"San Francisco FlameThrowers "
+    "opponent":"San Jose Spiders"
   },
   {
     "Year":2014,
