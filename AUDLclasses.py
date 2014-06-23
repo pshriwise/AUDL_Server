@@ -344,7 +344,7 @@ class League():
                 rec = t.record()
                 team_rec_tup = (t.full_name(),team,rec[0], rec[1], rec[2])
                 div_list.append(team_rec_tup)
-            div_list.sort(key= lambda set: (set[2]/(set[2]+set[3]),set[4]), reverse=True)
+            div_list.sort(key= lambda set: (float(set[2])/(float(set[2]+set[3])),set[4]), reverse=True)
             div_list.insert(0,div)
             standings_list.append(div_list)
 
