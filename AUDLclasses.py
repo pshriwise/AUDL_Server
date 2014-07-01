@@ -13,7 +13,7 @@ from datetime import datetime as dt
 from datetime import timedelta
 from tzlocal import get_localzone
 
-base_url = 'http://www.ultimate-numbers.com/rest/view'
+base_url = 'http://www.ultianalytics.com/rest/view'
 
 class League():
     """  
