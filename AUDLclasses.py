@@ -409,7 +409,7 @@ class Team():
         """
 
         # get player summary data
-        base_url = 'http://www.ultimate-numbers.com/rest/view'
+
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
         # print base_url+"/team/"+str(self.ID)+"/players/"
         response1 = urllib2.urlopen(req1)
@@ -442,7 +442,7 @@ class Team():
         """
         # Get data from the appropriate ultimate-numbers 
         # endpoint
-        base_url = 'http://www.ultimate-numbers.com/rest/view'
+
         req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
         response = urllib2.urlopen(req)
         data = json.loads(response.read())
@@ -667,7 +667,7 @@ class Team():
     def get_games_info(self):
 
         #get the list of games for the team from ultimate-numbers
-        base_url = 'http://www.ultimate-numbers.com/rest/view'
+
 
         full_url = base_url + "/team/" + str(self.ID) + "/games"
 
