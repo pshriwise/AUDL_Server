@@ -505,14 +505,6 @@
   },
   {
     "Year":2014,
-    "team":"Indianapolis AlleyCats ",
-    "date":"5/31/14",
-    "time":"7:00 PM CST",
-    "home/away":"Home",
-    "opponent":"Minnesota Wind Chill"
-  },
-  {
-    "Year":2014,
     "team":"Vancouver Riptide ",
     "date":"5/31/14",
     "time":"7:00 PM PST",
@@ -1449,14 +1441,6 @@
   },
   {
     "Year":2014,
-    "team":"Minnesota Wind Chill",
-    "date":"5/31/14",
-    "time":"7:00 PM CST",
-    "home/away":"Away",
-    "opponent":"Indianapolis AlleyCats "
-  },
-  {
-    "Year":2014,
     "team":"San Jose Spiders",
     "date":"5/31/14",
     "time":"7:00 PM PST",
@@ -1886,5 +1870,21 @@
     "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"DC Breeze "
+  },
+  {
+    "Year":2014,
+    "team":"Minnesota Wind Chill",
+    "date":"7/13/14",
+    "time":"6:00 PM CST",
+    "home/away":"Home",
+    "opponent":"Indianapolis Alleycats"
+  },
+  {
+    "Year":2014,
+    "team":"Indianapolis Alleycats",
+    "date":"7/13/14",
+    "time":"6:00 PM CST",
+    "home/away":"Away",
+    "opponent":"Minnesota Wind Chill "
   }
 ]
