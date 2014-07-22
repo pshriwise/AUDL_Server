@@ -1886,5 +1886,37 @@
     "time":"6:00 PM CST",
     "home/away":"Away",
     "opponent":"Minnesota Wind Chill "
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"7/26/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Madison Radicals"
+  },
+  {
+    "Year":2014,
+    "team":"Madison Radicals",
+    "date":"7/26/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"7/26/14",
+    "time":"7:00 PM EST",
+    "home/away":"Home",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"New York Empire",
+    "date":"7/26/14",
+    "time":"7:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Toronto Rush"
   }
 ]

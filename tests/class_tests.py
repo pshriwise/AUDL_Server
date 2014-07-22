@@ -179,7 +179,7 @@ def test_team_add_games():
     test_team.add_games()
 
     assert type(test_team.Games) is dict
-    assert 14 == len(test_team.Games)
+    assert 15 == len(test_team.Games)
 
 def test_team_add_players():
 
