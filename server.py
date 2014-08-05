@@ -166,7 +166,9 @@ def main():
 
 def refresh():
     print "refreshing server...",
-    threading.Timer(300,refresh).start()
+    #set interval to one day
+    interval = 86400
+    threading.Timer(interval,refresh).start()
     AUDL.update_games()
     AUDL.get_news()
     for ID,team in AUDL.Teams.items():
