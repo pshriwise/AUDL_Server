@@ -199,21 +199,13 @@ class League():
                 inst = self.Teams[team].Games[game]                    
                 if inst not in game_list: game_list.append(inst)
         
+        
+        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+        
         for game in game_list:
-            date = game.date
-            time = game.time
-            team1 = game.home_team
-            team1ID = self.name_to_id(game.home_team)
-            team2 = game.away_team 
-            team2ID = self.name_to_id(game.away_team)
+            game_tup = self.game_tuple(game)
 
-            if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
-                hscore = game.home_score
-                ascore = game.away_score
-            else:
-                hscore="0"
-                ascore="0"  
-            status = 0 if not hasattr(game,'status') else game.status
+            #use the game date to filter games accordingly
             game_date = dt.strptime(game.date, "%m/%d/%y").date()
             now = dt.today().date() if now == None else now
             delta = game_date-now
@@ -222,12 +214,32 @@ class League():
             elif not all and delta.days < (-1*days_behind):
                 pass
             else:
-                game_tup=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,game.tstamp.isoformat())
                 data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
        
         data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
+
         return data_out
 
+    def game_tuple(self, g):
+        date = g.date
+        time = g.time
+        team1 = g.home_team
+        team1ID = self.name_to_id(g.home_team)
+        team2 = g.away_team 
+        team2ID = self.name_to_id(g.away_team)
+        
+        if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
+            hscore = g.home_score
+            ascore = g.away_score
+        else:
+            hscore="0"
+            ascore="0"  
+        status = 0 if not hasattr(g,'status') else g.status
+
+        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat())
+
+        return game_tuple
+            
     def return_schedules(self):
     
         data_out = []
