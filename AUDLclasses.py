@@ -216,8 +216,11 @@ class League():
             else:
                 data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
        
-        data_out.sort(key= lambda set: dt.strptime(set[4], '%m/%d/%y'))
 
+
+        #If there's no data out, then return the last few games for now
+        if 0 == len(data_out):
+            data_out = [ self.game_tuple(game) if scores else self.game_tuple(game)[:-4] for game in game_list[-5:] ]
         return data_out
 
     def game_tuple(self, g):

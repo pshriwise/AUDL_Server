@@ -92,7 +92,7 @@ def test_league_ret_games():
     game_data = test_league.return_games(now=test_date.date())
 
     assert type(game_data) is list
-    assert len(game_data) == 0
+    assert len(game_data) == 1
 
     #test date is one year after all games, should return one game
     test_date = dt(2015,5,1)
@@ -109,7 +109,7 @@ def test_league_ret_games():
     game_data = test_league.return_games(days_ahead=3,now=test_date.date())
 
     assert type(game_data) is list
-    assert len(game_data) == 0
+    assert len(game_data) == 1
 
     test_date = dt(2014,5,1)
 
