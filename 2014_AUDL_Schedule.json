@@ -1918,5 +1918,21 @@
     "time":"3:00 PM EST",
     "home/away":"Away",
     "opponent":"Toronto Rush"
+  },
+  {
+    "Year":2014,
+    "team":"San Jose Spiders",
+    "date":"7/27/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"New York Empire"
+  },
+  {
+    "Year":2014,
+    "team":"Toronto Rush",
+    "date":"7/27/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"San Jose Spiders"
   }
 ]
