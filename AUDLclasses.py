@@ -365,6 +365,27 @@ class League():
 
         return standings_list
 
+    def web_standings(self):
+       
+        standings_dict={}
+        for div,teams in self.Divisions.items():
+            div_list=[]
+
+            #print teams
+            for team in teams:
+                t = self.Teams[team]
+                rec = t.record()
+                team_rec_dict = {"name" : t.full_name(), "id": team, "wins" : rec[0], "losses" : rec[1], "plmn" : rec[2]}
+                div_list.append(team_rec_dict)
+            div_list.sort(key= lambda set: (float(set["wins"])/(float(set["wins"]+set["losses"])),set["plmn"]), reverse=True)
+            #div_list.insert(0,div)
+            
+            standings_dict[div] = div_list
+            
+
+        return standings_dict
+
+
     def update_games(self):
         for name,team in self.Teams.items():
             team.get_games_info()

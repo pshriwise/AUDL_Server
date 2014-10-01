@@ -47,9 +47,23 @@ def path_data(path, League):
         return subpage_data(path_ents, League)
     elif len(path_ents) > 1 and path_ents[0] == "Game":
         return subpage_data(path_ents, League)
+    elif len(path_ents) > 1 and path_ents[0] == "Web":
+        return web_data(path_ents, League)
     else:
         return "Not a valid path"
 
+
+def web_data( path_ents, League ):
+
+    path_ents = path_ents[1].split('?')
+
+    key = path_ents[0]
+    func = path_ents[1].split('=')[1]
+    print key
+    print func
+    widgets = { 'Standings' : League.web_standings() }
+
+    return func + "('" + json.dumps(widgets[key]) + "')"
 
 def subpage_data(path_ents, League):
     """
