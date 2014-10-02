@@ -58,13 +58,21 @@ def web_data( path_ents, League ):
     # dictionary of functions this endpoint will be able to call
     widgets = { 'Standings' : League.web_standings() }
 
+    # split on the question mark and keep what comes after
     path_ents = path_ents[1].split('?')
-
+    
+    # for the local function to call should be right before the ?
     key = path_ents[0]
-    func = path_ents[1].split('=')[1]
+
+    # now split the remaining path on ampersands to get the sets of key/values
+    # from the path
+    params = path_ents[1].split('&')
+
+    #we'll use the value of the first param as our callback func value (for now)
+    func = params[0].split('=')[1]
+
     print key
     print func
-
 
     return func + "('" + json.dumps(widgets[key]) + "')"
 
