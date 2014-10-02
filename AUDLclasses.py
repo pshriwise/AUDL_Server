@@ -385,6 +385,26 @@ class League():
 
         return standings_dict
 
+    def score_ticker(self):
+
+        ticker_dict ={}
+        #convert array data to a dictionary
+        scores_data = self.return_upcoming()
+
+        game_key_list = ['home_team', 'home_id', 'away_team', 'away_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
+        for div_info in scores_data:
+
+            div_key = div_info[0]
+            games = div_info[1]
+            div_games=[]
+
+            for game in games:
+                game_dict = { key: value for key,value in zip(game_key_list, game)}
+                div_games.append(game_dict)
+
+            ticker_dict[div_key] = div_games
+                
+        return ticker_dict
 
     def update_games(self):
         for name,team in self.Teams.items():

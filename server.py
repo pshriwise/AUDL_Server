@@ -56,7 +56,8 @@ def path_data(path, League):
 def web_data( path_ents, League ):
 
     # dictionary of functions this endpoint will be able to call
-    widgets = { 'Standings' : League.web_standings() }
+    widgets = { 'Standings' : League.web_standings(),
+                'Scores'    : League.score_ticker()}
 
     # split on the question mark and keep what comes after
     path_ents = path_ents[1].split('?')
