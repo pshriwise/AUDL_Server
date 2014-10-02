@@ -149,7 +149,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_GET(self):
         
         #use the typical request handler for icons
-        if self.path.endswith(".png"):
+        if self.path.endswith(".png") or self.path.endswith(".css") or self.path.endswith(".js"):
 
             SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
