@@ -47,9 +47,26 @@ def path_data(path, League):
         return subpage_data(path_ents, League)
     elif len(path_ents) > 1 and path_ents[0] == "Game":
         return subpage_data(path_ents, League)
+    elif len(path_ents) > 1 and path_ents[0] == "Web":
+        return web_data(path_ents, League)
     else:
         return "Not a valid path"
 
+#intended for use with AUDL widgets/webpages
+def web_data( path_ents, League ):
+
+    # dictionary of functions this endpoint will be able to call
+    widgets = { 'Standings' : League.web_standings() }
+
+    path_ents = path_ents[1].split('?')
+
+    key = path_ents[0]
+    func = path_ents[1].split('=')[1]
+    print key
+    print func
+
+
+    return func + "('" + json.dumps(widgets[key]) + "')"
 
 def subpage_data(path_ents, League):
     """
@@ -130,6 +147,14 @@ def game_graph(team,path_ents):
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
+        
+        #use the typical request handler for icons
+        if self.path.endswith(".png") or self.path.endswith(".css") or self.path.endswith(".js"):
+
+            SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+
+        else:
+            
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
 
@@ -161,6 +186,7 @@ def main():
     PORT=4000
     IP = ""
     httpd = SocketServer.ThreadingTCPServer((IP, PORT), Handler) # Can also use ForkingTCPServer
+    httpd.request_queue_size = 30
     print "serving at" , IP, "port", PORT
     httpd.serve_forever()
 

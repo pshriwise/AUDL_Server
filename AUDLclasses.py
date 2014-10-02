@@ -365,6 +365,27 @@ class League():
 
         return standings_list
 
+    def web_standings(self):
+       
+        standings_dict={}
+        for div,teams in self.Divisions.items():
+            div_list=[]
+
+            #print teams
+            for team in teams:
+                t = self.Teams[team]
+                rec = t.record()
+                team_rec_dict = {"name" : t.full_name(), "id": team, "wins" : rec[0], "losses" : rec[1], "plmn" : rec[2]}
+                div_list.append(team_rec_dict)
+            div_list.sort(key= lambda set: (float(set["wins"])/(float(set["wins"]+set["losses"])),set["plmn"]), reverse=True)
+            #div_list.insert(0,div)
+            
+            standings_dict[div] = div_list
+            
+
+        return standings_dict
+
+
     def update_games(self):
         for name,team in self.Teams.items():
             team.get_games_info()
@@ -434,11 +455,13 @@ class Team():
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
         response2 = urllib2.urlopen(req2)
         player_stats_data = json.loads(response2.read())
-
+        
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
                 #print data['number'], player.Number, self.Name, player.full_name()
+                if 'number' not in data.keys():
+                    continue
                 if data['number'] == player.Number:
                     #print data['name']
                     self.Players[name].stat_name = data['name']
@@ -654,6 +677,7 @@ class Team():
             return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
         else:
             return False, None
+
     def record(self):
 
         if not hasattr(self,'Games'): return None
