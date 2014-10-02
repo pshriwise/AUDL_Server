@@ -455,11 +455,13 @@ class Team():
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
         response2 = urllib2.urlopen(req2)
         player_stats_data = json.loads(response2.read())
-
+        
         # match player to their Ultimate-Numbers name by their Jersey number
         for name, player in self.Players.items():
             for data in gen_player_data:
                 #print data['number'], player.Number, self.Name, player.full_name()
+                if 'number' not in data.keys():
+                    continue
                 if data['number'] == player.Number:
                     #print data['name']
                     self.Players[name].stat_name = data['name']
@@ -675,6 +677,7 @@ class Team():
             return (True, self.Games[date]) if date in self.Games.keys() else (False, None)
         else:
             return False, None
+
     def record(self):
 
         if not hasattr(self,'Games'): return None
