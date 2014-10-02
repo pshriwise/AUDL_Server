@@ -1934,5 +1934,21 @@
     "time":"1:00 PM EST",
     "home/away":"Home",
     "opponent":"San Jose Spiders"
+  },
+  {
+    "Year":2014,
+    "team":"Rochester Dragons",
+    "date":"4/19/14",
+    "time":"1:00 PM EST",
+    "home/away":"Home",
+    "opponent":"Philadelphia Phoenix"
+  },
+  {
+    "Year":2014,
+    "team":"Philadelphia Phoenix",
+    "date":"4/19/14",
+    "time":"1:00 PM EST",
+    "home/away":"Away",
+    "opponent":"Rochester Dragons"
   }
 ]
