@@ -52,8 +52,11 @@ def path_data(path, League):
     else:
         return "Not a valid path"
 
-
+#intended for use with AUDL widgets/webpages
 def web_data( path_ents, League ):
+
+    # dictionary of functions this endpoint will be able to call
+    widgets = { 'Standings' : League.web_standings() }
 
     path_ents = path_ents[1].split('?')
 
@@ -61,7 +64,7 @@ def web_data( path_ents, League ):
     func = path_ents[1].split('=')[1]
     print key
     print func
-    widgets = { 'Standings' : League.web_standings() }
+
 
     return func + "('" + json.dumps(widgets[key]) + "')"
 
@@ -144,6 +147,14 @@ def game_graph(team,path_ents):
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
+        
+        #use the typical request handler for icons
+        if self.path.endswith(".png"):
+
+            SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+
+        else:
+            
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
 
