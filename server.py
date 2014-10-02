@@ -186,6 +186,7 @@ def main():
     PORT=4000
     IP = ""
     httpd = SocketServer.ThreadingTCPServer((IP, PORT), Handler) # Can also use ForkingTCPServer
+    httpd.request_queue_size = 30
     print "serving at" , IP, "port", PORT
     httpd.serve_forever()
 
