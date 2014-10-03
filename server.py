@@ -56,27 +56,37 @@ def path_data(path, League):
 def web_data( path_ents, League ):
 
     # dictionary of functions this endpoint will be able to call
-    widgets = { 'Standings' : League.web_standings(),
-                'Scores'    : League.score_ticker()}
+    widgets = { 'Standings' : League.web_standings,
+                'Scores'    : League.score_ticker,
+                'Score'     : League.latest_game }
 
-    # split on the question mark and keep what comes after
-    path_ents = path_ents[1].split('?')
+    key, params = parse_callback( path_ents[-1] )
     
+    return params['callback'] + "('" + json.dumps(widgets[key](params))  + "')"
+
+#ef teams_latest_game( League, 
+
+def parse_callback( web_params ):
+
+    path_ents = web_params.split('?')
     # for the local function to call should be right before the ?
     key = path_ents[0]
 
+    param_dict={}
     # now split the remaining path on ampersands to get the sets of key/values
     # from the path
-    params = path_ents[1].split('&')
+    param_pairs = path_ents[1].split('&')
 
-    #we'll use the value of the first param as our callback func value (for now)
-    func = params[0].split('=')[1]
+    for param_pair in param_pairs:
+        
+        temp = param_pair.split('=')
+        param_dict[temp[0]] = temp[1]
 
-    print key
-    print func
+                           
+    return key, param_dict
+           
 
-    return func + "('" + json.dumps(widgets[key]) + "')"
-
+                       
 def subpage_data(path_ents, League):
     """
     Function for returning the correct set of subpage data.
