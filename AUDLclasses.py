@@ -746,7 +746,41 @@ class Team():
             else:
                print "GAME DOESN'T BELONG TO THIS TEAM"
 
+    def return_latest_game(self):
 
+        game_dict={}
+        
+        #get today's date
+        today = dt.today().date()
+        min_diff = None
+        nearest_game = None
+        for key,game in self.Games.items():
+            
+            #find the game that is the closest to today's date
+            game_date = game.tstamp.date()
+            diff = (game_date - today).days
+            if ( diff < min_diff or None == min_diff):
+                min_diff = diff
+                nearest_game = game
+            
+
+        #now populate the game dictionary 
+        game_dict['time'] = game.time
+        game_dict['date'] = game.date
+        game_dict['hteam'] = game.home_team
+        game_dict['hteam_id'] = self.League.name_to_id(game.home_team)
+        game_dict['ateam'] = game.away_team
+        game_dict['ateam_id'] = self.League.name_to_id(game.away_team)
+        game_dict['status'] = 0 if not hasattr(game, 'status') else game.status
+        
+        if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
+            game_dict['hscore'] = game.home_score
+            game_dict['ascore'] = game.away_score
+        else:
+            game_dict['hscore'] = "0"
+            game_dict['ascore'] = "0"  
+        
+        return game_dict
 
 class Player():
     """
