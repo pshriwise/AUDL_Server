@@ -383,7 +383,7 @@ class League():
             standings_dict[div] = div_list
             
 
-        return standings_dict
+        return { params['division'] : standings_dict[params['division']] } if 'division' in params.keys() else standings_dict
 
     def score_ticker(self, params):
 
