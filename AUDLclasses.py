@@ -365,7 +365,7 @@ class League():
 
         return standings_list
 
-    def web_standings(self):
+    def web_standings(self, params):
        
         standings_dict={}
         for div,teams in self.Divisions.items():
@@ -385,6 +385,30 @@ class League():
 
         return standings_dict
 
+    def score_ticker(self, params):
+
+        ticker_dict ={}
+        #convert array data to a dictionary
+        scores_data = self.return_upcoming()
+
+        game_key_list = ['home_team', 'home_id', 'away_team', 'away_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
+        for div_info in scores_data:
+
+            div_key = div_info[0]
+            games = div_info[1]
+            div_games=[]
+
+            for game in games:
+                game_dict = { key: value for key,value in zip(game_key_list, game)}
+                div_games.append(game_dict)
+
+            ticker_dict[div_key] = div_games
+                
+        return ticker_dict
+
+    def latest_game(self, params):
+
+        return self.Teams[int(params["id"])].return_latest_game()
 
     def update_games(self):
         for name,team in self.Teams.items():
@@ -726,7 +750,42 @@ class Team():
             else:
                print "GAME DOESN'T BELONG TO THIS TEAM"
 
+    def return_latest_game(self):
 
+        game_dict={}
+        
+        #get today's date
+        today = dt.today().date()
+        min_diff = None
+        nearest_game = None
+        for key, game in self.Games.items():
+            
+            #find the game that is the closest to today's date
+            game_date = game.tstamp.date()
+            diff = abs((game_date - today).days)
+            print abs((game_date - today).days)
+            if ( diff < min_diff or None == min_diff):
+                min_diff = diff
+                nearest_game = game
+            
+
+        #now populate the game dictionary 
+        game_dict['time'] = nearest_game.time
+        game_dict['date'] = nearest_game.date
+        game_dict['hteam'] = nearest_game.home_team
+        game_dict['hteam_id'] = self.League.name_to_id(nearest_game.home_team)
+        game_dict['ateam'] = nearest_game.away_team
+        game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
+        game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else nearest_game.status
+        
+        if hasattr(nearest_game, 'home_score') and hasattr(nearest_game, 'away_score'):
+            game_dict['hscore'] = nearest_game.home_score
+            game_dict['ascore'] = nearest_game.away_score
+        else:
+            game_dict['hscore'] = "0"
+            game_dict['ascore'] = "0"  
+        
+        return game_dict
 
 class Player():
     """
