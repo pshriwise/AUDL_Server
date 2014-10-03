@@ -3,8 +3,7 @@ $(document).ready(function() {
 		url: "http://ec2-54-86-111-95.compute-1.amazonaws.com:4000/Web/Standings",
 		jsonp: "callback",
 		dataType : "jsonp",
-		jsonpCallback : "getStandings",
-		cache : true
+		jsonpCallback : "getStandings"
 	});
 });
 var standingsTable = "";
