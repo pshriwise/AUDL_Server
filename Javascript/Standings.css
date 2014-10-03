@@ -1,21 +1,35 @@
+/* Required to preload images */
+.standings .preload {
+	display: none;
+}
+
+/* Option to highlight specific team. Don't add background-color to div.standings td or it override this setting */
+div.standings tr.MadisonRadicals {
+	background-color: #ffff00;
+}
+
+/* Everything else can be changed */
 div.standings table {
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;
 	color:#333333;
-	border-color: #666666;
+	background-color: #ffffff;
 	border-collapse: collapse;
 }
-div.standings table tr {
+div.standings tr {
 	border-width: 1px;
-	padding: 8px;
 	border-style: solid;
 	border-color: #666666;
 }
-div.standings table th {
+div.standings th {
 	padding: 8px;
 	background-color: #dedede;
 }
-div.standings table td {
+div.standings td {
 	padding: 8px;
-	background-color: #ffffff;
+}
+
+div.standings img {
+	display: inline-block;
+	height: 30px;
 }
