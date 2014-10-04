@@ -15,6 +15,26 @@ from tzlocal import get_localzone
 
 base_url = 'http://www.ultianalytics.com/rest/view'
 
+# create class enum for different allowed statuses
+class statuses:
+    UPCOMING = 0 
+    ONGOING = 1
+    OVER = 2
+    # ultimate-numbers declared over
+    UN_DEC_OVER = 3
+
+
+def status_to_string( status ):
+
+    status_dict = { 0 : 'Upcoming',
+                    1 : 'Ongoing',
+                    2 : 'Final',
+                    3 : 'Final' }
+
+    return status_dict[status]
+
+
+
 class League():
     """  
     Class which acts as a central node for all other classes
@@ -391,7 +411,7 @@ class League():
         #convert array data to a dictionary
         scores_data = self.return_upcoming()
 
-        game_key_list = ['home_team', 'home_id', 'away_team', 'away_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
+        game_key_list = ['hteam', 'hteam_id', 'ateam', 'ateam_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
         for div_info in scores_data:
 
             div_key = div_info[0]
@@ -399,11 +419,13 @@ class League():
             div_games=[]
 
             for game in games:
-                game_dict = { key: value for key,value in zip(game_key_list, game)}
+                game_dict = { key: value for key,value in zip(game_key_list, game) }
+                game_dict['status'] = status_to_string(game_dict['status'])            
                 div_games.append(game_dict)
 
             ticker_dict[div_key] = div_games
                 
+
         return ticker_dict
 
     def latest_game(self, params):
@@ -776,7 +798,7 @@ class Team():
         game_dict['hteam_id'] = self.League.name_to_id(nearest_game.home_team)
         game_dict['ateam'] = nearest_game.away_team
         game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
-        game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else nearest_game.status
+        game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else status_to_string(nearest_game.status)
         
         if hasattr(nearest_game, 'home_score') and hasattr(nearest_game, 'away_score'):
             game_dict['hscore'] = nearest_game.home_score
@@ -883,13 +905,6 @@ class Game():
         This will set the game's status based on the timestamp of the game. 
         Uses the local time on the server for comparison.
         """      
-        # create class enum for different allowed statuses
-        class statuses:
-            UPCOMING = 0 
-            ONGOING = 1
-            OVER = 2
-            # ultimate-numbers declared over
-            UN_DEC_OVER =3
 
         # the string to be sent for a notification
         #note_str = None
