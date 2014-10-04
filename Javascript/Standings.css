@@ -1,8 +1,3 @@
-/* Required to preload images */
-.standings .preload {
-	display: none;
-}
-
 /* Option to highlight specific team. Don't add background-color to div.standings td or it override this setting */
 div.standings tr.MadisonRadicals {
 	background-color: #ffff00;
