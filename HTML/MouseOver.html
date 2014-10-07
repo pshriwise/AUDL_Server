@@ -1,0 +1,127 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+table {
+    background:#ccc;
+    border: 1px #333 solid;
+    padding:5px;
+}
+td{
+    padding:3px;
+}
+tr{
+    border: 1px #333 solid;
+}
+ul{
+	list-style: none;
+}
+.quarterScores {
+    display:none;
+    position:absolute;
+    border:1px solid #000;
+}
+.tickerScore {
+	
+	display: block;
+	float: left;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$(".tickerScore").mouseover(function() {
+		$(this).children(".quarterScores").show();
+	})
+	$(".tickerScore").mouseout(function() {
+		$(this).children(".quarterScores").hide();
+	});
+});
+</script>
+</head>
+<body>
+<div id="content">
+	<ul>
+		<li class="tickerScore">
+			<table width="100px">
+				<tr>
+					<td>MAD</td>
+					<td>22</td>
+				</tr>
+				<tr>
+					<td>CHI</td>
+					<td>20</td>
+				</tr>
+			</table>
+			<div class="quarterScores"> 
+				<table width="400px">
+					<tr>
+						<td></td>
+						<td>Q1</td>
+						<td>Q2</td>
+						<td>Q3</td>
+						<td>Q4</td>
+						<td>T</td>
+					</tr>
+					<tr>
+						<td>Madison Radicals</td>
+						<td>7</td>
+						<td>6</td>
+						<td>3</td>
+						<td>6</td>
+						<td>22</td>
+					</tr>
+					<tr>
+						<td>Chicago Wildfire</td>
+						<td>3</td>
+						<td>5</td>
+						<td>6</td>
+						<td>5</td>
+						<td>20</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+		<li class="tickerScore">
+			<table width="100px">
+				<tr>
+					<td>MIN</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>IND</td>
+					<td>24</td>
+				</tr>
+			</table>
+			<div class="quarterScores"> 
+				<table width="400px">
+					<tr>
+						<td></td>
+						<td>Q1</td>
+						<td>Q2</td>
+						<td>Q3</td>
+						<td>Q4</td>
+						<td>T</td>
+					</tr>
+					<tr>
+						<td>Minnesota Wind Chill</td>
+						<td>7</td>
+						<td>6</td>
+						<td>4</td>
+						<td>8</td>
+						<td>25</td>
+					</tr>
+					<tr>
+						<td>Indianapolis Alleycats</td>
+						<td>4</td>
+						<td>7</td>
+						<td>8</td>
+						<td>5</td>
+						<td>24</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
