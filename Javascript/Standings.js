@@ -29,3 +29,16 @@ getStandings = function( data ) {
 		$(".standings").append(table);
 	});
 };
+
+standings = function( division ) 
+{
+	$(document).ready(function() {
+		$.ajax({
+			url: "http://ec2-54-86-111-95.compute-1.amazonaws.com:4000/Web/Standings",
+			jsonp: "callback",
+			dataType : "jsonp",
+			jsonpCallback : "getStandings",
+			data : {"division" : division}
+		});
+	});
+};

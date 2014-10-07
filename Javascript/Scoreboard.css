@@ -1,0 +1,29 @@
+/* Everything can be changed */
+div.scoreboard table {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	background-color: #ffffff;
+	border-collapse: collapse;
+}
+div.scoreboard tr {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #666666;
+}
+div.scoreboard th {
+	padding: 8px;
+	background-color: #dedede;
+}
+div.scoreboard td {
+	padding: 8px;
+}
+div.scoreboard td.status {
+	padding: 8px;
+	background-color: #dedede;
+}
+
+div.scoreboard img {
+	display: inline-block;
+	height: 30px;
+}

@@ -1,0 +1,32 @@
+/* All necessary */
+.ticker-viewport {
+	overflow: hidden;
+}
+
+/* Everything is necessary but background */
+.ticker-wrapper {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+    background:#ccc;
+}
+
+/* All necessary */
+.ticker-item {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+/* Width of the main div should be well defined, but it can probably be handled by the specific webpage.  The ticker will fit itself inside the given width of the div */
+.ticker {
+	width: 450px;
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+}
+
+/* Can be changed */
+.ticker-item table {
+    border-right: 1px #333 solid;
+    padding:5px;
+}

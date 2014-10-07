@@ -11,15 +11,18 @@ div.standings table {
 	background-color: #ffffff;
 	border-collapse: collapse;
 }
+
 div.standings tr {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #666666;
 }
+
 div.standings th {
 	padding: 8px;
 	background-color: #dedede;
 }
+
 div.standings td {
 	padding: 8px;
 }
