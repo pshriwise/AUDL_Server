@@ -240,7 +240,7 @@ class League():
 
         #If there's no data out, then return the last few games for now
         if 0 == len(data_out):
-            data_out = [ self.game_tuple(game) if scores else self.game_tuple(game)[:-4] for game in game_list[-5:] ]
+            data_out = [ self.game_tuple(game) if scores else self.game_tuple(game)[:-4] for game in game_list[-10:] ]
         return data_out
 
     def game_tuple(self, g):
@@ -407,26 +407,19 @@ class League():
 
     def score_ticker(self, params):
 
-        ticker_dict ={}
+        ticker_list = []
         #convert array data to a dictionary
-        scores_data = self.return_upcoming()
+        scores_data = self.return_games( days_behind = 0, days_ahead = 0, scores = True)
 
         game_key_list = ['hteam', 'hteam_id', 'ateam', 'ateam_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
-        for div_info in scores_data:
-
-            div_key = div_info[0]
-            games = div_info[1]
-            div_games=[]
-
-            for game in games:
-                game_dict = { key: value for key,value in zip(game_key_list, game) }
-                game_dict['status'] = status_to_string(game_dict['status'])            
-                div_games.append(game_dict)
-
-            ticker_dict[div_key] = div_games
-                
-
-        return ticker_dict
+ 
+        for game in scores_data:
+            game_dict = { key: value for key,value in zip(game_key_list, game) }
+            game_dict['status'] = status_to_string(game_dict['status'])           
+            ticker_list.append(game_dict)
+            
+            
+        return ticker_list
 
     def latest_game(self, params):
 
