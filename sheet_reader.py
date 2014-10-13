@@ -1,40 +1,10 @@
 
 
-#import gspread
-
-#from oauth2client.client import SignedJwtAssertionCredentials
-
-#scope = ['https://spreadsheets.google.com/feeds', 'https://docs.google.com/feeds']
-
-#credentials = SignedJwtAssertionCredentials('developer@example.com', SIGNED_KEY, scope)
-
-#gs = gspread.login('pshriwise@gmail.com', '1!HTYzx9uiv')
-
-#ws = gs.open('AUDL_pre2015')
-
-#ws._fetch_sheets()
-
-#def id_to_abrev(team_id):
-
-#   ti = ws.worksheet('Team Info')
-
-#  abbrev_col = ti.find('Abbreviations').col
-
-# id_cell = ti.find( str(team_id) )
-
-# abbrev = ti.cell( id_cell.row, id_cell.col + (abbrev_col-id_cell.col)).value
-
-
-#    return abbrev
-
-
 from subprocess import call 
 import csv
 
 
 base_url = 'https://docs.google.com/spreadsheets/d/'
-
-
 
 spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
 
