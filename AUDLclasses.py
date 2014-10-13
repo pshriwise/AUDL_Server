@@ -13,6 +13,8 @@ from datetime import datetime as dt
 from datetime import timedelta
 from tzlocal import get_localzone
 
+#CSV Imports 
+import sheet_reader as sr
 base_url = 'http://www.ultianalytics.com/rest/view'
 
 # create class enum for different allowed statuses
@@ -415,7 +417,9 @@ class League():
  
         for game in scores_data:
             game_dict = { key: value for key,value in zip(game_key_list, game) }
-            game_dict['status'] = status_to_string(game_dict['status'])           
+            game_dict['status'] = status_to_string(game_dict['status']) # make status a string
+            game_dict['hteam'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['hteam'])
+            game_dict['ateam'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['ateam'])
             ticker_list.append(game_dict)
             
             

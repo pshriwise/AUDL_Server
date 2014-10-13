@@ -13,35 +13,36 @@ Team_Info_gid = '1015881045'
 Team_Info_filename =  'Team_Info.csv'
 
 
-def get_csv_reader( gid, filename):
+
+def get_csv( key, gid, filename ):
 
     #get the csv of the sheet
     call(["wget" , '-O' , filename, base_url+spreadsheet_key+ '/export?format=csv&gid=' + gid])
-
+    
     #open the csv file
 
     file = open(filename, 'rb')
 
     return file
 
-def get_Team_Info_csv_file():
-    
-    return get_csv_reader( Team_Info_gid, Team_Info_filename)
 
-def id_to_abbrev(file, team_id):
+def get_csv_reader(filename, delim = ','):
+
+    return csv.reader(open(filename, 'rb'), delimiter = delim )
+
+
+def id_to_abbrev( team_id, filename = Team_Info_filename ):
     
-    reader = csv.reader(file, delimiter=',')
+    reader = get_csv_reader(filename)
 
     for row in reader:
         if str(team_id) == row[2] :
-            file.seek(0)
             return row[3]
 
-def name_to_abbrev(file, team_name):
+def name_to_abbrev(filename, team_name):
 
-    reader = csv.reader(file, delimiter=',')
+    reader = get_csv_reader(filename)
 
     for row in reader:
         if str(team_name) == row[0] :
-            file.seek(0)
             return row[3]
