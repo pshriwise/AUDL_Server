@@ -31,7 +31,6 @@ def game_deets(data):
             type = event['type']
             if act == "GameOver": 
                 over = True 
-                print over
             if act == "Goal" and type == "Offense":
                 Goals.append(event['receiver'])
                 Assists.append(event['passer'])

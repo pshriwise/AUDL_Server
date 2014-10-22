@@ -805,6 +805,9 @@ class Team():
         games = self.Games
 
         for game in games:
+
+            games[game].stat_info()
+
             if self.full_name() in games[game].home_team:
                games[game].match_game(data, True)
             elif self.full_name() in games[game].away_team:
@@ -1007,7 +1010,8 @@ class Game():
                 self.graph_pnts = gen_game_graph(self,points)
                 graphed = True
             else:
-                print ["No information available"]
+                pass
+                #print ["No information available"]
         #open home_team endpoint and read json
         #home_info=game_deets(home_team_endpoint)
         #Use the home_info to generate the game_graph
@@ -1023,8 +1027,11 @@ class Game():
                 away_deets, is_over = game_deets(points)         
                 if not graphed: self.graph_pnts=gen_game_graph(self,points,flip=True)
             else:
-                print ["No information available"]
+                pass
+                #print ["No information available"]
         #print home_deets
         #print away_deets
         if is_over: self.status=3
+        self.Home_stats = home_deets
+        self.Away_stats = away_deets
         return [home_deets,away_deets]
