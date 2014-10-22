@@ -939,6 +939,14 @@ class Game():
         #if note_str != None: print note_str
         #return note_str
 
+    def get_game_data(self, id):
+        full_url = base_url + "/team/" + id
+        #print full_url
+        req = urllib2.Request(full_url)
+        response = urllib2.urlopen(req)
+        data = json.loads(response.read())
+        return data
+
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data
         graphed = False
@@ -949,11 +957,7 @@ class Game():
         away_deets = [('Goals','N/A',0),('Assists','N/A',0),('Drops','N/A',0),('Throwaways','N/A',0),('Ds','N/A',0)]        
         #If there's a home_id, open the UN endpoint and generate data
         if hasattr(self, 'home_id'):
-            full_url = base_url + "/team/" + self.home_id
-            #print full_url
-            req = urllib2.Request(full_url)
-            response = urllib2.urlopen(req)
-            data = json.loads(response.read())
+            data = self.get_game_data(self.home_id)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 home_deets,is_over = game_deets(points)         
@@ -970,11 +974,7 @@ class Game():
         #away_info=game_deets(away_team_info)
 
         if hasattr(self, 'away_id'):
-            full_url = base_url + "/team/" + self.away_id
-            #print full_url
-            req = urllib2.Request(full_url)
-            response = urllib2.urlopen(req)
-            data = json.loads(response.read())
+            data = self.get_game_data(self.away_id)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 away_deets, is_over = game_deets(points)         
