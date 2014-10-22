@@ -4,11 +4,31 @@
 #matplotlib.use('Agg')
 #from matplotlib.collections import LineCollection
 #from matplotlib import pyplot
+
 import sheet_reader as sr
+import json
 
 def most_common(lst):
     return max(set(lst), key=lst.count)
 
+def get_quarter_scores(data):
+    
+    points = json.loads(data['pointsJson'])
+
+    queries = ['EndOfFirstQuarter',
+               'Halftime',
+               'EndOfThirdQuarter',
+               'GameOver']
+
+    quarter_scores = []
+    QS = {}
+    for point in points:
+        for event in point['events']:
+            if event['action'] in queries:
+                summary = point['summary']
+                QS = summary['score']
+                quarter_scores.append(QS)
+    return quarter_scores
 
 def game_deets(data):
     '''
