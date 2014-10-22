@@ -6,7 +6,7 @@ import MediaClasses
 import csv
 from game_info import game_deets
 from game_info import gen_game_graph
-
+from game_info import get_quarter_scores
 
 # Timestamp imports 
 from timestamps import game_ts
@@ -916,6 +916,8 @@ class Game():
         self.Goals = {}
         # an int returning the current quarter 
         self.Quarter = 0
+        # a list of dictionary items containing the quarter scores
+        self.QS = []
 
     def match_game(self, games_dict, home):
         
@@ -993,6 +995,20 @@ class Game():
         data = json.loads(response.read())
         return data
 
+
+    def set_quarter_scores(self, data, home):
+
+        quarter_scores = get_quarter_scores(data)
+
+        new_ours_key = 'home' if home else 'away'
+        new_theirs_key = 'away' if home else 'home'
+        for score in quarter_scores:
+            score[new_ours_key] = score.pop('ours')
+            score[new_theirs_key] = score.pop('theirs')
+
+        if len(quarter_scores) > len(self.QS): self.QS = quarter_scores            
+                
+        
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data
         graphed = False
@@ -1004,6 +1020,7 @@ class Game():
         #If there's a home_id, open the UN endpoint and generate data
         if hasattr(self, 'home_id'):
             data = self.get_game_data(self.home_id)
+            self.set_quarter_scores(data, True)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 home_deets,is_over = game_deets(points)         
@@ -1022,6 +1039,7 @@ class Game():
 
         if hasattr(self, 'away_id'):
             data = self.get_game_data(self.away_id)
+            self.set_quarter_scores(data, False)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 away_deets, is_over = game_deets(points)         

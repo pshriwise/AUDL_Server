@@ -13,7 +13,10 @@ def most_common(lst):
 
 def get_quarter_scores(data):
     
-    points = json.loads(data['pointsJson'])
+    if 'pointsJson' in data.keys():
+        points = json.loads(data['pointsJson'])
+    else:
+        return []
 
     queries = ['EndOfFirstQuarter',
                'Halftime',
