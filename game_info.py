@@ -20,8 +20,7 @@ def get_quarter_scores(data):
 
     queries = ['EndOfFirstQuarter',
                'Halftime',
-               'EndOfThirdQuarter',
-               'GameOver']
+               'EndOfThirdQuarter']
 
     quarter_scores = []
     QS = {}

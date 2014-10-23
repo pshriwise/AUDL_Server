@@ -999,10 +999,20 @@ class Game():
     def set_quarter_scores(self, data, home):
 
         quarter_scores = get_quarter_scores(data)
-
-        new_ours_key = 'home' if home else 'away'
-        new_theirs_key = 'away' if home else 'home'
-        for score in quarter_scores:
+        
+        quarter_home_keys = ['hq1', 'hq2', 'hq3']
+        quarter_away_keys = ['aq1', 'aq2', 'aq3']
+        
+        for i in range(len(quarter_scores)):
+            
+            #set the home and away keys 
+            home_key = quarter_home_keys[i]
+            away_key = quarter_away_keys[i]
+            new_ours_key = home_key if home else away_key
+            new_theirs_key = away_key if home else home_key
+            #for the same quarter as the respective keys, replace the UN keys
+            #with our own
+            score = quarter_scores[i]
             score[new_ours_key] = score.pop('ours')
             score[new_theirs_key] = score.pop('theirs')
 
