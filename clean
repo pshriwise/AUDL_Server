@@ -2,6 +2,9 @@
 
 rm *.pyc
 
+rm *.csv
+
+rm -rf ./notebooks/.ipynb_checkpoints/
 
 cd ./docs/
 
