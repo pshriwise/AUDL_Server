@@ -428,6 +428,7 @@ class League():
         #convert array data to a dictionary
         game_list= self.filter_games_by_date( days_behind = 0, days_ahead = 0)
 
+
         game_key_list = ['home_team', 'hteam_id', 'away_team', 'ateam_id', 'date', 'time', 'home_score', 'away_score', 'status', 'timestamp', 'Quarter']
  
         for game in game_list:
@@ -445,7 +446,10 @@ class League():
             game_dict['ateam_id'] = self.name_to_id(game_dict['away_team'])
             game_dict = add_quarters_to_dict(game_dict, game.QS)
 
-            #CORNER CASES
+            #adjust for missing quarter scores
+            for i in range(len(game.QS),3):
+                game_dict[quarter_home_keys[i]] = 0
+                game_dict[quarter_away_keys[i]] = 0
             if 'status' not in game_dict.keys():
                 game_dict['status'] = '0'
             if 'home_score' and 'away_score' not in game_dict.keys():
