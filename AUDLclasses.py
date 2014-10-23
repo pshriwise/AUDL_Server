@@ -37,6 +37,8 @@ def status_to_string( status ):
 
     return status_dict[status]
 
+quarter_home_keys = ['hq1', 'hq2', 'hq3']
+quarter_away_keys = ['aq1', 'aq2', 'aq3']
 
 
 class League():
@@ -182,7 +184,46 @@ class League():
             else:
                 pass
         return False,None
+   
+    def filter_games_by_date(self, days_ahead, days_behind, teams=None, now=None, all=False):
         
+        if teams == None:
+            teams = []
+            for ID,team in self.Teams.items():
+                teams.append(ID)
+   
+        game_list = []
+        #loop through each team and get their game class instances
+        for team in teams:
+            games = self.Teams[team].Games
+            for game in games:
+                inst = self.Teams[team].Games[game]                    
+                #use the game data to filter games
+                game_date = dt.strptime(inst.date, "%m/%d/%y").date()
+                now = dt.today().date() if now == None else now
+                delta = game_date-now
+                if delta.days > days_ahead:
+                    pass
+                elif not all and delta.days < (-1*days_behind):
+                    pass
+                else:
+                    if inst not in game_list: game_list.append(inst)
+
+        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+
+
+        #if there are no games in the list, return the first few for now
+        if 0 == len(game_list): 
+            for team in teams:
+                games = self.Teams[team].Games
+                for game in games:
+                    inst = self.Teams[team].Games[game]
+                    if inst not in game_list: game_list.append(inst)
+            game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+            game_list = game_list[-10:]
+
+        return game_list 
+
     def return_games(self, teams=None, days_ahead=14, days_behind=0, scores=False, now=None,all=False):
         """
         Returns any games occurring within 2 weeks of the current date.
@@ -199,42 +240,14 @@ class League():
             return []
 
         data_out = []
-        # If no teams are passed in, add all available teams to the schedule
-        if teams == None:
-            teams = []
-            for ID,team in self.Teams.items():
-                teams.append(ID)
-   
-        game_list = []
-        #loop through each team and get their game class instances
-        for team in teams:
-            games = self.Teams[team].Games
-            for game in games:
-                inst = self.Teams[team].Games[game]                    
-                if inst not in game_list: game_list.append(inst)
         
-        
-        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
+        #get the games in the range we want
+        game_list = self.filter_games_by_date( days_ahead, days_behind, teams, now )
         
         for game in game_list:
             game_tup = self.game_tuple(game)
+            data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
 
-            #use the game date to filter games accordingly
-            game_date = dt.strptime(game.date, "%m/%d/%Y").date()
-            now = dt.today().date() if now == None else now
-            delta = game_date-now
-            if delta.days > days_ahead:
-                pass
-            elif not all and delta.days < (-1*days_behind):
-                pass
-            else:
-                data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
-       
-
-
-        #If there's no data out, then return the last few games for now
-        if 0 == len(data_out):
-            data_out = [ self.game_tuple(game) if scores else self.game_tuple(game)[:-4] for game in game_list[-10:] ]
         return data_out
 
     def game_tuple(self, g):
@@ -403,17 +416,38 @@ class League():
 
         ticker_list = []
         #convert array data to a dictionary
-        scores_data = self.return_games( days_behind = 0, days_ahead = 0, scores = True)
+        game_list= self.filter_games_by_date( days_behind = 0, days_ahead = 0)
 
-        game_key_list = ['hteam', 'hteam_id', 'ateam', 'ateam_id', 'date', 'time', 'hscore', 'ascore', 'status', 'timestamp']
+        game_key_list = ['home_team', 'hteam_id', 'away_team', 'ateam_id', 'date', 'time', 'home_score', 'away_score', 'status', 'timestamp']
  
-        for game in scores_data:
-            game_dict = { key: value for key,value in zip(game_key_list, game) }
+        for game in game_list:
+            game_dict={}
+            for key in game_key_list:
+            #game_dict = { key: value for key,value in zip(game_key_list, game) }
+                if key in game.__dict__.keys():
+                    game_dict[key]=game.__dict__[key]
+            #make some final formatting adjustments
             game_dict['status'] = status_to_string(game_dict['status']) # make status a string
-            game_dict['hteam'] = sr.name_to_abbrev(game_dict['hteam'])
-            game_dict['ateam'] = sr.name_to_abbrev(game_dict['ateam'])
+            game_dict['hteam'] = sr.name_to_abbrev(game_dict['home_team'])
+            game_dict['ateam'] = sr.name_to_abbrev(game_dict['away_team'])
+            game_dict['hteam_id'] = self.name_to_id(game_dict['home_team'])
+            game_dict['ateam_id'] = self.name_to_id(game_dict['away_team'])
+            #game_dict['home_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['home_team'])
+            #game_dict['away_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['away_team'])
+            for u in game.QS: game_dict.update(u)
+            #CORNER CASES
+            #adjust for missing quarter scores
+            for i in range(len(game.QS),3):
+                game_dict[quarter_home_keys[i]] = 0
+                game_dict[quarter_away_keys[i]] = 0
+            if 'status' not in game_dict.keys():
+                game_dict['status'] = '0'
+            if 'home_score' and 'away_score' not in game_dict.keys():
+                game_dict['home_score']='0'
+                game_dict['away_score']='0'
             ticker_list.append(game_dict)
             
+                
             
         return ticker_list
 
@@ -1000,8 +1034,6 @@ class Game():
 
         quarter_scores = get_quarter_scores(data)
         
-        quarter_home_keys = ['hq1', 'hq2', 'hq3']
-        quarter_away_keys = ['aq1', 'aq2', 'aq3']
         
         for i in range(len(quarter_scores)):
             
@@ -1016,8 +1048,10 @@ class Game():
             score[new_ours_key] = score.pop('ours')
             score[new_theirs_key] = score.pop('theirs')
 
-        if len(quarter_scores) > len(self.QS): self.QS = quarter_scores            
-                
+            #set the quarter while we're here
+            self.Quarter = len(quarter_scores)+1
+            
+        if len(quarter_scores) > len(self.QS): self.QS = quarter_scores                            
         
     def stat_info(self):
         # a flag indicating whether or not the game graph was generated using home_team data
