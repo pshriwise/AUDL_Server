@@ -40,6 +40,16 @@ def status_to_string( status ):
 quarter_home_keys = ['hq1', 'hq2', 'hq3']
 quarter_away_keys = ['aq1', 'aq2', 'aq3']
 
+def add_quarters_to_dict(dict, qs):
+
+    for u in qs: dict.update(u)
+    #fill in any missing quarter scores with zeros
+    for i in range(len(qs),3):
+        game_dict[quarter_home_keys[i]] = 0
+        game_dict[quarter_away_keys[i]] = 0
+
+    return dict
+    
 
 class League():
     """  
@@ -432,14 +442,9 @@ class League():
             game_dict['ateam'] = sr.name_to_abbrev(game_dict['away_team'])
             game_dict['hteam_id'] = self.name_to_id(game_dict['home_team'])
             game_dict['ateam_id'] = self.name_to_id(game_dict['away_team'])
-            #game_dict['home_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['home_team'])
-            #game_dict['away_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['away_team'])
-            for u in game.QS: game_dict.update(u)
+            game_dict = add_quarters_to_dict(game_dict, game.QS)
+
             #CORNER CASES
-            #adjust for missing quarter scores
-            for i in range(len(game.QS),3):
-                game_dict[quarter_home_keys[i]] = 0
-                game_dict[quarter_away_keys[i]] = 0
             if 'status' not in game_dict.keys():
                 game_dict['status'] = '0'
             if 'home_score' and 'away_score' not in game_dict.keys():
@@ -870,19 +875,20 @@ class Team():
 
         #now populate the game dictionary 
         game_dict['time'] = nearest_game.time
+        game_dict['timestamp']= nearest_game.timestamp
         game_dict['date'] = nearest_game.date
-        game_dict['hteam'] = nearest_game.home_team
+        game_dict['home_team'] = nearest_game.home_team
         game_dict['hteam_id'] = self.League.name_to_id(nearest_game.home_team)
-        game_dict['ateam'] = nearest_game.away_team
+        game_dict['away_team'] = nearest_game.away_team
         game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
         game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else status_to_string(nearest_game.status)
-        
+        game_dict = add_quarters_to_dict(game_dict, nearest_game.QS)
         if hasattr(nearest_game, 'home_score') and hasattr(nearest_game, 'away_score'):
-            game_dict['hscore'] = nearest_game.home_score
-            game_dict['ascore'] = nearest_game.away_score
+            game_dict['home_score'] = nearest_game.home_score
+            game_dict['away_score'] = nearest_game.away_score
         else:
-            game_dict['hscore'] = "0"
-            game_dict['ascore'] = "0"  
+            game_dict['home_score'] = "0"
+            game_dict['away_score'] = "0"  
         
         return game_dict
 
