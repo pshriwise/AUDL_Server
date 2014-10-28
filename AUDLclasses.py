@@ -45,8 +45,8 @@ def add_quarters_to_dict(dict, qs):
     for u in qs: dict.update(u)
     #fill in any missing quarter scores with zeros
     for i in range(len(qs),3):
-        game_dict[quarter_home_keys[i]] = 0
-        game_dict[quarter_away_keys[i]] = 0
+        dict[quarter_home_keys[i]] = 0
+        dict[quarter_away_keys[i]] = 0
 
     return dict
     
@@ -443,15 +443,9 @@ class League():
             game_dict['ateam'] = sr.name_to_abbrev(game_dict['away_team'])
             game_dict['hteam_id'] = self.name_to_id(game_dict['home_team'])
             game_dict['ateam_id'] = self.name_to_id(game_dict['away_team'])
-            #game_dict['home_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['home_team'])
-            #game_dict['away_team'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['away_team'])
-            for u in game.QS: game_dict.update(u)
-            #CORNER CASES
-            #adjust for missing quarter scores
-            for i in range(len(game.QS),3):
-                game_dict[quarter_home_keys[i]] = 0
-                game_dict[quarter_away_keys[i]] = 0
+            game_dict = add_quarters_to_dict(game_dict, game.QS)
 
+            #CORNER CASES
             if 'status' not in game_dict.keys():
                 game_dict['status'] = '0'
             if 'home_score' and 'away_score' not in game_dict.keys():
