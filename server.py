@@ -51,8 +51,24 @@ def path_data(path, League):
         return subpage_data(path_ents, League)
     elif len(path_ents) > 1 and path_ents[0] == "Web":
         return web_data(path_ents, League)
+    elif len(path_ents) == 1 and "gameupdate" in path_ents[0] :
+        return update_game(path_ents, League)
     else:
         return "Not a valid path"
+
+
+def update_game( path_ents, League ):
+
+    key, params = parse_callback( path_ents[-1] )
+
+    #update the game indicated by the path 
+    team = League.Teams[int(params['team'])]
+    for key, game in team.Games.items():
+        home_hash = game.home_id.split('/')[-1] 
+        away_hash = game.away_id.split('/')[-1]
+        if params['game'] == home_hash or params['game'] == away_hash:
+            game.update()            
+            return "Updated game on " + game.date + " for team " + team.Name
 
 #intended for use with AUDL widgets/webpages
 def web_data( path_ents, League ):

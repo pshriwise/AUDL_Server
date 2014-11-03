@@ -428,7 +428,7 @@ class League():
         #convert array data to a dictionary
         game_list= self.filter_games_by_date( days_behind = 0, days_ahead = 0)
 
-        game_key_list = ['home_team', 'hteam_id', 'away_team', 'ateam_id', 'date', 'time', 'home_score', 'away_score', 'status', 'timestamp']
+        game_key_list = ['home_team', 'hteam_id', 'away_team', 'ateam_id', 'date', 'time', 'home_score', 'away_score', 'status', 'timestamp', 'Quarter']
  
         for game in game_list:
             game_dict={}
@@ -882,6 +882,7 @@ class Team():
         game_dict['away_team'] = nearest_game.away_team
         game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
         game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else status_to_string(nearest_game.status)
+        game_dict['Quarter']= nearest_game.Quarter
         game_dict = add_quarters_to_dict(game_dict, nearest_game.QS)
         if hasattr(nearest_game, 'home_score') and hasattr(nearest_game, 'away_score'):
             game_dict['home_score'] = nearest_game.home_score
@@ -958,6 +959,9 @@ class Game():
         self.Quarter = 0
         # a list of dictionary items containing the quarter scores
         self.QS = []
+
+    def update(self):
+        self.stat_info()
 
     def match_game(self, games_dict, home):
         
