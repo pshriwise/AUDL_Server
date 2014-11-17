@@ -971,24 +971,36 @@ class Game():
             if "timestamp" in game.keys():
                 dict_date = dt.strptime(game['timestamp'][:10], "%Y-%m-%d")
                 tstamp = game['timestamp']
-                new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
-                higher_score = True if new_game or ((self.home_score+self.away_score)<(game['ours']+game['theirs'])) else False
+           #     new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
+            #    higher_score = True if new_game or ((self.home_score+self.away_score)<(game['ours']+game['theirs'])) else False
                 if (game_date.date()-dict_date.date()) == timedelta(days = 0):
                     if home: 
                         self.home_id = game['teamId']+"/game/"+game['gameId'] 
                     else:
                         self.away_id = game['teamId']+"/game/"+game['gameId']
                     self.timestamp = tstamp
-                    if new_game or higher_score:
-                        self.home_score = game['ours'] if home else game['theirs']
-                        self.away_score = game['theirs'] if home else game['ours']
+                    #set the game score
+                    self.set_score(game, home)
+        #            if new_game or higher_score:
+         #               self.home_score = game['ours'] if home else game['theirs']
+          #              self.away_score = game['theirs'] if home else game['ours']
                     # a string containing a has that uniquely identifies a game on the 
                     # ultimate numbers server
                     
             else:
                 pass
         self.set_status()
+        
+    def set_score(self, game_data, home):
+        
+        new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
+        higher_score = True if new_game or ((self.home_score+self.away_score)<(game_data['ours']+game_data['theirs'])) else False
 
+        if new_game or higher_score:
+            self.home_score = game_data['ours'] if home else game_data['theirs']
+            self.away_score = game_data['theirs'] if home else game_data['ours']
+
+            
     def set_status(self):
         """
         This will set the game's status based on the timestamp of the game. 
@@ -1075,6 +1087,7 @@ class Game():
         if hasattr(self, 'home_id'):
             data = self.get_game_data(self.home_id)
             self.set_quarter_scores(data, True)
+            self.set_score(data, home = True)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 home_deets,is_over = game_deets(points)         
@@ -1094,6 +1107,7 @@ class Game():
         if hasattr(self, 'away_id'):
             data = self.get_game_data(self.away_id)
             self.set_quarter_scores(data, False)
+            self.set_score(data, home = False)
             if 'pointsJson' in data.keys():
                 points = json.loads(data['pointsJson'])
                 away_deets, is_over = game_deets(points)         

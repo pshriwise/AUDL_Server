@@ -64,12 +64,19 @@ def update_game( path_ents, League ):
     #update the game indicated by the path 
     team = League.Teams[int(params['team'])]
     for key, game in team.Games.items():
-        home_hash = game.home_id.split('/')[-1] 
-        away_hash = game.away_id.split('/')[-1]
+        home_hash = None if not hasattr(game, 'home_id') else game.home_id.split('/')[-1] 
+        away_hash = None if not hasattr(game, 'away_id' else game.away_id.split('/')[-1]
         if params['game'] == home_hash or params['game'] == away_hash:
             game.update()            
             return "Updated game on " + game.date + " for team " + team.Name
 
+     #if we're still in the function, we did not find this game for the given team
+     #have the team update all games in case this is a new game
+     team.get_games_info()
+     return "Could not find this game for the team, checking for new games..."
+                                            
+    
+                                        
 #intended for use with AUDL widgets/webpages
 def web_data( path_ents, League ):
 
