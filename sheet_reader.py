@@ -10,7 +10,7 @@ spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
 
 Team_Info_gid = '1015881045'
 
-Team_Info_filename =  'Team_Info.csv'
+Team_Info_Filename =  'Team_Info.csv'
 
 
 

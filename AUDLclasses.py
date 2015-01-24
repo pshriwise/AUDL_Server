@@ -418,8 +418,8 @@ class League():
         for game in scores_data:
             game_dict = { key: value for key,value in zip(game_key_list, game) }
             game_dict['status'] = status_to_string(game_dict['status']) # make status a string
-            game_dict['hteam'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['hteam'])
-            game_dict['ateam'] = sr.name_to_abbrev( sr.Team_Info_filename, game_dict['ateam'])
+            game_dict['hteam'] = sr.name_to_abbrev( sr.Team_Info_Filename, game_dict['hteam'])
+            game_dict['ateam'] = sr.name_to_abbrev( sr.Team_Info_Filename, game_dict['ateam'])
             ticker_list.append(game_dict)
             
             
