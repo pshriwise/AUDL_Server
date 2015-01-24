@@ -217,7 +217,7 @@ def refresh():
     threading.Timer(interval,refresh).start()
     AUDL.update_games()
     AUDL.get_news()
-    sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_filename )
+    sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
     for ID,team in AUDL.Teams.items():
         team.add_player_stats()
         team.populate_team_stats()
