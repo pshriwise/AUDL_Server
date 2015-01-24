@@ -31,7 +31,7 @@ def get_csv_reader(filename, delim = ','):
     return csv.reader(open(filename, 'rb'), delimiter = delim )
 
 
-def id_to_abbrev( team_id, filename = Team_Info_filename ):
+def id_to_abbrev( team_id, filename = Team_Info_Filename ):
     
     reader = get_csv_reader(filename)
 
