@@ -248,9 +248,9 @@ class League():
     def game_tuple(self, g):
         date = g.date
         time = g.time
-        team1 = g.home_team
+        team1 = sr.name_to_abbrev(sr.Team_Info_Filename, g.home_team)
         team1ID = self.name_to_id(g.home_team)
-        team2 = g.away_team 
+        team2 = sr.name_to_abbrev(sr.Team_Info_Filename, g.away_team) 
         team2ID = self.name_to_id(g.away_team)
         
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
