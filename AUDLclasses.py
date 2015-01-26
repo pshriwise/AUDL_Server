@@ -678,11 +678,11 @@ class Team():
                 opponent = self.Games[game].away_team
             else:
                 opponent = self.Games[game].home_team
-            game_tup = (self.Games[game].date, self.Games[game].time, opponent, self.League.name_to_id(opponent))
+            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(sr.Team_Info_Filename, opponent), self.League.name_to_id(opponent))
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
-        sched = [AUDL_Name, self.ID ]+sched
+        sched = [sr.name_to_abbrev(sr.Team_Info_Filename, AUDL_Name), self.ID ]+sched
         return sched
 
     def return_scores(self):
