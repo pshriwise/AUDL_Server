@@ -248,9 +248,9 @@ class League():
     def game_tuple(self, g):
         date = g.date
         time = g.time
-        team1 = sr.name_to_abbrev(sr.Team_Info_Filename, g.home_team)
+        team1 = sr.name_to_abbrev(g.home_team)
         team1ID = self.name_to_id(g.home_team)
-        team2 = sr.name_to_abbrev(sr.Team_Info_Filename, g.away_team) 
+        team2 = sr.name_to_abbrev(g.away_team) 
         team2ID = self.name_to_id(g.away_team)
         
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
@@ -418,8 +418,8 @@ class League():
         for game in scores_data:
             game_dict = { key: value for key,value in zip(game_key_list, game) }
             game_dict['status'] = status_to_string(game_dict['status']) # make status a string
-            game_dict['hteam'] = sr.name_to_abbrev( sr.Team_Info_Filename, game_dict['hteam'])
-            game_dict['ateam'] = sr.name_to_abbrev( sr.Team_Info_Filename, game_dict['ateam'])
+            game_dict['hteam'] = sr.name_to_abbrev(game_dict['hteam'])
+            game_dict['ateam'] = sr.name_to_abbrev(game_dict['ateam'])
             ticker_list.append(game_dict)
             
             
@@ -678,11 +678,11 @@ class Team():
                 opponent = self.Games[game].away_team
             else:
                 opponent = self.Games[game].home_team
-            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(sr.Team_Info_Filename, opponent), self.League.name_to_id(opponent))
+            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent))
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
-        sched = [sr.name_to_abbrev(sr.Team_Info_Filename, AUDL_Name), self.ID ]+sched
+        sched = [sr.name_to_abbrev(AUDL_Name), self.ID ]+sched
         return sched
 
     def return_scores(self):

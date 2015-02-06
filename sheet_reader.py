@@ -14,7 +14,7 @@ Team_Info_Filename =  'Team_Info.csv'
 
 
 
-def get_csv( key, gid, filename ):
+def get_csv( key = spreadsheet_key, gid = Team_Info_gid, filename = Team_Info_Filename ):
 
     #get the csv of the sheet
     call(["wget" , '-O' , filename, base_url+spreadsheet_key+ '/export?format=csv&gid=' + gid])
@@ -36,13 +36,13 @@ def id_to_abbrev( team_id, filename = Team_Info_Filename ):
     reader = get_csv_reader(filename)
 
     for row in reader:
-        if str(team_id) == row[2] :
-            return row[3]
+        if str(team_id) == row[4] :
+            return row[5]
 
-def name_to_abbrev(filename, team_name):
+def name_to_abbrev(team_name, filename = Team_Info_Filename ):
 
     reader = get_csv_reader(filename)
 
     for row in reader:
-        if str(team_name) == row[0] :
-            return row[3]
+        if str(team_name) == row[2] :
+            return row[5]
