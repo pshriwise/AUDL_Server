@@ -890,10 +890,7 @@ class Team():
         game_dict['away_team'] = nearest_game.away_team
         game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
         game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else status_to_string(nearest_game.status)
-<<<<<<< HEAD
         game_dict['Quarter']= nearest_game.Quarter
-=======
->>>>>>> Added quarter scores to the Score endpoint and updated the keys returned.
         game_dict = add_quarters_to_dict(game_dict, nearest_game.QS)
         if hasattr(nearest_game, 'home_score') and hasattr(nearest_game, 'away_score'):
             game_dict['home_score'] = nearest_game.home_score
