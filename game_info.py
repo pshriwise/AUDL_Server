@@ -4,7 +4,7 @@
 #matplotlib.use('Agg')
 #from matplotlib.collections import LineCollection
 #from matplotlib import pyplot
-
+import sheet_reader as sr
 
 def most_common(lst):
     return max(set(lst), key=lst.count)
@@ -116,7 +116,9 @@ def gen_game_graph(game,points,flip=False):
 
     home_pnts=zip(ourxpoints,ourpoints)
     away_pnts=zip(theirxpoints,theirpoints)
-    return [[game.home_team,home_pnts],[game.away_team,away_pnts]]
+    home_team_abbrev = sr.name_to_abbrev(game.home_team)
+    away_team_abbrev = sr.name_to_abbrev(game.away_team)
+    return [[home_team_abbrev,home_pnts],[away_team_abbrev,away_pnts]]
 
     '''
     pyplot.plot(xvals,ourscores,'b--',xvals,theirscores,'r--', zorder=2)
