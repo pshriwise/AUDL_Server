@@ -3,6 +3,7 @@
 import urllib2, json
 import feedparser as fp
 import MediaClasses
+import csv
 from game_info import game_deets
 from game_info import gen_game_graph
 
@@ -66,26 +67,43 @@ class League():
         self.Top_fives = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
 
 
-    def add_teams(self, filename='Teams_Info', players = True, games = True, stats = True):
+    def add_teams(self, filename='Team_Info.csv', players = True, games = True, stats = True):
         """
-        This method retrieves all known teams from the ultimate-numbers
+        This method retrieves all known teams from the ulti-analytics
         server using a dictionary that keeps track of team IDs we care about. 
-        filename - file that the teams information should be read from*
+        filename - csv file that the teams information should be read from*
         players - boolean indicating whether or not to add players
         games -  boolean indicating whether or not to add games
         stats -  boolean indicating whether or not to add team stats
 
-        For each team, the basic info for that team is taken from a file
-        in the repository and their game information is retrieved from the 
+        For each team, the basic info for that team is taken from a csv found in a 
+        published google doc online and their game information is retrieved from the 
         ultimate-numbers server. 
         
-        * expects a certain format (see Teams_Info)
+        * expects a csv with comma delimiter)
         """
         #Open teams information file
-        teams_info = open(filename, 'r')
-        found = False
-        self.Teams={}
+        self.Teams ={}
         self.Divisions = {}
+        
+        file_handle = open(filename, 'rb')
+        reader = csv.reader(file_handle, delimiter = ',')
+        fh = sr.construct_index(reader.next())
+
+        for row in reader:
+            if row[4] is not "":
+                ID = int(row[4])
+                Name = row[1]
+                Div = row[3]
+                City = row[0]
+                self.Teams[ID] = Team(self,ID,Name,City)
+                print "Adding team " + row[2] + "..."
+
+                if Div in self.Divisions.keys():
+                    self.Divisions[Div].append(ID)
+                else:
+                    self.Divisions[Div] = [ID]
+                    '''
         for line in teams_info: 
               # See if we've reached the beginning of
               # some team info
@@ -111,7 +129,7 @@ class League():
                        # Create the new team class
                        self.Teams[ID] = Team(self, ID, Name, City)
         if not found: print "No Team with that ID on record"
-   
+                    '''
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
@@ -119,7 +137,6 @@ class League():
             if stats:   self.Teams[team].add_player_stats()
 
             if stats:   self.Teams[team].populate_team_stats()
-        teams_info.close()
 
     def get_news(self):
         """
