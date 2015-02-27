@@ -21,7 +21,7 @@ def game_ts(date,time):
   
     zone = timestamp[-1]
 
-    timestamp = dt.strptime(' '.join(timestamp[:-1]),"%m/%d/%y %I:%M %p")
+    timestamp = dt.strptime(' '.join(timestamp[:-1]),"%m/%d/%Y %I:%M %p")
 
     timestamp = tzs[zone].localize(timestamp)
 

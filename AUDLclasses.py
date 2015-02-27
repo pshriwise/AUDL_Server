@@ -16,6 +16,7 @@ from tzlocal import get_localzone
 
 #CSV Imports 
 import sheet_reader as sr
+
 base_url = 'http://www.ultianalytics.com/rest/view'
 
 # create class enum for different allowed statuses
@@ -174,7 +175,7 @@ class League():
         """
 
         for team in self.Teams:
-            AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
+            AUDL_Name = self.Teams[team].full_name()
 
             if AUDL_Name in name:
                 return self.Teams[team].game_exist(date)
@@ -213,13 +214,13 @@ class League():
                 if inst not in game_list: game_list.append(inst)
         
         
-        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
         
         for game in game_list:
             game_tup = self.game_tuple(game)
 
             #use the game date to filter games accordingly
-            game_date = dt.strptime(game.date, "%m/%d/%y").date()
+            game_date = dt.strptime(game.date, "%m/%d/%Y").date()
             now = dt.today().date() if now == None else now
             delta = game_date-now
             if delta.days > days_ahead:
@@ -580,16 +581,66 @@ class Team():
         # return the list
         return rost
 
-    def add_games(self, filename="2014_AUDL_Schedule.json"):
+    def add_games(self, filename="2015_Schedule.csv"):
         """
         Adds any games for the team from a given file containing the League
         or team schedule for the current season.
         """
-        # create a name that will match one in the json doc
-        AUDL_Name = self.City + " " + self.Name
 
         # open the json schedule doc
         schedule = open(filename, 'r')
+
+
+        reader = csv.reader( schedule, delimiter=',')
+
+        reader.next() #strip first line of reader
+
+        self.Games = {}
+        team_games = []
+        for game in reader:
+            if self.full_name() in game[3] or self.full_name() in game[4]:
+                print "Adding games for " + self.full_name() + "..."
+                date = game[0]
+                time = game[1]
+                if "" == time: time = '7:00 PM CST' #waiting for real times from the AUDL
+                tstamp = game_ts(date,time)
+                week = game[2]
+                hteam = game[3]
+                ateam = game[4]
+            
+                #check if this team is part of a league
+                if self.League != None:
+                    #if yes, then see if this game already exists in the other team
+                    other_team = ateam if self.full_name() in hteam else hteam
+                    print "Checking if " + other_team + " already has this game."
+                    print other_team, date
+                    exists, existing_game = self.League.league_game_exist(other_team, date) 
+                    print "It does." if exists else "It doesn't."
+
+                    #if the other team has this game, add the returned game to this team
+                    #otherwise create a new game class for this team
+                    self.Games[date] = existing_game if exists else Game(date,time,tstamp,hteam,ateam)
+                #if this team is not part of a league, create a new game regardless
+                else:
+                    self.Games[date] = Game(date,time,tstamp,hteam,ateam)
+        '''            
+        #Check to see if the team belongs to a league
+        if self.League != None:
+            # If yes, check to see if this game already exists
+            # in the league
+            for game in team_games:                
+                other_team = hteam if self.full_name() not hteam else ateam
+                date = game[0]
+                exists,existing_game = self.League.league_game_exist(other_team, date)
+
+                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
+
+        # If no, then just add a new game class for this team.
+        else: 
+            for game in team_games:
+                self.Games[game[0]] = Game(game[0],game[1],game[2],game[3],game[4])
+    
+
         # convert the file data into a python object
         data = json.loads(schedule.read())
         self.Games={}
@@ -631,6 +682,7 @@ class Team():
             
         
                 #self.Games[game['date']] = Game(d,t,y,ht,at)
+        '''
         schedule.close()
 
     def populate_team_stats(self):
@@ -672,7 +724,7 @@ class Team():
             game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent))
             sched.append(game_tup)
 
-        sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%y'))
+        sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%Y'))
         sched = [sr.name_to_abbrev(AUDL_Name), self.ID ]+sched
         return sched
 
@@ -696,7 +748,7 @@ class Team():
             game_tup = (games[game].date, opp, score)
             # add the tuple to the scores list for the current team
             scores_list.append(game_tup)
-        scores_list.sort(key = lambda set: dt.strptime(set[0], '%m/%d/%y'))
+        scores_list.sort(key = lambda set: dt.strptime(set[0], '%m/%d/%Y'))
         scores_list=[self.City + " " + self.Name]+scores_list
         return scores_list
 
@@ -864,7 +916,7 @@ class Game():
 
     def match_game(self, games_dict, home):
         
-        game_date = dt.strptime(self.date, "%m/%d/%y")
+        game_date = dt.strptime(self.date, "%m/%d/%Y")
 
         for game in games_dict:
             if "timestamp" in game.keys():

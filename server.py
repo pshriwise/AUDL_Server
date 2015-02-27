@@ -195,6 +195,8 @@ AUDL = AUDLclasses.League()
 # Add teams from local files and populate
 # their information from the ultimate-numbers 
 # server
+sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
+sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
 AUDL.add_teams()
 # Get news articles for the team
 AUDL.get_news()
@@ -225,6 +227,7 @@ def refresh():
     AUDL.update_games()
     AUDL.get_news()
     sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
+    sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
     for ID,team in AUDL.Teams.items():
         team.add_player_stats()
         team.populate_team_stats()

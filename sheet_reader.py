@@ -9,10 +9,10 @@ base_url = 'https://docs.google.com/spreadsheets/d/'
 spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
 
 Team_Info_gid = '1015881045'
+Schedule_gid = '0'
 
 Team_Info_Filename =  'Team_Info.csv'
-
-
+Schedule_Filename = '2015_Schedule.csv'
 
 def get_csv( key = spreadsheet_key, gid = Team_Info_gid, filename = Team_Info_Filename ):
 
