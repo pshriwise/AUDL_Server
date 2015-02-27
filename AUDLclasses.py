@@ -103,33 +103,7 @@ class League():
                     self.Divisions[Div].append(ID)
                 else:
                     self.Divisions[Div] = [ID]
-                    '''
-        for line in teams_info: 
-              # See if we've reached the beginning of
-              # some team info
 
-             if line.count("ID") == 1:
-                       found = True
-                       line = line.split(":")[1]
-                       # An int containing the team ID
-                       ID = int(line[1:].rstrip())
-                       line = teams_info.next().split(":")[1]
-                       # A string containing the team's name. 
-                       Name = line[1:].rstrip()
-                       line = teams_info.next().split(":")[1]
-                       # Add team to division
-                       Div = line[1:].rstrip()
-                       if Div in self.Divisions.keys():
-                           self.Divisions[Div].append(ID)
-                       else:
-                           self.Divisions[Div] = [ID]        
-                       line = teams_info.next().split(":")[1]    
-                       # A string containing the team's home city. 
-                       City = line[1:].rstrip()
-                       # Create the new team class
-                       self.Teams[ID] = Team(self, ID, Name, City)
-        if not found: print "No Team with that ID on record"
-                    '''
         # Gives each team its ID value so it can grab its own information from the server.
         for team in self.Teams:
             if players: self.Teams[team].add_players()
