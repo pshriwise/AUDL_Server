@@ -7,6 +7,7 @@ import image_get as ig
 import youtube as yt
 import threading
 import sheet_reader as sr
+import argparse
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -198,14 +199,20 @@ AUDL.add_teams('Teams_Info')
 # Get news articles for the team
 AUDL.get_news()
 
+def parse_args():
+    
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
+    parser.add_argument('--PORT', dest = 'PORT', required=False, type=int, default=4000)
+
+    return parser.parse_args()
 
 def main():
     
-
+    args = parse_args()
     # Start broadcasting the server
-    PORT=4000
-    IP = ""
-    httpd = SocketServer.ThreadingTCPServer((IP, PORT), Handler) # Can also use ForkingTCPServer
+    httpd = SocketServer.ThreadingTCPServer((args.IP, args.PORT), Handler) # Can also use ForkingTCPServer
     httpd.request_queue_size = 30
     print "serving at" , IP, "port", PORT
     httpd.serve_forever()
