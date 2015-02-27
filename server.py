@@ -195,7 +195,7 @@ AUDL = AUDLclasses.League()
 # Add teams from local files and populate
 # their information from the ultimate-numbers 
 # server
-AUDL.add_teams('Teams_Info')
+AUDL.add_teams()
 # Get news articles for the team
 AUDL.get_news()
 
@@ -214,7 +214,7 @@ def main():
     # Start broadcasting the server
     httpd = SocketServer.ThreadingTCPServer((args.IP, args.PORT), Handler) # Can also use ForkingTCPServer
     httpd.request_queue_size = 30
-    print "serving at" , IP, "port", PORT
+    print "serving at" , args.IP, "port", args.PORT
     httpd.serve_forever()
 
 def refresh():
