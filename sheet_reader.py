@@ -6,9 +6,12 @@ import csv
 
 base_url = 'https://docs.google.com/spreadsheets/d/'
 
-spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
+#spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
+spreadsheet_key = '1GVFhIPeQQIk009subsQSqWmYHcY7zvBb4sJXyddsZ0Q'
 
-Team_Info_gid = '1015881045'
+#Team_Info_gid = '1015881045'
+Team_Info_gid = '1871096577'
+
 Schedule_gid = '0'
 
 Team_Info_Filename =  'Team_Info.csv'
