@@ -209,7 +209,7 @@ class League():
             for game in games:
                 inst = self.Teams[team].Games[game]                    
                 #use the game data to filter games
-                game_date = dt.strptime(inst.date, "%m/%d/%y").date()
+                game_date = dt.strptime(inst.date, "%m/%d/%Y").date()
                 now = dt.today().date() if now == None else now
                 delta = game_date-now
                 if delta.days > days_ahead:
@@ -219,7 +219,7 @@ class League():
                 else:
                     if inst not in game_list: game_list.append(inst)
 
-        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+        game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
 
 
         #if there are no games in the list, return the first few for now
@@ -229,7 +229,7 @@ class League():
                 for game in games:
                     inst = self.Teams[team].Games[game]
                     if inst not in game_list: game_list.append(inst)
-            game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%y'))
+            game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
             game_list = game_list[-10:]
 
         return game_list 
