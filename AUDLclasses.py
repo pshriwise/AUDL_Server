@@ -493,9 +493,9 @@ class Team():
          # A string containing the Team's City
          self.City = City
         
-    def add_players(self, filename='2014_players.json',stats=True):
+    def add_players(self, filename='2015_Players.csv', stats=True):
         """
-        Adds players to the Team class attribute 'Players' from the json file.
+        Adds players to the Team class attribute 'Players' from the AUDL google spreadsheet.
         """
 
         # A dictionary containing a set of Player class
@@ -505,18 +505,19 @@ class Team():
         # open the json file
         f = open(filename, 'r')
 
-        players= json.load(f)
 
-        for player in players:
-            if self.full_name() in player['Team']:
-                fn = player['Player First Name'].strip()
-                ln = player['Player Last Name'].strip()
-                num = str(player['Jersey #'])
+        reader = csv.reader(f, delimiter = ',')
+        reader.next() #strip first line of the reader
+
+        for row in reader:
+            if row[0] is not "" and self.full_name() in row[0]:
+                fn = row[1].strip()
+                ln = row[2].strip()
+                number = row[3].strip()
                 full_name = fn + " " + ln
-                #case for for a player number of 0
-                # UN players will have "00" as their number on the site
-                if num == "0": num = "00"
-                self.Players[full_name]=Player(fn,ln,num)
+                if number == "0": number = "00"
+                self.Players[full_name] = Player(fn, ln, number)
+                
         f.close()
 
     def add_player_stats(self):
@@ -620,7 +621,7 @@ class Team():
         for player in self.Players: 
             p = self.Players[player]
             if "Anon" not in p.First_name:
-                num = str(p.Number) if int(p.Number) != 0 else "00"
+                num = p.Number #if int(p.Number) != 0 else "00"
                 rost.append((p.First_name + " "+ p.Last_name,num))
         # sort the list by player number
         rost.sort(key=lambda set: int(set[1]))
