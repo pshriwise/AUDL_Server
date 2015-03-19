@@ -654,8 +654,8 @@ class Team():
                 else: time += " "+game[2].strip()+ " " + game[3].strip() #now add the rest of the time attribs
                 tstamp = game_ts(date,time)
                 week = game[4]
-                hteam = game[5]
-                ateam = game[6]
+                hteam = game[5].strip()
+                ateam = game[6].strip()
             
                 #check if this team is part of a league
                 if self.League != None:
