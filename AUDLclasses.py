@@ -646,15 +646,16 @@ class Team():
         self.Games = {}
         team_games = []
         for game in reader:
-            if self.full_name() in game[3] or self.full_name() in game[4]:
+            if self.full_name() in game[5] or self.full_name() in game[6]:
                 print "Adding games for " + self.full_name() + "..."
                 date = game[0]
-                time = game[1]
+                time = game[1].strip()
                 if "" == time: time = '7:00 PM CST' #waiting for real times from the AUDL
+                else: time += " "+game[2].strip()+ " " + game[3].strip() #now add the rest of the time attribs
                 tstamp = game_ts(date,time)
-                week = game[2]
-                hteam = game[3]
-                ateam = game[4]
+                week = game[4]
+                hteam = game[5]
+                ateam = game[6]
             
                 #check if this team is part of a league
                 if self.League != None:
