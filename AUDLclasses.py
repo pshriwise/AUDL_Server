@@ -885,7 +885,7 @@ class Team():
 
         #now populate the game dictionary 
         game_dict['time'] = nearest_game.time
-        game_dict['timestamp']= nearest_game.timestamp
+        game_dict['timestamp']= nearest_game.tstamp.isoformat()
         game_dict['date'] = nearest_game.date
         game_dict['home_team'] = nearest_game.home_team
         game_dict['hteam_id'] = self.League.name_to_id(nearest_game.home_team)
