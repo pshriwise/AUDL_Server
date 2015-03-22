@@ -455,8 +455,8 @@ class League():
             if 'status' not in game_dict.keys():
                 game_dict['status'] = '0'
             if 'home_score' and 'away_score' not in game_dict.keys():
-                game_dict['home_score']='0'
-                game_dict['away_score']='0'
+                game_dict['home_score'] = 0
+                game_dict['away_score'] = 0
 
             ticker_list.append(game_dict)
             
