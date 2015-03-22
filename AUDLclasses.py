@@ -272,8 +272,8 @@ class League():
             hscore = g.home_score
             ascore = g.away_score
         else:
-            hscore="0"
-            ascore="0"  
+            hscore = 0
+            ascore = 0  
         status = 0 if not hasattr(g,'status') else g.status
 
         game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat())
@@ -898,8 +898,8 @@ class Team():
             game_dict['home_score'] = nearest_game.home_score
             game_dict['away_score'] = nearest_game.away_score
         else:
-            game_dict['home_score'] = "0"
-            game_dict['away_score'] = "0"  
+            game_dict['home_score'] =  0
+            game_dict['away_score'] =  0  
         
         return game_dict
 
