@@ -888,8 +888,10 @@ class Team():
         game_dict['timestamp']= nearest_game.tstamp.isoformat()
         game_dict['date'] = nearest_game.date
         game_dict['home_team'] = nearest_game.home_team
+        game_dict['hteam'] = sr.name_to_abbrev(nearest_game.home_team)
         game_dict['hteam_id'] = self.League.name_to_id(nearest_game.home_team)
         game_dict['away_team'] = nearest_game.away_team
+        game_dict['hteam'] = sr.name_to_abbrev(nearest_game.away_team)
         game_dict['ateam_id'] = self.League.name_to_id(nearest_game.away_team)
         game_dict['status'] = 0 if not hasattr(nearest_game, 'status') else status_to_string(nearest_game.status)
         game_dict['Quarter']= nearest_game.Quarter
