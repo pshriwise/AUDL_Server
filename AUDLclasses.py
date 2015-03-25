@@ -148,12 +148,13 @@ class League():
         League class along with their IDs.
         """
         data_out = []
-        for team in self.Teams:
-            if hasattr(self.Teams[team], 'Name') and hasattr(self.Teams[team], 'City'):
-                AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
-                new_tup = (AUDL_Name, self.Teams[team].ID, sr.id_to_abbrev(self.Teams[team].ID))
-                data_out.sort(key= lambda set: set[0])
-                data_out.append(new_tup)
+        for div, teams in self.Divisions.items():
+            for team in teams:
+                if hasattr(self.Teams[team], 'Name') and hasattr(self.Teams[team], 'City'):
+                    AUDL_Name = self.Teams[team].City + " " + self.Teams[team].Name
+                    new_tup = (AUDL_Name, self.Teams[team].ID, sr.id_to_abbrev(self.Teams[team].ID), div)
+                    data_out.sort(key= lambda set: set[0])
+                    data_out.append(new_tup)
         return data_out
 
     def news_page_info(self):
