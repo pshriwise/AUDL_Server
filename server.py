@@ -231,6 +231,7 @@ def parse_args():
     
     parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
     parser.add_argument('--PORT', dest = 'PORT', required=False, type=int, default=4000)
+    parser.add_argument('--refresh-int', dest= 'interval', required=False, type=int, default=600)
 
     return parser.parse_args()
 
@@ -246,7 +247,9 @@ def main():
 def refresh():
     print "refreshing server...",
     #set interval to one day
-    interval = 86400
+
+    args = parse_args()
+    interval = args.interval
     threading.Timer(interval,refresh).start()
     AUDL.update_games()
     AUDL.get_news()
