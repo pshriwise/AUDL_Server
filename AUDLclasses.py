@@ -257,7 +257,7 @@ class League():
         
         for game in game_list:
             game_tup = self.game_tuple(game)
-            data_out.append(game_tup) if scores else data_out.append(game_tup[:-4])
+            data_out.append(game_tup) if scores else data_out.append(game_tup[:-4]+game_tup[-1:])
 
         return data_out
 
@@ -268,6 +268,7 @@ class League():
         team1ID = self.name_to_id(g.home_team)
         team2 = sr.name_to_abbrev(g.away_team) 
         team2ID = self.name_to_id(g.away_team)
+        week = g.week
         
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
             hscore = g.home_score
@@ -277,7 +278,7 @@ class League():
             ascore = 0  
         status = 0 if not hasattr(g,'status') else g.status
 
-        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat())
+        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(), week)
 
         return game_tuple
             
@@ -669,70 +670,11 @@ class Team():
 
                     #if the other team has this game, add the returned game to this team
                     #otherwise create a new game class for this team
-                    self.Games[date] = existing_game if exists else Game(date,time,tstamp,hteam,ateam)
+                    self.Games[date] = existing_game if exists else Game(date,time,tstamp,hteam,ateam, week)
                 #if this team is not part of a league, create a new game regardless
                 else:
-                    self.Games[date] = Game(date,time,tstamp,hteam,ateam)
-        '''            
-        #Check to see if the team belongs to a league
-        if self.League != None:
-            # If yes, check to see if this game already exists
-            # in the league
-            for game in team_games:                
-                other_team = hteam if self.full_name() not hteam else ateam
-                date = game[0]
-                exists,existing_game = self.League.league_game_exist(other_team, date)
+                    self.Games[date] = Game(date,time,tstamp,hteam,ateam, week)
 
-                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
-
-        # If no, then just add a new game class for this team.
-        else: 
-            for game in team_games:
-                self.Games[game[0]] = Game(game[0],game[1],game[2],game[3],game[4])
-    
-
-        # convert the file data into a python object
-        data = json.loads(schedule.read())
-        self.Games={}
- 
-        team_games = []
-        # if the game belongs to the current team, add it
-        # to a list of essential game data
-        for game in data:
-            if AUDL_Name in game['team']:
-                d = game['date']
-                t = game['time']
-                tstamp = game_ts(d,t)
-                opp = game['opponent']
-                #debug stuff
-                #if game['team'].strip() == "San Jose Spiders": print opp, game['team'], d
-                #if opp.strip() == "San Jose Spiders": print opp, game['team'], d
-                if game['home/away'] == 'Home':
-                    ht = game['team'].strip()
-                    at = game['opponent'].strip()
-                  
-                else:
-                    at = game['team'].strip()
-                    ht = game['opponent'].strip()
-                  
-                team_games.append((d,t,tstamp,ht,at,opp))
-
-        #Check to see if the team belongs to a league
-        if self.League != None:
-            # If yes, check to see if this game already exists
-            # in the league
-            for game in team_games:
-                
-                exists,existing_game = self.League.league_game_exist(game[-1], game[0])
-                self.Games[game[0]] = existing_game if exists else Game(game[0],game[1],game[2],game[3],game[4])
-        # If no, then just add a new game class for this team.
-        else: 
-            for game in team_games:
-                self.Games[game[0]] = Game(game[0],game[1],game[2],game[3],game[4])
-            
-        
-                #self.Games[game['date']] = Game(d,t,y,ht,at)
-        '''
         schedule.close()
 
     def populate_team_stats(self):
@@ -937,7 +879,7 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, tstamp, home_team, away_team):
+    def __init__(self, date, time, tstamp, home_team, away_team, week):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         #self.home_id = ''    
@@ -972,6 +914,8 @@ class Game():
         self.Quarter = 0
         # a list of dictionary items containing the quarter scores
         self.QS = []
+        # an int for the week in which this game occurs
+        self.week = week
 
     def update(self):
         self.stat_info()
