@@ -231,11 +231,11 @@ class League():
                     inst = self.Teams[team].Games[game]
                     if inst not in game_list: game_list.append(inst)
             game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
-            game_list = game_list[-10:]
+            game_list = game_list[:10]
 
         return game_list 
 
-    def return_games(self, teams=None, days_ahead=14, days_behind=0, scores=False, now=None,all=False):
+    def return_games(self, teams=None, days_ahead=15, days_behind=0, scores=False, now=None,all=False):
         """
         Returns any games occurring within 2 weeks of the current date.
 
@@ -290,7 +290,7 @@ class League():
     
         data_out = []
         for div in self.Divisions:
-            game_sched = self.return_games(self.Divisions[div],days_ahead=365,days_behind=0,scores=False)
+            game_sched = self.return_games(self.Divisions[div],days_ahead=15,days_behind=0,scores=False)
             data_out.append([div,game_sched])
         
         return data_out
@@ -298,7 +298,7 @@ class League():
     def return_upcoming(self):
         data_out=[]
                 
-        game_sched = self.return_games(None,days_ahead=365,days_behind=0,scores=True)
+        game_sched = self.return_games(None,days_ahead=15,days_behind=0,scores=True)
         for item in game_sched: 
            # Use the status enumerator to remove any games that have already begun
            # the list method remove is ok to use here as all games should be unique
@@ -395,7 +395,7 @@ class League():
         
         data_out = []
         for div in self.Divisions:
-            game_scores = self.return_games(self.Divisions[div],days_ahead=365,days_behind=7,scores=True)
+            game_scores = self.return_games(self.Divisions[div],days_ahead=15,days_behind=7,scores=True)
             data_out.append([div,game_scores])
         return data_out
 
@@ -1091,6 +1091,7 @@ class Game():
         #print home_deets
         #print away_deets
         if is_over: self.status=3
+        self.set_status()
         self.Home_stats = home_deets
         self.Away_stats = away_deets
         return [home_deets,away_deets]
