@@ -379,6 +379,14 @@ class League():
         # false case is a corner case until 2014 games begin
         return 0
 
+    def return_all_games_by_div(self):
+
+        data_out = []
+        for div in self.Divisions:
+            game_scores = self.return_games(self.Divisions[div],days_ahead=365,days_behind=365,scores=True)
+            data_out.append([div,game_scores])
+        return data_out
+
     def return_scores_page(self):       
         
         data_out = []

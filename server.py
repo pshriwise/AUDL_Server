@@ -33,6 +33,7 @@ def path_data(path, League):
                    'Schedule'  : League.return_schedules(),
                    'Videos'    : League.get_videos(),
                    'Stats'     : League.get_top_fives(),
+                   'AllGames'  : League.return_all_games_by_div(),
                    'FAQ'       : "Coming soon",
                    'Terms_and_Info' : "Coming soon",
                    'Home'      : (League.news_page_info(),League.get_videos(),League.return_upcoming())}
