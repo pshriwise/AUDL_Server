@@ -718,10 +718,12 @@ class Team():
         sched = []
         for game in self.Games:
             if AUDL_Name in self.Games[game].home_team:
+                hmay = "Home"
                 opponent = self.Games[game].away_team
             else:
+                hmay = "Away"
                 opponent = self.Games[game].home_team
-            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent),self.Games[game].week)
+            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent),self.Games[game].week, hmay)
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%Y'))
