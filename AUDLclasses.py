@@ -440,8 +440,10 @@ class League():
 
         ticker_list = []
         #convert array data to a dictionary
-        game_list= self.filter_games_by_date( days_behind = 0, days_ahead = 0)
+        game_list= self.filter_games_by_date( days_behind = 7, days_ahead = 0)
 
+        #reverse the ordering of the games by date 
+        game_list = game_list[::-1]
 
         game_key_list = ['home_team', 'hteam_id', 'away_team', 'ateam_id', 'date', 'time', 'home_score', 'away_score', 'status', 'timestamp', 'Quarter']
  
