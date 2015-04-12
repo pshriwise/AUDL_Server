@@ -250,6 +250,10 @@ class League():
         if type(teams) is not list and teams != None:
             return []
 
+        if all:
+            days_ahead = 365
+            days_behind = 365
+
         data_out = []
         
         #get the games in the range we want
