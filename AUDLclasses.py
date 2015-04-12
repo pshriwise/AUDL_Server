@@ -1059,7 +1059,7 @@ class Game():
                 points = json.loads(data['pointsJson'])
                 home_deets,is_over = game_deets(points)         
                 self.graph_pnts = gen_game_graph(self,points)
-                graphed = True
+                graphed = True if self.graph_pnts is not None else False
             else:
                 pass
                 #print ["No information available"]

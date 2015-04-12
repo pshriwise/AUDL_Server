@@ -185,7 +185,7 @@ def game_graph(team,path_ents):
     #get game class
     game = team.Games["/".join(path_ents[1:4])]
 
-    if hasattr(game,"graph_pnts"):
+    if hasattr(game,"graph_pnts") and game.graph_pnts is not None:
         return game.graph_pnts
     else:
         return "No graph available for this game"

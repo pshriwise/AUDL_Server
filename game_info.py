@@ -102,6 +102,7 @@ def gen_game_graph(game,points,flip=False):
                 ourscores.append(point['summary']['score']['ours'])
                 theirscores.append(point['summary']['score']['theirs'])
 
+    if len(xvals) is 1: return None
     xvals = [float(x)/float(xvals[-1]) for x in xvals]
 
     # if flip is true we are using away team data it should be flipped to 
