@@ -775,7 +775,7 @@ class Team():
         #Loop through games and count wins/losses
         games = self.Games
         for key,game in games.items():
-            if hasattr(game, 'home_score') and hasattr(game, 'away_score'):
+            if game.status >= 2 and hasattr(game, 'home_score') and hasattr(game, 'away_score'):
                 game_diff = game.home_score-game.away_score
                 if self.full_name() in game.home_team:
                    wins = wins+1 if game.home_score > game.away_score else wins
