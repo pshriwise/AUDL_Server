@@ -8,6 +8,7 @@ import youtube as yt
 import threading
 import sheet_reader as sr
 import argparse
+import traceback
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -252,14 +253,21 @@ def refresh():
     args = parse_args()
     interval = args.interval
     threading.Timer(interval,refresh).start()
-    AUDL.update_games()
-    AUDL.get_news()
+    try: AUDL.update_games() 
+    except: traceback.print_exc()
+    try: AUDL.get_news() 
+    except: traceback.print_exc()
+
     sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
     sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
     sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
     for ID,team in AUDL.Teams.items():
-        team.add_player_stats()
-        team.populate_team_stats()
+        try:
+            team.add_player_stats()
+            team.populate_team_stats()
+        except: 
+            traceback.print_exc()
+
     print "done"
 
 if __name__ == "__main__":
