@@ -410,7 +410,7 @@ class League():
                 rec = t.record()
                 team_rec_tup = (t.full_name(),team,rec[0], rec[1], rec[2], sr.id_to_abbrev(team))
                 div_list.append(team_rec_tup)
-            div_list.sort(key= lambda set: 0 if 0 == set[2]+set[3] else (float(set[2]),-float(set[3]),float(set[2])/(float(set[2]+set[3])),set[4]), reverse=True)
+            div_list.sort(key= lambda set: 0 if 0 == set[2]+set[3] else (float(set[2])/(float(set[2]+set[3])),float(set[2]),-float(set[3]),set[4]), reverse=True)
             div_list.insert(0,div)
             standings_list.append(div_list)
 
@@ -428,7 +428,7 @@ class League():
                 rec = t.record()
                 team_rec_dict = {"name" : t.full_name(), "nm" : sr.name_to_abbrev(t.full_name()), "id": team, "wins" : rec[0], "losses" : rec[1], "plmn" : rec[2]}
                 div_list.append(team_rec_dict)
-            div_list.sort(key= lambda set: 0 if 0 == set["wins"]+set["losses"] else (float(set["wins"]),-float(set["losses"]),float(set["wins"])/(float(set["wins"]+set["losses"])),set["plmn"]), reverse=True)
+            div_list.sort(key= lambda set: 0 if 0 == set["wins"]+set["losses"] else (float(set["wins"])/(float(set["wins"]+set["losses"])),float(set["wins"]),-float(set["losses"]),set["plmn"]), reverse=True)
             #div_list.insert(0,div)
             
             standings_dict[div] = div_list
