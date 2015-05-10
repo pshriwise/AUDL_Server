@@ -20,7 +20,7 @@ def get_youtube( ):
     vids = []
     vidList = []
     while not foundAll:
-        inp = urllib.urlopen( r'http://gdata.youtube.com/feeds/api/playlists/PLL-qDHd5o5uc04EBY7jtr7HOOCgdnSIvJ?v=2&start-index={0}&max-results=50&alt=json&orderby=published'.format( i, author ) )
+        inp = urllib.urlopen( r'http://gdata.youtube.com/feeds/api/playlists/UUzInURHrtSH7208Mf1HVqUA?v=2&start-index={0}&max-results=50&alt=json&orderby=published'.format( i, author ) )
         try:
             resp = json.load(inp)
             inp.close()
