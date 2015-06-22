@@ -3,46 +3,58 @@
 import urllib, json
 
 #want to return a string like this http://i.ytimg.com/vi/(link substring)/0.jpg
-def get_thumbnail( link ):
+def get_thumbnail( id ):
     base = 'http://i.ytimg.com/vi/'
     end = '/0.jpg'
-    link = link[31:-22]
-    link = base + link + end
+    link = base + id + end
     return link
 
 #returns a list of the videos on the AUDL Channel with each list having 1. title, 2. url, 3.jpeg
 def get_youtube( ):
     author = 'TheAUDLChannel'
 
-    foundAll = False
-
-    i = 1
+    watch_url_base = 'https://www.youtube.com/watch?v='
     vids = []
     vidList = []
-    while not foundAll:
-        inp = urllib.urlopen( r'http://gdata.youtube.com/feeds/api/playlists/UUzInURHrtSH7208Mf1HVqUA?v=2&start-index={0}&max-results=50&alt=json&orderby=published'.format( i, author ) )
-        try:
-            resp = json.load(inp)
-            inp.close()
-            retVids = resp['feed']['entry']
-            for video in retVids:
-                vids.append( video )
+    
+    inp = urllib.urlopen( r'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=PLL-qDHd5o5ueKHG-msYzazmmzfhy8BhQP&key=AIzaSyB_Q8BPCGknrGZa4jf9SPbWxyXODFtz8eE'.format( 1, author ) )
+    try:
+        resp = json.load(inp)
+        inp.close()
+        retItems = resp['items']
 
-            i += 50
-            if ( len( retVids ) < 50 ):
-                foundAll = True
+        for item in retItems:                
+            vids.append(item['contentDetails']['videoId'] )
+  #      print vids
 
-        except:
-            print "error"
-            foundAll = True
+    except:
+        print "error"
+        foundAll = True
 
-    for video in vids:
+    #turn list of video ids into a query string for getting titles...
+    vids = ",".join(vids)
+ #   print vids
+
+    #base url for retrieving information on specific videos
+    vids_url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatus&key=AIzaSyB_Q8BPCGknrGZa4jf9SPbWxyXODFtz8eE'
+    vids_url += '&id='+vids
+
+    inp = urllib.urlopen( vids_url.format(1,author))
+
+    resp = json.load(inp)
+
+    retItems = resp['items']
+    
+    
+    for item in retItems:
         #title = video['title']['$t']
         #link = video['link'][0]['href']
         #image = get_thumbnail(video['link'][0]['href'])
-        video_up = ( video['title']['$t'], video['link'][0]['href'], get_thumbnail( video['link'][0]['href'] ) )
+        video_up = ( item['snippet']['title'], watch_url_base+item['id'], get_thumbnail( item['id'] ))
+
         vidList.append( video_up )
 
+#    print vidList
     return vidList
     
 #list begins at index 0 with the most recent video 
@@ -51,3 +63,5 @@ def main():
 
     list = get_youtube( )
     
+if __name__ == "__main__":
+    main ()
