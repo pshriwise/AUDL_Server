@@ -1,14 +1,10 @@
 #!/usr/bin/python
 
 import SimpleHTTPServer, SocketServer
-import AUDLclasses
 import json
 import image_get as ig
-import youtube as yt
-import threading
-import sheet_reader as sr
 import argparse
-import traceback
+import pickle
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -193,7 +189,8 @@ def game_graph(team,path_ents):
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
-        
+
+        AUDL = pickle.load(open('audl_db.p','rb'))
         #use the typical request handler for icons
         if self.path.endswith((".png", ".css", ".js", ".html")):
 
@@ -215,17 +212,6 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
             self.wfile.write(path_data(self.path,AUDL))
 
-# Initialize the league class
-AUDL = AUDLclasses.League()
-# Add teams from local files and populate
-# their information from the ultimate-numbers 
-# server
-sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
-sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
-sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
-AUDL.add_teams()
-# Get news articles for the team
-AUDL.get_news()
 
 def parse_args():
     
@@ -233,8 +219,6 @@ def parse_args():
     
     parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
     parser.add_argument('--PORT', dest = 'PORT', required=False, type=int, default=4000)
-    parser.add_argument('--refresh-int', dest= 'interval', required=False, type=int, default=600)
-
     return parser.parse_args()
 
 def main():
@@ -246,33 +230,7 @@ def main():
     print "serving at" , args.IP, "port", args.PORT
     httpd.serve_forever()
 
-def refresh():
-    print "refreshing server...",
-    #set interval to one day
-
-    args = parse_args()
-    interval = args.interval
-    try: AUDL.update_games() 
-    except: traceback.print_exc()
-    try: AUDL.get_news() 
-    except: traceback.print_exc()
-
-    sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
-    sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
-    sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
-    for ID,team in AUDL.Teams.items():
-        try:
-            team.add_player_stats()
-            team.populate_team_stats()
-        except: 
-            traceback.print_exc()
-
-    print "done"
-    threading.Timer(interval,refresh).start()
-    print "Number of requests: ", AUDLclasses.requests
-    print "Next server update will occur in ", interval, " seconds."
 
 
 if __name__ == "__main__":
-    refresh()
     main()
