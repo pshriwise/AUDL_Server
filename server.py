@@ -252,7 +252,6 @@ def refresh():
 
     args = parse_args()
     interval = args.interval
-    threading.Timer(interval,refresh).start()
     try: AUDL.update_games() 
     except: traceback.print_exc()
     try: AUDL.get_news() 
@@ -269,6 +268,10 @@ def refresh():
             traceback.print_exc()
 
     print "done"
+    threading.Timer(interval,refresh).start()
+    print "Number of requests: ", AUDLclasses.requests
+    print "Next server update will occur in ", interval, " seconds."
+
 
 if __name__ == "__main__":
     refresh()

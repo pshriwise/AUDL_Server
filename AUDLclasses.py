@@ -18,7 +18,7 @@ from tzlocal import get_localzone
 import sheet_reader as sr
 
 base_url = 'http://www.ultianalytics.com/rest/view'
-
+requests = 0
 # create class enum for different allowed statuses
 class statuses:
     UPCOMING = 0 
@@ -440,7 +440,7 @@ class League():
 
         ticker_list = []
         #convert array data to a dictionary
-        game_list= self.filter_games_by_date( days_behind = 7, days_ahead = 0)
+        game_list= self.filter_games_by_date( days_behind = 3, days_ahead = 3)
 
         #reverse the ordering of the games by date 
         game_list = game_list[::-1]
@@ -546,12 +546,16 @@ class Team():
         # get player summary data
 
         req1 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        global requests
+        requests = requests + 1
         # print base_url+"/team/"+str(self.ID)+"/players/"
         response1 = urllib2.urlopen(req1)
         gen_player_data = json.loads(response1.read())
 
         # get player stat data
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
+        global requests
+        requests = requests + 1
         response2 = urllib2.urlopen(req2)
         player_stats_data = json.loads(response2.read())
         
@@ -581,6 +585,8 @@ class Team():
         # endpoint
 
         req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
+        global requests
+        requests = requests + 1
         response = urllib2.urlopen(req)
         data = json.loads(response.read())
         
@@ -805,6 +811,8 @@ class Team():
         full_url = base_url + "/team/" + str(self.ID) + "/games"
 
         req = urllib2.Request(full_url)
+        global requests
+        requests = requests + 1
 
         response = urllib2.urlopen(req)
 
@@ -1020,6 +1028,9 @@ class Game():
         full_url = base_url + "/team/" + id
         #print full_url
         req = urllib2.Request(full_url)
+        global requests
+        requests = requests +  1
+
         response = urllib2.urlopen(req)
         data = json.loads(response.read())
         return data
