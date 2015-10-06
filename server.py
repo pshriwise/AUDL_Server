@@ -190,7 +190,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
 
-        AUDL = pickle.load(open('audl_db.p','rb'))
+
         #use the typical request handler for icons
         if self.path.endswith((".png", ".css", ".js", ".html")):
 
@@ -200,7 +200,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
-
+            AUDL = pickle.load(open('audl_db.p','rb'))
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
             if path_ents[0] == "Icons" or path_ents[0] == "Game":
@@ -225,7 +225,7 @@ def main():
     
     args = parse_args()
     # Start broadcasting the server
-    httpd = SocketServer.ThreadingTCPServer((args.IP, args.PORT), Handler) # Can also use ForkingTCPServer
+    httpd = SocketServer.ThreadingTCPServer((args.IP, args.PORT),Handler) # Can also use ForkingTCPServer
     httpd.request_queue_size = 30
     print "serving at" , args.IP, "port", args.PORT
     httpd.serve_forever()
