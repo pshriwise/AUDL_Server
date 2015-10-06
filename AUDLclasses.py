@@ -549,14 +549,14 @@ class Team():
         global requests
         requests = requests + 1
         # print base_url+"/team/"+str(self.ID)+"/players/"
-        response1 = urllib2.urlopen(req1)
+        response1 = urllib2.urlopen(req1,timeout=10)
         gen_player_data = json.loads(response1.read())
 
         # get player stat data
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
         global requests
         requests = requests + 1
-        response2 = urllib2.urlopen(req2)
+        response2 = urllib2.urlopen(req2,timeout=10)
         player_stats_data = json.loads(response2.read())
         
         # match player to their Ultimate-Numbers name by their Jersey number
@@ -587,7 +587,7 @@ class Team():
         req = urllib2.Request(base_url+"/team/"+str(self.ID)+"/players/")
         global requests
         requests = requests + 1
-        response = urllib2.urlopen(req)
+        response = urllib2.urlopen(req,timeout=10)
         data = json.loads(response.read())
         
         # Check each player in the Team instance for a name that matches
@@ -814,7 +814,7 @@ class Team():
         global requests
         requests = requests + 1
 
-        response = urllib2.urlopen(req)
+        response = urllib2.urlopen(req,timeout=10)
 
         data = json.loads(response.read())
 
@@ -1031,7 +1031,7 @@ class Game():
         global requests
         requests = requests +  1
 
-        response = urllib2.urlopen(req)
+        response = urllib2.urlopen(req,timeout=10)
         data = json.loads(response.read())
         return data
 
