@@ -509,6 +509,9 @@ class Team():
          # A string containing the Team's City
          self.City = City
         
+    def return_games(self):
+        return self.League.return_games([self.ID],scores=True,all=True)
+
     def add_players(self, filename='2015_Players.csv', stats=True):
         """
         Adds players to the Team class attribute 'Players' from the AUDL google spreadsheet.
