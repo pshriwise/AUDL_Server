@@ -73,7 +73,7 @@ for game in game_dicts[:]:
         #add the primary index value
         game['game_id'] = i
         #put item in database
-        games_table.put_item(data=game,overwrite=True)
+        #games_table.put_item(data=game,overwrite=True)
         i+=1
 #report number of items added
 print "Number of games added: " + str(i)
