@@ -13,7 +13,7 @@ from boto.dynamodb2.types import NUMBER
 
 #create connection to dynamodb
 conn = dynamo_conn.get_connection()
-conn.delete_table('games')
+#conn.delete_table('games')
 
 
 # Out[2]:
@@ -29,7 +29,7 @@ conn.delete_table('games')
 
 # In[4]:
 
-games = Table.create('games',schema=[HashKey('Game_id',data_type=NUMBER),RangeKey('Date')],throughput={'read':10,'write':10},connection=conn)
+#games = Table.create('games',schema=[HashKey('Game_id',data_type=NUMBER),RangeKey('Date')],throughput={'read':10,'write':10},connection=conn)
 
 
 # In[5]:
@@ -114,7 +114,7 @@ for game in game_dicts[:]:
         game['Game_id'] = i
         #put item in database
         print game
-        games_table.put_item(data=game,overwrite=True)
+#        games_table.put_item(data=game,overwrite=True)
         i+=1
 #report number of items added
 print "Number of games added: " + str(i)
