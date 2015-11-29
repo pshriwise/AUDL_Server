@@ -31,13 +31,13 @@ else:
 # In[4]:
 
 #Get a list of UA team ids from local .csv
-reader = csv.reader(open('../Team_Info.csv','rb'))
+reader = csv.reader(open('2014_Team_Info.csv','rb'))
 keys = reader.next()
 team_ids = []
 for line in reader: 
     if line[4] is not '':
         team_ids.append(line[4])
-print len(team_ids)
+print team_ids
 
 
 # In[5]:
@@ -58,9 +58,18 @@ for team in team_ids:
     id_hash_list.append((team_id,all_game_hashes))
 
 
-# In[ ]:
+# In[6]:
+
+i=0
+for entry in id_hash_list:
+    i+=len(entry[1])
+print i
+
+
+# In[7]:
 
 #For every game, add an item to the table
+i=0
 for entry in id_hash_list:
     team = entry[0]
     for game_hash in entry[1]:
@@ -68,5 +77,12 @@ for entry in id_hash_list:
         req = urllib2.Request('http://www.ultianalytics.com/rest/view/team/' + str(team) + '/game/' + game_hash)
         response = urllib2.urlopen(req,timeout=10)
         raw_game_data = json.loads(response.read())
-        rgd_table.put_item(data={'game_id': raw_game_data['gameId'], 'data':str(raw_game_data)},overwrite=True)
+        rgd_table.put_item(data={'game_id': raw_game_data['gameId'], 'data':str(raw_game_data)})
+        i+=1
+print "Added " + str(i) + " games."
+
+
+# In[8]:
+
+print len(list(rgd_table.scan()))
 
