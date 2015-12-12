@@ -7,6 +7,9 @@ import csv
 from dynamo_conn import get_connection
 from boto.dynamodb2.table import Table
 from boto.dynamodb2.items import Item
+from boto.dynamodb2.fields import RangeKey,HashKey
+import urllib2
+import json
 
 
 # In[2]:
