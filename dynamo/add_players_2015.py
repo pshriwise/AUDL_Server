@@ -87,15 +87,15 @@ if len(all_players) == 0 :
 else:
     seq = [x['player_id'] for x in all_players]
     start_id = max(seq)
-
-#Get the teams table for team id lookups
-team_table = Table('team_metadata',connection=conn)
-all_teams = list(team_table.scan())
     
     
 players_added = 0
 #Now add all players in our list
 for player_data in players_data: 
+    all_players = list(player_table.scan())
+    #remove some data
+    del player_data['team_name']
+    del player_data['number']
     #Make sure we don't already have this player
     skip = False
     candidate_players = [x for x in all_players if x['player_last_name'] == player_data['player_last_name']]
@@ -110,10 +110,6 @@ for player_data in players_data:
     
     #Add player if appropriate
     if not skip:
-        team_ids = [x['team_id'] for x in all_teams if x['comb_name'] == player_data['team_name']]
-        assert len(team_ids) == 1 #if not true our player data is corrupt
-        del player_data['team_name'] 
-        player_data['team_id'] = team_ids[0]
         player_table.put_item(data=player_data)
         players_added+=1
     
