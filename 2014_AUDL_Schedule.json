@@ -892,7 +892,7 @@
     "team":"Rochester Dragons ",
     "date":"7/5/14",
     "time":"3:00 PM EST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"Philadelphia Phoenix"
   },
   {
@@ -924,7 +924,7 @@
     "team":"Toronto Rush",
     "date":"7/12/14",
     "time":"3:00 PM EST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"Philadelphia Phoenix"
   },
   {
@@ -1484,7 +1484,7 @@
     "team":"Philadelphia Phoenix",
     "date":"6/1/14",
     "time":"3:00 PM EST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"New York Empire"
   },
   {
@@ -1684,7 +1684,7 @@
     "team":"Minnesota Wind Chill",
     "date":"6/21/14",
     "time":"7:00 PM CST",
-    "home/away":"Away",
+    "home/away":"Home",
     "opponent":"Chicago Wildfire "
   },
   {
@@ -1700,7 +1700,7 @@
     "team":"Seattle Raptors",
     "date":"6/22/14",
     "time":"1:00 PM PST",
-    "home/away":"Away",
+    "home/away":"Home",
     "opponent":"San Jose Spiders"
   },
   {
@@ -1836,7 +1836,7 @@
     "team":"Philadelphia Phoenix",
     "date":"7/6/14",
     "time":"3:00 PM EST",
-    "home/away":"Home",
+    "home/away":"Away",
     "opponent":"DC Breeze "
   },
   {
