@@ -80,7 +80,7 @@ class League():
         self.Top_fives = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
 
 
-    def add_teams(self, filename='Team_Info.csv', players = True, games = True, stats = True):
+    def add_teams(self, filename=sr.Team_Info_Filename, players = True, games = True, stats = True):
         """
         This method retrieves all known teams from the ulti-analytics
         server using a dictionary that keeps track of team IDs we care about. 
