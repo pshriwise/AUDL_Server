@@ -12,7 +12,7 @@ Team_Info_gid = '637104178'
 Schedule_gid = '219732454'
 Rosters_gid = '1948201024'
 
-Team_Info_Filename =  'Team_Info.csv'
+Team_Info_Filename =  '2016_Team_Info.csv'
 Schedule_Filename = '2016_Schedule.csv'
 Rosters_filename = '2016_Players.csv'
 
