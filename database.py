@@ -22,7 +22,7 @@ AUDL.add_teams()
 AUDL.get_news()
 
 #save AUDL class to file
-pickle.dump(AUDL, open('audl_db.p','wb'))
+pickle.dump(AUDL, open('audl_db16.p','wb'))
 
 def parse_args():
     
@@ -55,7 +55,7 @@ def refresh():
             traceback.print_exc()
 
     #save AUDL class to file
-    pickle.dump(AUDL, open('audl_db.p','wb'))
+    pickle.dump(AUDL, open('audl_db16.p','wb'))
 
     print "done"
     threading.Timer(interval,refresh).start()

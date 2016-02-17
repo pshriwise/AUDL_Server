@@ -512,7 +512,7 @@ class Team():
     def return_games(self):
         return self.League.return_games([self.ID],scores=True,all=True)
 
-    def add_players(self, filename='2015_Players.csv', stats=True):
+    def add_players(self, filename='2016_Players.csv', stats=True):
         """
         Adds players to the Team class attribute 'Players' from the AUDL google spreadsheet.
         """
@@ -654,7 +654,7 @@ class Team():
         # return the list
         return rost
 
-    def add_games(self, filename="2015_Schedule.csv"):
+    def add_games(self, filename="2016_Schedule.csv"):
         """
         Adds any games for the team from a given file containing the League
         or team schedule for the current season.

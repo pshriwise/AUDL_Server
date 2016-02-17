@@ -200,7 +200,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
-            AUDL = pickle.load(open('audl_db.p','rb'))
+            AUDL = pickle.load(open('audl_db16.p','rb'))
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
             if path_ents[0] == "Icons" or path_ents[0] == "Game":
