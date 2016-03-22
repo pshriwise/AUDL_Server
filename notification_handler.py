@@ -47,7 +47,7 @@ def get_apns_connection(cert_file = "AUDLCert.pem", key_file = "AUDL.pem"):
 
 def send_notification(message, token = token_hex):
     conn = get_apns_connection()
-    conn.gateway_server.send_notification(token, Payload(alert = str(message), sound = 'default', badge = 1), expiry = dt.utcnow() + timedelta(150) )
+    conn.gateway_server.send_notification(token, Payload(alert = str(message), sound = 'default'), expiry = dt.utcnow() + timedelta(150) )
 
 def send_notifications(message, tokens = [token_hex]):
     for token in tokens:
