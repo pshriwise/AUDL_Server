@@ -38,12 +38,8 @@ def register_token(table_name, notification_type, token):
         return False
     token_table = Table(table_name,connection=conn)
     #make sure there is an item for the notification_type in that table
-    items = list(token_table.query(notification_type__eq = notification_type))
-    if len(items) != 1:
-        print("Incorrect number of items found for this notification type.")
-        return False
-    items[0]['tokens'].append(token)
-    token_table.put_item(data=items[0], overwrite = True)
+    item_data = { "notification_type" : notification_type, "token" : token }
+    token_table.put_item(data=item_data, overwrite = True)
     return True
 
 def get_apns_connection(cert_file = "AUDLCert.pem", key_file = "AUDL.pem"):
