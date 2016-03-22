@@ -13,10 +13,10 @@ getStandings = function( data ) {
 		
 		$.each( divisionArray, function( j, teamArray ) {
 			var img = new Image();
-			img.src = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Logos/TeamIcons_" + teamArray["nm"] + ".png";
+			img.src = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Logos/TeamIcons_" + teamArray["nm"] + ".png";
 			
 			table += "<tr class='" + teamArray["name"].replace(/\s/g, '') + "'>";
-			table += "<td><img src='http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Logos/TeamIcons_" + teamArray["nm"] + ".png'></td>";
+			table += "<td><img src='http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Logos/TeamIcons_" + teamArray["nm"] + ".png'></td>";
 			table += "<td>" + teamArray["name"] + "</td>";
 			table += "<td>" + teamArray["wins"] + "</td>";
 			table += "<td>" + teamArray["losses"] + "</td>";
@@ -34,7 +34,7 @@ standings = function( division )
 {
 	$(document).ready(function() {
 		$.ajax({
-			url: "http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Web/Standings",
+			url: "http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Web/Standings",
 			jsonp: "callback",
 			dataType : "jsonp",
 			jsonpCallback : "getStandings",
