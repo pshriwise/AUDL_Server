@@ -2,6 +2,7 @@
 
 import SimpleHTTPServer, SocketServer
 import json
+import token_handler
 import image_get as ig
 import argparse
 import pickle
@@ -51,6 +52,12 @@ def path_data(path, League):
         return web_data(path_ents, League)
     elif len(path_ents) == 1 and "gameupdate" in path_ents[0] :
         return update_game(path_ents, League)
+    elif 'ios' in path_ents:
+        token_handler.register_ios_token(path_ents)
+        return
+    elif 'android' in path_ents:
+        token_handler.register_android_token(path_ents)
+        return
     else:
         return "Not a valid path"
 
