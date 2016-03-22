@@ -52,12 +52,6 @@ def path_data(path, League):
         return web_data(path_ents, League)
     elif len(path_ents) == 1 and "gameupdate" in path_ents[0] :
         return update_game(path_ents, League)
-    elif 'ios' in path_ents:
-        notification_handler.register_ios_token(path_ents)
-        return
-    elif 'android' in path_ents:
-        notification_handler.register_android_token(path_ents)
-        return
     else:
         return "Not a valid path"
 
@@ -207,16 +201,27 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             
             #We can always respond with json code
             self.send_response(200) # Send 200 OK
-            AUDL = pickle.load(open('audl_db16.p','rb'))
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
             if path_ents[0] == "Icons" or path_ents[0] == "Game":
                 self.send_header("Content-type","png")
                 self.end_headers()
+            elif 'ios' in path_ents:
+                notification_handler.register_ios_token(path_ents)
+                self.send_header("Content-type","text")
+                self.end_headers()                
+                return
+            elif 'android' in path_ents:
+                notification_handler.register_android_token(path_ents)
+                self.send_header("Content-type","text")
+                self.end_headers()                
+                return
             else:
                 self.send_header("Content-type","json")
                 self.end_headers()
-
+                
+            AUDL = pickle.load(open('audl_db16.p','rb'))
+            
             self.wfile.write(path_data(self.path,AUDL))
 
 
