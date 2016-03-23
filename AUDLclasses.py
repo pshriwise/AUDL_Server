@@ -273,7 +273,8 @@ class League():
         team2 = sr.name_to_abbrev(g.away_team) 
         team2ID = self.name_to_id(g.away_team)
         week = g.week
-        
+        espn = g.espn
+
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
             hscore = g.home_score
             ascore = g.away_score
@@ -282,7 +283,7 @@ class League():
             ascore = 0  
         status = 0 if not hasattr(g,'status') else g.status
 
-        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(), week)
+        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),week,espn)
 
         return game_tuple
             
