@@ -681,7 +681,8 @@ class Team():
                 week = game[4]
                 hteam = game[5].strip()
                 ateam = game[6].strip()
-            
+                espn = True if "Yes" == game[10].strip() else False
+
                 #check if this team is part of a league
                 if self.League != None:
                     #if yes, then see if this game already exists in the other team
@@ -693,10 +694,10 @@ class Team():
 
                     #if the other team has this game, add the returned game to this team
                     #otherwise create a new game class for this team
-                    self.Games[date] = existing_game if exists else Game(date,time,tstamp,hteam,ateam, week)
+                    self.Games[date] = existing_game if exists else Game(date,time,tstamp,hteam,ateam,week,espn)
                 #if this team is not part of a league, create a new game regardless
                 else:
-                    self.Games[date] = Game(date,time,tstamp,hteam,ateam, week)
+                    self.Games[date] = Game(date,time,tstamp,hteam,ateam,week,espn)
 
         schedule.close()
 
@@ -906,7 +907,7 @@ class Game():
     """
     A class for information about a given game in the AUDL
     """
-    def __init__(self, date, time, tstamp, home_team, away_team, week):
+    def __init__(self, date, time, tstamp, home_team, away_team, week, espn):
         # a string containing a has that uniquely identifies a game on the 
         # ultimate numbers server
         #self.home_id = ''    
@@ -943,6 +944,8 @@ class Game():
         self.QS = []
         # an int for the week in which this game occurs
         self.week = week
+        # a bool for whether or not this game will be streamed on ESPN3
+        self.espn = espn
 
     def update(self):
         self.stat_info()
