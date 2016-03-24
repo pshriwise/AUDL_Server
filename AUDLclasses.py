@@ -283,9 +283,9 @@ class League():
             ascore = 0  
         status = 0 if not hasattr(g,'status') else g.status
         if scores:
-            game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),week,espn)
+            game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),espn,week)
         else:
-            game_tuple=(team1,team1ID,team2,team2ID,date,time,week,espn)
+            game_tuple=(team1,team1ID,team2,team2ID,date,time,espn,week)
         return game_tuple
             
     def return_schedules(self):
