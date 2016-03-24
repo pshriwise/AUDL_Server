@@ -260,19 +260,19 @@ class League():
         game_list = self.filter_games_by_date( days_ahead, days_behind, teams, now )
         
         for game in game_list:
-            game_tup = self.game_tuple(game)
-            data_out.append(game_tup) if scores else data_out.append(game_tup[:-4]+game_tup[-1:])
+            game_tup = self.game_tuple(game, scores = scores)
+            data_out.append(game_tup)
 
         return data_out
 
-    def game_tuple(self, g):
+    def game_tuple(self, g, scores = True):
         date = g.date
         time = g.time
         team1 = sr.name_to_abbrev(g.home_team)
         team1ID = self.name_to_id(g.home_team)
         team2 = sr.name_to_abbrev(g.away_team) 
         team2ID = self.name_to_id(g.away_team)
-        week = g.week
+        week = str(g.week)
         espn = g.espn
 
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
@@ -282,9 +282,10 @@ class League():
             hscore = 0
             ascore = 0  
         status = 0 if not hasattr(g,'status') else g.status
-
-        game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),week,espn)
-
+        if scores:
+            game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),week,espn)
+        else:
+            game_tuple=(team1,team1ID,team2,team2ID,date,time,week,espn)
         return game_tuple
             
     def return_schedules(self):
@@ -740,7 +741,7 @@ class Team():
             else:
                 hmay = "Away"
                 opponent = self.Games[game].home_team
-            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent),self.Games[game].week, hmay)
+            game_tup = (self.Games[game].date, self.Games[game].time, sr.name_to_abbrev(opponent), self.League.name_to_id(opponent),self.Games[game].week, hmay, self.Games[game].espn)
             sched.append(game_tup)
 
         sched.sort(key= lambda set: dt.strptime(set[0], '%m/%d/%Y'))
