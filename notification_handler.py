@@ -18,6 +18,13 @@ def dynamo_connection():
     #establish a connection to the dynamodb server
     return boto.dynamodb2.connect_to_region("us-east-1", aws_access_key_id = access_key, aws_secret_access_key = secret_key)
 
+def ios_token_table():
+    conn = dynamo_connection()
+    if ios_table not in conn.list_tables()['TableNames']:
+        print "ERROR: Could not retrieve the ios device token table."
+        return
+    return Table(ios_table, connection = conn)
+
 def register_ios_token(path_entities):
     print("Registering ios token...")
     token = path_entities[-1]
@@ -100,9 +107,14 @@ def send_general_notification(message):
     send_ios_general_notification(message)
 
 def send_ios_general_notification(message):
-    conn = dynamo_connection()
-    ios_device_table = Table(ios_table, connection = conn)
+    ios_device_table = ios_token_table()
     items = list(ios_device_table.query(notification_type__eq = 'general'))
+    tokens = [item['token'] for item in items]
+    send_ios_notifications(message, tokens)
+
+def send_ios_team_notification(team_abbrev,message):
+    ios_device_table = ios_token_table()
+    items = list(ios_device_table.query(notification_type__eq = team_abbrev))
     tokens = [item['token'] for item in items]
     send_ios_notifications(message, tokens)
 
