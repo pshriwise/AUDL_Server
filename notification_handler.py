@@ -49,17 +49,14 @@ def register_team_token(table_name, abbreviation, token):
         print("Could not find ios table on db server")
         return False
     token_table = Table(table_name,connection=conn)
-    #make sure there is an item for the notification_type in that table                                                                                                             
 
-    #get any abbreviation items with this token and
+    #get any abbreviation items with this token and remove them from the table
     items_to_remove = list(token_table.scan(token__eq = token, notification_type__ne = "general"))
-#    items_to_remove = []
-#    for item in token_items:
-#        if item["notification_type"] != "general":
-#            items_to_remove.append(item)
-
     if len(items_to_remove) > 1 : print "Warning: Had to remove more than one previously existing team based entry for this token:" , token
     [token_table.delete_item(notification_type=item['notification_type'],token=item['token']) for item in items_to_remove]
+    #if the new favorite team is none, then we can be done
+    if abbreviation == "None": return True
+    #otherwise add the new team to the table
     if validate_token(token):
         item_data = { "notification_type" : abbreviation, "token" : token }
         token_table.put_item(data=item_data, overwrite = True)
