@@ -23,17 +23,52 @@ def register_ios_token(path_entities):
     token = path_entities[-1]
     #determine what type of notification is being registered
     if "general" in path_entities:
-        register_token(ios_table,"general",token)
+        register_general_ios_token(token)
     else:
         abbreviation = path_entities[-2]
-        register_token(ios_table,abbreviation,token)
+        register_team_ios_token(abbreviation,token)
     pass
 
 def register_android_token(path_entities):
     print("Registering Android token...")
     pass
 
-def register_token(table_name, notification_type, token):
+
+def register_team_token(table_name, abbreviation, token):
+  #setup a dynamo db connection                                                                                                                                                    
+    conn = dynamo_connection()
+    #make sure this table exists                                                                                                                                                     
+    if any(table_name is table for table in conn.list_tables()):
+        print("Could not find ios table on db server")
+        return False
+    token_table = Table(table_name,connection=conn)
+    #make sure there is an item for the notification_type in that table                                                                                                             
+
+    #get any abbreviation items with this token and
+    token_items = list(token_table.scan(token__eq = token))
+    items_to_remove = []
+    for item in token_items:
+        if item["notification_type"] != "general":
+            items_to_remove.append(item)
+
+    if len(items_to_remove) > 1 : print "Warning: Had to remove more than one previously existing team based entry for this token:" , token
+    [token_table.delete_item(notification_type=item['notification_type'],token=item['token']) for item in items_to_remove]
+    if validate_token(token):
+        item_data = { "notification_type" : abbreviation, "token" : token }
+        token_table.put_item(data=item_data, overwrite = True)
+        return True
+    else:
+        print("Invalid token. Not adding to table.")
+        return False
+
+def register_team_ios_token(abbrev, token):
+    register_team_token(ios_table,abbrev,token)
+
+def register_general_ios_token(token):
+    register_general_token(ios_table, token)
+
+
+def register_general_token(table_name, token):
     #setup a dynamo db connection
     conn = dynamo_connection()
     #make sure this table exists
@@ -43,12 +78,16 @@ def register_token(table_name, notification_type, token):
     token_table = Table(table_name,connection=conn)
     #make sure there is an item for the notification_type in that table
     if validate_token(token):
-        item_data = { "notification_type" : notification_type, "token" : token }
-        token_table.put_item(data=item_data, overwrite = True)
+        register_token(token_table,"general",token) 
         return True
     else:
         print("Invalid token. Not adding to table.")
         return False
+
+def register_token(table, notification_type, token):
+    #create data item and put into the table
+    item_data = { "notification_type" : notification_type, "token" : token }
+    table.put_item(data=item_data, overwrite = True)
     
 def validate_token(token):
     try:
