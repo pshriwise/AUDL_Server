@@ -52,11 +52,11 @@ def register_team_token(table_name, abbreviation, token):
     #make sure there is an item for the notification_type in that table                                                                                                             
 
     #get any abbreviation items with this token and
-    token_items = list(token_table.scan(token__eq = token))
-    items_to_remove = []
-    for item in token_items:
-        if item["notification_type"] != "general":
-            items_to_remove.append(item)
+    items_to_remove = list(token_table.scan(token__eq = token, notification_type__ne = "general"))
+#    items_to_remove = []
+#    for item in token_items:
+#        if item["notification_type"] != "general":
+#            items_to_remove.append(item)
 
     if len(items_to_remove) > 1 : print "Warning: Had to remove more than one previously existing team based entry for this token:" , token
     [token_table.delete_item(notification_type=item['notification_type'],token=item['token']) for item in items_to_remove]
