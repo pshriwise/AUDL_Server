@@ -19,6 +19,7 @@ import sheet_reader as sr
 
 base_url = 'http://www.ultianalytics.com/rest/view'
 requests = 0
+notify = False
 # create class enum for different allowed statuses
 class statuses:
     UPCOMING = 0 
@@ -1013,6 +1014,8 @@ class Game():
                 #if hasattr(self,'status') and self.status == statuses.UPCOMING: 
                 #    note_str = self.home_team +  " vs. " + self.away_team + " has begun!"
                 self.status=statuses.ONGOING
+                if notify: 
+                    print "Sending start game team notification for " + self.away_team + " vs " + self.home_team
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 #if hasattr(self,'status') and self.status == statuses.ONGOING: 
                 #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " + str(self.away_score)
@@ -1024,6 +1027,8 @@ class Game():
                     #else:
                     #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
                 self.status=statuses.OVER
+                if notify:
+                    print "Sending end game team notification for " + self.away_team + " vs " + self.home_team
             else:
                 self.status=statuses.UPCOMING
         else:

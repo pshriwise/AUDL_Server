@@ -18,6 +18,7 @@ sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
 sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
 sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
 AUDL.add_teams()
+AUDL.update_games()
 # Get news articles for the team
 AUDL.get_news()
 
@@ -63,4 +64,5 @@ def refresh():
     print "Next server update will occur in ", interval, " seconds."
 
 if __name__ == "__main__":
+    AUDLclasses.notify = True
     refresh()
