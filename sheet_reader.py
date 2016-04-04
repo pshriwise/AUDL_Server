@@ -10,7 +10,7 @@ spreadsheet_key = '1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY'
 
 Team_Info_gid = '637104178'
 Schedule_gid = '219732454'
-Rosters_gid = '1948201024'
+Rosters_gid = '442434601'
 
 Team_Info_Filename =  '2016_Team_Info.csv'
 Schedule_Filename = '2016_Schedule.csv'
