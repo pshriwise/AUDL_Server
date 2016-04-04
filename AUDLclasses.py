@@ -282,7 +282,7 @@ class League():
         else:
             hscore = 0
             ascore = 0  
-        status = 0 if not hasattr(g,'status') else g.status
+        status = statues.UPCOMING if not hasattr(g,'status') else g.status
         if scores:
             game_tuple=(team1,team1ID,team2,team2ID,date,time,hscore,ascore,status,g.tstamp.isoformat(),espn,week)
         else:
@@ -1009,28 +1009,28 @@ class Game():
             sched_date = self.tstamp.date()
         
             if  (now.date()==self.tstamp.date())  and (delta_hours) < 0:
-                self.status=statuses.UPCOMING
+                self.status = statuses.UPCOMING
             elif (now.date()==self.tstamp.date())  and (delta_hours) <= max_game_len:
                 #if hasattr(self,'status') and self.status == statuses.UPCOMING: 
                 #    note_str = self.home_team +  " vs. " + self.away_team + " has begun!"
-                self.status=statuses.ONGOING
+                self.status = statuses.ONGOING
                 if notify: 
                     print "Sending start game team notification for " + self.away_team + " vs " + self.home_team
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 #if hasattr(self,'status') and self.status == statuses.ONGOING: 
                 #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " + str(self.away_score)
-                self.status=statuses.OVER
+                self.status = statuses.OVER
             elif (now.date()==self.tstamp.date()) and (delta_hours) > max_game_len:
                 #if hasattr(self,'status') and self.status == statuses.ONGOING:
                     #if not hasattr(self,"home_score"): 
                     #    note_str =  "GAME OVER: " + self.home_team + " vs. " + self.away_team + ". No score reported!"
                     #else:
                     #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
-                self.status=statuses.OVER
+                self.status = statuses.OVER
                 if notify:
                     print "Sending end game team notification for " + self.away_team + " vs " + self.home_team
             else:
-                self.status=statuses.UPCOMING
+                self.status = statuses.UPCOMING
         else:
             pass
         # This is where we will actually send the notification
@@ -1114,7 +1114,7 @@ class Game():
                 #print ["No information available"]
         #print home_deets
         #print away_deets
-        if is_over: self.status=3
+        if is_over: self.status = statuses.UN_DEC_OVER
         self.set_status()
         self.Home_stats = home_deets
         self.Away_stats = away_deets
