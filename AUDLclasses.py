@@ -949,6 +949,9 @@ class Game():
         self.week = week
         # a bool for whether or not this game will be streamed on ESPN3
         self.espn = espn
+        # bools for indicating if notifications have been sent about this game
+        self.start_notification_sent = False
+        self.end_notification_sent = False
 
     def update(self):
         self.stat_info()
@@ -1034,9 +1037,21 @@ class Game():
         else:
             pass
         # This is where we will actually send the notification
-        #if note_str != None: print note_str
-        #return note_str
+        self.notify()
 
+    def notify(self):
+        if notify:
+            if statuses.UPCOMING == self.status:
+                #still waiting for game to start
+                pass
+            elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
+                print("Sending start of game notification for", self.away_team, self.home_team)
+                self.start_notification_sent = True
+            elif (not self.end_notification_sent) and statuses.OVER <= self.status:
+                print("Sending end of game notification for" , self.away_team, self.home_team)
+                self.start_notification_sent = True                
+                self.end_notification_sent = True
+                
     def get_game_data(self, id):
         full_url = base_url + "/team/" + id
         #print full_url

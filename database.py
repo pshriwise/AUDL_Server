@@ -64,5 +64,5 @@ def refresh():
     print "Next server update will occur in ", interval, " seconds."
 
 if __name__ == "__main__":
-    AUDLclasses.notify = True
     refresh()
+    AUDLclasses.notify = True    
