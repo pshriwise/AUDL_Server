@@ -1017,8 +1017,6 @@ class Game():
                 #if hasattr(self,'status') and self.status == statuses.UPCOMING: 
                 #    note_str = self.home_team +  " vs. " + self.away_team + " has begun!"
                 self.status = statuses.ONGOING
-                if notify: 
-                    print "Sending start game team notification for " + self.away_team + " vs " + self.home_team
             elif (now.date()-self.tstamp.date()) > timedelta(days=0):
                 #if hasattr(self,'status') and self.status == statuses.ONGOING: 
                 #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " + str(self.away_score)
@@ -1030,8 +1028,6 @@ class Game():
                     #else:
                     #    note_str = "GAME OVER: " + self.home_team + " " + str(self.home_score) + ", " + self.away_team + " " +str(self.away_score)
                 self.status = statuses.OVER
-                if notify:
-                    print "Sending end game team notification for " + self.away_team + " vs " + self.home_team
             else:
                 self.status = statuses.UPCOMING
         else:
@@ -1040,15 +1036,15 @@ class Game():
         self.notify()
 
     def notify(self):
-        if notify:
             if statuses.UPCOMING == self.status:
                 #still waiting for game to start
                 pass
             elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
-                print("Sending start of game notification for", self.away_team, self.home_team)
+                if notify: print("Sending start of game notification for", self.away_team, self.home_team)
                 self.start_notification_sent = True
+                
             elif (not self.end_notification_sent) and statuses.OVER <= self.status:
-                print("Sending end of game notification for" , self.away_team, self.home_team)
+                if notify: print("Sending end of game notification for" , self.away_team, self.home_team)
                 self.start_notification_sent = True                
                 self.end_notification_sent = True
                 
