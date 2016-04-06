@@ -28,6 +28,15 @@ class statuses:
     # ultimate-numbers declared over
     UN_DEC_OVER = 3
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 def status_to_string( status ):
 
@@ -1040,11 +1049,11 @@ class Game():
                 #still waiting for game to start
                 pass
             elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
-                if notify: print("Sending start of game notification for", self.away_team, self.home_team)
+                if notify: print(bcolors.WARNING+"Sending start of game notification for"+self.away_team+self.home_team,bcolors.ENDC)
                 self.start_notification_sent = True
                 
             elif (not self.end_notification_sent) and statuses.OVER <= self.status:
-                if notify: print("Sending end of game notification for" , self.away_team, self.home_team)
+                if notify: print(bcolors.WARNING+"Sending end of game notification for" + self.away_team+ self.home_team+bcolors.ENDC)
                 self.start_notification_sent = True                
                 self.end_notification_sent = True
                 
