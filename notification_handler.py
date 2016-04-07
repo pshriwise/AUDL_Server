@@ -103,6 +103,9 @@ def validate_token(token):
 def send_general_notification(message):
     send_ios_general_notification(message)
 
+def send_team_notification(team_abbrev,message):
+    send_ios_team_notification(team_abbrev, message)
+    
 def send_ios_general_notification(message):
     ios_device_table = ios_token_table()
     items = list(ios_device_table.query(notification_type__eq = 'general'))

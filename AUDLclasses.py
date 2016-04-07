@@ -17,6 +17,9 @@ from tzlocal import get_localzone
 #CSV Imports 
 import sheet_reader as sr
 
+#Notification imports
+import notification_handler as nh
+
 base_url = 'http://www.ultianalytics.com/rest/view'
 requests = 0
 notify = False
@@ -1049,11 +1052,17 @@ class Game():
                 #still waiting for game to start
                 pass
             elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
-                if notify: print(bcolors.WARNING+"Sending start of game notification for"+self.away_team+self.home_team,bcolors.ENDC)
+                if notify:
+                    print("Sending start of game notification for", self.away_team, self.home_team)
+                    nh.send_team_notification(sr.name_to_abbrev(self.home_team), "A "+ self.home_team + " game has begun!")
+                    nh.send_team_notification(sr.name_to_abbrev(self.away_team), "A "+ self.away_team + " game has begun!")                    
                 self.start_notification_sent = True
                 
             elif (not self.end_notification_sent) and statuses.OVER <= self.status:
-                if notify: print(bcolors.WARNING+"Sending end of game notification for" + self.away_team+ self.home_team+bcolors.ENDC)
+                if notify:
+                    print("Sending end of game notification for" , self.away_team, self.home_team)
+                    nh.send_team_notification(sr.name_to_abbrev(self.home_team), "A "+ self.home_team + " game has ended.")
+                    nh.send_team_notification(sr.name_to_abbrev(self.away_team), "A "+ self.away_team + " game has ended.")                                        
                 self.start_notification_sent = True                
                 self.end_notification_sent = True
                 
