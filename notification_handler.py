@@ -9,6 +9,7 @@ from boto.dynamodb2.items import Item
 
 token_hex = '0d4a8842d98d949225f1aeba1782604a8ae6fd9397c448c18ee52cf78933e368'
 ios_table = "ios_device_tokens"
+android_table = "android_device_tokens"
 
 def dynamo_connection():
     #read our aws key values for access to the server
@@ -25,6 +26,13 @@ def ios_token_table():
         return
     return Table(ios_table, connection = conn)
 
+def android_token_table():
+    conn = dynamo_connection()
+    if android_table not in conn.list_tables()['TableNames']:
+        print "ERROR: Could not retrieve the android device token table."
+        return
+    return Table(android_table, connection = conn)
+
 def register_ios_token(path_entities):
     print("Registering ios token...")
     token = path_entities[-1]
@@ -34,12 +42,16 @@ def register_ios_token(path_entities):
     else:
         abbreviation = path_entities[-2]
         register_team_ios_token(abbreviation,token)
-    pass
 
 def register_android_token(path_entities):
-    print("Registering Android token...")
-    pass
-
+    print("Registering ios token...")
+    token = path_entities[-1]
+    #determine what type of notification is being registered
+    if "general" in path_entities:
+        register_general_android_token(token)
+    else:
+        abbreviation = path_entities[-2]
+        register_team_android_token(abbreviation,token)
 
 def register_team_token(table_name, abbreviation, token):
   #setup a dynamo db connection                                                                                                                                                    
@@ -71,6 +83,12 @@ def register_team_ios_token(abbrev, token):
 def register_general_ios_token(token):
     register_general_token(ios_table, token)
 
+def register_team_android_token(abbrev, token):
+    register_team_token(android_table,abbrev,token)
+
+def register_general_android_token(token):
+    register_general_token(android_table, token)
+    
 
 def register_general_token(table_name, token):
     #setup a dynamo db connection
