@@ -43,8 +43,11 @@ def register_ios_token(path_entities):
         abbreviation = path_entities[-2]
         register_team_ios_token(abbreviation,token)
 
+def register_ios_token_from_path(path_entities):
+    register_ios_token(path_entities)
+    
 def register_android_token(path_entities):
-    print("Registering ios token...")
+    print("Registering android token...")
     token = path_entities[-1]
     #determine what type of notification is being registered
     if "general" in path_entities:
@@ -52,6 +55,9 @@ def register_android_token(path_entities):
     else:
         abbreviation = path_entities[-2]
         register_team_android_token(abbreviation,token)
+
+def register_android_token_from_path(path_entities):
+    register_android_token(path_entities)
 
 def register_team_token(table_name, abbreviation, token):
   #setup a dynamo db connection                                                                                                                                                    
