@@ -1055,8 +1055,10 @@ class Game():
                 if notify:
                     try:
                         print("Sending start of game notification for", self.away_team, self.home_team)
-                        nh.send_team_notification(sr.name_to_abbrev(self.home_team), "A "+ self.home_team + " game has begun!")
-                        nh.send_team_notification(sr.name_to_abbrev(self.away_team), "A "+ self.away_team + " game has begun!")
+                        home_string = "{prep} " + self.home_team + " game has begun!"
+                        away_string = "{prep} " + self.away_team + " game has begun!"
+                        nh.send_team_notification(sr.name_to_abbrev(self.home_team), home_string.format(prep="A" if self.home_team[0].lower() in vowels else "An")) 
+                        nh.send_team_notification(sr.name_to_abbrev(self.away_team), away_string.format(prep="A" if self.away_team[0].lower() in vowels else "An"))
                     except:
                         pass
                 if notify and self.espn:
@@ -1070,12 +1072,10 @@ class Game():
                 if notify:
                     try:
                         print("Sending end of game notification for" , self.away_team, self.home_team)
-                        nh.send_team_notification(sr.name_to_abbrev(self.home_team), "A "+ self.home_team + " game has ended." + 
-                                                  " Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + 
-                                                  sr.name_to_abbrev(self.away_team) + " " + str(self.away_score))
-                        nh.send_team_notification(sr.name_to_abbrev(self.away_team), "A "+ self.away_team + " game has ended." + 
-                                                  " Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + 
-                                                  sr.name_to_abbrev(self.away_team) + " " + str(self.away_score))
+                        home_string = "{prep}"+ self.home_team + " game has ended." + " Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + sr.name_to_abbrev(self.away_team) + " " + str(self.away_score)
+                        away_string = "{prep} "+ self.away_team + " game has ended." + " Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + sr.name_to_abbrev(self.away_team) + " " + str(self.away_score)
+                        nh.send_team_notification(sr.name_to_abbrev(self.home_team), home_string.format(prep="A" if self.home_team[0].lower() in vowels else "An")) 
+                        nh.send_team_notification(sr.name_to_abbrev(self.away_team), away_string.format(prep="A" if self.away_team[0].lower() in vowels else "An"))
                     except:
                         pass
                 self.start_notification_sent = True                
