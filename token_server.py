@@ -4,6 +4,7 @@ import SimpleHTTPServer, SocketServer
 import json
 import notification_handler
 import argparse
+import urlparse
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -17,6 +18,19 @@ def path_parse(path):
 
     return path_ents[1:]
     pass
+
+def extract_data(handler,data_key):
+    try:
+        print post_data[data_key][0]
+        return post_data[data_key][0]
+    except:
+        return ""
+    
+def extract_token(handler):
+    return extract_data(handler,'token')
+
+def extract_team(handler):
+    return extract_data(handler,'team')
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
@@ -35,17 +49,44 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             #Function for path handling goes here:
             path_ents = path_parse(self.path)
             if 'ios' in path_ents:
-                notification_handler.register_ios_token(path_ents)
+                notification_handler.register_ios_token_from_path(path_ents)
                 self.send_header("Content-type","text")
                 self.end_headers()                
                 return
             elif 'android' in path_ents:
-                notification_handler.register_android_token(path_ents)
+                notification_handler.register_android_token_from_path(path_ents)
                 self.send_header("Content-type","text")
                 self.end_headers()                
                 return
                 
 
+    def do_POST(self):
+            #We can always respond with json code
+            self.send_response(200) # Send 200 OK
+            #Function for path handling goes here:
+            length = int(self.headers['Content-Length'])
+            post_data = urlparse.parse_qs(self.rfile.read(length).decode('utf-8'))
+            token = post_data['token'][0]
+            note_type = post_data['note_type'][0]
+            platform = post_data['platform'][0]
+            print platform
+            if 'ios' == platform:
+                if 'general' == note_type:
+                    notification_handler.register_general_ios_token(token)
+                else:
+                    team = note_type
+                    notification_handler.register_team_ios_token(team,token)
+            elif 'android' == platform:
+                if 'general' == note_type:
+                    notification_handler.register_general_android_token(token)
+                else:
+                    team = note_type
+                    notification_handler.register_team_android_token(team,token)
+            self.send_header("Content-type","text")
+            self.end_headers()                
+            return
+
+        
 def parse_args():
     
     parser = argparse.ArgumentParser()
