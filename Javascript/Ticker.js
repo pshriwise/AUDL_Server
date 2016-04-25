@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$.ajax({
-		url: "http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Web/Scores",
+		url: "http://52.7.194.101:4002/Web/Scores",
 		jsonp: "callback",
 		dataType : "jsonp",
 		jsonpCallback : "getTicker"
@@ -16,9 +16,9 @@ getTicker = function( data ) {
 	if (needScroll)
 	{
 		var img = new Image();
-		img.src = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Images/left_arrow.png";
+		img.src = "http://52.7.194.101:4002/Images/left_arrow.png";
 		
-		tickerText += '<td class="ticker-prev"><img src="http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Images/left_arrow.png" alt="prev" title="previous" /></td>';
+		tickerText += '<td class="ticker-prev"><img src="http://52.7.194.101:4002/Images/left_arrow.png" alt="prev" title="previous" /></td>';
 	}
 	tickerText += '<td><div class="ticker-viewport"><ul class="ticker-wrapper">';
 	$.each( parsedData, function( i, gamesArray ) {
@@ -35,9 +35,9 @@ getTicker = function( data ) {
 	if (needScroll)
 	{
 		var img = new Image();
-		img.src = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Images/right_arrow.png";
+		img.src = "http://52.7.194.101:4002/Images/right_arrow.png";
 		
-		tickerText += '<td class="ticker-next"><img src="http://ec2-54-86-111-95.compute-1.amazonaws.com:4002/Images/right_arrow.png" alt="next" title="next" /></td>';
+		tickerText += '<td class="ticker-next"><img src="http://52.7.194.101:4002/Images/right_arrow.png" alt="next" title="next" /></td>';
 	}
 	tickerText += '</tr></table>';
 	$( window ).load(function() { 
