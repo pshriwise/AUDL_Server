@@ -51,6 +51,8 @@ def refresh():
 
     print "done"
     threading.Timer(poll_interval,refresh).start()
+    #save AUDL class to file
+    pickle.dump(AUDL, open('audl_db.p','wb'))
     print "Number of requests: ", AUDLclasses.requests
     print "Next server update will occur in ", poll_interval, " seconds."
 
