@@ -8,7 +8,11 @@ import threading
 import traceback
 import pickle
 
+# Initialize the league class
 AUDL = AUDLclasses.League()
+
+# Set default value for the refreshing interval
+poll_interval = 600
 
 # Add teams from local files and populate
 # their information from the ultimate-numbers 
@@ -28,9 +32,6 @@ def parse_args():
 
 def refresh():
     print "refreshing server...",
-    #set interval to one day
-#    AUDL = pickle.load(open('audl_db16.p','rb'))
-    interval = 600
     try: AUDL.update_games() 
     except: traceback.print_exc()
     try: AUDL.get_news() 
@@ -48,26 +49,21 @@ def refresh():
         except: 
             traceback.print_exc()
 
-    #save AUDL class to file
-#    pickle.dump(AUDL, open('audl_db16.p','wb'))
-
     print "done"
-    threading.Timer(interval,refresh).start()
+    threading.Timer(poll_interval,refresh).start()
     print "Number of requests: ", AUDLclasses.requests
-    print "Next server update will occur in ", interval, " seconds."
+    print "Next server update will occur in ", poll_interval, " seconds."
 
 
 def main():
-    # Initialize the league class
-#    AUDL = AUDLclasses.League()
-
+    #Initial operations for the database
     AUDL.add_teams()
     AUDL.update_games()
     # Get news articles for the team
     AUDL.get_news()
-    #save AUDL class to file
-#    pickle.dump(AUDL, open('audl_db16.p','wb'))
+    #Start the refreshing process
     refresh()
+    #Allow notifications after the initialization and first update are complete
     AUDLclasses.notify = True    
 
 if __name__ == "__main__":

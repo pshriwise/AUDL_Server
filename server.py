@@ -90,8 +90,6 @@ def web_data( path_ents, League ):
     
     return params['callback'] + "('" + json.dumps(widgets[key](params))  + "')"
 
-#ef teams_latest_game( League, 
-
 def parse_callback( web_params ):
 
     path_ents = web_params.split('?')
@@ -133,8 +131,6 @@ def subpage_data(path_ents, League):
         return team_subpage_data(team_id, team)
     elif path_ents[0] == "Icons":
         # the true case is a corner statement 
-        # only the false case will be needed after 2014 games begin
-        #return ig.AUDLlogo('Phoenix') if team_id == 208004 else ig.AUDLlogo(team.Name)
         return ig.AUDLlogo(team.Name)
     elif path_ents[0] == "Game":
         #return the detailed game info
@@ -231,12 +227,12 @@ def parse_args():
     parser = argparse.ArgumentParser()
     
     parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
-    parser.add_argument('--PORT', dest = 'PORT', required=False, type=int, default=4000)
+    parser.add_argument('--PORTS', nargs="+", dest = 'PORTS', help="List of ports on which servers will be generated.", required=True, type=int, default=["4000",])
     parser.add_argument('--refresh-int', dest= 'interval', required=False, type=int, default=600)
     return parser.parse_args()
 
-def serve_on_port(port):
-    server = SocketServer.ThreadingTCPServer(("",port), Handler)
+def serve_on_port(ip,port):
+    server = SocketServer.ThreadingTCPServer((ip,port), Handler)
     server.request_queue_size = 100
     server.serve_forever()
 
@@ -244,13 +240,10 @@ def main():
     
     args = parse_args()
     # Start broadcasting the server
+    db.poll_interval = args.interval
     db.main()
-    Thread(target=serve_on_port, args=[4001]).start()
-    Thread(target=serve_on_port, args=[4002]).start()
-    Thread(target=serve_on_port, args=[4003]).start()
-
-
-
+    for port in args.PORTS:
+        Thread(target=serve_on_port, args=[args.IP,int(port)]).start()
 
 if __name__ == "__main__":
     main()
