@@ -1,11 +1,13 @@
 #!/usr/bin/python
 
 import SimpleHTTPServer, SocketServer
+from threading import Thread
 import json
 import notification_handler
 import image_get as ig
 import argparse
 import pickle
+import database as db
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -220,9 +222,8 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 self.send_header("Content-type","json")
                 self.end_headers()
                 
-            AUDL = pickle.load(open('audl_db16.p','rb'))
             
-            self.wfile.write(path_data(self.path,AUDL))
+            self.wfile.write(path_data(self.path,db.AUDL))
 
 
 def parse_args():
@@ -231,18 +232,26 @@ def parse_args():
     
     parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
     parser.add_argument('--PORT', dest = 'PORT', required=False, type=int, default=4000)
+    parser.add_argument('--refresh-int', dest= 'interval', required=False, type=int, default=600)
     return parser.parse_args()
+
+def serve_on_port(port):
+    server = SocketServer.ThreadingTCPServer(("",port), Handler)
+    server.request_queue_size = 100
+    server.serve_forever()
 
 def main():
     
     args = parse_args()
     # Start broadcasting the server
-    httpd = SocketServer.ThreadingTCPServer((args.IP, args.PORT),Handler) # Can also use ForkingTCPServer
-    httpd.request_queue_size = 30
-    print "serving at" , args.IP, "port", args.PORT
-    httpd.serve_forever()
+    db.main()
+    Thread(target=serve_on_port, args=[4001]).start()
+    Thread(target=serve_on_port, args=[4002]).start()
+    Thread(target=serve_on_port, args=[4003]).start()
+
 
 
 
 if __name__ == "__main__":
     main()
+    

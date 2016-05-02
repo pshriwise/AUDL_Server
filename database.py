@@ -2,12 +2,13 @@
 
 import AUDLclasses
 import sheet_reader as sr
+import MediaClasses
 import argparse
 import threading
 import traceback
 import pickle
 
-
+AUDL = AUDLclasses.League()
 
 # Add teams from local files and populate
 # their information from the ultimate-numbers 
@@ -28,10 +29,8 @@ def parse_args():
 def refresh():
     print "refreshing server...",
     #set interval to one day
-    AUDL = pickle.load(open('audl_db16.p','rb'))
-    
-    args = parse_args()
-    interval = args.interval
+#    AUDL = pickle.load(open('audl_db16.p','rb'))
+    interval = 600
     try: AUDL.update_games() 
     except: traceback.print_exc()
     try: AUDL.get_news() 
@@ -48,23 +47,27 @@ def refresh():
             traceback.print_exc()
 
     #save AUDL class to file
-    pickle.dump(AUDL, open('audl_db16.p','wb'))
+#    pickle.dump(AUDL, open('audl_db16.p','wb'))
 
     print "done"
     threading.Timer(interval,refresh).start()
     print "Number of requests: ", AUDLclasses.requests
     print "Next server update will occur in ", interval, " seconds."
 
-if __name__ == "__main__":
+
+def main():
     # Initialize the league class
-    AUDL = AUDLclasses.League()
+#    AUDL = AUDLclasses.League()
 
     AUDL.add_teams()
     AUDL.update_games()
     # Get news articles for the team
     AUDL.get_news()
-    
+    AUDL.Videos = MediaClasses.Videos();
     #save AUDL class to file
-    pickle.dump(AUDL, open('audl_db16.p','wb'))
+#    pickle.dump(AUDL, open('audl_db16.p','wb'))
     refresh()
     AUDLclasses.notify = True    
+
+if __name__ == "__main__":
+    main()
