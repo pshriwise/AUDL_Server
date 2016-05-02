@@ -35,6 +35,8 @@ def refresh():
     except: traceback.print_exc()
     try: AUDL.get_news() 
     except: traceback.print_exc()
+    try: AUDL.update_videos();
+    except: traceback.print_exc()
 
     sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
     sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
@@ -63,7 +65,6 @@ def main():
     AUDL.update_games()
     # Get news articles for the team
     AUDL.get_news()
-    AUDL.Videos = MediaClasses.Videos();
     #save AUDL class to file
 #    pickle.dump(AUDL, open('audl_db16.p','wb'))
     refresh()

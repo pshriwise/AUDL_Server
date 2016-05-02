@@ -381,6 +381,9 @@ class League():
         
         '''
         return self.Videos.videos
+    
+    def update_videos(self):
+        self.Videos = MediaClasses.Videos()
 
     def name_to_id(self, name):
         """
