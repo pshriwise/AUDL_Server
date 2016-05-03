@@ -142,8 +142,8 @@ def send_ios_team_notification(team_abbrev,message):
     tokens = [item['token'] for item in items]
     send_ios_notifications(message, tokens)
 
-def get_apns_connection(cert_file = "AUDLDistCert.pem", key_file = "AUDLDist.pem"):
-    return APNs(use_sandbox=False, cert_file = "AUDLDistCert.pem", key_file="AUDLDist.pem")
+def get_apns_connection(sandbox = False, cert_file = "AUDLDistCert.pem", key_file = "AUDLDist.pem"):
+    return APNs(use_sandbox=sandbox, cert_file = "AUDLDistCert.pem", key_file="AUDLDist.pem")
 
 def send_ios_notification(message, token = token_hex):
     conn = get_apns_connection()
