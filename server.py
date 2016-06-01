@@ -1,13 +1,30 @@
 #!/usr/bin/python
 
 import SimpleHTTPServer, SocketServer
-from threading import Thread
+from threading import Thread,Timer
 import json
+import csv
 import notification_handler
 import image_get as ig
 import argparse
 import pickle
 import database as db
+from datetime import datetime as dt
+
+log_dict = dict(
+    date = 0,
+    web_hits = 0,
+    app_hits = 0,
+    scores_hits = 0,
+    teams_hits = 0,
+    news_hits = 0,
+    stats_hits = 0,
+    standings_hits = 0,
+    schedule_hits = 0,
+    videos_hits = 0,
+    allgames_hits = 0,
+    home_hits = 0)
+
 
 # Parse a given input path to the server
 def path_parse(path):
@@ -42,7 +59,10 @@ def path_data(path, League):
     path_ents = path_parse(path)
     # If the length of path_ents is one and the page requested exists
     # then return the info for that page
+    log_dict["app_hits"] +=1
     if len(path_ents) == 1 and path_ents[0] in main_pages.keys():
+        try: log_dict[path_ents[0].lower()+"_hits"] += 1
+        except: pass
         return json.dumps(main_pages[path_ents[0]])
     elif len(path_ents) > 1 and path_ents[0] in main_pages.keys():
         return json.dumps(subpage_data(path_ents, League))
@@ -51,6 +71,8 @@ def path_data(path, League):
     elif len(path_ents) > 1 and path_ents[0] == "Game":
         return subpage_data(path_ents, League)
     elif len(path_ents) > 1 and path_ents[0] == "Web":
+        log_dict["app_hits"] -= 1
+        log_dict["web_hits"] += 1
         return web_data(path_ents, League)
     elif len(path_ents) == 1 and "gameupdate" in path_ents[0] :
         return update_game(path_ents, League)
@@ -236,6 +258,18 @@ def serve_on_port(ip,port):
     server.request_queue_size = 100
     server.serve_forever()
 
+def log():
+    tstamp = dt.now()
+    log_dict["date"] = tstamp.strftime("%Y-%m-%d %H:%M:%S")
+    f = open("./server_stats/hitlog.csv",'a')
+    csv.DictWriter(f,log_dict).writerow(log_dict)
+    f.close()
+    #reset dictionary values
+    for key in log_dict.keys():
+        log_dict[key] = 0
+        
+    Timer(900,log).start()
+    
 def main():
     
     args = parse_args()
@@ -244,7 +278,14 @@ def main():
     db.main()
     for port in args.PORTS:
         Thread(target=serve_on_port, args=[args.IP,int(port)]).start()
+    #start logger
+    f = open("./server_stats/hitlog.csv",'w')
+    f.seek(0)
+    csv.DictWriter(f,log_dict).writeheader()
+    f.close()
+    Timer(900,log).start()
 
+    
 if __name__ == "__main__":
     main()
     

@@ -22,6 +22,9 @@ import notification_handler as nh
 
 base_url = 'http://www.ultianalytics.com/rest/view'
 requests = 0
+web_hits = 0
+app_hits = 0
+
 notify = False
 # create class enum for different allowed statuses
 class statuses:
@@ -291,6 +294,8 @@ class League():
         if hasattr(g, 'home_score') and hasattr(g, 'away_score'):
             hscore = g.home_score
             ascore = g.away_score
+        elif g.status >= statuses.OVER:
+            hscore, ascore = g.get_score_from_sheet()
         else:
             hscore = 0
             ascore = 0  
@@ -1000,7 +1005,7 @@ class Game():
         self.set_status()
         
     def set_score(self, game_data, home):
-        
+
         new_game = False if hasattr(self,"home_score") or hasattr(self,"away_score") else True
         higher_score = True if new_game or ((self.home_score+self.away_score)<(game_data['ours']+game_data['theirs'])) else False
 
@@ -1008,7 +1013,20 @@ class Game():
             self.home_score = game_data['ours'] if home else game_data['theirs']
             self.away_score = game_data['theirs'] if home else game_data['ours']
 
-            
+    def get_score_from_sheet(self):
+        game_data = sr.find_game(self.date, self.home_team, self.away_team)
+
+        hsr = 0
+        asr = 0
+        
+        # for each set of game data we've found, if the score is updated, update game score
+        for data in game_data:
+            if int(data[7])+int(data[8]) > hsr+asr:
+                hsr = int(data[7])
+                asr = int(data[8])
+        return hsr,asr
+                
+
     def set_status(self):
         """
         This will set the game's status based on the timestamp of the game. 

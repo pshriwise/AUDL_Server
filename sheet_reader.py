@@ -48,3 +48,13 @@ def name_to_abbrev(team_name, filename = Team_Info_Filename ):
     for row in reader:
         if str(team_name) == row[2] :
             return row[5]
+
+def find_game(date, home_team, away_team):
+
+    reader = get_csv_reader("2016_Schedule.csv")
+
+    rows = []
+    for row in reader:
+        if date == row[0] and home_team == row[5] and away_team == row[6]:
+            rows.append(row)
+    return rows
