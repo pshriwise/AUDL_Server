@@ -296,6 +296,8 @@ class League():
             ascore = g.away_score
         elif g.status >= statuses.OVER:
             hscore, ascore = g.get_score_from_sheet()
+            g.home_score = hscore
+            g.away_score = ascore
         else:
             hscore = 0
             ascore = 0  
