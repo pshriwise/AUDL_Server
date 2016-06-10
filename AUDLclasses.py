@@ -436,10 +436,53 @@ class League():
                 team_rec_tup = (t.full_name(),team,rec[0], rec[1], rec[2], sr.id_to_abbrev(team))
                 div_list.append(team_rec_tup)
             div_list.sort(key= lambda set: 0 if 0 == set[2]+set[3] else (float(set[2])/(float(set[2]+set[3])),float(set[2]),-float(set[3]),set[4]), reverse=True)
+            #additional sort for head to head matchups
+            div_list = self.break_ties(div_list)
             div_list.insert(0,div)
             standings_list.append(div_list)
 
         return standings_list
+
+    def break_ties(self, standings_list):
+        #find any teams with the exact same record
+        i=0
+        i_max = len(standings_list)-1
+        while i < i_max:
+            #if we have a tie in wins/point
+            if standings_list[i][2:4] == standings_list[i+1][2:4]:
+                standings_list[i], standings_list[i+1] = self.head2head(standings_list[i],standings_list[i+1])
+                pass #need to do a head to head comparison here
+            i+=1    
+        return standings_list
+
+    def head2head(self, team1, team2):
+        t1 = self.Teams[team1[1]]
+        t2 = self.Teams[team2[1]]
+        #retrieve all games these teams share
+        games =[]
+        for team_id,team in self.Teams.items():
+            for date,game in team.Games.items():
+                if ( game.away_team == t1.full_name() and game.home_team == t2.full_name() ):
+                    games.append(game)
+                elif ( game.away_team == t2.full_name() and game.home_team == t1.full_name() ):
+                    games.append(game)
+                else:
+                    pass
+        #count up head to head wins for each team
+        t1_wins = 0
+        t2_wins = 0
+        for game in games:
+            if game.status >= statuses.OVER and game.home_score != game.away_score:
+                winner_name = game.away_team if game.away_score > game.home_score else game.home_team
+                if winner_name == t1.full_name(): 
+                    t1_wins +=1 
+                else: 
+                    t2_wins +=1
+
+        if t1_wins >= t2_wins:
+            return team1, team2
+        else:
+            return team2, team1
 
     def web_standings(self, params):
        
