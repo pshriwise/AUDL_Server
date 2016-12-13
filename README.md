@@ -1,6 +1,3 @@
-pyultimate_stats
-================
-
 Contains python scripts for getting American Ultimate Disc League (AUDL) statistics information from the www.ultianalytics.com server.
 
 Use
@@ -8,14 +5,13 @@ Use
 
 clone the repository using 
 
-git clone https://github.com/pshriwise/CS638
+git clone https://github.com/pshriwise/audl_server
 
 in the top directory run the commands:
 
-git checkout -b origin/master
+python server.py -h
 
-python server.py
-
+This shows all options for running an AUDL stat server instance.
 
 Documentation
 --------------
@@ -48,4 +44,5 @@ Dependencies
 Python version 2.7.3 or greater 
 
 Python modules: urllib2, json , feedparser, datetime, SimpleHTTPServer
-                SocketServer, matplotlib, tzlocal, apns, boto
+                SocketServer, matplotlib, tzlocal, apns, boto, csv, traceback,
+		threading, apns, subprocess, urlparse
