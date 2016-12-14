@@ -44,5 +44,6 @@ Dependencies
 Python version 2.7.3 or greater 
 
 Python modules: urllib2, json , feedparser, datetime, SimpleHTTPServer
-                SocketServer, matplotlib, tzlocal, apns, boto, csv, traceback,
-		threading, apns, subprocess, urlparse
+                SocketServer, matplotlib, tzlocal, apns, csv, traceback,
+		threading, apns, subprocess, urlparse, boto (Amazon's aws python package)
+
