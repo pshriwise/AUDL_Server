@@ -96,7 +96,7 @@ class League():
         self.Top_fives = { 'Goals': [], 'Assists': [], 'Drops': [], 'Throwaways': [], 'PMC': [], 'Ds': [] }
 
 
-    def add_teams(self, filename='2016_Team_Info.csv', players = True, games = True, stats = True):
+    def add_teams(self, filename=sr.Team_Info_Filename, players = True, games = True, stats = True):
         """
         This method retrieves all known teams from the ulti-analytics
         server using a dictionary that keeps track of team IDs we care about. 
@@ -580,7 +580,7 @@ class Team():
     def return_games(self):
         return self.League.return_games([self.ID],scores=True,all=True)
 
-    def add_players(self, filename='2016_Players.csv', stats=True):
+    def add_players(self, filename=sr.Rosters_Filename, stats=True):
         """
         Adds players to the Team class attribute 'Players' from the AUDL google spreadsheet.
         """
@@ -722,7 +722,7 @@ class Team():
         # return the list
         return rost
 
-    def add_games(self, filename="2016_Schedule.csv"):
+    def add_games(self, filename=sr.Schedule_Filename):
         """
         Adds any games for the team from a given file containing the League
         or team schedule for the current season.

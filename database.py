@@ -19,7 +19,7 @@ poll_interval = 600
 # server
 sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
 sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
-sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
+sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_Filename )
 
 def parse_args():
     
@@ -41,7 +41,7 @@ def refresh():
 
     sr.get_csv( sr.spreadsheet_key, sr.Team_Info_gid, sr.Team_Info_Filename )
     sr.get_csv( sr.spreadsheet_key, sr.Schedule_gid, sr.Schedule_Filename )
-    sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_filename )
+    sr.get_csv( sr.spreadsheet_key, sr.Rosters_gid, sr.Rosters_Filename )
     for ID,team in AUDL.Teams.items():
         try:
             team.add_player_stats()
