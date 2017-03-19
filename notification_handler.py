@@ -140,15 +140,15 @@ def send_team_notification(team_abbrev,message):
     send_ios_team_notification(team_abbrev, message)
     
 def send_fcm_notification(condition,message):
-	try:
-		req = urllib2.Request("http://fcm.googleapis.com/fcm/send")
+    try:
+        req = urllib2.Request("http://fcm.googleapis.com/fcm/send")
 
-		req.add_header("Content-Type", "application/json")
-		req.add_header("Authorization", "key=AAAAsFRIxTo:APA91bG2MU9PmCUa3iXk1dHkT1v04qkydHHJ25WU1DVcuF1k_HsZAcSmdYg987Q3NUWgPCC4oS2CeCl0PypTkulkfQXhSIL_1F1eTS0PxGwBNUm_4tM3fs3_NoYoYaRtpYngMIAMpxIn")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("Authorization", "key=AAAAsFRIxTo:APA91bG2MU9PmCUa3iXk1dHkT1v04qkydHHJ25WU1DVcuF1k_HsZAcSmdYg987Q3NUWgPCC4oS2CeCl0PypTkulkfQXhSIL_1F1eTS0PxGwBNUm_4tM3fs3_NoYoYaRtpYngMIAMpxIn")
 
-		body = "{\"condition\": \"" + condition + "\",\"data\": {\"message\": \"" + message + "\",}}"
+        body = "{\"condition\": \"" + condition + "\",\"data\": {\"message\": \"" + message + "\",}}"
 
-		urllib2.urlopen(req, body)
+        urllib2.urlopen(req, body)
 
     except urllib2.URLError, e:
         if not hasattr(e, "code"):
