@@ -1,6 +1,5 @@
 import csv
 import urllib2
-import logging
 from apns import APNs, Frame, Payload
 from datetime import datetime as dt
 from datetime import timedelta
