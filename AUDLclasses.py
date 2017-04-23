@@ -1066,9 +1066,13 @@ class Game():
         
         # for each set of game data we've found, if the score is updated, update game score
         for data in game_data:
-            if int(data[7])+int(data[8]) > hsr+asr:
-                hsr = int(data[7])
-                asr = int(data[8])
+            print self.date, self.home_team, self.away_team, data[7], data[8]
+            try:
+                if int(data[7])+int(data[8]) > hsr+asr:
+                    hsr = int(data[7])
+                    asr = int(data[8])
+            except:
+                pass
         return hsr,asr
                 
 
