@@ -472,8 +472,18 @@ class League():
         t1_wins = 0
         t2_wins = 0
         for game in games:
-            if game.status >= statuses.OVER and game.home_score != game.away_score:
-                winner_name = game.away_team if game.away_score > game.home_score else game.home_team
+            print game
+            try:
+                if game.status >= statuses.OVER and game.home_score != game.away_score:
+                    winner_name = game.away_team if game.away_score > game.home_score else game.home_team
+            except:
+                hsr, asr = game.get_score_from_sheet()
+                if (hsr != 0) or (asr != 0):
+                    game.home_score = hsr
+                    game.away_score = asr
+                if game.status >= statuses.OVER and game.home_score != game.away_score:
+                    winner_name = game.away_team if game.away_score > game.home_score else game.home_team
+                
                 if winner_name == t1.full_name(): 
                     t1_wins +=1 
                 else: 
@@ -627,25 +637,26 @@ class Team():
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
         global requests
         requests = requests + 1
-        response2 = urllib2.urlopen(req2,timeout=10)
-        player_stats_data = json.loads(response2.read())
+        if self.City != "Raleigh":
+            response2 = urllib2.urlopen(req2,timeout=10)
+            player_stats_data = json.loads(response2.read())
         
-        # match player to their Ultimate-Numbers name by their Jersey number
-        for name, player in self.Players.items():
-            for data in gen_player_data:
-                #print data['number'], player.Number, self.Name, player.full_name()
-                if 'number' not in data.keys():
-                    continue
-                if data['number'] == player.Number:
-                    #print data['name']
-                    self.Players[name].stat_name = data['name']
+            # match player to their Ultimate-Numbers name by their Jersey number
+            for name, player in self.Players.items():
+                for data in gen_player_data:
+                    #print data['number'], player.Number, self.Name, player.full_name()
+                    if 'number' not in data.keys():
+                        continue
+                    if data['number'] == player.Number:
+                        #print data['name']
+                        self.Players[name].stat_name = data['name']
 
-        stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
-        for name,player in self.Players.items():
-           for player_stats in player_stats_data:
-               if  hasattr(player,'stat_name') and player_stats['playerName'] == player.stat_name:
-                   for stat in stats:
-                       player.Stats[stat]  = player_stats[stat] if stat in player_stats else 0
+            stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
+            for name,player in self.Players.items():
+                for player_stats in player_stats_data:
+                    if  hasattr(player,'stat_name') and player_stats['playerName'] == player.stat_name:
+                        for stat in stats:
+                            player.Stats[stat]  = player_stats[stat] if stat in player_stats else 0
 
     def add_player_number(self,player_class):
         """
@@ -1017,6 +1028,17 @@ class Game():
         # bools for indicating if notifications have been sent about this game
         self.start_notification_sent = False
         self.end_notification_sent = False
+
+    def __str__(self):
+        outstr = "Game: "
+        outstr += self.home_team
+        outstr += " vs. "
+        outstr += self.away_team
+        outstr += " Date: "
+        outstr += self.date
+        outstr += " Time: "
+        outstr += self.time
+        return outstr
 
     def update(self):
         self.stat_info()
