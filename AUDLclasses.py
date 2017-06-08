@@ -20,12 +20,18 @@ import sheet_reader as sr
 #Notification imports
 import notification_handler as nh
 
+# Globals
 base_url = 'http://www.ultianalytics.com/rest/view'
 requests = 0
 web_hits = 0
 app_hits = 0
-
 notify = False
+VERBOSE_OUTPUT = False
+
+def to_screen(message):
+    """ Utility function for printing output if verbosity has been requested"""
+    if VERBOSE_OUTPUT: print message
+        
 # create class enum for different allowed statuses
 class statuses:
     UPCOMING = 0 
@@ -126,7 +132,7 @@ class League():
                 Div = row[3]
                 City = row[0]
                 self.Teams[ID] = Team(self,ID,Name,City)
-                print "Adding team " + row[2] + "..."
+                to_screen("Adding team " + row[2] + "...")
 
                 if Div in self.Divisions.keys():
                     self.Divisions[Div].append(ID)
@@ -429,7 +435,7 @@ class League():
         standings_list=[]
         for div,teams in self.Divisions.items():
             div_list=[]
-            #print teams
+
             for team in teams:
                 t = self.Teams[team]
                 rec = t.record()
@@ -472,7 +478,7 @@ class League():
         t1_wins = 0
         t2_wins = 0
         for game in games:
-            print game
+            to_screen(game)
             try:
                 if game.status >= statuses.OVER and game.home_score != game.away_score:
                     winner_name = game.away_team if game.away_score > game.home_score else game.home_team
@@ -500,7 +506,6 @@ class League():
         for div,teams in self.Divisions.items():
             div_list=[]
 
-            #print teams
             for team in teams:
                 t = self.Teams[team]
                 rec = t.record()
@@ -644,11 +649,10 @@ class Team():
             # match player to their Ultimate-Numbers name by their Jersey number
             for name, player in self.Players.items():
                 for data in gen_player_data:
-                    #print data['number'], player.Number, self.Name, player.full_name()
+
                     if 'number' not in data.keys():
                         continue
                     if data['number'] == player.Number:
-                        #print data['name']
                         self.Players[name].stat_name = data['name']
 
             stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
@@ -680,8 +684,8 @@ class Team():
                try:
                    player_class.Number = player['number']
                except:
-                   print "Could not match player number for", player['name'],
-                   print "on the", self.City, self.Name
+                   print("Could not match player number for " + player['name'])
+                   to_screen("on the " +  " ".join(self.City,self.Name))
                    pass
             
     def top_five(self, stat):
@@ -751,7 +755,7 @@ class Team():
         team_games = []
         for game in reader:
             if self.full_name() in game[5] or self.full_name() in game[6]:
-                print "Adding games for " + self.full_name() + "..."
+                to_screen("Adding games for " + self.full_name() + "...")
                 date = game[0]
                 time = game[1].strip()
                 if "" == time: time = '7:00 PM CST' #waiting for real times from the AUDL
@@ -766,10 +770,10 @@ class Team():
                 if self.League != None:
                     #if yes, then see if this game already exists in the other team
                     other_team = ateam if self.full_name() in hteam else hteam
-                    print "Checking if " + other_team + " already has this game."
-                    print other_team, date
+                    to_screen("Checking if " + other_team + " already has this game.")
+                    to_screen(other_team+" "+date)
                     exists, existing_game = self.League.league_game_exist(other_team, date) 
-                    print "It does." if exists else "It doesn't."
+                    to_screen("It does." if exists else "It doesn't.")
 
                     #if the other team has this game, add the returned game to this team
                     #otherwise create a new game class for this team
@@ -927,7 +931,7 @@ class Team():
             #find the game that is the closest to today's date
             game_date = game.tstamp.date()
             diff = abs((game_date - today).days)
-            print abs((game_date - today).days)
+            to_screen(abs((game_date - today).days))
             if ( diff < min_diff or None == min_diff):
                 min_diff = diff
                 nearest_game = game
@@ -1088,7 +1092,7 @@ class Game():
         
         # for each set of game data we've found, if the score is updated, update game score
         for data in game_data:
-            print self.date, self.home_team, self.away_team, data[7], data[8]
+            to_screen(" ".join(self.date, self.home_team, self.away_team, data[7], data[8]))
             try:
                 if int(data[7])+int(data[8]) > hsr+asr:
                     hsr = int(data[7])
@@ -1146,7 +1150,7 @@ class Game():
             elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
                 if notify:
                     try:
-                        print("Sending start of game notification for", self.away_team, self.home_team)
+                        to_screen(" ".join("Sending start of game notification for", self.away_team, self.home_team))
                         string = self.away_team + " game against " + self.home_team + " has begun!"
                         nh.send_game_notification(sr.name_to_abbrev(self.home_team), sr.name_to_abbrev(self.away_team), string)
                     except:
@@ -1161,7 +1165,7 @@ class Game():
             elif (not self.end_notification_sent) and statuses.OVER <= self.status:
                 if notify:
                     try:
-                        print("Sending end of game notification for" , self.away_team, self.home_team)
+                        to_screen(" ".join("Sending end of game notification for" , self.away_team, self.home_team))
                         string = self.away_team + " game against " + self.home_team + " has ended. Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + sr.name_to_abbrev(self.away_team) + " " + str(self.away_score)
                         nh.send_game_notification(sr.name_to_abbrev(self.home_team), sr.name_to_abbrev(self.away_team), string)
                     except:
@@ -1171,7 +1175,6 @@ class Game():
                 
     def get_game_data(self, id):
         full_url = base_url + "/team/" + id
-        #print full_url
         req = urllib2.Request(full_url)
         global requests
         requests = requests +  1
@@ -1224,7 +1227,7 @@ class Game():
                 graphed = True if self.graph_pnts is not None else False
             else:
                 pass
-                #print ["No information available"]
+
         #open home_team endpoint and read json
         #home_info=game_deets(home_team_endpoint)
         #Use the home_info to generate the game_graph
@@ -1244,8 +1247,7 @@ class Game():
             else:
                 pass
                 #print ["No information available"]
-        #print home_deets
-        #print away_deets
+
         if is_over: self.status = statuses.UN_DEC_OVER
         self.set_status()
         self.Home_stats = home_deets
