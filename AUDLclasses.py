@@ -20,17 +20,16 @@ import sheet_reader as sr
 #Notification imports
 import notification_handler as nh
 
+#Utility function imports
+import util
+from util import to_screen
+
 # Globals
 base_url = 'http://www.ultianalytics.com/rest/view'
 requests = 0
 web_hits = 0
 app_hits = 0
 notify = False
-VERBOSE_OUTPUT = False
-
-def to_screen(message):
-    """ Utility function for printing output if verbosity has been requested"""
-    if VERBOSE_OUTPUT: print message
         
 # create class enum for different allowed statuses
 class statuses:
@@ -685,7 +684,7 @@ class Team():
                    player_class.Number = player['number']
                except:
                    print("Could not match player number for " + player['name'])
-                   to_screen("on the " +  " ".join(self.City,self.Name))
+                   to_screen("on the " +  " ".join([self.City,self.Name]))
                    pass
             
     def top_five(self, stat):
@@ -1092,7 +1091,7 @@ class Game():
         
         # for each set of game data we've found, if the score is updated, update game score
         for data in game_data:
-            to_screen(" ".join(self.date, self.home_team, self.away_team, data[7], data[8]))
+            to_screen(" ".join([self.date, self.home_team, self.away_team, data[7], data[8]]))
             try:
                 if int(data[7])+int(data[8]) > hsr+asr:
                     hsr = int(data[7])
@@ -1150,7 +1149,7 @@ class Game():
             elif (not self.start_notification_sent) and statuses.ONGOING == self.status:
                 if notify:
                     try:
-                        to_screen(" ".join("Sending start of game notification for", self.away_team, self.home_team))
+                        to_screen(" ".join(["Sending start of game notification for", self.away_team, self.home_team]))
                         string = self.away_team + " game against " + self.home_team + " has begun!"
                         nh.send_game_notification(sr.name_to_abbrev(self.home_team), sr.name_to_abbrev(self.away_team), string)
                     except:
@@ -1165,7 +1164,7 @@ class Game():
             elif (not self.end_notification_sent) and statuses.OVER <= self.status:
                 if notify:
                     try:
-                        to_screen(" ".join("Sending end of game notification for" , self.away_team, self.home_team))
+                        to_screen(" ".join(["Sending end of game notification for" , self.away_team, self.home_team]))
                         string = self.away_team + " game against " + self.home_team + " has ended. Final score " + sr.name_to_abbrev(self.home_team) + " " + str(self.home_score) + " " + sr.name_to_abbrev(self.away_team) + " " + str(self.away_score)
                         nh.send_game_notification(sr.name_to_abbrev(self.home_team), sr.name_to_abbrev(self.away_team), string)
                     except:

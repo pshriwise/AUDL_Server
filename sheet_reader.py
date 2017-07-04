@@ -1,6 +1,6 @@
 
 
-from subprocess import call 
+from subprocess import check_output, STDOUT, CalledProcessError
 import csv
 
 
@@ -19,10 +19,13 @@ Rosters_Filename = '2017_Players.csv'
 def get_csv( key = spreadsheet_key, gid = Team_Info_gid, filename = Team_Info_Filename ):
 
     #get the csv of the sheet
-    call(["wget" , '-O' , filename, base_url+spreadsheet_key+ '/export?format=csv&gid=' + gid])
+    try:
+        output = check_output(["wget" , '-O' , filename, base_url+spreadsheet_key+ '/export?format=csv&gid=' + gid],
+                     stderr = STDOUT)
+    except CalledProcessError:
+        print output
     
     #open the csv file
-
     file = open(filename, 'rb')
 
     return file

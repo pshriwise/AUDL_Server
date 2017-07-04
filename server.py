@@ -11,6 +11,9 @@ import pickle
 import database as db
 from datetime import datetime as dt
 
+import util
+from util import to_screen
+
 log_dict = dict(
     date = 0,
     web_hits = 0,
@@ -34,7 +37,7 @@ def path_parse(path):
 
     path_ents = path.split("/")
     for ent in path_ents:
-        print ent
+        to_screen(ent)
 
     return path_ents[1:]
     pass
@@ -236,6 +239,9 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 self.send_header("Content-type","text")
                 self.end_headers()                
                 return
+            # endpoint for switching between verbose and non-verbose output
+            elif 'verbose' in path_ents:
+                util.VERBOSE_OUTPUT = not util.VERBOSE_OUTPUT
             else:
                 self.send_header("Content-type","json")
                 self.end_headers()
@@ -251,6 +257,7 @@ def parse_args():
     parser.add_argument('--IP', dest = 'IP', required=False, type=str, default="")
     parser.add_argument('--PORTS', nargs="+", dest = 'PORTS', help="List of ports on which servers will be generated.", required=True, type=int, default=["4000",])
     parser.add_argument('--refresh-int', dest= 'interval', required=False, type=int, default=600)
+    parser.add_argument('--verbose', dest = 'verbose', action = 'store_true', required = False, default = False)
     return parser.parse_args()
 
 def serve_on_port(ip,port):
@@ -273,6 +280,8 @@ def log():
 def main():
     
     args = parse_args()
+    if args.verbose:
+        util.VERBOSE_OUTPUT = True    
     # Start broadcasting the server
     db.poll_interval = args.interval
     db.main()
