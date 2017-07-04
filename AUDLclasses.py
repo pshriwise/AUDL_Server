@@ -641,25 +641,26 @@ class Team():
         req2 = urllib2.Request(base_url+"/team/"+str(self.ID)+"/stats/player")
         global requests
         requests = requests + 1
-        if self.City != "Raleigh":
-            response2 = urllib2.urlopen(req2,timeout=10)
-            player_stats_data = json.loads(response2.read())
+
+        response2 = urllib2.urlopen(req2,timeout=10)
+        player_stats_data = json.loads(response2.read())
         
-            # match player to their Ultimate-Numbers name by their Jersey number
-            for name, player in self.Players.items():
-                for data in gen_player_data:
+        # match player to their Ultimate-Numbers name by their Jersey number
+        for name, player in self.Players.items():
+            for data in gen_player_data:
+                #print data['number'], player.Number, self.Name, player.full_name()
+                if 'number' not in data.keys():
+                    continue
+                if data['number'] == player.Number:
+                    #print data['name']
+                    self.Players[name].stat_name = data['name']
 
-                    if 'number' not in data.keys():
-                        continue
-                    if data['number'] == player.Number:
-                        self.Players[name].stat_name = data['name']
-
-            stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
-            for name,player in self.Players.items():
-                for player_stats in player_stats_data:
-                    if  hasattr(player,'stat_name') and player_stats['playerName'] == player.stat_name:
-                        for stat in stats:
-                            player.Stats[stat]  = player_stats[stat] if stat in player_stats else 0
+        stats = ["assists","goals","plusMinusCount","drops","throwaways","ds"]
+        for name,player in self.Players.items():
+            for player_stats in player_stats_data:
+                if  hasattr(player,'stat_name') and player_stats['playerName'] == player.stat_name:
+                    for stat in stats:
+                        player.Stats[stat]  = player_stats[stat] if stat in player_stats else 0
 
     def add_player_number(self,player_class):
         """
