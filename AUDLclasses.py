@@ -246,13 +246,14 @@ class League():
 
         #if there are no games in the list, return the first few for now
         if 0 == len(game_list): 
-            for team in teams:
-                games = self.Teams[team].Games
-                for game in games:
-                    inst = self.Teams[team].Games[game]
-                    if inst not in game_list: game_list.append(inst)
-            game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
-            game_list = game_list[:10]
+            game_list = self.filter_games_by_date(days_ahead, days_behind+1, teams = teams, now = now, all = all)
+            # for team in teams:
+            #     games = self.Teams[team].Games
+            #     for game in games:
+            #         inst = self.Teams[team].Games[game]
+            #         if inst not in game_list: game_list.append(inst)
+            # game_list.sort( key = lambda set: dt.strptime(set.date, '%m/%d/%Y'))
+            # game_list = game_list[:10]
 
         return game_list 
 
