@@ -140,22 +140,6 @@ def send_team_notification(team_abbrev,message):
     send_ios_team_notification(team_abbrev, message)
     
 def send_fcm_notification(condition,message):
-    try:
-        req = urllib2.Request("http://fcm.googleapis.com/fcm/send")
-
-        req.add_header("Content-Type", "application/json")
-        req.add_header("Authorization", "key=AAAAsFRIxTo:APA91bG2MU9PmCUa3iXk1dHkT1v04qkydHHJ25WU1DVcuF1k_HsZAcSmdYg987Q3NUWgPCC4oS2CeCl0PypTkulkfQXhSIL_1F1eTS0PxGwBNUm_4tM3fs3_NoYoYaRtpYngMIAMpxIn")
-
-        body = "{\"condition\": \"" + condition + "\",\"data\": {\"message\": \"" + message + "\",}}"
-
-        urllib2.urlopen(req, body)
-
-    except urllib2.URLError, e:
-        if not hasattr(e, "code"):
-            return False
-    except:
-        return False
-
     return True
 
 
@@ -175,8 +159,7 @@ def get_apns_connection(sandbox = False, cert_file = "AUDLDistCert.pem", key_fil
     return APNs(use_sandbox=sandbox, cert_file = cert_file, key_file = key_file)
 
 def send_ios_notification(message, token = token_hex):
-    conn = get_apns_connection()
-    conn.gateway_server.send_notification(token, Payload(alert = str(message), sound = 'default'), expiry = dt.utcnow() + timedelta(150) )
+    return
 
 def send_ios_notifications(message, tokens = [token_hex]):
     for token in tokens:
