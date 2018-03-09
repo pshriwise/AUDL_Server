@@ -8,9 +8,51 @@ import boto.dynamodb2
 from boto.dynamodb2.table import Table
 from boto.dynamodb2.items import Item
 
+import firebase_admin
+import requests
+import json
+
+from firebase_admin import messaging
+
+cred = firebase_admin.credentials.Certificate("audl_firebase.json")
+firebase_app = firebase_admin.initialize_app(credential=  cred) #, { 'databaseURL' : 'https://www.google.com/url?q=https://audl-6ad83.firebaseio.com' })
+
 token_hex = '0d4a8842d98d949225f1aeba1782604a8ae6fd9397c448c18ee52cf78933e368'
 ios_table = "ios_device_tokens"
 android_table = "android_device_tokens"
+
+
+def get_fcm_token( apns_token ):
+    
+    # setup url and headers
+    url = "https://iid.googleapis.com/iid/v1:batchImport"
+    
+    headers = { "Authorization" : "key=AAAAsFRIxTo:APA91bG2MU9PmCUa3iXk1dHkT1v04qkydHHJ25WU1DVcuF1k_HsZAcSmdYg987Q3NUWgPCC4oS2CeCl0PypTkulkfQXhSIL_1F1eTS0PxGwBNUm_4tM3fs3_NoYoYaRtpYngMIAMpxIn",
+                "Content-Type" : "application/json" }
+
+    # insert apns_token into data for request
+    data = { "application" : "AUDL",
+             "sandbox" : False,
+             "apns_tokens": [
+                 apns_token,
+             ]
+         }
+
+    # make request
+    response = requests.post(url, json = data, headers = headers)
+    
+    assert( response.status_code == 200 ) # request should be successful
+
+    # parset the returned json
+    content = json.loads(response.text)
+    
+    assert( len(content['results']) == 1 ) # should only get one response
+    assert( content['results'][0].has_key('registration_token') ) # should've gotten a valid key
+            
+    fcm_token = content['results'][0]['registration_token'] 
+            
+    return fcm_token
+
 
 def dynamo_connection():
     #read our aws key values for access to the server
@@ -37,12 +79,9 @@ def android_token_table():
 def register_ios_token(path_entities):
     print("Registering ios token...")
     token = path_entities[-1]
+    topic = path_entities[-2]
     #determine what type of notification is being registered
-    if "general" in path_entities:
-        register_general_ios_token(token)
-    else:
-        abbreviation = path_entities[-2]
-        register_team_ios_token(abbreviation,token)
+    register_ios_token_for_topic(topic, token)
 
 def register_ios_token_from_path(path_entities):
     register_ios_token(path_entities)
@@ -83,6 +122,13 @@ def register_team_token(table_name, abbreviation, token):
     else:
         print("Invalid token. Not adding to table.")
         return False
+
+def register_ios_token_for_topic(topic, token):
+    fcm_token = get_fcm_token(token)
+    topic = topic.upper()
+    messaging.subscribe_to_topic([fcm_token,], topic)
+
+    
 
 def register_team_ios_token(abbrev, token):
     register_team_token(ios_table,abbrev,token)
