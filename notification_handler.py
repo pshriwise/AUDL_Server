@@ -1,5 +1,5 @@
 import csv
-import urllib2
+import urllib3
 from apns import APNs, Frame, Payload
 from datetime import datetime as dt
 from datetime import timedelta
@@ -127,8 +127,6 @@ def register_ios_token_for_topic(topic, token):
     fcm_token = get_fcm_token(token)
     topic = topic.upper()
     messaging.subscribe_to_topic([fcm_token,], topic)
-
-    
 
 def register_team_ios_token(abbrev, token):
     register_team_token(ios_table,abbrev,token)
