@@ -22,6 +22,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 ports = [4001, 4002, 4003]
 
 def start_on_port(port):
+    print("Starting server on port " + str(port))
     server = SocketServer.ThreadingTCPServer(("",port), Handler)
     server.request_queue_size = 100
     server.serve_forever()
